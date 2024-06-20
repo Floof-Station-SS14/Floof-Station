@@ -27,9 +27,6 @@
     - cvar
     - fuckrules
     - midipanic
-    - replay_recording_start
-    - replay_recording_stop
-    - replay_recording_stats
     - replay_play
     - replay_pause
     - replay_toggle
@@ -39,6 +36,12 @@
     - replay_load
     - saveconfig
     - chatwindow
+
+- Flags: ADMIN
+  Commands:
+    - replay_recording_start
+    - replay_recording_stop
+    - replay_recording_stats
 
 - Flags: DEBUG
   Commands:
