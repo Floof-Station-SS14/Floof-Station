@@ -99,6 +99,7 @@ namespace Content.Client.Input
                 ContentKeyFunctions.SmartEquipSuitStorage,
                 ContentKeyFunctions.OpenBackpack,
                 ContentKeyFunctions.OpenBelt,
+                ContentKeyFunctions.OfferItem, // Floof - item offering
                 ContentKeyFunctions.RotateObjectClockwise,
                 ContentKeyFunctions.RotateObjectCounterclockwise,
                 ContentKeyFunctions.FlipObject,
