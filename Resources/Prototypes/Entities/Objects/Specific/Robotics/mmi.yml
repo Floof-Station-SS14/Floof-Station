@@ -15,11 +15,14 @@
   - type: Input
     context: human
   - type: MMI
-    brainSlot:
+    brain_slot:
       name: positronic-brain-slot-component-slot-name-brain
       whitelist:
         components:
         - Brain
+      blacklist: # DeltaV
+        components:
+        - Unborgable
   - type: BorgBrain
   - type: BlockMovement
   - type: Examiner
