@@ -31,10 +31,6 @@ jobs:
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
           git checkout -b $BRANCH
 
-      - name: Merge upstream into sync branch
-        run: |
-          git merge upstream --no-edit
-
       - name: Push sync branch
         run: |
           git push origin $BRANCH --force
