@@ -91,6 +91,11 @@ namespace Content.Shared.Chat
         Subtle = 1 << 16,
 
         /// <summary>
+        ///     Subtle - Floofstation
+        /// </summary>
+        SubtleOOC = 1 << 17,
+
+        /// <summary>
         ///     Channels considered to be IC.
         /// </summary>
         IC = Local | Whisper | Radio | Dead | Emotes | Subtle | Damage | Visual | Notifications, //Floof - added subtle
