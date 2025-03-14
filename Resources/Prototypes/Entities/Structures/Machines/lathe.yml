@@ -543,6 +543,7 @@
     - ThongsRecipePack
     # Floofstation section end
     - DenClothingJob #DEN
+    - NFWallets # Frontier
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm
