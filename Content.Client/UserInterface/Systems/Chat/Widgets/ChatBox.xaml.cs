@@ -24,6 +24,8 @@ public partial class ChatBox : UIWidget
     private readonly ChatUIController _controller;
     private readonly IEntityManager _entManager;
 
+    [Dependency] private readonly IConfigurationManager _cfg = default!; // EE - Chat stacking
+    [Dependency] private readonly ILocalizationManager _loc = default!; // EE - Chat stacking
     [Dependency] private ILogManager _log = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!; // EE - Chat stacking
     [Dependency] private readonly ILocalizationManager _loc = default!; // EE - Chat stacking
@@ -51,7 +53,7 @@ public partial class ChatBox : UIWidget
         ChatInput.Input.OnFocusExit += OnFocusExit;
         ChatInput.ChannelSelector.OnChannelSelect += OnChannelSelect;
         ChatInput.FilterButton.Popup.OnChannelFilter += OnChannelFilter;
-        ChatInput.FilterButton.Popup.OnNewHighlights += OnNewHighlights;
+        ChatInput.FilterButton.Popup.OnNewHighlights += OnNewHighlights; // DeltaV - Message highlighting
         _controller = UserInterfaceManager.GetUIController<ChatUIController>();
         _controller.MessageAdded += OnMessageAdded;
         _controller.HighlightsUpdated += OnHighlightsUpdated;
