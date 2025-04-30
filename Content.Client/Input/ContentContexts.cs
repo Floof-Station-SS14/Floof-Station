@@ -98,8 +98,10 @@ namespace Content.Client.Input
                 ContentKeyFunctions.SmartEquipPocket1,
                 ContentKeyFunctions.SmartEquipPocket2,
                 ContentKeyFunctions.SmartEquipSuitStorage,
+                ContentKeyFunctions.SmartEquipWallet, // Frontier
                 ContentKeyFunctions.OpenBackpack,
                 ContentKeyFunctions.OpenBelt,
+                ContentKeyFunctions.OpenWallet, // Frontier
                 EEKeyFunctions.OfferItem, // Floof - item offering
                 ContentKeyFunctions.RotateObjectClockwise,
                 ContentKeyFunctions.RotateObjectCounterclockwise,
