@@ -152,6 +152,9 @@
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost
+  - type: BloodstreamAffectedByMass # Floof - HeightWidth
+    power: 0.6
+  - type: FlightAffectedByScale # Floof - HeightWidth
 
 - type: entity
   abstract: true

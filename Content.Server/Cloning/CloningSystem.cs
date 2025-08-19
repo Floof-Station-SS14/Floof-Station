@@ -19,6 +19,8 @@ using Robust.Shared.Prototypes;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Traits.Assorted; // DV
+using System.Numerics; // Floof - HeightWidth
+using Content.Shared._EinsteinEngines.HeightAdjust; // Floof - HeightWidth
 
 namespace Content.Server.Cloning;
 
@@ -38,6 +40,7 @@ public sealed partial class CloningSystem : SharedCloningSystem
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
     [Dependency] private NameModifierSystem _nameMod = default!;
     [Dependency] private IdentitySystem _identity = default!;
+    [Dependency] private HeightAdjustSystem _heightAdjust = default!; // Floof - HeightWidth
 
     public override bool TryCloning(
         EntityUid original,
@@ -67,6 +70,11 @@ public sealed partial class CloningSystem : SharedCloningSystem
         _visualBody.CopyAppearanceFrom(original, clone.Value);
 
         CloneComponents(original, clone.Value, settings);
+
+        // Floof Section - HeightWidth
+        if (TryComp<HumanoidProfileComponent>(clone.Value, out var cloneProfile))
+            _heightAdjust.SetScale(clone.Value, new Vector2(cloneProfile.Width, cloneProfile.Height));
+        // Floof Section End
 
         // Add equipment first so that SetEntityName also renames the ID card.
         if (settings.CopyEquipment != null)

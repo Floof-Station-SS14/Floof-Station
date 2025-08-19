@@ -194,6 +194,8 @@ namespace Content.Server.Preferences.Managers
                 profile.ConsentText, // Floof: Added consent.
                 genitals, // Floof - Genitals
                 species,
+                profile.Height, // Goobstation: port EE height/width sliders
+                profile.Width, // Goobstation: port EE height/width sliders
                 profile.Age,
                 sex,
                 voice,
