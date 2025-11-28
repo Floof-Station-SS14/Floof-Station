@@ -20,14 +20,14 @@
     utensilRequired: true # I ate my fucking paintbrush
     utensil: Fork
     requiresSpecialDigestion: true # Stop eating my paintbrushes you evil mothroaches
-  - type: SolutionContainerManager
+  - type: Solution
+    id: food
     solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
-        - ReagentId: MindbreakerToxin
-          Quantity: 10
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 15
+      - ReagentId: MindbreakerToxin
+        Quantity: 10
   - type: Tag
     tags:
     - Write

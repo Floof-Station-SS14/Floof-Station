@@ -1,7 +1,7 @@
 - type: entity
   parent: BasePlant
   id: HumpShroom
-  name: seeds-humpshroom-name
+  name: humpshroom
   components:
     - type: Sprite
       sprite: _Floof/Objects/Specific/Hydroponics/humpshroom.rsi
@@ -33,7 +33,7 @@
 - type: entity
   parent: BasePlant
   id: BreedShroom
-  name: seeds-breedshroom-name
+  name: breedshroom
   components:
     - type: Sprite
       sprite: _Floof/Objects/Specific/Hydroponics/breedshroom.rsi
@@ -70,7 +70,7 @@
 - type: entity
   parent: BasePlant
   id: Pomegranate
-  name: seeds-pomegranate-name
+  name: pomegranate
   components:
     - type: Sprite
       sprite: _Floof/Objects/Specific/Hydroponics/pomegranate.rsi

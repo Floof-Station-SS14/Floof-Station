@@ -186,7 +186,7 @@ public sealed partial class TraitSystemTest
             var player = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
             entMan.AddComponent<SatiationComponent>(player);
 
-            var condition = new HasCompCondition { Component = "Hunger" };
+            var condition = new HasCompCondition { Component = "Satiation" };
             var ctx = CreateContext(entMan, protoMan, factory, player);
 
             Assert.That(condition.Evaluate(ctx), Is.True, "HasCompCondition should return true when component exists");
@@ -210,7 +210,7 @@ public sealed partial class TraitSystemTest
         {
             var player = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
 
-            var condition = new HasCompCondition { Component = "Hunger" };
+            var condition = new HasCompCondition { Component = "Satiation" };
             var ctx = CreateContext(entMan, protoMan, factory, player);
 
             Assert.That(condition.Evaluate(ctx),
@@ -237,7 +237,7 @@ public sealed partial class TraitSystemTest
             var player = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
             entMan.AddComponent<SatiationComponent>(player);
 
-            var condition = new HasCompCondition { Component = "Hunger", Invert = true };
+            var condition = new HasCompCondition { Component = "Satiation", Invert = true };
             var ctx = CreateContext(entMan, protoMan, factory, player);
 
             Assert.That(condition.Evaluate(ctx),
@@ -418,7 +418,7 @@ public sealed partial class TraitSystemTest
             var player = entMan.SpawnEntity(null, MapCoordinates.Nullspace);
             Assert.That(entMan.HasComponent<SatiationComponent>(player),
                 Is.False,
-                "Player should not start with HungerComponent");
+                "Player should not start with SatiationComponent");
 
             var trait = protoMan.Index(new ProtoId<TraitPrototype>("TestTraitAddComps"));
             var ctx = CreateEffectContext(entMan, protoMan, factory, player);
@@ -430,7 +430,7 @@ public sealed partial class TraitSystemTest
 
             Assert.That(entMan.HasComponent<SatiationComponent>(player),
                 Is.True,
-                "AddCompsEffect should add HungerComponent");
+                "AddCompsEffect should add SatiationComponent");
 
             entMan.DeleteEntity(player);
         });
