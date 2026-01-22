@@ -128,7 +128,7 @@
   - type: Stomach
     specialDigestible:
       tags:
-      - TagFeroxiFood
+      - FeroxiFood
       - Meat
       - Pill
       - Crayon

@@ -461,7 +461,7 @@
   - type: Tag
     tags:
       - ReptilianFood
-      - TagFeroxiFood # Floof: Added.
+      - FeroxiFood # Floof: Added.
   - type: Sprite
     state: nutribrick-open
 
@@ -530,7 +530,7 @@
     tags:
     - FoodSnack
     - ReptilianFood
-    - TagFeroxiFood # Floof: Added.
+    - FeroxiFood # Floof: Added.
   - type: Solution
     solution:
       reagents:

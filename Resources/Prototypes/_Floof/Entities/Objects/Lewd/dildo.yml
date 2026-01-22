@@ -23,7 +23,7 @@
     price: 75
   - type: Tag
     tags:
-    - TagDildo
+    - Dildo
 
 - type: entity
   parent: BaseDildo

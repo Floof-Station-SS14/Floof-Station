@@ -991,7 +991,7 @@
   - type: Tag
     tags:
     - ReptilianFood
-    - TagFeroxiFood # Floof: Added.
+    - FeroxiFood # Floof: Added.
   - type: FlavorProfile
     flavors:
     - nutribrick

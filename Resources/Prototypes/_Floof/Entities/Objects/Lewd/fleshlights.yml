@@ -36,7 +36,7 @@
     solution: fleshlight
   - type: Tag
     tags:
-    - TagFleshlight
+    - Fleshlight
 
 - type: entity
   parent: BaseFleshlight
