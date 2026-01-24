@@ -29,7 +29,11 @@
 
 - type: Tag
   id: HighHeelBoots
+## I ##
 
+- type: Tag
+  id: IceCream
+  
 ## J ##
 
 - type: Tag
@@ -44,3 +48,6 @@
 
 - type: Tag
   id: Skirt
+
+- type: Tag
+  id: Sterilebag

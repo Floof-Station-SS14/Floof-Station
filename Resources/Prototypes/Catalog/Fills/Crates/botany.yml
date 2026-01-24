@@ -104,6 +104,7 @@
         - id: CherrySeeds
         - id: CottonSeeds
         - id: PomegranateSeeds # Floof
+        - id: PearSeeds # Floof - Botany  Additions
 
 - type: entity
   parent: CrateHydroponics
