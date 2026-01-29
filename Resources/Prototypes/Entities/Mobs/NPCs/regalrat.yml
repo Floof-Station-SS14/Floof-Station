@@ -138,6 +138,9 @@
       gender: male
   - type: Tool
     qualities: Slicing
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
+
 
 - type: entity
   id: MobRatKingBuff

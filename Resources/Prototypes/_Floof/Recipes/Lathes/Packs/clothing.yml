@@ -1,0 +1,22 @@
+- type: latheRecipePack
+  id: CollarsAutolatheFloofstation
+  recipes:
+  - LeashBasic
+  - ClothingNeckShockCollarCivilian
+
+- type: latheRecipePack
+  id: CollarsFloofstation
+  recipes:
+  - ClothingNeckCollarBell
+  - ClothingNeckCollarBlue
+  - ClothingNeckCollarBlack
+  - ClothingNeckCollarPink
+  - ClothingNeckCollarSci
+  - ClothingNeckCollarEngi
+  - ClothingNeckCollarLogi
+  - ClothingNeckCollarMed
+  - ClothingNeckCollarSec
+  - ClothingNeckCollarCmd
+  - ClothingNeckCollarCC
+  - ClothingNeckCollarSyndie
+#  - ClothingUncategorizedHarnessGray

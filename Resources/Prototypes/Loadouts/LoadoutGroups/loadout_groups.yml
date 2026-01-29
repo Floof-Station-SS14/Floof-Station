@@ -10,6 +10,7 @@
 
 - type: loadoutGroup
   id: Trinkets
+  parent: [TrinketsFloofstation] # Floofstation
   name: loadout-group-trinkets
   minLimit: 0
   maxLimit: 3
@@ -132,6 +133,7 @@
 
 - type: loadoutGroup
   id: CaptainNeck
+  parent: [CommandCollars] # Floofstation
   name: loadout-group-captain-neck
   minLimit: 0
   loadouts:
@@ -176,6 +178,7 @@
 
 - type: loadoutGroup
   id: HoPNeck
+  parent: [CommandCollars] # Floofstation
   name: loadout-group-hop-neck
   minLimit: 0
   loadouts:
@@ -239,6 +242,7 @@
 
 - type: loadoutGroup
   id: PassengerNeck
+  parent: [CommonCollars] # Floofstation
   name: loadout-group-passenger-neck
   minLimit: 0
   loadouts:
@@ -370,6 +374,7 @@
 
 - type: loadoutGroup
   id: LawyerNeck
+  parent: [CommonCollars] # Floofstation
   name: loadout-group-lawyer-neck
   minLimit: 0
   loadouts:
@@ -420,6 +425,7 @@
 
 - type: loadoutGroup
   id: ChaplainNeck
+  parent: [ScientistNeck] # Floofstation
   name: loadout-group-chaplain-neck
   minLimit: 0
   loadouts:
@@ -706,6 +712,7 @@
 
 - type: loadoutGroup
   id: QuartermasterNeck
+  parent: [CargoCollars] # Floofstation
   name: loadout-group-quartermaster-neck
   minLimit: 0
   loadouts:
@@ -829,6 +836,7 @@
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
+  parent: [EngineeringCollars] # Floofstation
   name: loadout-group-chief-engineer-neck
   minLimit: 0
   loadouts:
@@ -982,6 +990,7 @@
 
 - type: loadoutGroup
   id: ResearchDirectorNeck
+  parent: [ScientistNeck] # Floofstation
   name: loadout-group-research-director-neck
   minLimit: 0
   loadouts:
@@ -1027,6 +1036,7 @@
 
 - type: loadoutGroup
   id: ScientistNeck
+  parent: [ScienceCollars] # Floofstation
   name: loadout-group-scientist-neck
   minLimit: 0
   loadouts:
@@ -1128,6 +1138,7 @@
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
+  parent: [SecurityCollars] # Floofstation
   name: loadout-group-head-of-security-neck
   minLimit: 0
   loadouts:
@@ -1253,6 +1264,7 @@
 
 - type: loadoutGroup
   id: DetectiveNeck
+  parent: [SecurityCollars] # Floofstation
   name: loadout-group-detective-neck
   minLimit: 0
   loadouts:

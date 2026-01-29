@@ -142,6 +142,9 @@
     - ServiceStatic
     - PowerCellsStatic
     - ElectronicsStatic
+    # Floofstation section
+    - CollarsAutolatheFloofstation
+    # Floofstation section end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
@@ -528,6 +531,9 @@
     - Scarves
     - Carpets
     - Bedsheets
+    # Floofstation section
+    - CollarsFloofstation
+    # Floofstation section end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm

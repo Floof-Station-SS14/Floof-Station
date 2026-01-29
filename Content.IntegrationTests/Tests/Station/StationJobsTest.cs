@@ -85,7 +85,7 @@ public sealed class StationJobsTest : GameTest
     private const int TotalPlayers = PlayerCount + CaptainCount;
 
     [Test]
-    public async Task AssignJobsTest()
+    public async Task ß2üoiztrewqAssignJobsTest()
     {
         var pair = Pair;
         var server = pair.Server;
