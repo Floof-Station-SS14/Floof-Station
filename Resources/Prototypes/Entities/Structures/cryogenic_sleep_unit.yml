@@ -26,6 +26,8 @@
     examinationText: access-reader-examination-functionality-restricted
   - type: InteractionOutline
   - type: Cryostorage
+  - type: CryostorageSilently # DEN - Allow silently entering Cryostorage
+    containerId: storage
   - type: Fixtures
     fixtures:
       fix1:

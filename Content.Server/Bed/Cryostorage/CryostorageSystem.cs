@@ -1,4 +1,5 @@
 using System.Globalization;
+using Content.Server._DEN.Bed.Cryostorage.Components;
 using Content.Server.Chat.Managers;
 using Content.Server.Ghost;
 using Content.Server.Station.Systems;
@@ -26,6 +27,8 @@ using Robust.Shared.Containers;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Content.Shared._DEN.Bed.Cryostorage.Components;
+using Content.Shared.Station.Components;
 
 namespace Content.Server.Bed.Cryostorage;
 
@@ -61,6 +64,8 @@ public sealed partial class CryostorageSystem : SharedCryostorageSystem
         SubscribeLocalEvent<CryostorageContainedComponent, MindRemovedMessage>(OnMindRemoved);
 
         _playerManager.PlayerStatusChanged += PlayerStatusChanged;
+
+        InitializeIgnoreMessage(); // DEN: Add the ability to ignore cryo messages.
     }
 
     public override void Shutdown()
@@ -233,15 +238,33 @@ public sealed partial class CryostorageSystem : SharedCryostorageSystem
             _stationRecords.RemoveRecord(key, stationRecords);
         }
 
-        _chatSystem.DispatchStationAnnouncement(station.Value,
-            Loc.GetString(
-                "earlyleave-cryo-announcement",
-                ("character", name),
-                ("entity", ent.Owner), // gender things for supporting downstreams with other languages
-                ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))
-            ), Loc.GetString("earlyleave-cryo-sender"),
-            playDefaultSound: false
-        );
+        // DEN Start: Add the ability to choose not to broadcast cryo messages, and to opt out of receiving them.
+        if (!TryComp<CryoingSilentlyComponent>(ent, out var silentCryo))
+        {
+            if (!TryComp<StationDataComponent>(station.Value, out var stationData))
+                return;
+
+            var notIgnoring = _station.GetInStation(stationData)
+                .RemoveWhereAttachedEntity(HasComp<IgnoringCryoMessagesComponent>);
+                
+            _chatSystem.DispatchFilteredAnnouncement(
+                notIgnoring,
+                Loc.GetString(
+                    "earlyleave-cryo-announcement",
+                    ("character", name),
+                    ("entity", ent.Owner), // gender things for supporting downstreams with other languages
+                    ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))
+                ),
+                station.Value, 
+                Loc.GetString("earlyleave-cryo-sender"),
+                false
+            );
+        }
+        else
+        {
+            RemCompDeferred(ent, silentCryo);
+        }
+        // DEN End
     }
 
     private void HandleCryostorageReconnection(Entity<CryostorageContainedComponent> entity)
