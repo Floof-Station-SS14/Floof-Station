@@ -1,0 +1,48 @@
+name: Daily Upstream Sync
+
+on:
+  schedule:
+    - cron: "0 3 * * *"  # every day at 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "sync-bot"
+          git config user.email "sync-bot@users.noreply.github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/space-wizards/space-station-14.git
+          git fetch upstream
+
+      - name: Create sync branch
+        run: |
+          BRANCH="sync/upstream-$(date +%Y-%m-%d)"
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+          git checkout -b $BRANCH
+
+      - name: Merge upstream into sync branch
+        run: |
+          git merge upstream/main --no-edit
+
+      - name: Push sync branch
+        run: |
+          git push origin $BRANCH
+
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: ${{ env.BRANCH }}
+          destination_branch: master
+          pr_title: "Daily upstream sync (${{ env.BRANCH }})"
+          pr_body: "Automated merge of upstream changes into master."
