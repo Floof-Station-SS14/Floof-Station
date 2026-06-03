@@ -1,0 +1,30 @@
+name: Pull Upstream
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: "0 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Add upstream remote
+      run: |
+        git remote add upstream https://github.com/space-wizards/space-station-14.git
+
+    - name: Fetch upstream master
+      run: |
+        git fetch upstream master
+
+    - name: Mirror upstream/master to origin/upstream
+      run: |
+        git push --force origin refs/remotes/upstream/master:refs/heads/upstream
