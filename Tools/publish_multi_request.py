@@ -15,7 +15,7 @@ RELEASE_DIR = "release"
 # CONFIGURATION PARAMETERS
 # Forks should change these to publish to their own infrastructure.
 #
-ROBUST_CDN_URL = "https://cdn.floostation.com/"
+ROBUST_CDN_URL = "https://cdn.floofstation.com/"
 FORK_ID = "floof-ss14"
 
 def main():
