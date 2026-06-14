@@ -8,7 +8,7 @@ FORK_ID = "floof-ss14"
 
 def main():
     try:
-        data = requests.get(f"{ROBUST_CDN_URL}fork/{fork_id}/manifest", timeout=15).json()
+        data = requests.get(f"{ROBUST_CDN_URL}fork/{FORK_ID}/manifest", timeout=15).json()
     except Exception as e:
         print(f"[ERROR] Failed to fetch manifest: {e}")
         set_output("true")
