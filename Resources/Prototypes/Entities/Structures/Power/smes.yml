@@ -39,7 +39,7 @@
       # This disables prediction for this battery.
       netsync: false
       startingCharge: 0
-      maxCharge: 8000000
+      maxCharge: 16000000 # floof double the power
     - type: ExaminableBattery
     - type: NodeContainer
       examinable: true
@@ -125,8 +125,8 @@
   suffix: Basic, 8MJ
   components:
   - type: Battery
-    maxCharge: 8000000
-    startingCharge: 8000000
+    maxCharge: 16000000 # floof double the power
+    startingCharge: 16000000 # floof double the power
 
 - type: entity
   parent: SMESBasic
@@ -163,8 +163,8 @@
   - type: Machine
     board: SMESAdvancedMachineCircuitboard
   - type: Battery
-    maxCharge: 16000000
-    startingCharge: 16000000
+    maxCharge: 32000000 # floof double the power
+    startingCharge: 32000000 # floof double the power
   - type: PowerMonitoringDevice
     group: SMES
     sourceNode: input
