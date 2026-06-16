@@ -1,8 +1,6 @@
 name: Build & Publish Docfx
 
-on:
-  schedule:
-    - cron: "0 0 * * 0"
+on: {} # floof disabled, enable when needed
 
 jobs:
   docfx:
