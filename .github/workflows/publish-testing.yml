@@ -4,10 +4,7 @@ concurrency:
   group: publish-testing
   cancel-in-progress: true
 
-on:
-  workflow_dispatch:
-  schedule:
-  - cron: '0 10 * * *'
+on: {} # floof disabled, enable when needed
 
 jobs:
   build:
