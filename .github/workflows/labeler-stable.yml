@@ -1,6 +1,11 @@
 name: "Labels: Branch stable"
 
-on: {}
+on:
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - 'stable'
 
 jobs:
   add_label:

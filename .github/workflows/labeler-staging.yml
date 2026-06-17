@@ -1,6 +1,11 @@
 name: "Labels: Branch staging"
 
-on: {}
+on:
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - 'staging'
 
 jobs:
   add_label:
