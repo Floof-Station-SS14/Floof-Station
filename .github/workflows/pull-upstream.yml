@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0
+        fetch-depth: 1
 
     - name: Add upstream remote
       run: |
@@ -29,8 +29,7 @@ jobs:
       env:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       run: |
-        git config --global http.https://github.com/.extraheader \
-          "AUTHORIZATION: basic $(echo -n x-access-token:${BOT_TOKEN} | base64)"
+        git remote set-url origin https://x-access-token:${BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 
     - name: Mirror upstream/master to origin/upstream
       run: |
