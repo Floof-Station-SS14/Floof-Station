@@ -13,17 +13,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: 0
 
       - name: Configure git
         run: |
-          git config user.name "sync-bot"
-          git config user.email "sync-bot@users.noreply.github.com"
-
-      - name: Add upstream remote
-        run: |
-          git remote add upstream https://github.com/space-wizards/space-station-14.git
-          git fetch upstream
+          git config user.name "Floof-Station-Bot"
+          git config user.email "pachat.kas+bot@gmail.com"
 
       - name: Create sync branch
         run: |
