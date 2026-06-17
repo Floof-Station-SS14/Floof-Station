@@ -46,3 +46,4 @@ jobs:
           destination_branch: master
           pr_title: "Daily upstream sync (${{ env.BRANCH }})"
           pr_body: "Automated merge of upstream changes into master."
+          github_token: ${{ secrets.BOT_TOKEN }}
