@@ -25,6 +25,12 @@ jobs:
       run: |
         git fetch upstream master
 
+    - name: Configure authentication for origin
+      env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+      run: |
+        git remote set-url origin https://x-access-token:${BOT_TOKEN}@github.com/${{ github.repository }}.git
+
     - name: Mirror upstream/master to origin/upstream
       run: |
         git push --force origin refs/remotes/upstream/master:refs/heads/upstream
