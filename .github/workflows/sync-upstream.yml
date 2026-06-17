@@ -37,7 +37,7 @@ jobs:
 
       - name: Push sync branch
         run: |
-          git push origin $BRANCH
+          git push origin $BRANCH --force
 
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
