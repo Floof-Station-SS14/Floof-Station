@@ -39,7 +39,7 @@
       # This disables prediction for this battery.
       netsync: false
       startingCharge: 0
-      maxCharge: 8000000
+      maxCharge: 16000000
     - type: ExaminableBattery
     - type: NodeContainer
       examinable: true
