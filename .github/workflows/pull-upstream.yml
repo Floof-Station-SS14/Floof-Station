@@ -23,13 +23,14 @@ jobs:
 
     - name: Fetch upstream master
       run: |
-        git fetch upstream master
+        git fetch --depth=1 upstream master
 
-    - name: Configure authentication for origin
+    - name: Configure authentication for origin (robust PAT auth)
       env:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       run: |
-        git remote set-url origin https://x-access-token:${BOT_TOKEN}@github.com/${{ github.repository }}.git
+        git config --global http.https://github.com/.extraheader \
+          "AUTHORIZATION: basic $(echo -n x-access-token:${BOT_TOKEN} | base64)"
 
     - name: Mirror upstream/master to origin/upstream
       run: |
