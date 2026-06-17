@@ -12,24 +12,22 @@ jobs:
   sync:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Clone repo with PAT (fully controlled auth)
-      env:
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-      run: |
-        git clone --depth=1 https://x-access-token:${BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git repo
+    env:
+      UPSTREAM_URL: https://github.com/space-wizards/space-station-14.git
 
-    - name: Fetch upstream
-      working-directory: repo
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+
+    - name: Configure upstream remote and fetch
       run: |
-        git remote add upstream https://github.com/space-wizards/space-station-14.git
+        git remote add upstream "$UPSTREAM_URL" || true
         git fetch --depth=1 upstream master
 
-    - name: Force push using PAT (no GitHub App context anywhere)
-      env:
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-      working-directory: repo
+    - name: push
       run: |
         git push --force \
-          https://x-access-token:${BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git \
+          https://x-access-token:${{ secrets.BOT_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git \
           refs/remotes/upstream/master:refs/heads/upstream
