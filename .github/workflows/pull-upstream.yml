@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
 
     env:
       UPSTREAM_URL: https://github.com/space-wizards/space-station-14.git
