@@ -48,7 +48,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: "Daily Upstream Sync (${{ env.BRANCH }})",
-              head:  ${{ env.BRANCH }},
+              head:  "${{ env.BRANCH }}",
               base: "master",
               body: "Automated merge of upstream changes into master."
             });
