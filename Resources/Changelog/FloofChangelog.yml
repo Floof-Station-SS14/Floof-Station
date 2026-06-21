@@ -1,7 +1,15 @@
 Entries:
 - author: Floofmin
   changes:
-  - message: Added changelog
-    type: Add
+    - message: Added changelog
+      type: Add
   id: 1
   time: '2026-06-21T01:29:24.112Z'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added fun!
+    - type: Remove
+      message: Removed fun!
+  id: 2
+  time: '2026-06-21T21:23:13.0000000+00:00'
