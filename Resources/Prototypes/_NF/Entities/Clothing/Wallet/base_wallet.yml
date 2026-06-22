@@ -34,9 +34,14 @@
       - NFCoin
       - NFShipyardVoucher
       - Card # single cards
+      - NFEmagPass
+      tags:
+      - FitsWallet
     blacklist:
       tags:
       - Book
+      components:
+      - Blueprint
   - type: Item
     size: Small
   - type: Clothing
@@ -51,6 +56,9 @@
           - Paper
           - NFShipyardVoucher
           - Card
+          - NFEmagPass
+          tags:
+          - WalletPaper
       closed-cash:
         whitelist:
           components:
