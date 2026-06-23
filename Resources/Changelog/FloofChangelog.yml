@@ -13,3 +13,9 @@ Entries:
       message: Removed fun!
   id: 2
   time: '2026-06-21T21:23:13.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Fix
+      message: Fixed trait names
+  id: 3
+  time: '2026-06-23T14:53:18.0000000+00:00'
