@@ -15,7 +15,7 @@
   - type: Input
     context: human
   - type: MMI
-    brain_slot:
+    brainSlot:
       name: positronic-brain-slot-component-slot-name-brain
       whitelist:
         components:
@@ -45,7 +45,7 @@
   - type: ItemSlots
   - type: ContainerContainer
     containers:
-      brain_slot: !type:ContainerSlot
+      brainslot: !type:ContainerSlot
   - type: Appearance
   - type: GuideHelp
     guides:

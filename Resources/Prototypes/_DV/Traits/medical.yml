@@ -47,7 +47,6 @@
     - type: Unrevivable
       cloneable: false
 
-
 - type: trait
   id: Redshirt
   name: trait-redshirt-name
@@ -64,3 +63,13 @@
         0: Alive
         99.9: Critical
         100: Dead
+
+- type: trait
+  id: Unborgable
+  name: trait-unborgable-name
+  description: trait-unborgable-desc
+  category: Medical
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: Unborgable
