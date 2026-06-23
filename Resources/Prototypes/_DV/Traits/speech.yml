@@ -34,17 +34,6 @@
     - type: ReplacementAccent
       accent: cowboy
 
-- type: trait
-  id: ItalianAccent
-  name: trait-italian-name
-  description: trait-italian-desc
-  category: Accents
-  cost: 2
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: ReplacementAccent
-      accent: italian
 
 - type: trait
   id: Muted
@@ -131,7 +120,7 @@
       - type: LizardAccent
       - type: MothAccent
       - type: ReplacementAccent
-        accent: dwarf
+        accent: scottish
 
 - type: trait
   id: SocialAnxiety
@@ -158,22 +147,6 @@
   - !type:AddCompsEffect
     components:
     - type: FrontalLisp
-
-- type: trait
-  id: Hushed
-  name: trait-hushed-name
-  description: trait-hushed-desc
-  category: Accents
-  cost: 0
-  conditions:
-  - !type:HasCompCondition
-    component: BorgChassis
-    invert: true
-    tooltip: trait-condition-borg-not
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: Hushed
 
 - type: trait
   id: AnglishTung
