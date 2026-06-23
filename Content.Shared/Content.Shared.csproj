@@ -17,11 +17,6 @@
     <ProjectReference Include="..\Content.Shared.Database\Content.Shared.Database.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="_DV\Traits\Assorted\UnborgableSystem.cs" />
-    <Compile Remove="_DV\Traits\Assorted\UnborgableComponent.cs" />
-  </ItemGroup>
-
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\Robust.CompNetworkGenerator.targets" />
 </Project>
