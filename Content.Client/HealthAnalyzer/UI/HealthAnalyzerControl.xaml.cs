@@ -6,7 +6,7 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Prototypes;
+using Content.Shared._DV.Traits.Assorted;
 using Content.Shared.IdentityManagement;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Mobs;
@@ -32,6 +32,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
     private readonly IPrototypeManager _prototypes;
     private readonly IResourceCache _cache;
     private readonly DamageableSystem _damageable;
+    private readonly UnborgableSystem _unborgable; // DeltaV
 
     public HealthAnalyzerControl()
     {
@@ -43,6 +44,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
         _prototypes = dependencies.Resolve<IPrototypeManager>();
         _cache = dependencies.Resolve<IResourceCache>();
         _damageable = _entityManager.System<DamageableSystem>();
+        _unborgable = _entityManager.System<UnborgableSystem>(); // DeltaV
     }
 
     public void Populate(HealthAnalyzerUiState state)
@@ -109,6 +111,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
         // Alerts
 
         var showAlerts = state.Unrevivable == true || state.Bleeding == true;
+        var unborgable = _unborgable.IsUnborgable(target.Value); // DeltaV
 
         AlertsDivider.Visible = showAlerts;
         AlertsContainer.Visible = showAlerts;
@@ -132,6 +135,13 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
                 MaxWidth = 300
             });
 
+        if (unborgable) // DeltaV
+            AlertsContainer.AddChild(new RichTextLabel
+            {
+                Text = Loc.GetString("health-analyzer-window-entity-unborgable-text"),
+                Margin = new Thickness(0, 4),
+                MaxWidth = 300
+            });
         // Damage Groups
 
         var damageSortedGroups =

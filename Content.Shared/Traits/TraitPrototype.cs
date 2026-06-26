@@ -1,3 +1,4 @@
+/*
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
@@ -70,3 +71,4 @@ public sealed partial class TraitPrototype : IPrototype
     [DataField]
     public ProtoId<TraitCategoryPrototype>? Category;
 }
+*/
