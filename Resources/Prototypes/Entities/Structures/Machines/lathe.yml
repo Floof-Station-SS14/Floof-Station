@@ -124,22 +124,25 @@
     unlitIdleState: unlit
     unlitRunningState: unlit-building
     staticPacks:
-    - ToolsStatic
-    - PartsStatic
-    - AtmosStatic
-    - CablesStatic
-    - PaperworkStatic
-    - TowelsStatic
-    - CargoStatic
-    - MaterialsStatic
-    - BasicChemistryStatic
-    - RollerBedsStatic
-    - LightsStatic
-    - ServiceStatic
-    - PowerCellsStatic
-    - ElectronicsStatic
-    # Floofstation section
-    - CollarsAutolatheFloofstation
+    # Begin DeltaV Additions
+      - CutterMachineStaticDen
+      # End DeltaV Additions
+      - ToolsStatic
+      - PartsStatic
+      - AtmosStatic
+      - CablesStatic
+      - PaperworkStatic
+      - TowelsStatic
+      - CargoStatic
+      - MaterialsStatic
+      - BasicChemistryStatic
+      - RollerBedsStatic
+      - LightsStatic
+      - ServiceStatic
+      - PowerCellsStatic
+      - ElectronicsStatic
+      # Floofstation section
+      - CollarsAutolatheFloofstation
     # Floofstation section end
   - type: EmagLatheRecipes
     emagStaticPacks:
