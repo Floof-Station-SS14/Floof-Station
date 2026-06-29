@@ -24,6 +24,9 @@
   <ItemGroup>
     <Folder Include="_DV\Speech\Prototypes\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Administration\Commands\SetOutfitCommand.cs" />
+  </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
 
   <Import Project="..\RobustToolbox\Imports\Lidgren.props" />

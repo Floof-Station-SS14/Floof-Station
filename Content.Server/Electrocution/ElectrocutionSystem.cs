@@ -59,7 +59,8 @@ public sealed partial class ElectrocutionSystem : SharedElectrocutionSystem
     private static readonly ProtoId<DamageTypePrototype> DamageType = "Shock";
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
-    // Multiply and shift the log scale for shock damage.
+    // Yes, this is absurdly small for a reason.
+    public const float ElectrifiedDamagePerWatt = 0.0015f; // Goobstation - This information is allowed to be public, and was needed in BatteryElectrocuteChargeSystem.cs
     private const float RecursiveDamageMultiplier = 0.75f;
     private const float RecursiveTimeMultiplier = 0.8f;
 
@@ -297,7 +298,7 @@ public sealed partial class ElectrocutionSystem : SharedElectrocutionSystem
             || !DoCommonElectrocution(uid, sourceUid, shockDamage, time, refresh, siemensCoefficient, statusEffects))
             return false;
 
-        RaiseLocalEvent(uid, new ElectrocutedEvent(uid, sourceUid, siemensCoefficient), true);
+        RaiseLocalEvent(uid, new ElectrocutedEvent(uid, sourceUid, siemensCoefficient, shockDamage), true); // Goobstation
         return true;
     }
 
@@ -347,7 +348,7 @@ public sealed partial class ElectrocutionSystem : SharedElectrocutionSystem
         electrocutionComponent.Electrocuting = uid;
         electrocutionComponent.Source = sourceUid;
 
-        RaiseLocalEvent(uid, new ElectrocutedEvent(uid, sourceUid, siemensCoefficient), true);
+        RaiseLocalEvent(uid, new ElectrocutedEvent(uid, sourceUid, siemensCoefficient, shockDamage), true); // Goobstation
 
         return true;
     }

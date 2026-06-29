@@ -1,7 +1,9 @@
+using Content.Server._EE.Silicon.IPC;
 using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.Mind;
 using Content.Server.PDA;
+using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -35,6 +37,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
 {
     [Dependency] private SharedAccessSystem _accessSystem = default!;
     [Dependency] private ActorSystem _actors = default!;
+    [Dependency] private ArrivalsSystem _arrivalsSystem = default!;
     [Dependency] private IdCardSystem _cardSystem = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
     [Dependency] private HumanoidProfileSystem _humanoidProfile = default!;
@@ -44,6 +47,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
     [Dependency] private PdaSystem _pdaSystem = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private MindSystem _mindSystem = default!;
+    [Dependency] private InternalEncryptionKeySpawner _internalEncryption = default!; // Goobstation
 
     /// <summary>
     /// Attempts to spawn a player character onto the given station.
@@ -154,6 +158,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
         {
             var startingGear = _prototypeManager.Index<StartingGearPrototype>(prototype.StartingGear);
             EquipStartingGear(entity.Value, startingGear, raiseEvent: false);
+            _internalEncryption.TryInsertEncryptionKey(entity.Value, startingGear, EntityManager); // Goobstation
         }
 
         var gearEquippedEv = new StartingGearEquippedEvent(entity.Value);

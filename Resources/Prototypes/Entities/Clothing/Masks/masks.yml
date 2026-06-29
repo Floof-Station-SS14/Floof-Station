@@ -205,6 +205,7 @@
     tags:
     - ClownMask
     - WhitelistChameleon
+    - IPCMaskWearable # EE - IPCs
   - type: HideLayerClothing
     slots:
     - Snout
@@ -298,6 +299,9 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskBase
@@ -315,6 +319,7 @@
     tags:
     - HamsterWearable
     - WhitelistChameleon
+    - IPCMaskWearable # EE - IPCs
   - type: HideLayerClothing
     slots:
     - Snout
@@ -509,6 +514,7 @@
     tags:
     - HamsterWearable
     - WhitelistChameleon
+    - IPCMaskWearable # EE - IPCs
   - type: HideLayerClothing
     slots:
     - Snout
@@ -529,6 +535,9 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskBase
@@ -545,6 +554,9 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskBase
@@ -561,6 +573,9 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskBase
@@ -577,6 +592,9 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskBase
@@ -593,6 +611,9 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskBase
@@ -609,6 +630,9 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskBase
@@ -625,6 +649,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskNeckGaiter
@@ -726,6 +751,9 @@
   - type: EyeProtection
   - type: BreathMask
   - type: IdentityBlocker
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
 
 - type: entity
   parent: ClothingMaskGas

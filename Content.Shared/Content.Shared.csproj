@@ -17,6 +17,16 @@
     <ProjectReference Include="..\Content.Shared.Database\Content.Shared.Database.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Body\Systems\SharedBodySystem.Parts.cs" />
+    <Compile Remove="Body\Systems\SharedBodySystem.Organs.cs" />
+    <Compile Remove="Body\Systems\SharedBodySystem.Body.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_Floof\" />
+  </ItemGroup>
+
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\Robust.CompNetworkGenerator.targets" />
 </Project>

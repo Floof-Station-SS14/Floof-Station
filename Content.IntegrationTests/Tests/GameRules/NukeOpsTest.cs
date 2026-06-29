@@ -27,6 +27,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
+using Content.Shared._EE.Silicon.Components; // Goobstation
 
 namespace Content.IntegrationTests.Tests.GameRules;
 
@@ -240,7 +241,8 @@ public sealed class NukeOpsTest : GameTest
             for (var tick = 0; tick < totalTicks; tick += increment)
             {
                 await pair.RunTicksSync(increment);
-                Assert.That(resp.SuffocationCycles, Is.LessThanOrEqualTo(resp.SuffocationCycleThreshold));
+                if (!entMan.HasComponent<SiliconComponent>(player))
+                    Assert.That(resp.SuffocationCycles, Is.LessThanOrEqualTo(resp.SuffocationCycleThreshold));
                 Assert.That(damageSys.GetTotalDamage(player), Is.EqualTo(FixedPoint2.Zero));
             }
         }
