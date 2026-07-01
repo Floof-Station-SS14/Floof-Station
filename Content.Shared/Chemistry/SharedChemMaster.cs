@@ -208,7 +208,6 @@ namespace Content.Shared.Chemistry
             ContainerInfo? outputContainerInfo,
             IReadOnlyList<ReagentQuantity> bufferReagents,
             FixedPoint2 bufferCurrentVolume,
-            FixedPoint2 bufferMaxVolume,
             uint selectedPillType,
             uint pillDosageLimit,
             bool updateLabel,
