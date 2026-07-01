@@ -31,3 +31,9 @@ Entries:
       message: Added a new ChemMaster UI.
   id: 5
   time: '2026-07-01T19:12:23.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Tweak
+      message: switched of to Floof Station branding.
+  id: 6
+  time: '2026-07-01T19:39:56.0000000+00:00'
