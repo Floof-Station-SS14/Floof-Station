@@ -1,9 +1,7 @@
-using Content.Server.Power.Components;
-using Content.Shared._EE.Silicon.Systems;
+using Content.Server._Floof.Silicon.IPC;
 using Content.Shared.Bed.Sleep;
-using Content.Server._EE.Silicon.Charge;
-using Content.Server._EE.Power.Components;
 using Content.Server.Humanoid;
+using Content.Shared._Floof.Silicon.IPC;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Power.Components;
@@ -38,7 +36,7 @@ public sealed partial class SiliconDeathSystem : EntitySystem
         if (args.ChargePercent == 0 && !siliconDeadComp.Dead)
             SiliconDead(uid, siliconDeadComp, batteryComp, uid);
         else if (args.ChargePercent != 0 && siliconDeadComp.Dead)
-                SiliconUnDead(uid, siliconDeadComp, batteryComp, uid);
+            SiliconUnDead(uid, siliconDeadComp, batteryComp, uid);
     }
 
     private void SiliconDead(EntityUid uid, SiliconDownOnDeadComponent siliconDeadComp, BatteryComponent? batteryComp, EntityUid batteryUid)

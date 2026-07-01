@@ -22,9 +22,6 @@
     <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_DV\Speech\Prototypes\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Remove="Administration\Commands\SetOutfitCommand.cs" />
   </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />

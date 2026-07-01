@@ -1,5 +1,5 @@
 using Robust.Shared.GameStates;
-using Content.Shared._EE.Silicon.Systems;
+using Content.Shared._Floof.Silicon.IPC;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Prototypes;
 using Content.Shared.Alert;
@@ -10,11 +10,14 @@ namespace Content.Shared._EE.Silicon.Components;
 /// <summary>
 ///     Component for defining a mob as a robot.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class SiliconComponent : Component
 {
     [ViewVariables(VVAccess.ReadOnly)]
-    public short ChargeState = 10;
+    public int ChargeState = 10;
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public int MovementState = 10;
 
     [ViewVariables(VVAccess.ReadOnly)]
     public float OverheatAccumulator = 0.0f;
@@ -95,13 +98,6 @@ public sealed partial class SiliconComponent : Component
 
     [DataField]
     public ProtoId<AlertPrototype> NoBatteryAlert = "BorgBatteryNone";
-
-    /// <summary>
-    /// The next update time the battery is checked for automatic reactivation.
-    /// </summary>
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
-    [AutoNetworkedField, AutoPausedField]
-    public TimeSpan NextBatteryUpdate = TimeSpan.Zero;
 
     /// <summary>
     ///     The amount the Silicon will be slowed at each charge state.

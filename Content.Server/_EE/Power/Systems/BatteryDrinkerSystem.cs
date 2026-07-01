@@ -14,6 +14,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Content.Server._EE.Power.Components;
 using Content.Server._EE.Silicon;
+using Content.Server._Floof.Silicon.IPC;
 using Content.Shared.Power.Components;
 using Content.Shared.PowerCell;
 
