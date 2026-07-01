@@ -25,3 +25,9 @@ Entries:
       message: Added unborgable trait!
   id: 4
   time: '2026-06-23T16:14:09.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added a new ChemMaster UI.
+  id: 5
+  time: '2026-07-01T19:12:23.0000000+00:00'
