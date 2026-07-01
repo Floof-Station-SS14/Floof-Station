@@ -326,7 +326,7 @@ public abstract partial class AlertsSystem : EntitySystem
     protected virtual void LoadPrototypes()
     {
         var dict = new Dictionary<ProtoId<AlertPrototype>, AlertPrototype>();
-        foreach (var alert in _prototypeManager.EnumeratePrototypes<AlertPrototype>())
+        foreach (var alert in ProtoMan.EnumeratePrototypes<AlertPrototype>())
         {
             if (!dict.TryAdd(alert.ID, alert))
                 Log.Error($"Found alert with duplicate alertType {alert.ID} - all alerts must have a unique alertType, this one will be skipped");

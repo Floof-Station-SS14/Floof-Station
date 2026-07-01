@@ -29,11 +29,7 @@ jobs:
         run: |
           BRANCH="sync/upstream-$(date +%Y-%m-%d)"
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
-          git checkout -b $BRANCH
-
-      - name: Merge upstream into sync branch
-        run: |
-          git merge upstream --no-edit
+          git checkout -b $BRANCH origin/upstream
 
       - name: Push sync branch
         run: |

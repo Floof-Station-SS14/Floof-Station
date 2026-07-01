@@ -18,13 +18,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Configure upstream
       run: |
         git remote add upstream "$UPSTREAM_URL" || true
-        git fetch --depth=1 upstream master
+        git fetch --unshallow upstream master
 
     - name: Push updates
       run: |
