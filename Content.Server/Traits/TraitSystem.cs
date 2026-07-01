@@ -1,3 +1,4 @@
+/*
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -69,3 +70,4 @@ public sealed partial class TraitSystem : EntitySystem
         }
     }
 }
+*/

@@ -1,0 +1,27 @@
+Entries:
+- author: Floofmin
+  changes:
+    - message: Added changelog
+      type: Add
+  id: 1
+  time: '2026-06-21T01:29:24.112Z'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added fun!
+    - type: Remove
+      message: Removed fun!
+  id: 2
+  time: '2026-06-21T21:23:13.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Fix
+      message: Fixed trait names
+  id: 3
+  time: '2026-06-23T14:53:18.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added unborgable trait!
+  id: 4
+  time: '2026-06-23T16:14:09.0000000+00:00'

@@ -1,6 +1,7 @@
 name: Build & Test Debug
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master, staging, stable ]
   merge_group:
@@ -14,8 +15,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-
-    runs-on: ${{ matrix.os }}
+        
+    runs-on: [self-hosted]
     timeout-minutes: 30
 
     steps:
@@ -67,7 +68,7 @@ jobs:
     name: Build & Test Debug
     needs:
       - build
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     steps:
       - name: CI succeeded
         run: exit 0
