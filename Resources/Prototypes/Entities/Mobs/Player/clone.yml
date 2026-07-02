@@ -61,6 +61,10 @@
   - SouthernAccent
   - SpanishAccent
   - StutteringAccent
+  # Languages - Starlight
+  - LanguageSpeaker
+  - LanguageKnowledge
+  - ForeignerTrait
   eventComponents:
   - Puller
   - Vocal # voice sounds

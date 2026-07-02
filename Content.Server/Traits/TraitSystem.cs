@@ -6,6 +6,7 @@ using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
+using Content.Server._Starlight.Language; // Starlight
 
 namespace Content.Server.Traits;
 
@@ -53,6 +54,26 @@ public sealed partial class TraitSystem : EntitySystem
             {
                 special.AfterEquip(args.Mob);
             }
+
+            // Starlight - start
+            var language = EntityManager.System<LanguageSystem>();
+
+            if (traitPrototype.RemoveLanguagesSpoken is not null)
+                foreach (var lang in traitPrototype.RemoveLanguagesSpoken)
+                    language.RemoveLanguage(args.Mob, lang, true, false);
+
+            if (traitPrototype.RemoveLanguagesUnderstood is not null)
+                foreach (var lang in traitPrototype.RemoveLanguagesUnderstood)
+                    language.RemoveLanguage(args.Mob, lang, false, true);
+
+            if (traitPrototype.LanguagesSpoken is not null)
+                foreach (var lang in traitPrototype.LanguagesSpoken)
+                    language.AddLanguage(args.Mob, lang, true, false);
+
+            if (traitPrototype.LanguagesUnderstood is not null)
+                foreach (var lang in traitPrototype.LanguagesUnderstood)
+                    language.AddLanguage(args.Mob, lang, false, true);
+            // Starlight - end
 
             // Add item required by the trait
             if (traitPrototype.TraitGear == null)
