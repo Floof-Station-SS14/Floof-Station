@@ -4,10 +4,12 @@
   description: trait-language-foreigner-light-desc
   category: LanguageTraits
   cost: -1
-  components:
-  - type: ForeignerTrait
-    cantUnderstand: false
-    baseTranslator: TranslatorForeigner
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: ForeignerTrait
+      cantUnderstand: false
+      baseTranslator: TranslatorForeigner
 
 - type: trait
   id: Foreigner
@@ -15,9 +17,11 @@
   description: trait-language-foreigner-desc
   category: LanguageTraits
   cost: -2
-  components:
-  - type: ForeignerTrait
-    baseTranslator: TranslatorForeigner
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: ForeignerTrait
+      baseTranslator: TranslatorForeigner
 
 - type: trait
   id: SignLanguage
@@ -25,9 +29,11 @@
   description: trait-language-signlanguage-desc
   category: LanguageTraits
   cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
-    - Sign
-  languagesUnderstood:
-    - Sign
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: LanguageSpeaker
+    languagesSpoken:
+      - Sign
+    languagesUnderstood:
+      - Sign
