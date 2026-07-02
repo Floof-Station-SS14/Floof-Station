@@ -46,6 +46,8 @@ using Content.Shared.NPC.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Temperature.Components;
 using Robust.Shared.Utility;
+using Content.Server._Starlight.Language; // Starlight-edit: Languages
+using Content.Shared._Starlight.Language.Components; // Starlight-edit: Languages
 
 namespace Content.Server.Zombies;
 
@@ -73,6 +75,7 @@ public sealed partial class ZombieSystem
     [Dependency] private NPCSystem _npc = default!;
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private readonly LanguageSystem _language = default!; // Starlight-edit: Languages
 
     private static readonly ProtoId<TagPrototype> InvalidForGlobalSpawnSpellTag = "InvalidForGlobalSpawnSpell";
     private static readonly ProtoId<TagPrototype> CannotSuicideTag = "CannotSuicide";
@@ -147,12 +150,19 @@ public sealed partial class ZombieSystem
         RemComp<ComplexInteractionComponent>(target);
         RemComp<SentienceTargetComponent>(target);
 
-        //funny voice
-        var accentType = "zombie";
-        if (TryComp<ZombieAccentOverrideComponent>(target, out var accent))
-            accentType = accent.Accent;
+        // Starlight-start: Add Zombie Language - Starlight
+        RemComp<UniversalLanguageSpeakerComponent>(target);
+        EnsureComp<LanguageKnowledgeComponent>(target, out var knowledge);
+        EnsureComp<LanguageSpeakerComponent>(target, out var speaker);
 
-        EnsureComp<ReplacementAccentComponent>(target).Accent = accentType;
+        knowledge.SpokenLanguages.Clear();
+        knowledge.UnderstoodLanguages.Clear();
+
+        speaker.SpokenLanguages.Clear();
+        speaker.UnderstoodLanguages.Clear();
+
+        _language.AddLanguage(target, "Zombie");
+        // Starlight-end
 
         //This is needed for stupid entities that fuck up combat mode component
         //in an attempt to make an entity not attack. This is the easiest way to do it.

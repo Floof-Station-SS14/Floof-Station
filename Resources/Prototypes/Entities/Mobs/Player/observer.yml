@@ -95,6 +95,8 @@
   - type: GhostHearing
   - type: ShowElectrocutionHUD
   - type: IntrinsicRadioReceiver
+  - type: LanguageSpeaker # Starlight
+  - type: UniversalLanguageSpeaker # Starlight
   - type: ActiveRadio
     receiveAllChannels: true
     globalReceive: true
