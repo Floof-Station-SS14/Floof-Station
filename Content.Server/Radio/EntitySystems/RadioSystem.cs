@@ -64,7 +64,7 @@ public sealed partial class RadioSystem : EntitySystem
         var listener = component.Owner;
         var chatMsg = args.OriginalChatMsg;
 
-        if (listener != null && !_language.CanUnderstand(listener, args.Language.ID))
+        if (!_language.CanUnderstand(listener, args.Language.ID))
             chatMsg = args.LanguageObfuscatedChatMsg;
 
         _netMan.ServerSendMessage(new MsgChatMessage { Message = chatMsg }, actor.PlayerSession.Channel);

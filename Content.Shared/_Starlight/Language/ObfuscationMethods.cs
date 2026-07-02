@@ -35,6 +35,7 @@ public abstract partial class ObfuscationMethod
 /// <summary>
 ///  Obfuscate the string letters/numbers to random, keeps special characters and spaces.
 /// </summary>
+[Virtual]
 public partial class RandomObfuscation : ObfuscationMethod
 {
     internal override void Obfuscate(StringBuilder builder, string message, SharedLanguageSystem context)
@@ -55,6 +56,7 @@ public partial class RandomObfuscation : ObfuscationMethod
 ///     The most primitive method of obfuscation - replaces the entire message with one random replacement phrase.
 ///     Similar to ReplacementAccent. Base for all replacement-based obfuscation methods.
 /// </summary>
+[Virtual]
 public partial class ReplacementObfuscation : ObfuscationMethod
 {
     /// <summary>

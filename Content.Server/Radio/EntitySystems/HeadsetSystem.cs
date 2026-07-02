@@ -5,9 +5,7 @@ using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Content.Server.Speech; // Starlight
 using Content.Server._Starlight.Language; // Starlight
-using Content.Shared.Chat; // Starlight
 
 namespace Content.Server.Radio.EntitySystems;
 

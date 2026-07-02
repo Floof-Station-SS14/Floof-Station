@@ -4,7 +4,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Starlight.Language;
 
-[Prototype("language")]
+[Prototype]
 public sealed partial class LanguagePrototype : IPrototype
 {
     [IdDataField]

@@ -25,7 +25,7 @@ public sealed partial class GameTopMenuBarUIController : UIController
     [Dependency] private SandboxUIController _sandbox = default!;
     [Dependency] private GuidebookUIController _guidebook = default!;
     [Dependency] private EmotesUIController _emotes = default!;
-    [Dependency] private readonly LanguageMenuUIController _language = default!; // Starlight
+    [Dependency] private LanguageMenuUIController _language = default!; // Starlight
 
     private GameTopMenuBar? GameTopMenuBar => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>();
 

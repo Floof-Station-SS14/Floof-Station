@@ -75,7 +75,7 @@ public sealed partial class ZombieSystem
     [Dependency] private NPCSystem _npc = default!;
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
-    [Dependency] private readonly LanguageSystem _language = default!; // Starlight-edit: Languages
+    [Dependency] private LanguageSystem _language = default!; // Starlight-edit: Languages
 
     private static readonly ProtoId<TagPrototype> InvalidForGlobalSpawnSpellTag = "InvalidForGlobalSpawnSpell";
     private static readonly ProtoId<TagPrototype> CannotSuicideTag = "CannotSuicide";
