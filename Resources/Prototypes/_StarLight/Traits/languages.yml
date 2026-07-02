@@ -30,10 +30,11 @@
   category: LanguageTraits
   cost: 1
   effects:
+  - !type:AddLangEffect
+    languagesSpoken:
+    - Sign
+    languagesUnderstood:
+    - Sign
   - !type:AddCompsEffect
     components:
     - type: LanguageSpeaker
-    languagesSpoken:
-      - Sign
-    languagesUnderstood:
-      - Sign
