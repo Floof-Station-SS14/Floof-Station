@@ -49,3 +49,9 @@ Entries:
       message: Removed the ability for ghosts to hear local chat.
   id: 8
   time: '2026-07-04T18:57:36.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added consent system!
+  id: 9
+  time: '2026-07-04T20:49:25.0000000+00:00'
