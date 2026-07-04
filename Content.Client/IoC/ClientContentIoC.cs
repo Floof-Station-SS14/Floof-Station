@@ -67,7 +67,7 @@ namespace Content.Client.IoC
             collection.Register<ClientsidePlaytimeTrackingManager>();
             collection.Register<ClientFeedbackManager>();
             collection.Register<ISharedFeedbackManager, ClientFeedbackManager>();
-            collection.Register<IClientConsentManager, ClientConsentManager>(); // Nebulous - Consent System
+            collection.Register<IClientConsentManager, ClientConsentManager>(); // Floof - Consent System
         }
     }
 }

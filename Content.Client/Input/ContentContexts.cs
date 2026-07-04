@@ -95,7 +95,7 @@ namespace Content.Client.Input
 
             // actions should be common (for ghosts, mobs, etc)
             common.AddFunction(ContentKeyFunctions.OpenActionsMenu);
-            common.AddFunction(ContentKeyFunctions.OpenConsentWindow); // Nebulous - Make consent work
+            common.AddFunction(ContentKeyFunctions.OpenConsentWindow); // Floof - Make consent work
 
             foreach (var boundKey in ContentKeyFunctions.GetHotbarBoundKeys())
             {

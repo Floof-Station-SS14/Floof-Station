@@ -81,7 +81,7 @@ namespace Content.Client.Entry
         [Dependency] private ClientsidePlaytimeTrackingManager _clientsidePlaytimeManager = default!;
         [Dependency] private ClientFeedbackManager _feedbackManager = null!;
 
-        [Dependency] private readonly IClientConsentManager _clientConsentManager = default!; // Nebulous - Consent system
+        [Dependency] private readonly IClientConsentManager _clientConsentManager = default!; // Floof - Consent system
 
         public override void PreInit()
         {
@@ -177,7 +177,7 @@ namespace Content.Client.Entry
             _titleWindowManager.Initialize();
             _feedbackManager.Initialize();
 
-            _clientConsentManager.Initialize(); // Nebulous - Consent system
+            _clientConsentManager.Initialize(); // Floof - Consent system
 
             _baseClient.RunLevelChanged += (_, args) =>
             {

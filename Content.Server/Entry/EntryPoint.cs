@@ -135,7 +135,7 @@ namespace Content.Server.Entry
             _job.Initialize();
             _rateLimit.Initialize();
 
-            IoCManager.Resolve<IServerConsentManager>().Initialize(); // Nebulous - Consent System
+            IoCManager.Resolve<IServerConsentManager>().Initialize(); // Floof - Consent System
         }
 
         public override void PostInit()

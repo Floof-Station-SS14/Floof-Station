@@ -71,11 +71,11 @@ namespace Content.Server.Database
                 .HasIndex(p => new {HumanoidProfileId = p.ProfileId, p.TraitName})
                 .IsUnique();
 
-            // Nebulous - Code related to consent
+            // Floof - Code related to consent
             modelBuilder.Entity<ConsentSettings>()
                 .HasIndex(c => c.UserId)
                 .IsUnique();
-            // End Nebulous - Consent System
+            // End Floof - Consent System
 
             modelBuilder.Entity<ProfileRoleLoadout>()
                 .HasOne(e => e.Profile)
@@ -363,7 +363,7 @@ namespace Content.Server.Database
         public Preference Preference { get; set; } = null!;
     }
 
-    // Nebulous - Consent System
+    // Floof - Consent System
     public class ConsentSettings
     {
         public int Id { get; set; }
@@ -371,7 +371,7 @@ namespace Content.Server.Database
 
         public string ConsentFreetext { get; set; } = null!;
     }
-    // End Nebulous - Consent System
+    // End Floof - Consent System
 
     public class Job
     {
