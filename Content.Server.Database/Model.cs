@@ -20,6 +20,7 @@ namespace Content.Server.Database
 
         public DbSet<Preference> Preference { get; set; } = null!;
         public DbSet<Profile> Profile { get; set; } = null!;
+        public DbSet<ConsentSettings> ConsentSettings { get; set; } = null!; // Floof - Consent System
         public DbSet<AssignedUserId> AssignedUserId { get; set; } = null!;
         public DbSet<Player> Player { get; set; } = default!;
         public DbSet<Admin> Admin { get; set; } = null!;
@@ -69,6 +70,12 @@ namespace Content.Server.Database
             modelBuilder.Entity<Trait>()
                 .HasIndex(p => new {HumanoidProfileId = p.ProfileId, p.TraitName})
                 .IsUnique();
+
+            // Floof - Code related to consent
+            modelBuilder.Entity<ConsentSettings>()
+                .HasIndex(c => c.UserId)
+                .IsUnique();
+            // End Floof - Consent System
 
             modelBuilder.Entity<ProfileRoleLoadout>()
                 .HasOne(e => e.Profile)
@@ -355,6 +362,16 @@ namespace Content.Server.Database
         public int PreferenceId { get; set; }
         public Preference Preference { get; set; } = null!;
     }
+
+    // Floof - Consent System
+    public class ConsentSettings
+    {
+        public int Id { get; set; }
+        public Guid UserId { get; set; }
+
+        public string ConsentFreetext { get; set; } = null!;
+    }
+    // End Floof - Consent System
 
     public class Job
     {

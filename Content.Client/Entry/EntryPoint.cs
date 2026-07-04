@@ -1,3 +1,4 @@
+using Content.Client._Floof.Consent.Managers;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -79,6 +80,8 @@ namespace Content.Client.Entry
         [Dependency] private IEntitySystemManager _entitySystemManager = default!;
         [Dependency] private ClientsidePlaytimeTrackingManager _clientsidePlaytimeManager = default!;
         [Dependency] private ClientFeedbackManager _feedbackManager = null!;
+
+        [Dependency] private readonly IClientConsentManager _clientConsentManager = default!; // Floof - Consent system
 
         public override void PreInit()
         {
@@ -173,6 +176,8 @@ namespace Content.Client.Entry
             _documentParsingManager.Initialize();
             _titleWindowManager.Initialize();
             _feedbackManager.Initialize();
+
+            _clientConsentManager.Initialize(); // Floof - Consent system
 
             _baseClient.RunLevelChanged += (_, args) =>
             {
