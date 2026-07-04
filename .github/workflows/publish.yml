@@ -6,18 +6,38 @@ concurrency:
 
 on:
   workflow_dispatch:
-  # schedule:
-   # - cron: '0 10 * * *'
+  schedule:
+   - cron: '0 10 * * *'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  check-manifest:
+    runs-on: [self-hosted]
+
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
 
     steps:
-    - name: Fail if we are attempting to run on the master branch
-      if: ${{GITHUB.REF_NAME == 'master' && github.repository == 'space-wizards/space-station-14'}}
-      run: exit 1
+    - name: Checkout
+      uses: actions/checkout@v4.2.2
 
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+
+    - name: Install requests
+      run: pip install requests
+
+    - name: Check manifest
+      id: check
+      run: python Tools/check_manifest.py
+
+  build:
+    needs: check-manifest
+    if: needs.check-manifest.outputs.should_run == 'true'
+    runs-on: [self-hosted]
+
+    steps:
     - name: Install dependencies
       run: sudo apt-get install -y python3-paramiko python3-lxml
 

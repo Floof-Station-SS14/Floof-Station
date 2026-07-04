@@ -30,7 +30,7 @@ jobs:
   build:
     name: Test Packaging
     if: github.actor != 'PJBot' && github.event.pull_request.draft == false
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
 
     steps:
       - name: Checkout Master
@@ -48,11 +48,10 @@ jobs:
           cd RobustToolbox/
           git submodule update --init --recursive
 
-      # ubuntu-latest has .NET 10
-      # - name: Setup .NET Core
-      #   uses: actions/setup-dotnet@v5
-      #   with:
-      #     dotnet-version: 10.0.x
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4.1.0
+        with:
+          dotnet-version: 10.0.x
 
       - name: Install dependencies
         run: dotnet restore

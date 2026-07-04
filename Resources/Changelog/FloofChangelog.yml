@@ -1,0 +1,51 @@
+Entries:
+- author: Floofmin
+  changes:
+    - message: Added changelog
+      type: Add
+  id: 1
+  time: '2026-06-21T01:29:24.112Z'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added fun!
+    - type: Remove
+      message: Removed fun!
+  id: 2
+  time: '2026-06-21T21:23:13.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Fix
+      message: Fixed trait names
+  id: 3
+  time: '2026-06-23T14:53:18.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added unborgable trait!
+  id: 4
+  time: '2026-06-23T16:14:09.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added a new ChemMaster UI.
+  id: 5
+  time: '2026-07-01T19:12:23.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Tweak
+      message: switched of to Floof Station branding.
+  id: 6
+  time: '2026-07-01T19:39:56.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Remove
+      message: Removed player recording!
+  id: 7
+  time: '2026-07-04T18:49:28.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Remove
+      message: Removed the ability for ghosts to hear local chat.
+  id: 8
+  time: '2026-07-04T18:57:36.0000000+00:00'

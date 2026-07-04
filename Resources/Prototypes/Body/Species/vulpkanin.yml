@@ -208,7 +208,15 @@
     sprite:
       sprite: Effects/creampie.rsi
       state: creampie_vulpkanin
-
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - GalacticCommon
+    - Canilunzt
+    understands:
+    - GalacticCommon
+    - Canilunzt
+  # Starlight-end
 - type: entity
   parent: OrganBaseOrganic
   id: OrganVulpkanin

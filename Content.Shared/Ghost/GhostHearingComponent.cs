@@ -6,4 +6,9 @@
 [RegisterComponent]
 public sealed partial class GhostHearingComponent : Component
 {
+    /// <summary>
+    /// Nebulous - If false, this entity will never receive any local messages
+    /// </summary>
+    [DataField]
+    public bool CanHearLocal { get; set; } = true;
 }

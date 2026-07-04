@@ -93,8 +93,11 @@
       Asphyxiation: 1
     prefix: "ghost_"
   - type: GhostHearing
+    canHearLocal: false # Floof stop listening
   - type: ShowElectrocutionHUD
   - type: IntrinsicRadioReceiver
+  - type: LanguageSpeaker # Starlight
+  - type: UniversalLanguageSpeaker # Starlight
   - type: ActiveRadio
     receiveAllChannels: true
     globalReceive: true

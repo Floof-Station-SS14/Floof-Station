@@ -167,6 +167,15 @@
       295: 0.8
       285: 0.7
   - type: Wagging
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - GalacticCommon
+    - Draconic
+    understands:
+    - GalacticCommon
+    - Draconic
+  # Starlight-end
 
 - type: entity
   parent: OrganBaseOrganic

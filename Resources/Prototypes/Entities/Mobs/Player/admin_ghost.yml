@@ -23,6 +23,7 @@
   - type: Ghost
     canInteract: true
   - type: GhostHearing
+    canHearLocal: true # Nebulous - admins can hear local
   - type: Hands
     hands:
       hand_right:

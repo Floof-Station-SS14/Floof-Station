@@ -195,6 +195,15 @@
       289: 0.9
       275: 0.8
       250: 0.7
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - GalacticCommon
+    - Moffic
+    understands:
+    - GalacticCommon
+    - Moffic
+  # Starlight-end
 
 - type: entity
   parent: OrganBaseOrganic
