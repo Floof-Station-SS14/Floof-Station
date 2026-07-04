@@ -8,6 +8,9 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers;
+using Content.Shared._NS.Consent;
+using Content.Shared._NS.Consent.Prototypes;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
@@ -1073,6 +1076,65 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             var entry = await db.DbContext.Blacklist.SingleAsync(w => w.UserId == player);
             db.DbContext.Blacklist.Remove(entry);
             await db.DbContext.SaveChangesAsync();
+        }
+
+        #endregion
+
+        #region Consent Settings
+
+        // Floof - Part of consent system, ported in large part from https://github.com/Fansana/floofstation1/pull/4/
+
+        private static async Task DeletePlayerConsentSettings(ServerDbContext db, NetUserId userId)
+        {
+            var consentSettings = await db.ConsentSettings
+                .Where(c => c.UserId == userId.UserId)
+                .SingleOrDefaultAsync();
+
+            if (consentSettings is null)
+                return;
+
+            db.ConsentSettings.Remove(consentSettings);
+        }
+
+        public async Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings? consentSettings)
+        {
+            await using var db = await GetDb();
+
+            if (consentSettings is null)
+            {
+                await DeletePlayerConsentSettings(db.DbContext, userId);
+                await db.DbContext.SaveChangesAsync();
+                return;
+            }
+
+            // Get current consent settings, so we know if freetext needs updating and which toggles to add or remove
+            var currentConsentSettings = await db.DbContext.ConsentSettings
+                .AsSplitQuery()
+                .SingleOrDefaultAsync(c => c.UserId == userId);
+
+            if (currentConsentSettings is null)
+            {
+                currentConsentSettings = new ConsentSettings { UserId = userId};
+
+                db.DbContext.ConsentSettings.Add(currentConsentSettings);
+            }
+
+            currentConsentSettings.ConsentFreetext = consentSettings.Freetext;
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
+        {
+            await using var db = await GetDb();
+
+            var consentSettings = await db.DbContext.ConsentSettings
+                .SingleOrDefaultAsync(c => c.UserId == userId);
+
+            if (consentSettings is null)
+                return new PlayerConsentSettings();
+
+            return new PlayerConsentSettings(consentSettings.ConsentFreetext);
         }
 
         #endregion

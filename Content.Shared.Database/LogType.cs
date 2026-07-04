@@ -483,4 +483,9 @@ public enum LogType
     /// Events related to players connecting/disconnecting.
     /// </summary>
     Connection = 104,
+
+    /// <summary> Floof
+    /// Events related to players consent.
+    /// </summary>
+    Consent = 21442, // Floof - Consent system
 }
