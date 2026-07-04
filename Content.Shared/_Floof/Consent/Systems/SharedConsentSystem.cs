@@ -11,9 +11,9 @@ namespace Content.Shared._Floof.Consent.Systems;
 
 public abstract partial class SharedConsentSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
-    [Dependency] private readonly ISharedAdminManager _adminManager = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private ExamineSystemShared _examineSystem = default!;
+    [Dependency] private ISharedAdminManager _adminManager = default!;
 
     public override void Initialize()
     {
