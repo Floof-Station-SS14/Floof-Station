@@ -1,11 +1,11 @@
 using System.Linq;
-using Content.Shared._NS.CCVars;
-using Content.Shared._NS.Consent.Prototypes;
+using Content.Shared._Floof.CCVars;
+using Content.Shared._Floof.Consent.Prototypes;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._NS.Consent;
+namespace Content.Shared._Floof.Consent;
 
 /// <summary>
 ///     Ported from https://github.com/Fansana/floofstation1/pull/4/

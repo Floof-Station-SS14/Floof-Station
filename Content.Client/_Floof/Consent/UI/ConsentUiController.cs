@@ -1,4 +1,4 @@
-using Content.Client._NS.Consent.UI.Windows;
+using Content.Client._Floof.Consent.UI.Windows;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
@@ -9,7 +9,7 @@ using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Input.Binding;
 
-namespace Content.Client._NS.Consent.UI;
+namespace Content.Client._Floof.Consent.UI;
 
 /// <summary>
 /// This was copied 1:1 from https://github.com/Fansana/floofstation1/pull/4/

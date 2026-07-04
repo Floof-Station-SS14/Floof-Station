@@ -1,6 +1,6 @@
 using Robust.Shared.Configuration;
 
-namespace Content.Shared._NS.CCVars;
+namespace Content.Shared._Floof.CCVars;
 
 [CVarDefs]
 public sealed class NSCVars

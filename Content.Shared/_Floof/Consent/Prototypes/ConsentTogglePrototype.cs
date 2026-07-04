@@ -1,6 +1,6 @@
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._NS.Consent.Prototypes;
+namespace Content.Shared._Floof.Consent.Prototypes;
 
 [Prototype("consentToggle")]
 public sealed partial class ConsentTogglePrototype : IPrototype

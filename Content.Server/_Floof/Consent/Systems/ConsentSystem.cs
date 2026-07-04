@@ -1,14 +1,14 @@
-using Content.Server._NS.Consent.Managers;
+using Content.Server._Floof.Consent.Managers;
 using Content.Server.Mind;
-using Content.Shared._NS.Consent.Prototypes;
-using Content.Shared._NS.Consent.Systems;
+using Content.Shared._Floof.Consent.Prototypes;
+using Content.Shared._Floof.Consent.Systems;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Server._NS.Consent.Systems;
+namespace Content.Server._Floof.Consent.Systems;
 
 public sealed class ConsentSystem : SharedConsentSystem
 {

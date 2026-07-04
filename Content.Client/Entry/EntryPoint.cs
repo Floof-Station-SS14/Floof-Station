@@ -1,4 +1,4 @@
-using Content.Client._NS.Consent.Managers;
+using Content.Client._Floof.Consent.Managers;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;

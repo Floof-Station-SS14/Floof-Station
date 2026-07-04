@@ -7,7 +7,7 @@ using Content.Shared.Verbs;
 using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._NS.Consent.Systems;
+namespace Content.Shared._Floof.Consent.Systems;
 
 public abstract partial class SharedConsentSystem : EntitySystem
 {

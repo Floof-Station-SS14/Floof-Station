@@ -1,4 +1,4 @@
-using Content.Client._NS.Consent.UI;
+using Content.Client._Floof.Consent.UI;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Client.UserInterface.Systems.Admin;
 using Content.Client.UserInterface.Systems.Bwoink;

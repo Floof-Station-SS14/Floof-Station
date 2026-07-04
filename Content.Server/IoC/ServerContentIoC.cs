@@ -1,4 +1,4 @@
-using Content.Server._NS.Consent.Managers;
+using Content.Server._Floof.Consent.Managers;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;

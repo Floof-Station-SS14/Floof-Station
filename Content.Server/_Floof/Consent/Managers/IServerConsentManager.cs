@@ -1,11 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Shared._NS.Consent;
+using Content.Shared._Floof.Consent;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
-namespace Content.Server._NS.Consent.Managers;
+namespace Content.Server._Floof.Consent.Managers;
 
 public interface IServerConsentManager
 {
