@@ -2,7 +2,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Floof.Consent.Prototypes;
 
-[Prototype("consentToggle")]
+[Prototype]
 public sealed partial class ConsentTogglePrototype : IPrototype
 {
     [IdDataField]
