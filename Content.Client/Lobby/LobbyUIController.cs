@@ -1,3 +1,5 @@
+using Content.Client._Floof.Consent.Managers;
+using Content.Shared._Floof.Consent;
 using Content.Client.Guidebook;
 using Content.Client.Lobby.UI;
 using Content.Client.Players.PlayTimeTracking;
@@ -28,6 +30,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IResourceCache _resourceCache = default!;
     [Dependency] private IStateManager _stateManager = default!;
+    [Dependency] private IClientConsentManager _clientConsentManager = default!; // Nebulous: Consent management system
     [Dependency] private JobRequirementsManager _requirements = default!;
     [Dependency] private MarkingManager _markings = default!;
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
@@ -45,6 +48,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     /// This is the modified profile currently being edited.
     /// </summary>
     private HumanoidCharacterProfile? EditedProfile => _profileEditor?.Profile;
+    private string? ConsentText => _profileEditor?.ConsentText; // Floof
 
     private int? EditedSlot => _profileEditor?.CharacterSlot;
 
@@ -199,6 +203,9 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         if (selected == null)
             return;
 
+        // Nebulous: Update consent settings
+        _clientConsentManager.UpdateConsent(new PlayerConsentSettings(ConsentText ?? String.Empty));
+
         _preferencesManager.UpdateCharacter(EditedProfile, EditedSlot.Value);
         ReloadCharacterSetup();
     }
@@ -262,7 +269,8 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             _prototypeManager,
             _resourceCache,
             _requirements,
-            _markings);
+            _markings,
+            _clientConsentManager); // Floof: Consent manager
 
         _profileEditor.OnOpenGuidebook += _guide.OpenHelp;
 
