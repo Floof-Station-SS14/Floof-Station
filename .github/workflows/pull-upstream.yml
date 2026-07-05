@@ -26,6 +26,5 @@ jobs:
 
     - name: Push updates
       run: |
-        git push --force \
-          https://x-access-token:${{ secrets.BOT_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git \
-          refs/remotes/upstream/master:refs/heads/upstream
+        git remote set-url origin https://x-access-token:${BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        git push --force origin refs/remotes/upstream/master:refs/heads/upstream
