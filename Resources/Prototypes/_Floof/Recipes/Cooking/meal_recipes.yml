@@ -12,4 +12,4 @@
     UnstableMutagen: 5
   solids:
     TrashBananaPeel: 1
-    FoodEggDuckFertilized: 1
+    FoodEgg: 1 # Change because FoodEggDuckFertilized turns into a duck in like 20 seconds
