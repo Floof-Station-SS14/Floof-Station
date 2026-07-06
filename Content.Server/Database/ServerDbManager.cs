@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
+using Content.Shared._Floof.Consent;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -368,6 +369,15 @@ namespace Content.Server.Database
         /// </param>
         Task CustomVoteLogCancel(int voteId);
 
+        #endregion
+
+        #region Consent
+        // Floof - Consent system
+
+        Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings);
+        Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId);
+
+        // End Floof - Consent system
         #endregion
     }
 
@@ -1074,6 +1084,20 @@ namespace Content.Server.Database
         {
             return RunDbCommand(() => _db.HasPendingModelChanges());
         }
+
+        // Floof - Consent system - Ported from https://github.com/Fansana/floofstation1/pull/4/
+        public Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SavePlayerConsentSettingsAsync(userId, consentSettings));
+        }
+
+        public Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPlayerConsentSettingsAsync(userId));
+        }
+        // End Floof - Consent system
 
         // Wrapper functions to run DB commands from the thread pool.
         // This will avoid SynchronizationContext capturing and avoid running CPU work on the main thread.

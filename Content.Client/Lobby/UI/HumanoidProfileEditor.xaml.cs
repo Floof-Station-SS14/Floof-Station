@@ -22,6 +22,8 @@ using Direction = Robust.Shared.Maths.Direction;
 // Begin CD - Character Records
 using System.Globalization;
 using System.Linq;
+using Content.Client._Floof.Consent.Managers;
+using Content.Client._Floof.Consent.UI;
 using Content.Client.Lobby.UI.Roles;
 // End CD - Character Records
 using Content.Shared._DV.Traits;
@@ -43,8 +45,13 @@ namespace Content.Client.Lobby.UI
         private readonly MarkingManager _markingManager;
         private readonly JobRequirementsManager _requirements;
         private readonly LobbyUIController _controller;
+        private readonly IClientConsentManager _consentManager; // Floof: Consent management system
 
         private readonly SpriteSystem _sprite;
+
+
+        private ConsentEditor? _consentEditor;
+        private TextEdit? _consentTextEdit;
 
         // CCvar.
         private int _maxNameLength;
@@ -63,6 +70,7 @@ namespace Content.Client.Lobby.UI
         /// The work in progress profile being edited.
         /// </summary>
         public HumanoidCharacterProfile? Profile;
+        public string? ConsentText; // Nebulous: Current consent text
 
         private Direction _previewRotation = Direction.North;
 
@@ -95,7 +103,8 @@ namespace Content.Client.Lobby.UI
             IPrototypeManager prototypeManager,
             IResourceManager resManager,
             JobRequirementsManager requirements,
-            MarkingManager markings)
+            MarkingManager markings,
+            IClientConsentManager consentManager)
         {
             RobustXamlLoader.Load(this);
             _sawmill = logManager.GetSawmill("profile.editor");
@@ -108,6 +117,7 @@ namespace Content.Client.Lobby.UI
             _preferencesManager = preferencesManager;
             _resManager = resManager;
             _requirements = requirements;
+            _consentManager = consentManager; // Floof
             _controller = UserInterfaceManager.GetUIController<LobbyUIController>();
             _sprite = _entManager.System<SpriteSystem>();
 
@@ -138,7 +148,8 @@ namespace Content.Client.Lobby.UI
 
             ResetButton.OnPressed += args =>
             {
-                SetProfile((HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, _preferencesManager.Preferences?.SelectedCharacterIndex);
+                SetProfile((HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter,
+                    _preferencesManager.Preferences?.SelectedCharacterIndex);
             };
 
             SaveButton.OnPressed += args =>
@@ -154,9 +165,9 @@ namespace Content.Client.Lobby.UI
 
             NameEdit.OnTextChanged += args => { SetName(args.Text); };
             NameEdit.IsValid = args => args.Length <= _maxNameLength;
-            NameRandomize.OnPressed += args => RandomizeName();
-            RandomizeEverythingButton.OnPressed += args => { RandomizeEverything(); };
-            WarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
+            RandomizeUnlockedButton.OnPressed += args => { RandomizeProfile(); };
+            WarningLabel.SetMarkup(
+                $"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
 
             #endregion Name
 
@@ -229,7 +240,8 @@ namespace Content.Client.Lobby.UI
             };
 
             RgbSkinColorContainer.AddChild(_rgbSkinColorSelector = new ColorSelectorSliders());
-            _rgbSkinColorSelector.SelectorType = ColorSelectorSliders.ColorSelectorType.Hsv; // defaults color selector to HSV
+            _rgbSkinColorSelector.SelectorType =
+                ColorSelectorSliders.ColorSelectorType.Hsv; // defaults color selector to HSV
             _rgbSkinColorSelector.OnColorChanged += _ =>
             {
                 OnSkinColorOnValueChanged();
@@ -241,7 +253,9 @@ namespace Content.Client.Lobby.UI
 
             foreach (var value in Enum.GetValues<SpawnPriorityPreference>())
             {
-                SpawnPriorityButton.AddItem(Loc.GetString($"humanoid-profile-editor-preference-spawn-priority-{value.ToString().ToLower()}"), (int)value);
+                SpawnPriorityButton.AddItem(
+                    Loc.GetString($"humanoid-profile-editor-preference-spawn-priority-{value.ToString().ToLower()}"),
+                    (int)value);
             }
 
             SpawnPriorityButton.OnItemSelected += args =>
@@ -277,7 +291,7 @@ namespace Content.Client.Lobby.UI
                 (int)PreferenceUnavailableMode.StayInLobby);
             PreferenceUnavailableButton.AddItem(
                 Loc.GetString("humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button",
-                              ("overflowJob", Loc.GetString(SharedGameTicker.FallbackOverflowJobName))),
+                    ("overflowJob", Loc.GetString(SharedGameTicker.FallbackOverflowJobName))),
                 (int)PreferenceUnavailableMode.SpawnAsOverflow);
 
             PreferenceUnavailableButton.OnItemSelected += args =>
@@ -308,6 +322,11 @@ namespace Content.Client.Lobby.UI
             #endregion Markings
 
             RefreshFlavorText();
+
+            // Floof
+            RefreshConsentMenu();
+            UpdateConsentTextEdit();
+            _consentManager.OnServerDataLoaded += UpdateConsentTextEdit;
 
             #region Dummy
 
@@ -512,7 +531,9 @@ namespace Content.Client.Lobby.UI
         private void SetDirty()
         {
             // If it equals default then reset the button.
-            if (Profile == null || _preferencesManager.Preferences?.SelectedCharacter.MemberwiseEquals(Profile) == true)
+            if (Profile == null
+                || _preferencesManager.Preferences?.SelectedCharacter.MemberwiseEquals(Profile) == true
+                && _consentManager.GetConsent().Freetext == ConsentText) // Floof: Check if consent has changed
             {
                 IsDirty = false;
                 return;
@@ -579,6 +600,7 @@ namespace Content.Client.Lobby.UI
             RefreshSpecies();
             // RefreshTraits(); // DeltaV
             RefreshFlavorText();
+            RefreshConsentMenu();
             ReloadPreview();
 
             if (Profile != null)
@@ -598,6 +620,16 @@ namespace Content.Client.Lobby.UI
             SpriteView.ReloadProfilePreview(Profile);
 
             // Check and set the dirty flag to enable the save/reset buttons as appropriate.
+            SetDirty();
+        }
+
+        // Nebulous: Updates save button for consent text
+        private void OnConsentTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            ConsentText = content;
             SetDirty();
         }
 
@@ -626,6 +658,22 @@ namespace Content.Client.Lobby.UI
         private void SetPreviewRotation(Direction direction)
         {
             SpriteView.OverrideDirection = (Direction)((int)direction % 4 * 2);
+        }
+
+        /// <summary>
+        /// Floof: Refreshes the consent text editor status.
+        /// </summary>
+        public void RefreshConsentMenu()
+        {
+            if (_consentEditor != null)
+                return;
+
+            _consentEditor = new ConsentEditor();
+            TabContainer.AddChild(_consentEditor);
+            TabContainer.SetTabTitle(TabContainer.ChildCount - 1, Loc.GetString("consent-examine-verb"));
+            _consentTextEdit = _consentEditor.CConsentEditorInput;
+
+            _consentEditor.OnConsentTextChanged += OnConsentTextChange;
         }
     }
 }

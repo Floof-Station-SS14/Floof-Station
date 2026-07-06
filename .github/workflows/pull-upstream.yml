@@ -18,6 +18,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
 
     - name: Configure upstream
       run: |
@@ -25,7 +27,9 @@ jobs:
         git fetch --unshallow upstream master
 
     - name: Push updates
+      env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
       run: |
-        git push --force \
-          https://x-access-token:${{ secrets.BOT_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git \
-          refs/remotes/upstream/master:refs/heads/upstream
+        git remote set-url origin https://x-access-token:${BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        git push --force origin refs/remotes/upstream/master:refs/heads/upstream

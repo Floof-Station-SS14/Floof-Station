@@ -1,3 +1,4 @@
+using Content.Client._Floof.Consent.UI;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Client.UserInterface.Systems.Admin;
 using Content.Client.UserInterface.Systems.Bwoink;
@@ -26,6 +27,7 @@ public sealed partial class GameTopMenuBarUIController : UIController
     [Dependency] private GuidebookUIController _guidebook = default!;
     [Dependency] private EmotesUIController _emotes = default!;
     [Dependency] private LanguageMenuUIController _language = default!; // Starlight
+    [Dependency] private readonly ConsentUiController _consent = default!; // Floof - Consent System
 
     private GameTopMenuBar? GameTopMenuBar => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>();
 
@@ -50,6 +52,7 @@ public sealed partial class GameTopMenuBarUIController : UIController
         _sandbox.UnloadButton();
         _emotes.UnloadButton();
         _language.UnloadButton(); // Starlight
+        _consent.UnloadButton(); // Floof - Consent System
     }
 
     public void LoadButtons()
@@ -64,5 +67,6 @@ public sealed partial class GameTopMenuBarUIController : UIController
         _sandbox.LoadButton();
         _emotes.LoadButton();
         _language.LoadButton(); // Starlight
+        _consent.LoadButton(); // Floof - Consent System
     }
 }

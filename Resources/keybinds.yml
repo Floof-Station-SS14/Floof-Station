@@ -654,3 +654,6 @@ binds:
   type: State
   key: MouseRight
   canFocus: true
+- function: OpenConsentWindow
+  type: State
+  key: Minus
