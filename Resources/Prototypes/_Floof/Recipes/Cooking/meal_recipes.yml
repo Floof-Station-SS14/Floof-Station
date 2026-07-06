@@ -1,0 +1,15 @@
+
+
+# BANANA DUCK RECIPE
+- type: microwaveMealRecipe
+  id: RecipeBananaDuck
+  name: Banana duck recipe
+  result: MobBananaDuck
+  time: 15
+  reagents:
+    BananaHonk: 10
+    Cognizine: 5
+    UnstableMutagen: 5
+  solids:
+    TrashBananaPeel: 1
+    FoodEgg: 1 # Change because FoodEggDuckFertilized turns into a duck in like 20 seconds
