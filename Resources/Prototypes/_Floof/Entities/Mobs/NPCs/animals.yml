@@ -1,0 +1,244 @@
+- type: entity
+  name: Quanana
+  parent: [ FoodBanana, SimpleMobBase ]
+  id: MobBananaDuck
+  description: It quacks. It's a banana. It's a quanana.
+  components:
+  - type: Physics
+    bodyType: KinematicController
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: quack
+      sprite: _Floof/Mobs/Animals/Banana_duck.rsi
+    scale: 0.7,0.7
+  - type: GhostRole
+    name: ghost-role-information-BananaDuck-name
+    allowMovement: true
+    description: ghost-role-information-BananaDuck-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+    settings: short
+  - type: GhostTakeoverAvailable
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: EggLayer
+    eggSpawn:
+    - id: FoodBananaBaby
+  - type: Speech
+    speechSounds: Duck
+    speechVerb: SmallMob
+ # - type: language
+ #   id: Duck
+  - type: RotationVisuals
+    defaultRotation: 0
+    horizontalRotation: 90
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: quack
+      Dead:
+        Base: quack
+  - type: Slippery
+  - type: StepTrigger
+    intersectRatio: 0.2
+  - type: NoSlip
+  - type: Butcherable
+    spawned:
+    - id: FoodBanana
+      amount: 3
+  - type: SolutionContainerManager # Shouldn't die in two bites
+    solutions:
+      food:
+        maxVol: 50
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 30
+        - ReagentId: Vitamin
+          Quantity: 15
+  - type: Puller
+    needsHands: false
+  - type: CanEscapeInventory
+    baseResistTime: 2
+  - type: Tag
+    tags:
+    - VimPilot
+    - DoorBumpOpener
+
+- type: entity
+  name: baby banana
+  parent: FoodBanana
+  id: FoodBananaBaby
+  description: Aww. Wait, how?
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 3
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Vitamin
+          Quantity: 1
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/banana.rsi
+    scale: 0.7,0.7
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceBanana
+        Quantity: 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
