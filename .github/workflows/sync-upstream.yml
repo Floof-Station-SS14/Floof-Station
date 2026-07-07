@@ -13,8 +13,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: 100
+
       - name: Configure git
         run: |
           git fetch origin upstream --depth=100
@@ -27,7 +27,7 @@ jobs:
 
       - name: Create sync branch
         run: |
-          BRANCH="sync/upstream-$(date +%Y-%m-%d)"
+          BRANCH="sync/upstream-$(date +%Y-%m-%d)"d
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
           git checkout -b $BRANCH origin/upstream
 
