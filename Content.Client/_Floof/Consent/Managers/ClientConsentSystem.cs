@@ -6,9 +6,9 @@ namespace Content.Client._Floof.Consent.Managers;
 /// <summary>
 /// Ported from https://github.com/Fansana/floofstation1/pull/4/
 /// </summary>
-public sealed class ClientConsentManager : IClientConsentManager
+public sealed partial class ClientConsentManager : IClientConsentManager
 {
-    [Dependency] private readonly IClientNetManager _netManager = default!;
+    [Dependency] private IClientNetManager _netManager = default!;
 
     // TODO: sync all players consent settings with ServerConsentManager, for client prediction
     private PlayerConsentSettings? _consent;

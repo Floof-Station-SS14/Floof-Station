@@ -4,11 +4,14 @@ concurrency:
   group: publish-testing
   cancel-in-progress: true
 
-on: {} # floof disabled, enable when needed
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: '0 10 * * *'
 
 jobs:
   build:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v7

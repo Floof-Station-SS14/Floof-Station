@@ -1,6 +1,12 @@
 ﻿name: Build & Test Map Renderer
 
-on: {} # floof disabled, enable when needed
+on:
+  push:
+    branches: [ master, staging, stable ]
+  merge_group:
+  pull_request:
+    types: [ opened, reopened, synchronize, ready_for_review ]
+    branches: [ master, staging, stable ]
 
 jobs:
   build:
@@ -45,7 +51,7 @@ jobs:
     name: Build & Test Debug
     needs:
       - build
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     steps:
       - name: CI succeeded
         run: exit 0

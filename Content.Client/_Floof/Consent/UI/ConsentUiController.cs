@@ -15,9 +15,9 @@ namespace Content.Client._Floof.Consent.UI;
 /// This was copied 1:1 from https://github.com/Fansana/floofstation1/pull/4/
 /// </summary>
 [UsedImplicitly]
-public sealed class ConsentUiController : UIController, IOnStateChanged<GameplayState>
+public sealed partial class ConsentUiController : UIController, IOnStateChanged<GameplayState>
 {
-    [Dependency] private readonly IInputManager _input = default!;
+    [Dependency] private IInputManager _input = default!;
 
     private ConsentWindow? _window;
 

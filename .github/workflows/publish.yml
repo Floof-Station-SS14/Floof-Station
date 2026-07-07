@@ -6,12 +6,12 @@ concurrency:
 
 on:
   workflow_dispatch:
-  schedule:
-   - cron: '0 10 * * *'
+  #schedule:
+  # - cron: '0 10 * * *'
 
 jobs:
   check-manifest:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
 
     outputs:
       should_run: ${{ steps.check.outputs.should_run }}
@@ -35,7 +35,7 @@ jobs:
   build:
     needs: check-manifest
     if: needs.check-manifest.outputs.should_run == 'true'
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
 
     steps:
     - name: Install dependencies

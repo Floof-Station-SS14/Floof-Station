@@ -81,7 +81,7 @@ namespace Content.Client.Entry
         [Dependency] private ClientsidePlaytimeTrackingManager _clientsidePlaytimeManager = default!;
         [Dependency] private ClientFeedbackManager _feedbackManager = null!;
 
-        [Dependency] private readonly IClientConsentManager _clientConsentManager = default!; // Floof - Consent system
+        [Dependency] private IClientConsentManager _clientConsentManager = default!; // Floof - Consent system
 
         public override void PreInit()
         {
