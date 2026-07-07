@@ -27,7 +27,7 @@ jobs:
 
       - name: Create sync branch
         run: |
-          BRANCH="sync/upstream-$(date +%Y-%m-%d)"d
+          BRANCH="sync/upstream-$(date +%Y-%m-%d)"
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
           git checkout -b $BRANCH origin/upstream
 
