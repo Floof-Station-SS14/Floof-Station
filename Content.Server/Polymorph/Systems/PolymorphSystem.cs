@@ -46,7 +46,8 @@ public sealed partial class PolymorphSystem : EntitySystem
     [Dependency] private IComponentFactory _compFact = default!; // Starlight
     [Dependency] private ISerializationManager _serialization = default!; // Starlight
 
-    private const string RevertPolymorphId = "ActionRevertPolymorph";
+    private static readonly EntProtoId RevertPolymorphId = "ActionRevertPolymorph";
+    private static readonly EntProtoId RevertPolymorphConfirmId = "ActionRevertPolymorphConfirm";
 
     public override void Initialize()
     {
@@ -106,11 +107,17 @@ public sealed partial class PolymorphSystem : EntitySystem
         if (component.Configuration.Forced)
             return;
 
-        if (_actions.AddAction(uid, ref component.Action, out var action, RevertPolymorphId))
+        if (!_actions.AddAction(
+            uid,
+            ref component.Action,
+            out var action,
+            component.Configuration.RevertConfirmationPopup ? RevertPolymorphConfirmId : RevertPolymorphId))
         {
-            _actions.SetEntityIcon((component.Action.Value, action), component.Parent);
-            _actions.SetUseDelay(component.Action.Value, TimeSpan.FromSeconds(component.Configuration.Delay));
+            return;
         }
+
+        _actions.SetEntityIcon((component.Action.Value, action), component.Parent);
+        _actions.SetUseDelay(component.Action.Value, TimeSpan.FromSeconds(component.Configuration.Delay));
     }
 
     private void OnPolymorphActionEvent(Entity<PolymorphableComponent> ent, ref PolymorphActionEvent args)
@@ -412,8 +419,14 @@ public sealed partial class PolymorphSystem : EntitySystem
         var entProto = ProtoMan.Index(polyProto.Configuration.Entity);
 
         EntityUid? actionId = default!;
-        if (!_actions.AddAction(target, ref actionId, RevertPolymorphId, target))
+        if (!_actions.AddAction(
+            target,
+            ref actionId,
+            polyProto.Configuration.RevertConfirmationPopup ? RevertPolymorphConfirmId : RevertPolymorphId,
+            target))
+        {
             return;
+        }
 
         target.Comp.PolymorphActions.Add(id, actionId.Value);
 
@@ -421,7 +434,7 @@ public sealed partial class PolymorphSystem : EntitySystem
         _metaData.SetEntityName(actionId.Value, Loc.GetString("polymorph-self-action-name", ("target", entProto.Name)), metaDataCache);
         _metaData.SetEntityDescription(actionId.Value, Loc.GetString("polymorph-self-action-description", ("target", entProto.Name)), metaDataCache);
 
-        if (_actions.GetAction(actionId) is not {} action)
+        if (_actions.GetAction(actionId) is not { } action)
             return;
 
         _actions.SetIcon((action, action.Comp), new SpriteSpecifier.EntityPrototype(polyProto.Configuration.Entity));
@@ -430,7 +443,7 @@ public sealed partial class PolymorphSystem : EntitySystem
 
     public void RemovePolymorphAction(ProtoId<PolymorphPrototype> id, Entity<PolymorphableComponent> target)
     {
-        if (target.Comp.PolymorphActions is not {} actions)
+        if (target.Comp.PolymorphActions is not { } actions)
             return;
 
         if (actions.TryGetValue(id, out var action))
