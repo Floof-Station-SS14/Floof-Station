@@ -1,10 +1,12 @@
 name: Build & Publish Docfx
 
-on: {} # floof disabled, enable when needed
+on:
+  schedule:
+  - cron: "0 0 * * 0"
 
 jobs:
   docfx:
-   runs-on: [self-hosted]
+   runs-on: ubuntu-latest
    steps:
     - uses: actions/checkout@v7
     - name: Setup submodule

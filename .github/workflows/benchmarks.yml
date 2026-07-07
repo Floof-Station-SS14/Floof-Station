@@ -1,5 +1,8 @@
 ﻿name: Benchmarks
-on: {} # floof disabled, enable when needed
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: '0 8 * * *'
 
 concurrency: benchmarks
 
