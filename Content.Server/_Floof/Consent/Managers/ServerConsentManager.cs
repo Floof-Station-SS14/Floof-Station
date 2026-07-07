@@ -18,15 +18,15 @@ namespace Content.Server._Floof.Consent.Managers;
 /// <summary>
 /// Ported in large part from https://github.com/Fansana/floofstation1/pull/4/ - however this does contain notable modifications.
 /// </summary>
-public sealed class ServerConsentManager : IServerConsentManager, IPostInjectInit
+public sealed partial class ServerConsentManager : IServerConsentManager, IPostInjectInit
 {
-    [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IServerNetManager _netManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly UserDbDataManager _userDb = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IServerNetManager _netManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private UserDbDataManager _userDb = default!;
 
     /// <summary>
     /// Stores consent settings for all connected players, including guests.
