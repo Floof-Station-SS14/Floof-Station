@@ -20,7 +20,6 @@
     description: ghost-role-information-BananaDuck-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
-    settings: short
   - type: GhostTakeoverAvailable
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
