@@ -81,6 +81,7 @@ public sealed partial class ChatUIController : UIController
         {SharedChatSystem.LOOCPrefix, ChatSelectChannel.LOOC},
         {SharedChatSystem.OOCPrefix, ChatSelectChannel.OOC},
         {SharedChatSystem.EmotesPrefix, ChatSelectChannel.Emotes},
+        {SharedChatSystem.EmotesAltPrefix, ChatSelectChannel.Emotes},
         {SharedChatSystem.SubtlePrefix, ChatSelectChannel.Subtle}, // Floof
         {SharedChatSystem.SubtleOOCPrefix, ChatSelectChannel.SubtleOOC}, //Floof
         {SharedChatSystem.AdminPrefix, ChatSelectChannel.Admin},
