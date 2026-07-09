@@ -73,3 +73,9 @@ Entries:
       message: Fixed Character imports!
   id: 12
   time: '2026-07-09T06:48:52.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added Subtle and Subtle OOC
+  id: 13
+  time: '2026-07-09T10:39:24.0000000+00:00'
