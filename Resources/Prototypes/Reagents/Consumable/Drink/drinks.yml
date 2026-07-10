@@ -449,6 +449,24 @@
         damage:
           types:
             Heat: 3
+      - !type:Oxygenate # Floof: Feroxi oxygenate from water.
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFeroxi ]
+      # Convert H20 into CO2.
+      - !type:ModifyLungGas
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFeroxi ]
+        ratios:
+          CarbonDioxide: 1.0
+          WaterVapor: -1.0
+      # Floof: Satiate thirst for Feroxi
+      - !type:SatiateThirst
+        factor: 4
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFeroxi ]
 
 - type: reagent
   id: Ice
