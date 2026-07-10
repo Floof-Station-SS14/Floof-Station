@@ -32,6 +32,8 @@ public abstract partial class SharedChatSystem : EntitySystem
     public const char OOCPrefix = '[';
     public const char EmotesPrefix = '@';
     public const char EmotesAltPrefix = '*';
+    public const char SubtlePrefix = '-'; // Floof
+    public const char SubtleOOCPrefix = '{'; // Floof
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
     public const char DefaultChannelKey = 'h';
@@ -484,7 +486,9 @@ public enum InGameICChatType : byte
 {
     Speak,
     Emote,
-    Whisper
+    Whisper,
+    Subtle, // Floof
+    SubtleOOC // Floof
 }
 
 /// <summary>

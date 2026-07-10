@@ -58,7 +58,6 @@ public sealed partial class ChatSystem : SharedChatSystem
     private bool _deadLoocEnabled;
     private bool _critLoocEnabled;
     private readonly bool _adminLoocEnabled = true;
-
     private bool _deadChatEnabled = true;
 
     public override void Initialize()
@@ -202,7 +201,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var language = languageOverride ?? _language.GetLanguage(source); // Starlight
 
-        bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
+        bool shouldCapitalize = (desiredType != InGameICChatType.Emote && desiredType != InGameICChatType.Subtle && desiredType != InGameICChatType.SubtleOOC);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
         // Capitalizing the word I only happens in English, so we check language here
         bool shouldCapitalizeTheWordI = (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
@@ -245,6 +244,12 @@ public sealed partial class ChatSystem : SharedChatSystem
                 break;
             case InGameICChatType.Emote:
                 SendEntityEmote(source, message, range, nameOverride, language, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker); // Starlight
+                break;
+            case InGameICChatType.Subtle:
+                SendEntitySubtle(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
+                break;
+            case InGameICChatType.SubtleOOC:
+                SendEntitySubtleOOC(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
                 break;
         }
     }
