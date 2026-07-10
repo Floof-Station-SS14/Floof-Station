@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Shared.Chat.Prototypes;
+using Content.Shared._DV.Traits;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;

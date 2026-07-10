@@ -97,6 +97,15 @@
     spawned:
     - id: FoodMeatHuman
       amount: 5
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - GalacticCommon
+    - SolCommon
+    understands:
+    - GalacticCommon
+    - SolCommon
+  # Starlight-end
 
 - type: entity
   parent: OrganBaseOrganic

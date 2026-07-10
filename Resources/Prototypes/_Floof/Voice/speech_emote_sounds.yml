@@ -1,0 +1,6 @@
+- type: emoteSounds
+  id: Duck
+  sound:
+    path: /Audio/Animals/duck_quack_happy.ogg
+    params:
+      variation: 0.125

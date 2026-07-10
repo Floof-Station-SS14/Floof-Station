@@ -1,3 +1,5 @@
+using Robust.Shared.Utility;
+
 namespace Content.Client.Lobby.UI;
 
 public sealed partial class HumanoidProfileEditor
@@ -22,5 +24,15 @@ public sealed partial class HumanoidProfileEditor
         Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithMarkings(_markingsModel.Markings));
         ReloadProfilePreview();
         SetDirty();
+    }
+
+    // Nebulous: Fill consent text with server-side data
+    private void UpdateConsentTextEdit()
+    {
+        if (_consentTextEdit != null)
+        {
+            var consent = _consentManager.GetConsent();
+            _consentTextEdit.TextRope = new Rope.Leaf(consent.Freetext);
+        }
     }
 }

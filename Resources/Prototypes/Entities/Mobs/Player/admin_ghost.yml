@@ -23,6 +23,7 @@
   - type: Ghost
     canInteract: true
   - type: GhostHearing
+    canHearLocal: true # Floof - admins can hear local
   - type: Hands
     hands:
       hand_right:
