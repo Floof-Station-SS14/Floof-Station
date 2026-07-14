@@ -8,15 +8,14 @@
     flavors:
     - sweet
     - spooky
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 40
-        reagents:
-        - ReagentId: Pomelustine
-          Quantity: 30
-        - ReagentId: Nutriment
-          Quantity: 10
+  - type: Solution
+    solution:
+      maxVol: 40
+      reagents:
+      - ReagentId: Pomelustine
+        Quantity: 20
+      - ReagentId: Nutriment
+        Quantity: 10
   - type: Sprite
     sprite: _Floof/Objects/Specific/Hydroponics/pomegranate.rsi
   - type: Produce
@@ -46,15 +45,9 @@
     - spooky
   - type: Sprite
     sprite: _Floof/Objects/Specific/Hydroponics/pomegranate.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Pomelustine
-          Quantity: 15
-        - ReagentId: Nutriment
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 20
   - type: Extractable
     juiceSolution:
       reagents:
@@ -75,17 +68,16 @@
   - type: FlavorProfile
     flavors:
     - mushroom
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Philterex
-          Quantity: 5
-        - ReagentId: Cum
-          Quantity: 20
-        - ReagentId: Nutriment
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 40
+      reagents:
+      - ReagentId: Philterex
+        Quantity: 5
+      - ReagentId: Cum
+        Quantity: 10
+      - ReagentId: Nutriment
+        Quantity: 5
   - type: Sprite
     sprite: _Floof/Objects/Specific/Hydroponics/humpshroom.rsi
   - type: Produce
@@ -105,19 +97,20 @@
   - type: FlavorProfile
     flavors:
     - mushroom
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Libidozenithizine
-          Quantity: 2
-        - ReagentId: Cum
-          Quantity: 20
-        - ReagentId: Philterex
-          Quantity: 4
-        - ReagentId: Happiness
-          Quantity: 4
+  - type: Solution
+    solution:
+      maxVol: 40
+      reagents:
+      - ReagentId: Libidozenithizine
+        Quantity: 2
+      - ReagentId: Cum
+        Quantity: 10
+      - ReagentId: Philterex
+        Quantity: 4
+      - ReagentId: Happiness
+        Quantity: 4
+      - ReagentId: Nutriment
+        Quantity: 5
   - type: Sprite
     sprite: _Floof/Objects/Specific/Hydroponics/breedshroom.rsi
   - type: Produce
