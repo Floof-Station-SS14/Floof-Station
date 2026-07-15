@@ -2,7 +2,7 @@
 - type: marking
   id: MarkingDorsalFeroxi
   bodyPart: Chest
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   sprites:
   - sprite: _DeltaV/Mobs/Customization/Feroxi/tail_markings.rsi
     state: feroxi-dorsal
@@ -12,7 +12,7 @@
 - type: marking
   id: MarkingDorsalStripedFeroxi
   bodyPart: Chest
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -35,7 +35,7 @@
 - type: marking
   id: MarkingTailFeroxi
   bodyPart: Tail
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   sprites:
   - sprite: _DeltaV/Mobs/Customization/Feroxi/tail_markings.rsi
     state: feroxi-tail
@@ -49,7 +49,7 @@
 - type: marking
   id: MarkingTailStripedFeroxi
   bodyPart: Tail
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   sprites:
   - sprite: _DeltaV/Mobs/Customization/Feroxi/tail_markings.rsi
     state: feroxi-tail

@@ -9,21 +9,19 @@
     state: fish
   - type: ToolRefinable
     refineResult:
-    - id: FoodMeatLizardCutlet
+    - id: FoodMeatFeroxiCutlet
       amount: 5
   - type: Construction
-    graph: LizardSteak
+    graph: ConstructionGraphFeroxiSteak
     node: start
-    defaultTarget: lizard steak
+    defaultTarget: feroxi steak
   - type: Item
     storedOffset: -1,1
     inhandVisuals:
       left:
       - state: plain-inhand-left
-        color: "#6EFF41"
       right:
       - state: plain-inhand-right
-        color: "#6EFF41"
 
 - type: entity
   parent: [FoodMeatCookedBase, BaseSlicingRefinableFood]
@@ -76,10 +74,8 @@
     inhandVisuals:
       left:
       - state: generic-pink-inhand-left
-        color: green
       right:
       - state: generic-pink-inhand-right
-        color: green
 
 - type: entity
   parent: FoodMeatCutletCookedBase
@@ -102,7 +98,5 @@
     inhandVisuals:
       left:
       - state: generic-pink-inhand-left
-        color: "#153F06"
       right:
       - state: generic-pink-inhand-right
-        color: "#153F06"

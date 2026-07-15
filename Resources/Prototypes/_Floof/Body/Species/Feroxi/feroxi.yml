@@ -1,6 +1,6 @@
 - type: markingsGroup
   parent: Undergarments
-  id: MarkingsFeroxi
+  id: Feroxi
   onlyGroupWhitelisted: true
   limits:
     enum.HumanoidVisualLayers.Hair:
@@ -60,7 +60,7 @@
   name: feroxi appearance
   components:
   - type: Inventory
-    speciesId: speciesFeroxi
+    speciesId: feroxi
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
@@ -111,7 +111,7 @@
       Liver: OrganFeroxiLiver
       Kidneys: OrganFeroxiKidneys
   - type: HumanoidProfile
-    species: SpeciesFeroxi
+    species: Feroxi
 
 - type: entity
   parent:
@@ -119,8 +119,17 @@
   - BaseSpeciesMobOrganic
   id: MobFeroxi
   suffix: Floof
-  name: Urist McSwims
+  name: Urist McFin
   components:
+  - type: SharkVision
+    pulseTime: 5
+    activateSound: null
+    deactivateSound: null
+  - type: FeroxiDehydrate
+    hydratedMetabolizer: MetabolizerFeroxi
+    dehydratedMetabolizer: MetabolizerFeroxiThirsty
+  - type: Thirst
+    baseDecayRate: 0.2
   - type: Damageable
     damageModifierSet: DamageModifiersFeroxi
   - type: Puller
@@ -129,13 +138,12 @@
     spawned:
     - id: FoodMeatFeroxi
       amount: 5
-  - type: LizardAccent
   - type: Speech
-    speechSounds: Lizard
-    speechVerb: LargeMob
+    speechSounds: Tenor
+    speechVerb: SpeechVerbFeroxi
     allowedEmotes: ['EmoteChomp', 'Thump']
   - type: TypingIndicator
-    proto: lizard
+    proto: TypingIndicatorFeroxi
   - type: CreamPied
     sprite:
       sprite: Effects/creampie.rsi
@@ -149,9 +157,10 @@
     soundHit:
       path: /Audio/Effects/bite.ogg
     animation: WeaponArcBite
+    angle: 30
     damage:
       types:
-        Piercing: 5
+        Piercing: 7
   - type: Wagging
   - type: LanguageKnowledge
     speaks:
@@ -160,3 +169,5 @@
     understands:
     - GalacticCommon
     - Carptongue
+  - type: TemperatureProtection
+    coolingCoefficient: 0.9

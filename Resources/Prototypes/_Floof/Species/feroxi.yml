@@ -1,5 +1,5 @@
 - type: species
-  id: SpeciesFeroxi
+  id: Feroxi
   name: species-name-feroxi
   roundStart: true
   prototype: MobFeroxi

@@ -39,6 +39,10 @@
     Bloodstream:
       effects:
       - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFeroxi ]
+          inverted: true
         damage:
           types:
             Poison: 4

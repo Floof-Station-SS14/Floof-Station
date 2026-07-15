@@ -2,7 +2,7 @@
 - type: marking
   id: MarkingStripesTigerHeadFeroxi
   bodyPart: Head
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -16,7 +16,7 @@
 - type: marking
   id: MarkingStripesBlitzTorsoFeroxi
   bodyPart: Chest
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -29,7 +29,7 @@
 - type: marking
   id: MarkingStripesTigerTorsoFeroxi
   bodyPart: Chest
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -42,7 +42,7 @@
 - type: marking
   id: MarkingStripesCountershadingTorsoMaleFeroxi
   bodyPart: Chest
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   sexRestriction: [ Male ]
   sprites:
   - sprite: _DeltaV/Mobs/Customization/Feroxi/body_markings.rsi
@@ -51,7 +51,7 @@
 - type: marking
   id: MarkingStripesCountershadingTorsoFemaleFeroxi
   bodyPart: Chest
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   sexRestriction: [ Female ]
   sprites:
   - sprite: _DeltaV/Mobs/Customization/Feroxi/body_markings.rsi
@@ -62,7 +62,7 @@
 - type: marking
   id: MarkingStripesBlitzLeftArmFeroxi
   bodyPart: LArm
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -75,7 +75,7 @@
 - type: marking
   id: MarkingStripesTigerLeftArmFeroxi
   bodyPart: LArm
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -90,7 +90,7 @@
 - type: marking
   id: MarkingStripesBlitzRightArmFeroxi
   bodyPart: RArm
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -103,7 +103,7 @@
 - type: marking
   id: MarkingStripesTigerRightArmFeroxi
   bodyPart: RArm
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -118,7 +118,7 @@
 - type: marking
   id: MarkingStripesBlitzLeftLegFeroxi
   bodyPart: LLeg
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -131,7 +131,7 @@
 - type: marking
   id: MarkingStripesTigerLeftLegFeroxi
   bodyPart: LLeg
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -146,7 +146,7 @@
 - type: marking
   id: MarkingStripesBlitzRightLegFeroxi
   bodyPart: RLeg
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -159,7 +159,7 @@
 - type: marking
   id: MarkingStripesTigerRightLegFeroxi
   bodyPart: RLeg
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:

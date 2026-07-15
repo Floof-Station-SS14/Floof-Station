@@ -4,7 +4,7 @@
   effects:
   - !type:SpeciesLoadoutEffect
     species:
-    - SpeciesFeroxi
+    - Feroxi
 
 
 # LOADOUTS #

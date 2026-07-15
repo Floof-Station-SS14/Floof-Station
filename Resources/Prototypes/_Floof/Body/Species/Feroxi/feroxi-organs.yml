@@ -1,5 +1,4 @@
 # BASE #
-
 - type: entity
   parent: OrganBaseOrganic
   id: OrganFeroxi
@@ -33,10 +32,10 @@
       sprite: _DeltaV/Mobs/Species/Feroxi/parts.rsi
   - type: VisualOrganMarkings
     markingData:
-      group: MarkingsFeroxi
+      group: Feroxi
+
 
 # PARTS #
-
 - type: entity
   parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganFeroxiExternal ]
   id: OrganFeroxiTorso
@@ -87,6 +86,8 @@
   parent: [ OrganBaseFootRight, OrganFeroxiExternal ]
   id: OrganFeroxiFootRight
 
+
+# ORGANS #
 - type: entity
   parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganFeroxiInternal ]
   id: OrganFeroxiBrain
@@ -114,6 +115,7 @@
 - type: entity
   parent: [ OrganBaseLungs, OrganFeroxiInternal, OrganFeroxiMetabolizer ]
   id: OrganFeroxiLungs
+  name: feroxi lungs and gills
 
 - type: entity
   parent: [ OrganBaseHeart, OrganFeroxiInternal, OrganFeroxiMetabolizer ]

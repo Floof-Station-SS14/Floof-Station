@@ -1,7 +1,7 @@
 - type: marking
   id: MarkingSnoutFeroxi
   bodyPart: Snout
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   sprites:
   - sprite: _DeltaV/Mobs/Customization/Feroxi/snout_markings.rsi
     state: feroxi-snout
@@ -11,7 +11,7 @@
 - type: marking
   id: MarkingSnoutNurseFeroxi
   bodyPart: Snout
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   sprites:
   - sprite: _DeltaV/Mobs/Customization/Feroxi/snout_markings.rsi
     state: feroxi-snout
@@ -21,7 +21,7 @@
 - type: marking
   id: MarkingSnoutStripedNurseFeroxi
   bodyPart: Snout
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
@@ -43,7 +43,7 @@
 - type: marking
   id: MarkingSnoutStripedFeroxi
   bodyPart: Snout
-  groupWhitelist: [ MarkingsFeroxi ]
+  groupWhitelist: [ Feroxi ]
   coloring:
     default:
       type:
