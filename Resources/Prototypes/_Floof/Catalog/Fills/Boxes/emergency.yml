@@ -1,7 +1,7 @@
 - type: entity
   parent: BoxSurvival
   id: BoxSurvivalWater
-  suffix: Floof, Standard H2O
+  suffix: Standard H2O
   components:
   - type: EntityTableContainerFill
     containers:
@@ -18,12 +18,12 @@
     - state: internals
     - state: emergencytank
   - type: Label
-    currentLabel: reagent-name-water
+    localizedLabel: reagent-name-water
 
 - type: entity
   parent: BoxSurvivalEngineering
   id: BoxSurvivalEngineeringWater
-  suffix: Floof, Extended H2O
+  suffix: Extended H2O
   components:
   - type: EntityTableContainerFill
     containers:
@@ -40,12 +40,12 @@
     - state: internals
     - state: emergencytank
   - type: Label
-    currentLabel: reagent-name-water
+    localizedLabel: reagent-name-water
 
 - type: entity
   parent: BoxSurvivalSecurity
   id: BoxSurvivalSecurityWater
-  suffix: Floof, Security H20
+  suffix: Security H20
   components:
   - type: EntityTableContainerFill
     containers:
@@ -62,12 +62,12 @@
     - state: internals
     - state: emergencytank
   - type: Label
-    currentLabel: reagent-name-water
+    localizedLabel: reagent-name-water
 
 - type: entity
   parent: BoxSurvivalMedical
   id: BoxSurvivalMedicalWater
-  suffix: Floof, Medical H2O
+  suffix: Medical H2O
   components:
   - type: EntityTableContainerFill
     containers:
@@ -84,12 +84,12 @@
     - state: internals
     - state: emergencytank
   - type: Label
-    currentLabel: reagent-name-water
+    localizedLabel: reagent-name-water
 
 - type: entity
   parent: BoxSurvivalSyndicate
   id: BoxSurvivalSyndicateWater
-  suffix: Floof, Syndicate H2O
+  suffix: Syndicate H2O
   components:
   - type: EntityTableContainerFill
     containers:
@@ -105,12 +105,12 @@
     - state: internals
     - state: emergencytank
   - type: Label
-    currentLabel: reagent-name-water
+    localizedLabel: reagent-name-water
 
 - type: entity
   parent: BoxSurvivalMilitaryDouble
   id: BoxSurvivalMilitaryDoubleWater
-  suffix: Floof, Military H2O
+  suffix: Military H2O
   components:
   - type: EntityTableContainerFill
     containers:
@@ -124,12 +124,12 @@
     - state: internals
     - state: emergencytank
   - type: Label
-    currentLabel: reagent-name-water
+    localizedLabel: reagent-name-water
 
 - type: entity
   parent: BoxHug
   id: BoxHugWater
-  suffix: Floof, Emergency H2O
+  suffix: Emergency H2O
   components:
   - type: EntityTableContainerFill
     containers:
@@ -142,12 +142,12 @@
         - id: FoodSnackNutribrick
         - id: DrinkWaterBottleFull
   - type: Label
-    currentLabel: reagent-name-water
+    localizedLabel: reagent-name-water
 
 - type: entity
   parent: BoxSurvivalNitrogen
   id: BoxMimeWater
-  suffix: Floof, Mime, Emergency H2O
+  suffix: Mime, Emergency H2O
   components:
   - type: EntityTableContainerFill
     containers:
@@ -164,4 +164,4 @@
     - state: internals
     - state: emergencytank
   - type: Label
-    currentLabel: reagent-name-water
+    localizedLabel: reagent-name-water
