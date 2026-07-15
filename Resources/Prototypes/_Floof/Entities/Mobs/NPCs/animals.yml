@@ -60,15 +60,13 @@
     spawned:
     - id: FoodBanana
       amount: 3
-  - type: SolutionContainerManager # Shouldn't die in two bites
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 30
-        - ReagentId: Vitamin
-          Quantity: 15
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: Vitamin
+        Quantity: 10
   - type: Puller
     needsHands: false
   - type: CanEscapeInventory
@@ -84,15 +82,13 @@
   id: FoodBananaBaby
   description: Aww. Wait, how?
   components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 3
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
-        - ReagentId: Vitamin
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Vitamin
+        Quantity: 1
   - type: Sprite
     sprite: Objects/Specific/Hydroponics/banana.rsi
     scale: 0.7,0.7
