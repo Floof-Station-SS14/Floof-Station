@@ -1,7 +1,6 @@
 - type: entity
   parent: [FoodMeatRawBase, BaseSlicingRefinableFood]
   id: FoodMeatFeroxi
-  suffix: Floof
   name: raw feroxi meat
   description: It's filled with odd fluids.
   components:
@@ -26,7 +25,6 @@
 - type: entity
   parent: [FoodMeatCookedBase, BaseSlicingRefinableFood]
   id: FoodMeatFeroxiCooked
-  suffix: Floof
   name: feroxi steak
   description: Chewy feroxi meat. Filling, though!
   components:
@@ -60,7 +58,6 @@
 - type: entity
   parent: FoodMeatCutletBase
   id: FoodMeatFeroxiCutlet
-  suffix: Floof
   name: raw feroxi cutlet
   description: Chewy feroxi cutlet.
   components:
@@ -80,7 +77,6 @@
 - type: entity
   parent: FoodMeatCutletCookedBase
   id: FoodMeatFeroxiCutletCooked
-  suffix: Floof
   name: feroxi cutlet
   description: Chewy and baked feroxi cutlet.
   components:
