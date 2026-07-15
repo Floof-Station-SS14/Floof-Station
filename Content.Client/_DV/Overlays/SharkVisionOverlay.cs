@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Client.Stealth;
 using Content.Shared._DV.Overlays.Components;
 using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -89,36 +90,44 @@ public sealed partial class SharkVisionOverlay : Overlay
     private void GetVisionEntities(ProtoId<ReagentPrototype>[] bloodPrototypes, MapId mapId, Angle eyeRot)
     {
         _entries.Clear();
-        var entities = _entity.EntityQueryEnumerator<SolutionManagerComponent, SpriteComponent, TransformComponent>();
-        while (entities.MoveNext(out var uid, out var body, out var sprite, out var xform))
+
+        var livingEntities = _entity.EntityQueryEnumerator<BloodstreamComponent, SpriteComponent, TransformComponent>();
+        while (livingEntities.MoveNext(out var uid, out var bloodstream, out var sprite, out var xform))
+        {
+            // Luckily, players are also SolutionContainerManagerComponent, so let's check for a bloodstream and check for bleeds
+            if (bloodstream.BleedAmount <= 0)
+                continue;
+
+            var entity = uid;
+            // Parent container check
+            if (_container.TryGetOuterContainer(uid, xform, out var container))
+            {
+                var owner = container.Owner;
+
+                if (_entity.TryGetComponent<SpriteComponent>(owner, out var ownerSprite)
+                    && _entity.TryGetComponent<TransformComponent>(owner, out var ownerXform))
+                {
+                    entity = owner;
+                    sprite = ownerSprite;
+                    xform = ownerXform;
+                }
+            }
+
+            _entries.Add(new SharkVisionRenderEntry((entity, sprite, xform), mapId, eyeRot));
+        }
+
+
+        var entities = _entity.EntityQueryEnumerator<SolutionComponent, SpriteComponent, TransformComponent>();
+        while (entities.MoveNext(out var uid, out var solutionComponent, out var sprite, out var xform))
         {
             if (!CanSee(uid, sprite))
                 continue;
 
-            // Luckily, players are also SolutionContainerManagerComponent, so let's check for a bloodstream and check for bleeds
-            if (_entity.TryGetComponent<BloodstreamComponent>(uid, out var bloodstream) && bloodstream.BleedAmount <= 0)
+            if (!solutionComponent.Solution.Any())
                 continue;
 
-            // Should always be true but I'm just simplifying a future if statement
-            if (!_entity.TryGetComponent<SolutionManagerComponent>(uid, out var solutionContainer))
-                continue;
-
-            if (solutionContainer.SolutionEnts == null)
-                continue;
-
-            var bloodFound = false;
-            // Someone calculate the Big O notation of this lmao
-            foreach (var individualContainer in solutionContainer.SolutionEnts)
-            {
-                if (_solution.TryGetSolution(uid, individualContainer, out var _, out var solution))
-                {
-                    var reagentsInContainer = solution.GetReagentPrototypes(_proto).ToDictionary();
-                    bloodFound = reagentsInContainer.Keys.Any(reagentKey => bloodPrototypes.Any(x => reagentKey == x));
-                }
-
-                if (bloodFound)
-                    break; // We don't need to keep searching if the entity has blood in at least one container
-            }
+            var reagentsInContainer = solutionComponent.Solution.GetReagentPrototypes(_proto).ToDictionary();
+            var bloodFound = reagentsInContainer.Keys.Any(reagentKey => bloodPrototypes.Any(x => reagentKey == x));
 
             if (!bloodFound)
                 continue;
