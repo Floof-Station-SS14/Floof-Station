@@ -731,7 +731,7 @@
         - !type:SatiateThirst # DeltaV: Nerf Saline for Feroxi
           conditions:
           - !type:MetabolizerTypeCondition
-            type: [ Feroxi ]
+            type: [ MetabolizerFeroxi ]
           factor: 2
         - !type:ModifyBloodLevel
           amount: 6
