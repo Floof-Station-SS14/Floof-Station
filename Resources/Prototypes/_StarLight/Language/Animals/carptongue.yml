@@ -1,6 +1,8 @@
 - type: language
   id: Carptongue
   icon: LanguageIconFish
+  speech:
+    color: "#9f8aea"
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

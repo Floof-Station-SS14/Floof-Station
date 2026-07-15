@@ -203,6 +203,10 @@
         children:
         - id: NitrogenTankFilled
         - id: DoubleEmergencyNitrogenTankFilled
+      - !type:GroupSelector # Floof: Added.
+        children:
+        - id: TankWaterFilled
+        - id: EmergencyDoubleTankWaterVaporFilled
       - id: EmergencyFunnyOxygenTankFilled
         weight: 0.5
       - !type:GroupSelector

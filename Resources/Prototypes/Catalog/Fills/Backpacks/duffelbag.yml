@@ -307,6 +307,7 @@
         - id: ClothingHandsGlovesColorYellowBudget
         - id: DoubleEmergencyOxygenTankFilled
         - id: DoubleEmergencyNitrogenTankFilled
+        - id: EmergencyDoubleTankWaterVaporFilled # Floof: Added.
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle

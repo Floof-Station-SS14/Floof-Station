@@ -48,6 +48,18 @@
     {
       "name": "equipped-HELMET-unshaded-reptilian",
       "directions": 4
-    }
+    },
+      {
+          "name": "equipped-HELMET-feroxi",
+          "directions": 4
+      },
+      {
+          "name": "equipped-HELMET-light-feroxi",
+          "directions": 4
+      },
+      {
+          "name": "equipped-HELMET-unshaded-feroxi",
+          "directions": 4
+      }
   ]
 }

@@ -66,6 +66,7 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/bagel.yml", ["RubberStampMime"]},
             {"/Maps/reach.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Floof/bagel.yml", ["RubberStampMime"]}, // Floof
+            {"/Maps/_Floof/serpentcrest.yml", ["WehMedipen"]}, // Floof
             {"/Maps/_Floof/reach.yml", ["HandheldCrewMonitor"]}, // Floof
             {"/Maps/Shuttles/ShuttleEvent/honki.yml", ["GoldenBikeHorn", "RubberStampClown"]},
             {"/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", ["RubberStampSyndicate"]},
