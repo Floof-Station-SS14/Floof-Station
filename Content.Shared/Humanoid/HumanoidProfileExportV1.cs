@@ -60,6 +60,7 @@ public sealed partial class HumanoidCharacterProfileV1
     [DataField]
     public string FlavorText;
 
+    // Floof: Added consent.
     [DataField]
     public string ConsentText;
 
@@ -84,6 +85,7 @@ public sealed partial class HumanoidCharacterProfileV1
     [DataField]
     public PreferenceUnavailableMode PreferenceUnavailable;
 
+    // Floof: Added consent.
     public HumanoidCharacterProfile ToV2()
     {
         return new(Name, FlavorText, ConsentText, Species, Age, Sex, GetDefaultVoice(Species, Sex), Gender, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts);
