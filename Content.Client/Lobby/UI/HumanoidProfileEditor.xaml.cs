@@ -530,10 +530,11 @@ namespace Content.Client.Lobby.UI
 
         private void SetDirty()
         {
+            var consentText = _consentManager.GetConsent().Freetext;
             // If it equals default then reset the button.
             if (Profile == null
                 || _preferencesManager.Preferences?.SelectedCharacter.MemberwiseEquals(Profile) == true
-                && _consentManager.GetConsent().Freetext == ConsentText) // Floof: Check if consent has changed
+                && consentText == ConsentText) // Floof: Check if consent has changed
             {
                 IsDirty = false;
                 return;
