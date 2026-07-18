@@ -85,3 +85,21 @@ Entries:
       message: Added lewd liquids
   id: 14
   time: '2026-07-14T05:31:41.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: >-
+        Added Feroxi. They can breathe water vapor, only eat meat, and get
+        poisoned by theobromine and garlic.
+    - type: Add
+      message: Added Water Vapor Tanks and Survival Boxes.
+    - type: Add
+      message: Added a Feroxi chomp emote.
+    - type: Add
+      message: Added a Feroxi guidebook page.
+    - type: Add
+      message: Added a Feroxi plushie.
+    - type: Tweak
+      message: Changed Eye Shadow so it's usable.
+  id: 15
+  time: '2026-07-15T15:06:01.0000000+00:00'
