@@ -130,7 +130,7 @@ public sealed partial class ChatSystem
             (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Starlight
 
-        foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
+        foreach (var (session, data) in GetRecipients(source, WhisperClearRange, ghostsCanHear: false))
         {
             if (session.AttachedEntity is not { Valid: true } listener) // Starlight-edit: Languages
                 continue;
@@ -286,7 +286,7 @@ public sealed partial class ChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkup(action)));
 
-        foreach (var (session, data) in GetRecipients(source, WhisperClearRange))
+        foreach (var (session, data) in GetRecipients(source, WhisperClearRange, ghostsCanHear: false))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
                 continue;
@@ -327,7 +327,7 @@ public sealed partial class ChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkup(action)));
 
-        foreach (var (session, data) in GetRecipients(source, WhisperClearRange))
+        foreach (var (session, data) in GetRecipients(source, WhisperClearRange, ghostsCanHear: false))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
                 continue;
