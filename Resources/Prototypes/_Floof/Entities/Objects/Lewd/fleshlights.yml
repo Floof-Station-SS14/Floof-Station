@@ -13,7 +13,6 @@
     destroyOnEmpty: false
     utensil: none
     solution: fleshlight
-    ignoreEmpty: true
   - type: SolutionContainerManager
     solutions:
       fleshlight:
