@@ -113,3 +113,9 @@ Entries:
       message: Removed the old player-wide consent system.
   id: 16
   time: '2026-07-18T03:08:22.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added Interactions!
+  id: 17
+  time: '2026-07-18T15:48:13.0000000+00:00'
