@@ -1,6 +1,6 @@
 using Robust.Shared.Configuration;
 
-namespace Content.Shared._Floof.CCVars;
+namespace Content.Shared._Floof.CCVar;
 
 [CVarDefs]
 public sealed class NSCVars
@@ -11,4 +11,10 @@ public sealed class NSCVars
     /// Currently ported https://github.com/Fansana/floofstation1/pull/4
     /// </summary>
     public static readonly CVarDef<string> ConsentRules = CVarDef.Create("consent.consent_rules", "", CVar.ARCHIVE | CVar.CLIENTONLY);
+
+    /// <summary>
+    /// How many characters the consent text can be. // Floofstation
+    /// </summary>
+    public static readonly CVarDef<int> ConsentFreetextMaxLength =
+        CVarDef.Create("consent.freetext_max_length", 1000, CVar.REPLICATED | CVar.SERVER);
 }
