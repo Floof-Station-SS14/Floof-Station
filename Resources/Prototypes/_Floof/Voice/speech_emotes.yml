@@ -3,7 +3,7 @@
   name: chat-emote-name-chomp
   category: Hands
   available: false
-  icon: Interface/Emotes/tailslap.png # TODO: Temporary icon.
+  icon: _DeltaV/Interface/Emotes/gnash.png
   whitelist:
     components:
     - Hands

@@ -1,6 +1,6 @@
 using Content.Client._Floof.Consent.Managers;
 using Content.Client.UserInterface.Controls;
-using Content.Shared._Floof.CCVars;
+using Content.Shared._Floof.CCVar;
 using Content.Shared._Floof.Consent;
 using Content.Shared._Floof.Consent.Prototypes;
 using Content.Shared.CCVar;

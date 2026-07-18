@@ -1,7 +1,7 @@
 - type: markingsGroup
   parent: Undergarments
   id: Feroxi
-  onlyGroupWhitelisted: true
+  onlyGroupWhitelisted: false
   limits:
     enum.HumanoidVisualLayers.Hair:
       limit: 1
@@ -129,7 +129,7 @@
     hydratedMetabolizer: MetabolizerFeroxi
     dehydratedMetabolizer: MetabolizerFeroxiThirsty
   - type: Thirst
-    baseDecayRate: 0.2
+    baseDecayRate: 0.4
   - type: Damageable
     damageModifierSet: DamageModifiersFeroxi
   - type: Puller
