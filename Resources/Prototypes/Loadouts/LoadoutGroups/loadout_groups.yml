@@ -46,6 +46,7 @@
   - OffsetCaneNT
   - Cane
   - TowelColorWhite
+  - LoadoutClicker # Floof: Added.
 
 - type: loadoutGroup
   id: Glasses
