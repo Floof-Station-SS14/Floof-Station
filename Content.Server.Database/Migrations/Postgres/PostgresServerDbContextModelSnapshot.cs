@@ -1144,6 +1144,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("char_name");
 
+                    b.Property<string>("ConsentText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("consent_text");
+
                     b.Property<string>("EyeColor")
                         .IsRequired()
                         .HasColumnType("text")

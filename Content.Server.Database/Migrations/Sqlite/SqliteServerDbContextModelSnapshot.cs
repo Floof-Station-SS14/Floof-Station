@@ -1077,6 +1077,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("char_name");
 
+                    b.Property<string>("ConsentText")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("consent_text");
+
                     b.Property<string>("EyeColor")
                         .IsRequired()
                         .HasColumnType("TEXT")
