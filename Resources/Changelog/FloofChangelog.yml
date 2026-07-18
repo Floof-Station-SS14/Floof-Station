@@ -103,3 +103,19 @@ Entries:
       message: Changed Eye Shadow so it's usable.
   id: 15
   time: '2026-07-15T15:06:01.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: >-
+        Added a per-character consent system, set it in the character/profile
+        editor!
+    - type: Remove
+      message: Removed the old player-wide consent system.
+  id: 16
+  time: '2026-07-18T03:08:22.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added Interactions!
+  id: 17
+  time: '2026-07-18T15:48:13.0000000+00:00'

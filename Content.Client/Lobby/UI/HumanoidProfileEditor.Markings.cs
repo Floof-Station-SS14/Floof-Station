@@ -25,14 +25,4 @@ public sealed partial class HumanoidProfileEditor
         ReloadProfilePreview();
         SetDirty();
     }
-
-    // Nebulous: Fill consent text with server-side data
-    private void UpdateConsentTextEdit()
-    {
-        if (_consentTextEdit != null)
-        {
-            var consent = _consentManager.GetConsent();
-            _consentTextEdit.TextRope = new Rope.Leaf(consent.Freetext);
-        }
-    }
 }

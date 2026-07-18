@@ -62,6 +62,10 @@
     understands:
     - GalacticCommon
   # Starlight-end
+  # Floof-start
+  - type: OwnInteractionVerbs
+    allowedVerbs: [] # TODO: define something here, or don't.
+  # Floof-end
 
 - type: entity
   save: false

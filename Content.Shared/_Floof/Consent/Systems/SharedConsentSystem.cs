@@ -17,7 +17,7 @@ public abstract partial class SharedConsentSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<MindContainerComponent, GetVerbsEvent<ExamineVerb>>(OnGetExamineVerbs);
+        //SubscribeLocalEvent<MindContainerComponent, GetVerbsEvent<ExamineVerb>>(OnGetExamineVerbs);
     }
 
     private void OnGetExamineVerbs(EntityUid uid, MindContainerComponent component, GetVerbsEvent<ExamineVerb> args)
