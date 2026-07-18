@@ -133,3 +133,15 @@ Entries:
       message: Added lewd dressers.
   id: 18
   time: '2026-07-18T16:38:54.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added a feroxi Chomp emote icon.
+    - type: Add
+      message: Added hair to feroxi.
+    - type: Tweak
+      message: Doubled Feroxi's thirst rate.
+    - type: Fix
+      message: Fixed Feroxi medical loadouts not including a water box.
+  id: 19
+  time: '2026-07-18T17:29:01.0000000+00:00'
