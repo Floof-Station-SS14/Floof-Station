@@ -13,12 +13,9 @@ namespace Content.Shared.InteractionVerbs;
 /// <summary>
 ///     Represents an action that can be performed on an entity.
 /// </summary>
-[Prototype("Interaction"), Serializable]
+[Prototype("Interaction")]
 public sealed partial class InteractionVerbPrototype : IPrototype, IInheritingPrototype
 {
-
-    [Dependency] protected EntityManager EntityManager = default!;
-
     /// <inheritdoc />
     [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<InteractionVerbPrototype>))]
     public string[]? Parents { get; set; }
@@ -197,7 +194,7 @@ public sealed partial class InteractionVerbPrototype : IPrototype, IInheritingPr
         }
     }
 
-    [DataDefinition, Serializable]
+    [DataDefinition, Serializable, Virtual]
     public partial class EffectSpecifier
     {
         [DataField]
