@@ -11,10 +11,4 @@ public sealed class NSCVars
     /// Currently ported https://github.com/Fansana/floofstation1/pull/4
     /// </summary>
     public static readonly CVarDef<string> ConsentRules = CVarDef.Create("consent.consent_rules", "", CVar.ARCHIVE | CVar.CLIENTONLY);
-
-    /// <summary>
-    /// How many characters the consent text can be.
-    /// </summary>
-    public static readonly CVarDef<int> ConsentFreetextMaxLength =
-        CVarDef.Create("consent.freetext_max_length", 1024, CVar.REPLICATED | CVar.SERVER);
 }
