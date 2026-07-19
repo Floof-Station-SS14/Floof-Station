@@ -4,7 +4,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: unknown
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -12,7 +11,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: machine
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -20,7 +18,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: galcom
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -28,7 +25,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: animal
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -36,7 +32,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: slime
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -44,7 +39,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: solcom
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -52,7 +46,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: fish
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -60,7 +53,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: xeno
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -68,7 +60,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: lizard
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -76,7 +67,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: moth
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -84,7 +74,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: neko
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -92,7 +81,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: plant
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -100,7 +88,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: codespeak
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -108,7 +95,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: survivor
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -116,7 +102,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: avali
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -124,7 +109,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: golem
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -132,7 +116,6 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: brain
-  allowSelection: false
 
 - type: jobIcon
   parent: JobIcon
@@ -140,4 +123,3 @@
   icon:
     sprite: /Textures/_Starlight/Interface/language_icon.rsi
     state: buzz
-  allowSelection: false
