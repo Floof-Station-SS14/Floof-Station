@@ -228,7 +228,14 @@ namespace Content.Server.Ghost
         private void OnMapInit(EntityUid uid, GhostComponent component, MapInitEvent args)
         {
             _actions.AddAction(uid, ref component.BooActionEntity, component.BooAction);
-            _actions.AddAction(uid, ref component.ToggleGhostHearingActionEntity, component.ToggleGhostHearingAction);
+            //Floof section
+            if (CompOrNull<GhostHearingComponent>(uid)?.CanHearLocal == true)
+            {
+                _actions.AddAction(uid,
+                    ref component.ToggleGhostHearingActionEntity,
+                    component.ToggleGhostHearingAction);
+            }
+            //Floof end
             _actions.AddAction(uid, ref component.ToggleLightingActionEntity, component.ToggleLightingAction);
             _actions.AddAction(uid, ref component.ToggleFoVActionEntity, component.ToggleFoVAction);
             _actions.AddAction(uid, ref component.ToggleGhostsActionEntity, component.ToggleGhostsAction);

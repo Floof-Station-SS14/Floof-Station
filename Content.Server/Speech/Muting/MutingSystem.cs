@@ -7,12 +7,14 @@ using Content.Shared.Puppet;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Muting;
 using Robust.Shared.Prototypes;
+using Content.Server._Starlight.Language; // Starlight
 
 namespace Content.Server.Speech.Muting
 {
     public sealed partial class MutingSystem : EntitySystem
     {
         [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private LanguageSystem _languages = default!; // Starlight
 
         public override void Initialize()
         {
@@ -55,6 +57,12 @@ namespace Content.Server.Speech.Muting
         private void OnSpeakAttempt(EntityUid uid, MutedComponent component, SpeakAttemptEvent args)
         {
             // TODO something better than this.
+
+            // Starlight-start: Cannot mute if there's no speech involved
+            var language = _languages.GetLanguage(uid);
+            if (!language.SpeechOverride.RequireSpeech)
+                return;
+            // Starlight-end
 
             if (HasComp<MimePowersComponent>(uid))
                 _popupSystem.PopupEntity(Loc.GetString("mime-cant-speak"), uid, uid);

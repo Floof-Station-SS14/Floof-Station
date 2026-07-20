@@ -1,0 +1,153 @@
+Entries:
+- author: Floofmin
+  changes:
+    - message: Added changelog
+      type: Add
+  id: 1
+  time: '2026-06-21T01:29:24.112Z'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added fun!
+    - type: Remove
+      message: Removed fun!
+  id: 2
+  time: '2026-06-21T21:23:13.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Fix
+      message: Fixed trait names
+  id: 3
+  time: '2026-06-23T14:53:18.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added unborgable trait!
+  id: 4
+  time: '2026-06-23T16:14:09.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added a new ChemMaster UI.
+  id: 5
+  time: '2026-07-01T19:12:23.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Tweak
+      message: switched of to Floof Station branding.
+  id: 6
+  time: '2026-07-01T19:39:56.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Remove
+      message: Removed player recording!
+  id: 7
+  time: '2026-07-04T18:49:28.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Remove
+      message: Removed the ability for ghosts to hear local chat.
+  id: 8
+  time: '2026-07-04T18:57:36.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added consent system!
+  id: 9
+  time: '2026-07-04T20:49:25.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added consent window to character creator.
+  id: 10
+  time: '2026-07-05T05:22:08.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added dancing poles which can be constructed.
+  id: 11
+  time: '2026-07-09T06:24:36.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Fix
+      message: Fixed Character imports!
+  id: 12
+  time: '2026-07-09T06:48:52.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added Subtle and Subtle OOC
+  id: 13
+  time: '2026-07-09T10:39:24.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added lewd liquids
+  id: 14
+  time: '2026-07-14T05:31:41.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: >-
+        Added Feroxi. They can breathe water vapor, only eat meat, and get
+        poisoned by theobromine and garlic.
+    - type: Add
+      message: Added Water Vapor Tanks and Survival Boxes.
+    - type: Add
+      message: Added a Feroxi chomp emote.
+    - type: Add
+      message: Added a Feroxi guidebook page.
+    - type: Add
+      message: Added a Feroxi plushie.
+    - type: Tweak
+      message: Changed Eye Shadow so it's usable.
+  id: 15
+  time: '2026-07-15T15:06:01.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: >-
+        Added a per-character consent system, set it in the character/profile
+        editor!
+    - type: Remove
+      message: Removed the old player-wide consent system.
+  id: 16
+  time: '2026-07-18T03:08:22.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added Interactions!
+  id: 17
+  time: '2026-07-18T15:48:13.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added a clicker! You can select it from the loadouts menu.
+    - type: Add
+      message: 'Added a variety of sex toys: dildos, fleshlights, and vibes.'
+    - type: Add
+      message: >-
+        Added Lewd Crates and Sex Toy Crates. They can spawn or be bought from
+        cargo.
+    - type: Add
+      message: Added lewd dressers.
+  id: 18
+  time: '2026-07-18T16:38:54.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added a feroxi Chomp emote icon.
+    - type: Add
+      message: Added hair to feroxi.
+    - type: Tweak
+      message: Doubled Feroxi's thirst rate.
+    - type: Fix
+      message: Fixed Feroxi medical loadouts not including a water box.
+  id: 19
+  time: '2026-07-18T17:29:01.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Fix
+      message: Fixed a bug involving ghosts not hearing normal chat.
+  id: 20
+  time: '2026-07-18T17:31:17.0000000+00:00'

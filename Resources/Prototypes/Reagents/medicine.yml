@@ -723,7 +723,16 @@
     Bloodstream:
       effects:
         - !type:SatiateThirst
+          conditions:
+          - !type:MetabolizerTypeCondition # DeltaV: Nerf Saline for Feroxi
+            type: [ MetabolizerFeroxi ]
+            inverted: true
           factor: 6
+        - !type:SatiateThirst # DeltaV: Nerf Saline for Feroxi
+          conditions:
+          - !type:MetabolizerTypeCondition
+            type: [ MetabolizerFeroxi ]
+          factor: 2
         - !type:ModifyBloodLevel
           amount: 6
 

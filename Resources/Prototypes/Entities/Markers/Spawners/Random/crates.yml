@@ -156,6 +156,8 @@
     - !type:NestedSelector
       tableId: LowValueScienceCrateTable
       weight: 0.2
+    - !type:NestedSelector # Floof: Added lewd crate.
+      tableId: LowValueFunLewdTable
 
 - type: entity
   name: Filled Crate Spawner

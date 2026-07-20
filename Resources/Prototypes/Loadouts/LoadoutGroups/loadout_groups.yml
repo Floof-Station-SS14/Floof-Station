@@ -62,6 +62,8 @@
   - OffsetCaneMime
   - OffsetCaneNT
   - Cane
+  - TowelColorWhite
+  - LoadoutClicker # Floof: Added.
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -80,6 +82,8 @@
   - EmergencyNitrogen
   - EmergencyOxygen
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWater # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -89,6 +93,7 @@
   loadouts:
   - LoadoutSpeciesEVANitrogen
   - LoadoutSpeciesEVAOxygen
+  - LoadoutSpeciesEVAWater # Floof: Added.
 
 # vox get a nitrogen tank, other species get nothing
 - type: loadoutGroup
@@ -105,6 +110,7 @@
   loadouts:
   - LoadoutSpeciesPocketDoubleNitrogen
   - LoadoutSpeciesPocketDoubleOxygen
+  - LoadoutSpeciesPocketDoubleWater
 
 # Command
 - type: loadoutGroup
@@ -562,6 +568,8 @@
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterClown # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
 
 - type: loadoutGroup
   id: ClownJobTrinkets
@@ -615,6 +623,19 @@
   loadouts:
   - MimeSuspendersRed
   - MimeSuspendersBlack
+
+- type: loadoutGroup
+  id: SurvivalMime
+  name: loadout-group-survival-mime
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenMime
+  - EmergencyOxygenMime
+  - EmergencySpeciesMothMime
+  - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterMime # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
 
 #- type: loadoutGroup
 #  id: MimeJobTrinkets
@@ -961,6 +982,8 @@
   - EmergencyNitrogenExtended
   - EmergencyOxygenExtended
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterExtended # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
 
 # Science
 - type: loadoutGroup
@@ -1295,6 +1318,8 @@
   - EmergencyNitrogenSecurity
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterSecurity # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
 
 # Wildcards
 - type: loadoutGroup
@@ -1358,6 +1383,8 @@
   - EmergencyNitrogenSyndicate
   - EmergencyOxygenSyndicate
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterSyndicate # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
 
 - type: loadoutGroup
   id: SurvivalMilitaryDouble # Survival box mostly used by ERT/deathsquad
@@ -1367,6 +1394,7 @@
   loadouts:
   - EmergencyNitrogenMilitaryDouble
   - EmergencyOxygenMilitaryDouble
+  - LoadoutEmergencyWaterMilitaryDouble # Floof: Added.
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool
