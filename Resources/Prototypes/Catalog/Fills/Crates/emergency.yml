@@ -62,29 +62,6 @@
           amount: 3
 
 - type: entity
-  parent: CrateInternals
-  id: 
-  name: internals crate (large)
-  description: Master your life energy and control your breathing with six breath masks, six gas masks, six emergency pressure suits, six oxygen tanks, and six nitrogen tanks.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingMaskGas
-          amount: 6
-        - id: ClothingMaskBreath
-          amount: 6
-        - id: OxygenTankFilled
-          amount: 6
-        - id: NitrogenTankFilled
-          amount: 6
-        - id: TankWaterFilled # Floof.
-          amount: 6
-        - id: ClothingOuterSuitEmergency
-          amount: 6
-
-- type: entity
   parent: CrateRadiation
   id: CrateEmergencyRadiation
   name: radiation protection crate

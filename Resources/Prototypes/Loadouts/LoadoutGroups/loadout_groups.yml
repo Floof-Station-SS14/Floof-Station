@@ -624,19 +624,6 @@
   - MimeSuspendersRed
   - MimeSuspendersBlack
 
-- type: loadoutGroup
-  id: SurvivalMime
-  name: loadout-group-survival-mime
-  minLimit: 2
-  hidden: true
-  loadouts:
-  - EmergencyNitrogenMime
-  - EmergencyOxygenMime
-  - EmergencySpeciesMothMime
-  - LoadoutSpeciesVoxNitrogen
-  - LoadoutEmergencyWaterMime # Floof: Added.
-  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
-
 #- type: loadoutGroup
 #  id: MimeJobTrinkets
 #  name: loadout-group-jobtrinkets
