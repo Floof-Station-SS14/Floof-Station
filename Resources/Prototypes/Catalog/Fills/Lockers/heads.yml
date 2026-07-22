@@ -53,6 +53,7 @@
         max: 15
     - id: PlushieLizardJobCaptain
       prob: 0.02
+    - id: ClothingNeckCollarCmd # Floof
 
 # No laser table + Laser table
 - type: entityTable
