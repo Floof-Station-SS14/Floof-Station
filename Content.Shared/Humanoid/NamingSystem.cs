@@ -26,6 +26,7 @@ namespace Content.Shared.Humanoid
                 Log.Warning($"Unable to find species {species} for name, falling back to {FallbackSpecies}");
             }
 
+            // Floof: Added "FirstTheLast"
             switch (speciesProto.Naming)
             {
                 case SpeciesNaming.First:
@@ -37,6 +38,10 @@ namespace Content.Shared.Humanoid
                 case SpeciesNaming.FirstDashFirst:
                     return Loc.GetString("namepreset-firstdashfirst",
                         ("first1", GetFirstName(speciesProto, gender)), ("first2", GetFirstName(speciesProto, gender)));
+                case SpeciesNaming.FirstTheLast:
+                    return Loc.GetString("namepreset-firstthelast",
+                        ("first", GetFirstName(speciesProto, gender)),
+                        ("last", GetLastName(speciesProto)));
                 case SpeciesNaming.FirstLast:
                 default:
                     return Loc.GetString("namepreset-firstlast",
