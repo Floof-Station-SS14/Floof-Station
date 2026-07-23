@@ -289,6 +289,8 @@
     eggSpawn:
     - id: FoodEgg
   - type: ExaminableHunger
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
@@ -752,6 +754,8 @@
     eggSpawn:
     - id: FoodEgg
   - type: ExaminableHunger
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
@@ -963,6 +967,8 @@
     guides:
     - Chef
     - FoodRecipes
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   parent: SolutionLarge
@@ -1032,6 +1038,8 @@
       path: /Audio/Voice/Arachnid/arachnid_chitter.ogg
   - type: ReplacementAccent
     accent: crab
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -1136,6 +1144,8 @@
   - type: HTN
     rootTask:
       task: RuminantHostileCompound
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   parent: SolutionUdder
@@ -1279,6 +1289,8 @@
     guides:
     - Chef
     - FoodRecipes
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   parent: SolutionUdder
@@ -1399,6 +1411,8 @@
   - type: NpcFactionMember
     factions:
     - Passive
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   name: gorilla
@@ -1479,6 +1493,8 @@
       0: Alive
       200: Critical
       250: Dead
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   name: kangaroo
@@ -1517,6 +1533,8 @@
     templateId: kangaroo
   - type: ReplacementAccent
     accent: kangaroo
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: ToolRefinable
     refineResult:
     - id: FoodMeat
@@ -1699,6 +1717,8 @@
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: JobStatus # marks them as crew
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   name: monkey
@@ -2075,6 +2095,8 @@
     refineResult:
     - id: FoodMeatRat
       amount: 1
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: Tag
     tags:
     - Trash
@@ -2266,6 +2288,8 @@
   id: MobLizard
   description: A harmless dragon.
   components:
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 3
@@ -2518,6 +2542,8 @@
       reagents:
       - ReagentId: Blood
         Quantity: 50
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   parent: MobParrotBase
@@ -2586,6 +2612,8 @@
     heatDamage:
       types:
         Heat : 0.2 #per second, scales with temperature & other constants
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 # TODO: Make grenade penguin voice activated like the rest of the stealth items.
 - type: entity
@@ -2754,6 +2782,8 @@
   - type: MeleeChemicalInjector
     transferAmount: 0.75
     solution: melee
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: InteractionPopup
     successChance: 0.5
     interactSuccessString: petting-success-tarantula
@@ -2988,6 +3018,8 @@
   - type: Tag
     tags:
     - VimPilot
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   name: possum
@@ -3151,6 +3183,8 @@
   - type: Tag
     tags:
     - VimPilot
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   abstract: true
@@ -3195,6 +3229,8 @@
   - type: MobPrice
     price: 200
   - type: MessyDrinker
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   # TODO: Fix the sprite offset
   #- type: CreamPied
   #  sprite:
@@ -3212,6 +3248,8 @@
     understands:
     - Dog
   # Starlight-end
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: DamageStateVisuals
     states:
       Alive:
@@ -3372,6 +3410,8 @@
     refineResult:
     - id: FoodMeat
       amount: 3
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: InteractionPopup
     successChance: 0.7
     interactSuccessString: petting-success-cat
@@ -3620,6 +3660,8 @@
   - type: Tag
     tags:
     - VimPilot
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   name: ferret
@@ -3674,6 +3716,8 @@
   - type: Tag
     tags:
     - VimPilot
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
 
 - type: entity
   name: hamster
@@ -3778,6 +3822,8 @@
     refineResult:
     - id: FoodMeat
       amount: 1
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: Tag
     tags:
     - VimPilot
@@ -3902,6 +3948,8 @@
     interactSuccessSpawn: EffectHearts
     interactSuccessSound:
       path: /Audio/Animals/pig_oink.ogg
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember

@@ -30,6 +30,8 @@
       layers:
       - map: [ "enum.DamageStateVisualLayers.Base" ]
         state: alive
+    - type: LeashAnchor # Floofstation - also this :3
+      kind: Intrinsic
     - type: CombatMode
     - type: Physics
     - type: Fixtures

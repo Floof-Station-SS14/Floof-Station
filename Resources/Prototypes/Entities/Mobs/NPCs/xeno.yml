@@ -128,6 +128,8 @@
     molsPerSecondPerUnitMass: 0.0005
   - type: Speech
     speechVerb: LargeMob
+  - type: LeashAnchor # Floofstation - if you dare
+    kind: Intrinsic
 
 - type: entity
   name: praetorian

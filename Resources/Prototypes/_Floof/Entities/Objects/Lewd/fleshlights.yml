@@ -13,10 +13,8 @@
     destroyOnEmpty: false
     utensil: none
     solution: fleshlight
-  - type: SolutionContainerManager
-    solutions:
-      fleshlight:
-        maxVol: 30
+  - type: Solution
+    id: fleshlight
   - type: SolutionTransfer
     transferAmount: 5
     maxTransferAmount: 30
