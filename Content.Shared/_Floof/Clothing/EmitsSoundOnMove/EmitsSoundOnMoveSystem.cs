@@ -10,12 +10,12 @@ using Robust.Shared.Player;
 namespace Content.Shared._Floof.Clothing.EmitsSoundOnMove;
 
 // Note: this system has been ported from FS14 by its author and modified to fit the quality standards
-public sealed class EmitsSoundOnMoveSystem : EntitySystem
+public sealed partial class EmitsSoundOnMoveSystem : EntitySystem
 {
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerMan = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private ISharedPlayerManager _playerMan = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
 
     private EntityQuery<InputMoverComponent> _moverQuery;
     private EntityQuery<TransformComponent> _xformQuery;

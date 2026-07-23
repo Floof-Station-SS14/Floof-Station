@@ -8,7 +8,7 @@ namespace Content.Shared._Floof.Leash;
 
 public sealed partial class LeashSystem
 {
-    [Dependency] private readonly SharedJointSystem _joints = default!;
+    [Dependency] private SharedJointSystem _joints = default!;
 
     public static readonly string LeashJointIdPrefix = "leash-joint-";
 

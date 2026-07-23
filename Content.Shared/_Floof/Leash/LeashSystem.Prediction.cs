@@ -5,7 +5,7 @@ namespace Content.Shared._Floof.Leash;
 
 public sealed partial class LeashSystem
 {
-    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private IConfigurationManager _config = default!;
 
     public bool ClientLeashJointPrediction;
 
