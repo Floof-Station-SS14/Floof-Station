@@ -214,3 +214,8 @@
     - GalacticCommon
     - Marish
   # Starlight-end
+  - type: Fingerprint
+  - type: Blindable
+  - type: FireVisuals
+    alternateState: Standing
+  - type: StunVisuals
