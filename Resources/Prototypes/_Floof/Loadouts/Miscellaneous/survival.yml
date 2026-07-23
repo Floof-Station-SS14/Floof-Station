@@ -6,8 +6,15 @@
     species:
     - Feroxi
 
+- type: loadoutEffectGroup
+  id: LoadoutEffectShadekin
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Shadekin
 
 # LOADOUTS #
+# Feroxi
 - type: loadout
   id: LoadoutEmergencyWater
   effects:
@@ -25,15 +32,6 @@
   storage:
     back:
     - BoxHugWater
-
-- type: loadout
-  id: LoadoutEmergencyWaterMime
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: LoadoutEffectWaterBreathers
-  storage:
-    back:
-    - BoxMimeWater
 
 - type: loadout
   id: LoadoutEmergencyWaterExtended
@@ -97,3 +95,41 @@
     proto: LoadoutEffectWaterBreathers
   equipment:
     suitstorage: TankWaterFilled
+
+
+# Shadekin
+- type: loadout
+  id: LoadoutEmergencyShadekin
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: LoadoutEffectShadekin
+  storage:
+    back:
+    - BoxSurvivalShadekin
+
+- type: loadout
+  id: LoadoutEmergencyShadekinClown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: LoadoutEffectShadekin
+  storage:
+    back:
+    - BoxHugShadekin
+
+- type: loadout
+  id: LoadoutEmergencyShadekinSyndicate
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: LoadoutEffectShadekin
+  storage:
+    back:
+    - BoxSurvivalSyndicateShadekin
+
+- type: loadout
+  id: LoadoutEmergencyShadekinMedical
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: LoadoutEffectShadekin
+  storage:
+    back:
+    - BoxSurvivalMedicalShadekin

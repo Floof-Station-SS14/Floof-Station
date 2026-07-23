@@ -120,12 +120,10 @@ public sealed partial class SpeciesPrototype : IPrototype
     public int MaxAge = 120;
 }
 
-// Floof: Added FirstTheLast
 public enum SpeciesNaming : byte
 {
     First,
     FirstLast,
     FirstDashFirst,
     TheFirstofLast,
-    FirstTheLast,
 }
