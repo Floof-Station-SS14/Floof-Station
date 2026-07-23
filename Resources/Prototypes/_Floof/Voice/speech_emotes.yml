@@ -26,3 +26,19 @@
   - chomps her maw
   - chomps his maw
   - chomps its maw
+
+- type: emote
+  id: Bellow
+  name: chat-emote-name-bellow
+  category: Vocal
+  icon: Interface/Emotes/laugh.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-bellow"]
+  chatTriggers:
+  - bellow
+  - bellows
