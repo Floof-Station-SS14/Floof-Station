@@ -187,10 +187,9 @@
 # feel free to hook them into random content.
 
 - type: entity
-  name: Emotional Support Scurret
-  id: MobBaseEmotionalSupportScurret
-  parent: MobBaseScurret
   abstract: true
+  id: MobBaseEmotionalSupportScurret
+  name: Emotional Support Scurret
   components:
   # Starlight-start: Languages
     - type: LanguageKnowledge
