@@ -30,9 +30,9 @@
   suffix: Greyscale
   components:
   - type: Sprite
-    sprite: Floof/Clothing/Uncategorized/harness_white.rsi
+    sprite: _Floof/Clothing/Uncategorized/harness_white.rsi
   - type: Clothing
-    sprite: Floof/Clothing/Uncategorized/harness_white.rsi
+    sprite: _Floof/Clothing/Uncategorized/harness_white.rsi
 
 ## Colored as gray
 #- type: entity
@@ -71,6 +71,6 @@
   name: safety harness
   components:
   - type: Sprite
-    sprite: Floof/Clothing/Uncategorized/safety_harness.rsi
+    sprite: _Floof/Clothing/Uncategorized/safety_harness.rsi
   - type: Clothing
-    sprite: Floof/Clothing/Uncategorized/safety_harness.rsi
+    sprite: _Floof/Clothing/Uncategorized/safety_harness.rsi
