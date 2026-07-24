@@ -182,3 +182,17 @@ Entries:
       message: Ported Floofs wood railings mapping
   id: 24
   time: '2026-07-24T12:34:38.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added Shadekin with our own lore.
+    - type: Add
+      message: Added Shadekin 'survival boxes'
+    - type: Add
+      message: Added Shadekin plushies
+    - type: Add
+      message: Added Shadekin-specific disabilities
+    - type: Tweak
+      message: Shadekin and Feroxi plushies can now spawn in crates and other spawners.
+  id: 25
+  time: '2026-07-24T13:05:59.0000000+00:00'
