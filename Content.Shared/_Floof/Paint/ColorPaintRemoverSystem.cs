@@ -6,12 +6,12 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._Floof.Paint;
 
-public sealed class ColorPaintRemoverSystem : EntitySystem
+public sealed partial class ColorPaintRemoverSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedAppearanceSystem _appearanceSystem = default!;
 
 
     public override void Initialize()

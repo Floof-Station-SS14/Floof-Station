@@ -8,10 +8,10 @@ using static Robust.Client.GameObjects.SpriteComponent;
 
 namespace Content.Client._Floof.Paint;
 
-public sealed class ColorPaintedVisualizerSystem : VisualizerSystem<ColorPaintedComponent>
+public sealed partial class ColorPaintedVisualizerSystem : VisualizerSystem<ColorPaintedComponent>
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
 
 
     public override void Initialize()
