@@ -1,9 +1,12 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
+using Content.Server.Mobs; // Starlight
+using Content.Server.Preferences.Managers;
 using Content.Server.Roles.Jobs;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
@@ -57,6 +60,7 @@ namespace Content.Server.Ghost
         [Dependency] private VisibilitySystem _visibilitySystem = default!;
         [Dependency] private MetaDataSystem _metaData = default!;
         [Dependency] private MobThresholdSystem _mobThresholdSystem = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!; // Floof
         [Dependency] private IConfigurationManager _configurationManager = default!;
         [Dependency] private IChatManager _chatManager = default!;
         [Dependency] private SharedMindSystem _mind = default!;
@@ -67,6 +71,8 @@ namespace Content.Server.Ghost
         [Dependency] private TagSystem _tag = default!;
         [Dependency] private NameModifierSystem _nameMod = default!;
         [Dependency] private GhostSpriteStateSystem _ghostState = default!;
+        [Dependency] private IServerPreferencesManager _preferencesManager = default!; // DeltaV
+        [Dependency] private IAdminManager _admin = default!; // DeltaV
 
         [Dependency] private EntityQuery<GhostComponent> _ghostQuery = default!;
         [Dependency] private EntityQuery<FollowerComponent> _followerQuery = default!;
@@ -648,7 +654,15 @@ namespace Content.Server.Ghost
                                       _damageable.GetTotalDamage((playerEntity.Value, damageable));
                     }
 
-                    DamageSpecifier damage = new(ProtoMan.Index(AsphyxiationDamageType), dealtDamage);
+                    // Starlight - Start
+                    //DamageSpecifier damage = new(_prototypeManager.Index(AsphyxiationDamageType), dealtDamage);
+
+                    var damageType = _prototypeManager.Index(AsphyxiationDamageType);
+                    if (TryComp<DeathgaspComponent>(playerEntity, out var deathgasp))
+                        damageType = _prototypeManager.Index(deathgasp.DamageType);
+
+                    DamageSpecifier damage = new(damageType, dealtDamage);
+                    // Starlight - End
 
                     _damageable.ChangeDamage(playerEntity.Value, damage, true);
                 }

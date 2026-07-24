@@ -2,6 +2,7 @@
   parent: BoxSurvival
   id: BoxSurvivalWater
   suffix: Standard H2O
+  name: H2O survival box
   components:
   - type: EntityTableContainerFill
     containers:
@@ -21,6 +22,7 @@
   parent: BoxSurvivalEngineering
   id: BoxSurvivalEngineeringWater
   suffix: Extended H2O
+  name: extended-capacity H2O survival box
   components:
   - type: EntityTableContainerFill
     containers:
@@ -40,6 +42,7 @@
   parent: BoxSurvivalSecurity
   id: BoxSurvivalSecurityWater
   suffix: Security H20
+  name: security H2O survival box
   components:
   - type: EntityTableContainerFill
     containers:
@@ -59,6 +62,7 @@
   parent: BoxSurvivalMedical
   id: BoxSurvivalMedicalWater
   suffix: Medical H2O
+  name: medical H2O survival box
   components:
   - type: EntityTableContainerFill
     containers:
@@ -78,6 +82,7 @@
   parent: BoxSurvivalSyndicate
   id: BoxSurvivalSyndicateWater
   suffix: Syndicate H2O
+  name: syndicate H2O survival box
   components:
   - type: EntityTableContainerFill
     containers:
@@ -85,6 +90,7 @@
         children:
         - id: ClothingMaskGasSyndicate
         - id: EmergencyTankExtendedWaterFilled
+        - id: EmergencyMedipen
   - type: Sprite
     layers:
     - state: internals
@@ -96,6 +102,7 @@
   parent: BoxSurvivalMilitaryDouble
   id: BoxSurvivalMilitaryDoubleWater
   suffix: Military H2O
+  name: military H2O survival box
   components:
   - type: EntityTableContainerFill
     containers:
@@ -114,7 +121,8 @@
 - type: entity
   parent: BoxHug
   id: BoxHugWater
-  suffix: Emergency H2O
+  suffix: Survival; H2O
+  name: box of hugs
   components:
   - type: EntityTableContainerFill
     containers:
@@ -126,21 +134,66 @@
   - type: Label
     localizedLabel: reagent-name-water
 
+
+# Shadekin
 - type: entity
-  parent: BoxSurvivalNitrogen
-  id: BoxMimeWater
-  suffix: Mime, Emergency H2O
+  parent: BoxSurvival
+  id: BoxSurvivalShadekin
+  suffix: Standard Shadekin
+  name: shadekin survival box
   components:
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: ClothingMaskBreath
-        - id: EmergencyTankWaterVaporFilled
         - id: EmergencyMedipen
   - type: Sprite
     layers:
-    - state: internals
-    - state: emergencytank
-  - type: Label
-    localizedLabel: reagent-name-water
+    - state: box
+    - state: shadekin
+
+- type: entity
+  parent: BoxHug
+  id: BoxHugShadekin
+  suffix: Survival; Shadekin
+  name: box of hugs
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: EmergencyMedipen
+
+- type: entity
+  parent: BoxSurvivalSyndicate
+  id: BoxSurvivalSyndicateShadekin
+  suffix: Syndicate Shadekin
+  name: syndicate shadekin survival box
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskGasSyndicate
+        - id: EmergencyMedipen
+  - type: Sprite
+    layers:
+    - state: box
+    - state: shadekin
+
+- type: entity
+  parent: BoxSurvivalMedical
+  id: BoxSurvivalMedicalShadekin
+  suffix: Medical Shadekin
+  name: medical shadekin survival box
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskSterile
+        - id: EmergencyMedipen
+  - type: Sprite
+    layers:
+    - state: box
+    - state: shadekin

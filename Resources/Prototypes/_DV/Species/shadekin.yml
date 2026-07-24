@@ -1,0 +1,23 @@
+- type: species
+  id: Shadekin
+  name: species-name-shadekin
+  roundStart: true
+  prototype: MobShadekin
+  dollPrototype: AppearanceShadekin
+  defaultSkinTone: "#ffffff"
+  skinColoration: Hues
+  # eyeColoration: Shadekin
+  maleFirstNames: names_shadekin
+  femaleFirstNames: names_shadekin
+  naming: First
+  # Delta V - Comment out
+  maxAge: 300
+  oldAge: 250
+  # customName: true
+  defaultSoundsBySex:
+  - FemaleShadekin # Floof: Better than "HL1 scream with effects"
+  - FemaleShadekin
+  - FemaleShadekin # Floof: Better than "HL1 scream with effects"
+  voices:
+  - FemaleShadekin # Floof: Better than "HL1 scream with effects"
+  - FemaleShadekin

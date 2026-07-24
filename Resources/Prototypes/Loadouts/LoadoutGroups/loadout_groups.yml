@@ -85,6 +85,7 @@
   - LoadoutSpeciesVoxNitrogen
   - LoadoutEmergencyWater # Floof: Added.
   - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekin # Floof: Added.
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -576,6 +577,7 @@
   - LoadoutSpeciesVoxNitrogen
   - LoadoutEmergencyWaterClown # Floof: Added.
   - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekinClown # Floof: Added.
 
 - type: loadoutGroup
   id: ClownJobTrinkets
@@ -979,6 +981,7 @@
   - LoadoutSpeciesVoxNitrogen
   - LoadoutEmergencyWaterExtended # Floof: Added.
   - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekin # Floof: Added.
 
 # Science
 - type: loadoutGroup
@@ -1319,6 +1322,7 @@
   - LoadoutSpeciesVoxNitrogen
   - LoadoutEmergencyWaterSecurity # Floof: Added.
   - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekin # Floof: Added.
 
 # Wildcards
 - type: loadoutGroup
@@ -1384,6 +1388,7 @@
   - LoadoutSpeciesVoxNitrogen
   - LoadoutEmergencyWaterSyndicate # Floof: Added.
   - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekinSyndicate # Floof: Added.
 
 - type: loadoutGroup
   id: SurvivalMilitaryDouble # Survival box mostly used by ERT/deathsquad
@@ -1394,6 +1399,7 @@
   - EmergencyNitrogenMilitaryDouble
   - EmergencyOxygenMilitaryDouble
   - LoadoutEmergencyWaterMilitaryDouble # Floof: Added.
+  - LoadoutEmergencyShadekin # Floof: Added.
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool

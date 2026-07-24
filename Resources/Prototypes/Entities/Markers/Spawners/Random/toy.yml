@@ -41,6 +41,8 @@
     - id: PlushieVulp
     - id: PlushieSheep
     - id: PlushieSpaceSheep
+    - id: PlushieShadekin # Floof: Added.
+    - id: PlushieFeroxi # Floof: Added.
     - !type:GroupSelector
       children:
       - id: PlushieBee
