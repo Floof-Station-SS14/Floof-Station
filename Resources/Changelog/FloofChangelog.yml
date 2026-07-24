@@ -165,3 +165,20 @@ Entries:
       message: Added Lizard Bellow sound!
   id: 22
   time: '2026-07-23T19:48:59.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Ported spray paint.
+    - type: Fix
+      message: >-
+        Fixed innumerous issues with spray paint, such as being able to paint
+        anomalies, having a do-after before getting told that your spray paint
+        is out of ammo, and more.
+  id: 23
+  time: '2026-07-24T12:28:54.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Ported Floofs wood railings mapping
+  id: 24
+  time: '2026-07-24T12:34:38.0000000+00:00'
