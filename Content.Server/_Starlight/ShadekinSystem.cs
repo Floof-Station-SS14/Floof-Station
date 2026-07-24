@@ -136,10 +136,10 @@ public sealed partial class ShadekinSystem : EntitySystem
             var attenuation = 1 - (denom * denom);
             var calculatedLight = 0f;
 
-            if (light.Comp.MaskPath is not null)
+            if (light.Comp.LightMask is not null)
             {
                 var angleToTarget = GetAngle(light, light.Comp, uid);
-                foreach (var cone in _lightMasks[light.Comp.MaskPath])
+                foreach (var cone in _lightMasks[light.Comp.LightMask])
                 {
                     var coneLight = 0f;
                     var angleAttenuation = (float)Math.Min((float)Math.Max(cone.OuterWidth - angleToTarget, 0f), cone.InnerWidth) / cone.OuterWidth;

@@ -102,8 +102,7 @@
   - type: Speech
     allowedEmotes: ["Marr", "Wurble"]
   - type: Vocal
-    sounds:
-      emoteSounds: FemaleShadekin
+    emoteSounds: FemaleShadekin
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw
@@ -122,15 +121,14 @@
     damageType: Bloodloss
   - type: Reactive
     groups:
-      Flammable: [Touch]
-      Extinguish: [Touch]
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+      Acidic: [Touch, Ingestion]
     reactions:
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:
       - !type:WashCreamPie
-    - reagents: [ Water ]
-      methods: [Touch]
   - type: Bloodstream
     bloodlossDamage:
       types:
