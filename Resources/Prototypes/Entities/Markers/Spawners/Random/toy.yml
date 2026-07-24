@@ -334,13 +334,11 @@
       - id: SingularityToy
       - id: TeslaToy
       - id: PonderingOrb
-        # Floof section color paints
+    - !type:GroupSelector # Floof section color paints
+      children:
       - id: FunnyPaint
-        orGroup: Paint
-        prob: 0.5
       - id: FunnyPaintYellow
-        orGroup: Paint
-        prob: 0.5
+        amount: 2
         # Floof section end
 
 # Entities that don't do much more than make a unique sound. Plushies excluded.

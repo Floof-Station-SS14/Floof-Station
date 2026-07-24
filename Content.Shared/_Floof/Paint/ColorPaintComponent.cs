@@ -33,7 +33,7 @@ public sealed partial class ColorPaintComponent : Component
 
     /// Solution on the entity that contains the paint
     [DataField]
-    public string Solution = "drink";
+    public string Solution = "solution";
 
     /// Reagent that will be used as paint
     [DataField, AutoNetworkedField]
