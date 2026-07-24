@@ -196,3 +196,9 @@ Entries:
       message: Shadekin and Feroxi plushies can now spawn in crates and other spawners.
   id: 25
   time: '2026-07-24T13:05:59.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added floof sign.
+  id: 26
+  time: '2026-07-24T13:44:12.0000000+00:00'
