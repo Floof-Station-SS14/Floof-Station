@@ -176,3 +176,9 @@ Entries:
         is out of ammo, and more.
   id: 23
   time: '2026-07-24T12:28:54.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Ported Floofs wood railings mapping
+  id: 24
+  time: '2026-07-24T12:34:38.0000000+00:00'
