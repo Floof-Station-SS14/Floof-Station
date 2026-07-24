@@ -103,9 +103,7 @@
     allowedEmotes: ["Marr", "Wurble"]
   - type: Vocal
     sounds:
-      Male: MaleShadekin
-      Female: FemaleShadekin
-      Unsexed: MaleShadekin
+      emoteSounds: FemaleShadekin
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw
