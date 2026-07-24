@@ -5,11 +5,13 @@
   description: Holds the pole that allows you to show off your great "assets"
   suffix: Floof
   components:
-  - type: Transform
-    anchored: true
   - type: Construction
     graph: Lewd
     node: FurnStripPole
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
   - type: Fixtures
     fixtures:
       fix1:
@@ -70,9 +72,8 @@
   components:
   - type: Transform
     anchored: true
-  - type: Construction
-    graph: Lewd
-    node: FurnStripPole
+  - type: Clickable
+  - type: InteractionOutline
   - type: Fixtures
     fixtures:
       fix1:
@@ -123,12 +124,15 @@
 - type: entity
   id: StripperPoleInit
   parent: BaseStructure
-  categories: [ HideSpawnMenu ]
   name: stripper pole base
   description: The base of a stripper pole.
   placement:
     mode: SnapgridCenter
   components:
+  - type: Construction
+    graph: Lewd
+    node: FurnStripPoleInit
+    deconstructionTarget: start
   - type: Clickable
   - type: InteractionOutline
   - type: Transform
@@ -152,9 +156,6 @@
   - type: Icon
     sprite: _Floof/Structures/pole.rsi
     state: icon
-  - type: Construction
-    graph: Lewd
-    node: FurnStripPoleInit
   - type: Injurable
   - type: Damageable
     damageModifierSet: Metallic
