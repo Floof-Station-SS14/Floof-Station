@@ -133,3 +133,66 @@ Entries:
       message: Added lewd dressers.
   id: 18
   time: '2026-07-18T16:38:54.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added a feroxi Chomp emote icon.
+    - type: Add
+      message: Added hair to feroxi.
+    - type: Tweak
+      message: Doubled Feroxi's thirst rate.
+    - type: Fix
+      message: Fixed Feroxi medical loadouts not including a water box.
+  id: 19
+  time: '2026-07-18T17:29:01.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Fix
+      message: Fixed a bug involving ghosts not hearing normal chat.
+  id: 20
+  time: '2026-07-18T17:31:17.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added collars!
+    - type: Add
+      message: Added collars to departmental vendors.
+  id: 21
+  time: '2026-07-22T16:02:04.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added Lizard Bellow sound!
+  id: 22
+  time: '2026-07-23T19:48:59.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Ported spray paint.
+    - type: Fix
+      message: >-
+        Fixed innumerous issues with spray paint, such as being able to paint
+        anomalies, having a do-after before getting told that your spray paint
+        is out of ammo, and more.
+  id: 23
+  time: '2026-07-24T12:28:54.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Ported Floofs wood railings mapping
+  id: 24
+  time: '2026-07-24T12:34:38.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added Shadekin with our own lore.
+    - type: Add
+      message: Added Shadekin 'survival boxes'
+    - type: Add
+      message: Added Shadekin plushies
+    - type: Add
+      message: Added Shadekin-specific disabilities
+    - type: Tweak
+      message: Shadekin and Feroxi plushies can now spawn in crates and other spawners.
+  id: 25
+  time: '2026-07-24T13:05:59.0000000+00:00'

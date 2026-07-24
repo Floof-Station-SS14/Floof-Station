@@ -15,9 +15,12 @@ namespace Content.Shared._Goobstation.Overlays;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class NightVisionOverlayComponent : SwitchableVisionOverlayComponent
 {
-    public override EntProtoId? ToggleAction { get; set; } = "ToggleNightVision";
+    public override EntProtoId? ToggleAction { get; set; } = "ActionToggleNightVision";
 
     public override Color Color { get; set; } = Color.FromHex("#98FB98");
+
+    [DataField]
+    public EntityUid? SelfToggleActionEntity;
 }
 
 public sealed partial class ToggleNightVisionEvent : InstantActionEvent;

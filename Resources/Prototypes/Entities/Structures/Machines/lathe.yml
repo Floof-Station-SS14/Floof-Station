@@ -1,6 +1,6 @@
 - type: entity
   id: BaseLathe
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseMachinePowered, ConstructibleMachine, BaseConstructibleMachineDestructible ]
   abstract: true
   name: lathe
   components:
@@ -23,15 +23,11 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 175
       behaviors:
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
   - type: WiresPanel
   - type: ActivatableUI
     key: enum.LatheUiKey.Key
@@ -142,6 +138,9 @@
     - ServiceStatic
     - PowerCellsStatic
     - ElectronicsStatic
+    # Floofstation section
+    - CollarsAutolatheFloofstation
+    # Floofstation section end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
@@ -528,6 +527,9 @@
     - Scarves
     - Carpets
     - Bedsheets
+    # Floofstation section
+    - CollarsFloofstation
+    # Floofstation section end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm

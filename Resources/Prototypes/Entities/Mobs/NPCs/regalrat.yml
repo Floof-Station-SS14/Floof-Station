@@ -1,7 +1,7 @@
 - type: entity
   name: rat king
   id: MobRatKing
-  parent: [ BaseMobRat, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ]
+  parent: [ BaseMobRat, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision, BaseMobDestructible ]
   description: He's da rat. He make da roolz.
   components:
   # Starlight-start: Languages
@@ -138,6 +138,9 @@
       gender: male
   - type: Tool
     qualities: Slicing
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
+
 
 - type: entity
   id: MobRatKingBuff

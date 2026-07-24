@@ -7,17 +7,18 @@
   <GuideEntityEmbed Entity="AppearanceArachnid" Caption="Arachnid"/>
   <GuideEntityEmbed Entity="AppearanceDiona" Caption="Diona"/>
   <GuideEntityEmbed Entity="AppearanceDwarf" Caption="Dwarf"/>
-  <GuideEntityEmbed Entity="AppearanceHuman" Caption="Human"/>
+  <GuideEntityEmbed Entity="AppearanceFeroxi" Caption="Feroxi"/>
   </Box>
   <Box>
+  <GuideEntityEmbed Entity="AppearanceHuman" Caption="Human"/>
   <GuideEntityEmbed Entity="AppearanceMoth" Caption="Moth Person"/>
   <GuideEntityEmbed Entity="AppearanceReptilian" Caption="Reptilian"/>
-  <GuideEntityEmbed Entity="AppearanceSlimePerson" Caption="Slime Person"/>
-  <GuideEntityEmbed Entity="AppearanceVox" Caption="Vox"/>
+  <GuideEntityEmbed Entity="AppearanceShadekin" Caption="Shadekin"/>
   </Box>
   <Box>
+    <GuideEntityEmbed Entity="AppearanceSlimePerson" Caption="Slime Person"/>
+    <GuideEntityEmbed Entity="AppearanceVox" Caption="Vox"/>
     <GuideEntityEmbed Entity="AppearanceVulpkanin" Caption="Vulpkanin"/>
-    <GuideEntityEmbed Entity="AppearanceFeroxi" Caption="Feroxi"/>
   </Box>
 
 </Document>

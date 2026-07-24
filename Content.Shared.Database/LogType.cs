@@ -484,6 +484,11 @@ public enum LogType
     /// </summary>
     Connection = 104,
 
+    /// <summary>
+    /// Silicon law changes.
+    /// </summary>
+    SiliconLaw = 105,
+    
     /// <summary> Floof
     /// Events related to players consent.
     /// </summary>

@@ -15,5 +15,6 @@
     ClothingHandsGlovesColorBlack: 2
     ClothingHandsGlovesLatex: 2
     ClothingHeadsetSecurity: 2
+    ClothingNeckCollarSec: 1 # Floofstation
   contrabandInventory:
     ToyFigurineDetective: 1

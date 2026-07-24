@@ -27,6 +27,15 @@
     popup: Obvious
     sound: {path: /Audio/_Floof/Effects/suckle-swallow.ogg}
     soundPerceivedByOthers: false
+  hideByRequirement: true
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+    - !type:MobStateRequirement
+      inverted: true
+    - !type:EntityWhitelistRequirement
+      whitelist:
+        components: [HumanoidProfile]
   action:
     !type:NoOpAction
 

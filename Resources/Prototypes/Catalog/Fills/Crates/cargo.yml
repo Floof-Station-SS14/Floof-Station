@@ -201,6 +201,8 @@
     - id: PlushieVulp
     - id: PlushieArachind
     - id: PlushieLizardJobMultiweh # the exceedingly rare multiweh!
+    - id: PlushieShadekin # Floof: Added.
+    - id: PlushieFeroxi # Floof: Added.
     - id: PlushieThrongler #hehe
       weight: 0.05
 
