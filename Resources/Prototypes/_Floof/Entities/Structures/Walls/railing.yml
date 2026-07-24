@@ -8,8 +8,9 @@
   - type: InteractionOutline
   - type: Repairable
   - type: Damageable
+    damageModifierSet: Wood
+  - type: Injurable
     damageContainer: Inorganic
-    damageModifierSet: FlimsyMetallic
   - type: Destructible
     thresholds:
     - trigger:
