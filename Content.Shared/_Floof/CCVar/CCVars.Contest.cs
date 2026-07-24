@@ -2,7 +2,6 @@ using Robust.Shared.Configuration;
 
 namespace Content.Shared._Floof.CCVar;
 
-[CVarDefs]
 public sealed partial class CCVars
 {
         /// <summary>

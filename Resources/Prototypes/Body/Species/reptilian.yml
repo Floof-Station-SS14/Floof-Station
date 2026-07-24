@@ -128,7 +128,7 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
-    allowedEmotes: ['Thump']
+    allowedEmotes: ['Thump', 'Bellow']
   - type: TypingIndicator
     proto: lizard
   - type: CreamPied
