@@ -19,7 +19,3 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/_Starlight/Voice/Shadekin/wurble.ogg
-  - type: Edible
-    requiresSpecialDigestion: true
-    useSound:
-      collection: FelinidScreams

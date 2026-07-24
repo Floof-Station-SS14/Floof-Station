@@ -32,12 +32,6 @@
       path: /Audio/_Starlight/Voice/Shadekin/mar.ogg
     Wurble:
       path: /Audio/_Starlight/Voice/Shadekin/wurble.ogg
-    Hiss:
-      collection: FelinidHisses
-    Purr:
-      collection: FelinidPurrs
-    Growl:
-      collection: FelinidGrowls
 
 - type: emoteSounds
   id: FemaleShadekin
@@ -72,9 +66,3 @@
       path: /Audio/_Starlight/Voice/Shadekin/mar.ogg
     Wurble:
       path: /Audio/_Starlight/Voice/Shadekin/wurble.ogg
-    Hiss:
-      collection: FelinidHisses
-    Purr:
-      collection: FelinidPurrs
-    Growl:
-      collection: FelinidGrowls

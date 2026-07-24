@@ -100,7 +100,7 @@
     sprite: _Starlight/Mobs/Species/Shadekin/parts.rsi
     state: full
   - type: Speech
-    allowedEmotes: ["Marr", "Wurble", "Hiss", "Growl", "Purr"]
+    allowedEmotes: ["Marr", "Wurble"]
   - type: Vocal
     sounds:
       Male: MaleShadekin
@@ -117,8 +117,9 @@
   - type: FlashModifier
     modifier: 2
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Shadekin
+  - type: Injurable
+    damageContainer: Biological
   - type: Deathgasp
     damageType: Bloodloss
   - type: Reactive
@@ -132,10 +133,6 @@
       - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [Touch]
-      effects:
-      - !type:Emote
-        emote: Hiss
-        showInChat: false
   - type: Bloodstream
     bloodlossDamage:
       types:
