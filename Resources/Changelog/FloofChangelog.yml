@@ -202,3 +202,11 @@ Entries:
       message: Added floof sign.
   id: 26
   time: '2026-07-24T13:44:12.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Fix
+      message: Fixed the stripper pole duping materials on deconstructions.
+    - type: Fix
+      message: Stripper poles can now be clicked.
+  id: 27
+  time: '2026-07-24T16:02:24.0000000+00:00'
