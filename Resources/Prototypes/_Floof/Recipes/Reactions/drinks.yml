@@ -291,8 +291,8 @@
       amount: 2
     Ethanol:
       amount: 1
-    HealthViolation:
-      amount: 1
+#    HealthViolation:
+#      amount: 1
   products:
     Eminence: 5
 
@@ -921,8 +921,8 @@
       amount: 2
     Water:
       amount: 3
-    LotophagoiOil:
-      amount: 1
+#    LotophagoiOil:
+#      amount: 1
   products:
     Hallelujah : 6
 
@@ -933,7 +933,7 @@
   reactants:
     Gin:
       amount: 1
-    NaturalLubricant:
+    Squirt:
       amount: 2
   products:
     GinandPussy: 3
@@ -945,7 +945,7 @@
   reactants:
     TonicWater:
       amount: 1
-    NaturalLubricant:
+    Squirt:
       amount: 1
   products:
     PussyTonic: 2

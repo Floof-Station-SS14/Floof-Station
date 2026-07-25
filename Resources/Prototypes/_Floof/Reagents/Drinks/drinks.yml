@@ -9,26 +9,25 @@
   recognizable: true
   viscosity: 0.15
   metabolisms:
-    Drink:
+    Bloodstream:
+      metabolismRate : 0.5
       effects:
       - !type:SatiateThirst
         factor: 2
-    Medicine:
-      metabolismRate : 0.5
-      effects:
       - !type:PopupMessage
         type: Local
         visualType: Medium
         messages:
-          - "reagent-effect-aphrodisiac-mild1"
-          - "reagent-effect-aphrodisiac-mild2"
-          - "reagent-effect-aphrodisiac-mild3"
-          - "reagent-effect-aphrodisiac-mild4"
-          - "reagent-effect-aphrodisiac-mild5"
+        - "reagent-effect-aphrodisiac-mild1"
+        - "reagent-effect-aphrodisiac-mild2"
+        - "reagent-effect-aphrodisiac-mild3"
+        - "reagent-effect-aphrodisiac-mild4"
+        - "reagent-effect-aphrodisiac-mild5"
         probability: 0.02
         conditions:
-          - !type:ReagentThreshold
-            max: 50
+        - !type:ReagentCondition
+          reagent: NikkosNaughtyNectar
+          max: 50
   footstepSound:
     collection: FootstepSticky
     params:
@@ -45,15 +44,13 @@
   recognizable: false
   viscosity: 0.15
   metabolisms:
-    Drink:
+    Bloodstream:
       effects:
       - !type:SatiateThirst
         factor: 2
-    Narcotic:
-      effects:
-      - !type:MovespeedModifier
-        walkSpeedModifier: 1.15
-        sprintSpeedModifier: 1.15
+#      - !type:MovespeedModifier
+#        walkSpeedModifier: 1.15
+#        sprintSpeedModifier: 1.15
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
@@ -62,11 +59,10 @@
         key: Drowsiness
         time: 10
         type: Remove
-    Medicine:
-      effects:
       - !type:ResetNarcolepsy
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: BoykissersEnergy
           min: 20
   footstepSound:
     collection: FootstepSticky
