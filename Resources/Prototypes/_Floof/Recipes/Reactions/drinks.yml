@@ -280,21 +280,21 @@
   products:
     EmeraldSwinger: 5
 
-- type: reaction
-  id: Eminence
-  requiredMixerCategories:
-  - Stir
-  reactants:
-    Absinthe:
-      amount: 1
-    CogChamp:
-      amount: 2
-    Ethanol:
-      amount: 1
+#- type: reaction
+#  id: Eminence
+#  requiredMixerCategories:
+#  - Stir
+#  reactants:
+#    Absinthe:
+#      amount: 1
+#    CogChamp:
+#      amount: 2
+#    Ethanol:
+#      amount: 1dsd
 #    HealthViolation:
 #      amount: 1
-  products:
-    Eminence: 5
+#  products:
+#    Eminence: 5
 
 - type: reaction
   id: GoldbloomSpecial
@@ -912,19 +912,19 @@
   products:
     JennTonic: 3
 
-- type: reaction
-  id: Hallelujah
-  requiredMixerCategories:
-  - Stir
-  reactants:
-    Wine:
-      amount: 2
-    Water:
-      amount: 3
+#- type: reaction
+#  id: Hallelujah
+#  requiredMixerCategories:
+#  - Stir
+#  reactants:
+#    Wine:
+#      amount: 2
+#    Water:
+#      amount: 3
 #    LotophagoiOil:
 #      amount: 1
-  products:
-    Hallelujah : 6
+#  products:
+#    Hallelujah : 6
 
 - type: reaction
   id: GinandPussy
