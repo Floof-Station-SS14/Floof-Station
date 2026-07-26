@@ -8,9 +8,10 @@
     itemIconStyle: BigAction
     priority: -20
     useDelay: 1
-    icon:
-      sprite: /Textures/Interface/Alerts/bleed.rsi
-      state: bleed10
+  - type: Sprite
+    sprite: /Textures/Interface/Alerts/bleed.rsi
+    layers:
+    - state: bleed10
   - type: InstantAction
     event: !type:ToggleSharkVisionEvent
 
