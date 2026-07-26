@@ -26,7 +26,7 @@
     normalState: powered-unshaded
     denyState: deny-unshaded
   - type: Wires
-    layoutId: ShopVendor
+    layoutId: Vending
   - type: Rotatable
     rotateWhileAnchored: false
   - type: DatasetVocalizer
