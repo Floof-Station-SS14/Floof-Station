@@ -94,6 +94,9 @@
     ClothingHandsGlovesColorPurple: 2
     ClothingEyesGlassesCheapSunglasses: 3
     # DO NOT ADD MORE, USE UNIFORM DYING
+    ClothingNeckCollarBlack: 3 # Floof
+    ClothingNeckCollarBlue: 3 # Floof
+    ClothingNeckCollarPink: 3 # Floof
   contrabandInventory:
     ClothingMaskNeckGaiter: 2
     ClothingUniformJumpsuitTacticool: 1
@@ -102,4 +105,5 @@
     ToyFigurineGreytider: 1
     ClothingBackpackSatchelSmugglerUnanchored: 1
     ClothingHeadHatSolidHeadband: 2
+    ClothingNeckCollarSyndie: 1 # Floof
   # DO NOT ADD MORE, USE UNIFORM DYING

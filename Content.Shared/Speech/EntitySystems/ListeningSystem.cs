@@ -9,8 +9,12 @@ namespace Content.Shared.Speech.EntitySystems;
 public sealed partial class ListeningSystem : EntitySystem
 {
     [Dependency] private SharedTransformSystem _xforms = default!;
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<EntitySpokeEvent>(OnSpeak);
+    }
 
-    [SubscribeLocalEvent]
     private void OnSpeak(EntitySpokeEvent ev)
     {
         PingListeners(ev.Source, ev.Message, ev.ObfuscatedMessage);
@@ -29,6 +33,7 @@ public sealed partial class ListeningSystem : EntitySystem
 
         var attemptEv = new ListenAttemptEvent(source);
         var ev = new ListenEvent(message, source);
+
         var obfuscatedEv = obfuscatedMessage == null ? null : new ListenEvent(obfuscatedMessage, source);
         var query = EntityQueryEnumerator<ActiveListenerComponent, TransformComponent>();
 

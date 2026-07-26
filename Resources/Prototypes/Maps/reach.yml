@@ -1,7 +1,7 @@
 - type: gameMap
   id: Reach
   mapName: 'Reach'
-  mapPath: /Maps/reach.yml
+  mapPath: /Maps/_Floof/reach.yml # Floof - Changed to our own branch
   minPlayers: 0
   maxPlayers: 7
   stations:

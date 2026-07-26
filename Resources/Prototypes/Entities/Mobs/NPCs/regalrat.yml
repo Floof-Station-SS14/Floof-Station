@@ -4,6 +4,15 @@
   parent: [ BaseMobRat, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision, BaseMobDestructible ]
   description: He's da rat. He make da roolz.
   components:
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - GalacticCommon
+    - Mouse
+    understands:
+    - GalacticCommon
+    - Mouse
+  # Starlight-end
   - type: CombatMode
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.00
@@ -129,6 +138,9 @@
       gender: male
   - type: Tool
     qualities: Slicing
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
+
 
 - type: entity
   id: MobRatKingBuff
@@ -174,6 +186,14 @@
   description: He's da mini rat. He don't make da roolz.
   categories: [ HideSpawnMenu ] #Must be configured to a King or the AI breaks.
   components:
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - Mouse
+    understands:
+    - GalacticCommon
+    - Mouse
+  # Starlight-end
   - type: CombatMode
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5

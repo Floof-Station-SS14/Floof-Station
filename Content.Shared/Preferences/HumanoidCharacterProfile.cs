@@ -21,6 +21,7 @@ using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared._DV.Traits; // DeltaV - Traits rework
 using Robust.Shared;
 using YamlDotNet.RepresentationModel;
 
@@ -79,6 +80,13 @@ namespace Content.Shared.Preferences
         public string FlavorText { get; set; } = string.Empty;
 
         /// <summary>
+        /// FLOOF
+        /// Detailed consent text that can appear for the character.
+        /// </summary>
+        [DataField]
+        public string ConsentText { get; set; } = string.Empty;
+
+        /// <summary>
         /// Associated <see cref="SpeciesPrototype"/> for this profile.
         /// </summary>
         [DataField]
@@ -133,6 +141,7 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
+            string consenttext, // Floof: Added consent.
             string species,
             int age,
             Sex sex,
@@ -148,6 +157,7 @@ namespace Content.Shared.Preferences
         {
             Name = name;
             FlavorText = flavortext;
+            ConsentText = consenttext; // Floof: Added consent.
             Species = species;
             Age = age;
             Sex = sex;
@@ -180,6 +190,7 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(HumanoidCharacterProfile other)
             : this(other.Name,
                 other.FlavorText,
+                other.ConsentText, // Floof: Added consent.
                 other.Species,
                 other.Age,
                 other.Sex,
@@ -398,6 +409,12 @@ namespace Content.Shared.Preferences
             return new(this) { FlavorText = flavorText };
         }
 
+        // Floof: Added consent.
+        public HumanoidCharacterProfile WithConsentText(string consentText)
+        {
+            return new(this) { ConsentText = consentText };
+        }
+
         public HumanoidCharacterProfile WithAge(int age)
         {
             return new(this) { Age = age };
@@ -554,12 +571,12 @@ namespace Content.Shared.Preferences
             // Category not found so dump it.
             TraitCategoryPrototype? traitCategory = null;
 
-            if (category != null && !protoManager.Resolve(category, out traitCategory))
+            if (!protoManager.Resolve(category, out traitCategory)) // DeltaV 13/01/26 - Traits: Category is no longer nullable
                 return new(this);
 
             var list = new HashSet<ProtoId<TraitPrototype>>(_traitPreferences) { traitId };
 
-            if (traitCategory == null || traitCategory.MaxTraitPoints < 0)
+            if (traitCategory.MaxPoints < 0) // DeltaV 13/01/26 - Traits: Changed to MaxPoints
             {
                 return new(this)
                 {
@@ -580,7 +597,7 @@ namespace Content.Shared.Preferences
                 count += otherProto.Cost;
             }
 
-            if (count > traitCategory.MaxTraitPoints && traitProto.Cost != 0)
+            if (count > traitCategory.MaxPoints && traitProto.Cost != 0) // DeltaV 13/01/26 - Traits: Changed to MaxPoints
             {
                 return new(this);
             }
@@ -625,6 +642,7 @@ namespace Content.Shared.Preferences
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
+            if (ConsentText != other.ConsentText) return false; // Floof: Added consent.
             return Appearance.Equals(other.Appearance);
         }
 
@@ -710,6 +728,12 @@ namespace Content.Shared.Preferences
                 flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
             }
 
+            // Floof: Added consent
+            var maxConsentTextLength = configManager.GetCVar(CCVars.MaxConsentTextLength);
+            var consentText = ConsentText.Length > maxConsentTextLength
+                ? FormattedMessage.RemoveMarkupOrThrow(ConsentText)[..maxConsentTextLength]
+                : FormattedMessage.RemoveMarkupOrThrow(ConsentText);
+
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
             var prefsUnavailableMode = PreferenceUnavailable switch
@@ -758,6 +782,7 @@ namespace Content.Shared.Preferences
 
             Name = name;
             FlavorText = flavortext;
+            ConsentText = consentText;
             Age = age;
             Sex = sex;
             Voice = voice;
@@ -818,11 +843,11 @@ namespace Content.Shared.Preferences
                     continue;
 
                 // Always valid.
-                if (traitProto.Category == null)
-                {
-                    result.Add(trait);
-                    continue;
-                }
+                // if (traitProto.Category == null) // DeltaV 13/01/26 - Traits rework
+                // {
+                //     result.Add(trait);
+                //     continue;
+                // }
 
                 // No category so dump it.
                 if (!protoManager.Resolve(traitProto.Category, out var category))
@@ -832,7 +857,7 @@ namespace Content.Shared.Preferences
                 existing += traitProto.Cost;
 
                 // Too expensive.
-                if (existing > category.MaxTraitPoints)
+                if (existing > category.MaxPoints) // DeltaV 13/01/26 - Traits:  Was MaxTraitPoints
                     continue;
 
                 groups[category.ID] = existing;
@@ -878,6 +903,7 @@ namespace Content.Shared.Preferences
             hashCode.Add(_loadouts);
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
+            hashCode.Add(ConsentText); // Floof: Added consent.
             hashCode.Add(Species);
             hashCode.Add(Age);
             hashCode.Add((int)Sex);

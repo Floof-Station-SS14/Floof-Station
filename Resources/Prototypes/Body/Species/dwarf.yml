@@ -150,6 +150,15 @@
     displacement: Dwarfism
   - type: InnerBodyAnomalyVisuals
     displacement: Dwarfism
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - GalacticCommon
+    - SolCommon
+    understands:
+    - GalacticCommon
+    - SolCommon
+  # Starlight-end
 
 - type: entity
   parent: OrganBaseOrganic
