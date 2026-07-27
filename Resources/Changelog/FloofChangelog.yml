@@ -234,3 +234,11 @@ Entries:
       message: Pet Vend
   id: 30
   time: '2026-07-27T09:44:02.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added Boom cradle!
+    - type: Tweak
+      message: Tweaked volume of newton cradle.
+  id: 31
+  time: '2026-07-27T21:24:00.0000000+00:00'
