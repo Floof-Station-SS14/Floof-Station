@@ -10,6 +10,7 @@
 
 - type: loadoutGroup
   id: Trinkets
+  parent: [TrinketsFloofstation] # Floofstation
   name: loadout-group-trinkets
   minLimit: 0
   maxLimit: 3
@@ -62,6 +63,8 @@
   - OffsetCaneMime
   - OffsetCaneNT
   - Cane
+  - TowelColorWhite
+  - LoadoutClicker # Floof: Added.
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -80,6 +83,9 @@
   - EmergencyNitrogen
   - EmergencyOxygen
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWater # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekin # Floof: Added.
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -89,6 +95,7 @@
   loadouts:
   - LoadoutSpeciesEVANitrogen
   - LoadoutSpeciesEVAOxygen
+  - LoadoutSpeciesEVAWater # Floof: Added.
 
 # vox get a nitrogen tank, other species get nothing
 - type: loadoutGroup
@@ -105,6 +112,7 @@
   loadouts:
   - LoadoutSpeciesPocketDoubleNitrogen
   - LoadoutSpeciesPocketDoubleOxygen
+  - LoadoutSpeciesPocketDoubleWater
 
 # Command
 - type: loadoutGroup
@@ -126,6 +134,7 @@
 
 - type: loadoutGroup
   id: CaptainNeck
+  parent: [CommandCollars] # Floofstation
   name: loadout-group-captain-neck
   minLimit: 0
   loadouts:
@@ -170,6 +179,7 @@
 
 - type: loadoutGroup
   id: HoPNeck
+  parent: [CommandCollars] # Floofstation
   name: loadout-group-hop-neck
   minLimit: 0
   loadouts:
@@ -233,6 +243,7 @@
 
 - type: loadoutGroup
   id: PassengerNeck
+  parent: [CommonCollars] # Floofstation
   name: loadout-group-passenger-neck
   minLimit: 0
   loadouts:
@@ -364,6 +375,7 @@
 
 - type: loadoutGroup
   id: LawyerNeck
+  parent: [CommonCollars] # Floofstation
   name: loadout-group-lawyer-neck
   minLimit: 0
   loadouts:
@@ -414,6 +426,7 @@
 
 - type: loadoutGroup
   id: ChaplainNeck
+  parent: [ScientistNeck] # Floofstation
   name: loadout-group-chaplain-neck
   minLimit: 0
   loadouts:
@@ -562,6 +575,9 @@
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterClown # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekinClown # Floof: Added.
 
 - type: loadoutGroup
   id: ClownJobTrinkets
@@ -698,6 +714,7 @@
 
 - type: loadoutGroup
   id: QuartermasterNeck
+  parent: [CargoCollars] # Floofstation
   name: loadout-group-quartermaster-neck
   minLimit: 0
   loadouts:
@@ -821,6 +838,7 @@
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
+  parent: [EngineeringCollars] # Floofstation
   name: loadout-group-chief-engineer-neck
   minLimit: 0
   loadouts:
@@ -961,6 +979,9 @@
   - EmergencyNitrogenExtended
   - EmergencyOxygenExtended
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterExtended # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekin # Floof: Added.
 
 # Science
 - type: loadoutGroup
@@ -972,6 +993,7 @@
 
 - type: loadoutGroup
   id: ResearchDirectorNeck
+  parent: [ScientistNeck] # Floofstation
   name: loadout-group-research-director-neck
   minLimit: 0
   loadouts:
@@ -1017,6 +1039,7 @@
 
 - type: loadoutGroup
   id: ScientistNeck
+  parent: [ScienceCollars] # Floofstation
   name: loadout-group-scientist-neck
   minLimit: 0
   loadouts:
@@ -1118,6 +1141,7 @@
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
+  parent: [SecurityCollars] # Floofstation
   name: loadout-group-head-of-security-neck
   minLimit: 0
   loadouts:
@@ -1243,6 +1267,7 @@
 
 - type: loadoutGroup
   id: DetectiveNeck
+  parent: [SecurityCollars] # Floofstation
   name: loadout-group-detective-neck
   minLimit: 0
   loadouts:
@@ -1295,6 +1320,9 @@
   - EmergencyNitrogenSecurity
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterSecurity # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekin # Floof: Added.
 
 # Wildcards
 - type: loadoutGroup
@@ -1358,6 +1386,9 @@
   - EmergencyNitrogenSyndicate
   - EmergencyOxygenSyndicate
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutEmergencyWaterSyndicate # Floof: Added.
+  - LoadoutSpeciesPocketDoubleWater # Floof: Added.
+  - LoadoutEmergencyShadekinSyndicate # Floof: Added.
 
 - type: loadoutGroup
   id: SurvivalMilitaryDouble # Survival box mostly used by ERT/deathsquad
@@ -1367,6 +1398,8 @@
   loadouts:
   - EmergencyNitrogenMilitaryDouble
   - EmergencyOxygenMilitaryDouble
+  - LoadoutEmergencyWaterMilitaryDouble # Floof: Added.
+  - LoadoutEmergencyShadekin # Floof: Added.
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool
