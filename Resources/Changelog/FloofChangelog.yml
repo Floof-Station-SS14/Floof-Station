@@ -228,3 +228,9 @@ Entries:
       message: Ported the "crawling under furniture" system
   id: 29
   time: '2026-07-25T14:41:04.0000000+00:00'
+- author: Memeji
+  changes:
+    - type: Add
+      message: Pet Vend
+  id: 30
+  time: '2026-07-27T09:44:02.0000000+00:00'
