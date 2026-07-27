@@ -170,4 +170,4 @@
     - GalacticCommon
     - Carptongue
   - type: TemperatureProtection
-    coolingCoefficient: 0.9
+    coefficient: 0.9
