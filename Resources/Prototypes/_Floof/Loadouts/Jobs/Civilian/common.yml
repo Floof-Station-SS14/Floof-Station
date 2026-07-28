@@ -28,3 +28,8 @@
   id: ClothingNeckCollarBell
   equipment:
     neck: ClothingNeckCollarBell
+
+- type: loadout
+  id: ClothingNeckCowBellCollar #The Den
+  equipment:
+    neck: ClothingNeckCowBellCollar #The Den
