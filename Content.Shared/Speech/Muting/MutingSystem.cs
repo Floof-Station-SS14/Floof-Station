@@ -4,6 +4,7 @@ using Content.Shared.Chat.Prototypes;
 using Content.Shared.Popups;
 using Content.Shared.Puppet;
 using Content.Shared.Speech.EntitySystems;
+using Content.Shared._Starlight.Language.Systems; // Starlight
 
 namespace Content.Shared.Speech.Muting;
 
@@ -14,6 +15,7 @@ namespace Content.Shared.Speech.Muting;
 public sealed partial class MutingSystem : EntitySystem
 {
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedLanguageSystem _languages = default!; // Starlight
 
     [Dependency] private EntityQuery<MimePowersComponent> _mimePowersQuery;
     [Dependency] private EntityQuery<VentriloquistPuppetComponent> _puppetQuery;
@@ -60,6 +62,13 @@ public sealed partial class MutingSystem : EntitySystem
     private void OnSpeakAttempt(Entity<MutedComponent> ent, ref SpeakAttemptEvent args)
     {
         // TODO something better than this.
+
+        // Starlight-start: Cannot mute if there's no speech involved
+        var language = _languages.GetLanguage(ent.Owner);
+        if (!language.SpeechOverride.RequireSpeech)
+            return;
+        // Starlight-end
+
         if (_mimePowersQuery.HasComp(ent))
             _popup.PopupEntity(Loc.GetString("mime-cant-speak"), ent, ent);
         else if (_puppetQuery.HasComp(ent))

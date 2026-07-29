@@ -1,0 +1,28 @@
+- type: entity
+  parent: BasePlushie
+  id: PlushieFeroxi
+  name: feroxi plushie
+  description: A stuffed toy that resembles a feroxi. Surprisingly dry!
+  components:
+  - type: Sprite
+    sprite: _DeltaV/Objects/Fun/Toys/plushies.rsi
+    state: feroxi
+  - type: EmitSoundOnUse
+    sound:
+      collection: FeroxiPlushieSounds
+  - type: EmitSoundOnLand
+    sound:
+      collection: ToySqueak
+  - type: EmitSoundOnActivate
+    sound:
+      collection: FeroxiPlushieSounds
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: FeroxiPlushieSounds
+  - type: MeleeWeapon
+    soundHit:
+      collection: FeroxiPlushieSounds
+  - type: Edible
+    requiresSpecialDigestion: true
+    useSound:
+      collection: ToySqueak

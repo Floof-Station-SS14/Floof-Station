@@ -449,6 +449,30 @@
         damage:
           types:
             Heat: 3
+      - !type:Oxygenate # Floof: Feroxi oxygenate from water.
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFeroxi ]
+      # Convert H2O into CO2.
+      - !type:ModifyLungGas
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFeroxi, MetabolizerFeroxiThirsty ]
+        ratios:
+          CarbonDioxide: 1.0
+          WaterVapor: -1.0
+      # Floof: Satiate thirst for Feroxi when breathed in.
+      - !type:SatiateThirst
+        factor: 4
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFeroxi ]
+      # Floof: Thirsty Feroxi will satiate twice as fast.
+      - !type:SatiateThirst
+        factor: 8
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFeroxiThirsty ]
 
 - type: reagent
   id: Ice
