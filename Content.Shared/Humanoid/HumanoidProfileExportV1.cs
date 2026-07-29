@@ -62,7 +62,7 @@ public sealed partial class HumanoidCharacterProfileV1
 
     // Floof: Added consent.
     [DataField]
-    public string ConsentText;
+    public string ConsentText = string.Empty;
 
     [DataField]
     public ProtoId<SpeciesPrototype> Species;
@@ -100,7 +100,6 @@ public sealed partial class HumanoidCharacterProfileV1
         return speciesPrototye.DefaultSoundsBySex[(int)sex];
     }
 }
-
 
 [DataDefinition, Serializable]
 public sealed partial class HumanoidCharacterAppearanceV1
