@@ -39,6 +39,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
+      head-feroxi:
+      - state: equipped-head-light-feroxi
+        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -56,6 +59,10 @@
       head-reptilian:
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
+        shader: unshaded
+      head-feroxi:
+      - state: equipped-head-feroxi
+      - state: equipped-head-unshaded-feroxi
         shader: unshaded
   - type: PointLight
     color: "#adffe6"
@@ -102,6 +109,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
+      head-feroxi:
+      - state: equipped-head-light-feroxi
+        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -119,6 +129,10 @@
       head-reptilian:
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
+        shader: unshaded
+      head-feroxi:
+      - state: equipped-head-feroxi
+      - state: equipped-head-unshaded-feroxi
         shader: unshaded
   - type: PointLight
     color: "#ffdbad"
@@ -162,6 +176,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
+      head-feroxi:
+      - state: equipped-head-light-feroxi
+        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -179,6 +196,10 @@
       head-reptilian:
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
+        shader: unshaded
+      head-feroxi:
+      - state: equipped-head-feroxi
+      - state: equipped-head-unshaded-feroxi
         shader: unshaded
   - type: PointLight
     radius: 6
@@ -240,6 +261,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
+      head-feroxi:
+      - state: equipped-head-light-feroxi
+        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -253,6 +277,10 @@
       head-reptilian:
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
+        shader: unshaded
+      head-feroxi:
+      - state: equipped-head-feroxi
+      - state: equipped-head-unshaded-feroxi
         shader: unshaded
   - type: PointLight
     radius: 6
@@ -415,6 +443,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
+      head-feroxi:
+      - state: equipped-head-light-feroxi
+        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -432,6 +463,10 @@
       head-reptilian:
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
+        shader: unshaded
+      head-feroxi:
+      - state: equipped-head-feroxi
+      - state: equipped-head-unshaded-feroxi
         shader: unshaded
   - type: PointLight
     color: "#daffad"
@@ -751,6 +786,9 @@
       head-reptilian:
       - state: equipped-HELMET-light-reptilian
         shader: unshaded
+      head-feroxi:
+      - state: equipped-HELMET-light-feroxi
+        shader: unshaded
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/piratecaptainhelm.rsi
     clothingVisuals:
@@ -765,6 +803,10 @@
       head-reptilian:
       - state: equipped-HELMET-reptilian
       - state: equipped-HELMET-unshaded-reptilian
+        shader: unshaded
+      head-feroxi:
+      - state: equipped-HELMET-feroxi
+      - state: equipped-HELMET-unshaded-feroxi
         shader: unshaded
   - type: PointLight # Color matches visor colors, radius/energy same as mining hardsuit for the big captain.
     color: "#f3ea9c"
@@ -919,6 +961,10 @@
       head-reptilian:
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
+        shader: unshaded
+      head-feroxi:
+      - state: equipped-head-feroxi
+      - state: equipped-head-unshaded-feroxi
         shader: unshaded
   - type: PointLight
     color: orange

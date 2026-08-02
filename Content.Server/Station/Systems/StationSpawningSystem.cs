@@ -3,6 +3,7 @@ using Content.Server.Humanoid;
 using Content.Server.Mind;
 using Content.Server.PDA;
 using Content.Server.Station.Components;
+using Content.Shared._Floof.Consent;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Body;
@@ -141,6 +142,12 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
             if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
             {
                 AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
+            }
+
+            // FLOOF: Added Consent.
+            if (profile.ConsentText != "")
+            {
+                AddComp<ConsentExaminableComponent>(entity.Value).Content = profile.ConsentText;
             }
         }
 
