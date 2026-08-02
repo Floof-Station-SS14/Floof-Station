@@ -290,3 +290,9 @@ Entries:
       message: Fixed Feroxi Vision/Goob NV.
   id: 37
   time: '2026-08-02T14:34:04.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Fix
+      message: Fixed most markings locale.
+  id: 38
+  time: '2026-08-02T20:59:14.0000000+00:00'
