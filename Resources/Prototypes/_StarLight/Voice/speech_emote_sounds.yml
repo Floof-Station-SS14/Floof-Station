@@ -1,11 +1,12 @@
 # species
 - type: emoteSounds
   id: MaleShadekin
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
     Scream:
-      collection: ShadekinMaleScreams
+      collection: ShadekinFemaleScreams # Floof: Better than "HL1 scientist scream"
     Laugh:
       collection: MaleLaugh
     Sneeze:
@@ -35,6 +36,7 @@
 
 - type: emoteSounds
   id: FemaleShadekin
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:

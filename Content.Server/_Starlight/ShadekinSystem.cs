@@ -19,7 +19,8 @@ using Content.Shared._Starlight.Flash.Components;
 using Content.Shared._Starlight.Humanoid;
 using Content.Shared.Body.Components;
 using Content.Shared.Flash;
-
+using Content.Shared.Overlays;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Starlight;
 
@@ -59,10 +60,40 @@ public sealed partial class ShadekinSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<ShadekinComponent, ComponentStartup>(OnInit);
+        SubscribeLocalEvent<ShadekinComponent, MapInitEvent>(OnMapInit); // Floof: Added.
+        SubscribeLocalEvent<ShadekinComponent, ToggleNightVisionEvent>(OnToggleNightVision); // Floof: Added.
+        SubscribeLocalEvent<ShadekinComponent, ComponentShutdown>(OnShutdown); // Floof: Added.
         SubscribeLocalEvent<ShadekinComponent, EyeColorInitEvent>(OnEyeColorChange);
         SubscribeLocalEvent<ShadekinComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
         SubscribeLocalEvent<ShadekinComponent, AfterFlashedEvent>(OnShadekinFlashed); // Delta V - Prevent Chain Flashing
         SubscribeLocalEvent<ShadekinComponent, FlashDurationMultiplierEvent>(GetFlashModifier); // Delta V - Flash Modifier to Shadekin
+    }
+
+    private void OnShutdown(Entity<ShadekinComponent> ent, ref ComponentShutdown args)
+    {
+        _actions.RemoveAction(ent.Owner, ent.Comp.ToggleNightVisionActionEntity);
+    }
+
+    private void OnMapInit(Entity<ShadekinComponent> ent, ref MapInitEvent args)
+    {
+        _actions.AddAction(ent.Owner, ref ent.Comp.ToggleNightVisionActionEntity, _actionToggleNightVision);
+    }
+
+    private readonly EntProtoId _actionToggleNightVision = "ActionToggleNightVision";
+
+    private void OnToggleNightVision(Entity<ShadekinComponent> ent, ref ToggleNightVisionEvent args)
+    {
+        if (!TryComp<NightVisionComponent>(ent.Owner, out var nightVision))
+            return;
+
+        if (args.Handled)
+            return;
+
+        if (!nightVision.Enabled)
+            return;
+
+        var state = ent.Comp.CurrentState;
+        _flashSystem.Flash(ent.Owner, ent.Owner, ent.Owner, TimeSpan.FromSeconds(0.5 * (int)state), 0.5f);
     }
 
     private void OnInit(EntityUid uid, ShadekinComponent component, ComponentStartup args)
@@ -191,26 +222,6 @@ public sealed partial class ShadekinSystem : EntitySystem
         }
     }
 
-    private void ToggleNightVision(EntityUid uid, ShadekinState state)
-    {
-        if (state == ShadekinState.Dark)
-        {
-            var nightVisionComponent = EnsureComp<NightVisionOverlayComponent>(uid);
-            nightVisionComponent.Color =  Color.FromHex("#808080"); // Delta V - Change Night Vision Color
-            nightVisionComponent.IsActive = true;
-        }
-        else
-        {
-            if (TryComp<NightVisionOverlayComponent>(uid, out var nightVision) && nightVision.IsActive)
-            {
-                nightVision.IsActive = false;
-                _flashSystem.Flash(uid, uid, uid, TimeSpan.FromSeconds(0.5 * (int)state), 0.5f);
-            }
-
-            RemComp<NightVisionOverlayComponent>(uid);
-        }
-    }
-
     private void ApplyLightDamage(EntityUid uid, float dmg)
     {
         var damage = new DamageSpecifier();
@@ -259,7 +270,11 @@ public sealed partial class ShadekinSystem : EntitySystem
 
     private void OnShadekinFlashed(EntityUid uid, ShadekinComponent comp, AfterFlashedEvent ev)
     {
-        RemComp<NightVisionOverlayComponent>(uid);
+        if (!TryComp<NightVisionComponent>(uid, out var nightVision))
+            return;
+
+        // This has to be inverted for some reason - no idea why.
+        nightVision.Enabled = true;
     }
     // Delta V - End
 
@@ -285,7 +300,8 @@ public sealed partial class ShadekinSystem : EntitySystem
             UpdateAlert(uid, component, (short)component.CurrentState);
 
             SetPassiveBuff(uid, component.CurrentState);
-            ToggleNightVision(uid, component.CurrentState);
+            // FLOOF: Swap to normal night vision.
+            //ToggleNightVision(uid, component.CurrentState);
 
             _speed.RefreshMovementSpeedModifiers(uid);
 

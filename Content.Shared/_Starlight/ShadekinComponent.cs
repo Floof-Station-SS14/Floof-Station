@@ -29,6 +29,13 @@ public sealed partial class ShadekinComponent : Component
     /// whether to flicker lights or not. default on
     /// </summary>
     [DataField] public bool DoLightFlicker = true;
+
+    /// <summary>
+    ///     FLOOF
+    ///     Needed for actions.
+    /// </summary>
+    [DataField]
+    public EntityUid? ToggleNightVisionActionEntity;
 }
 
 [Serializable, NetSerializable]

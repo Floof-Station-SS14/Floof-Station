@@ -15,9 +15,9 @@
   oldAge: 250
   # customName: true
   defaultSoundsBySex:
-  - FemaleShadekin # Floof: Better than "HL1 scream with effects"
+  - MaleShadekin
   - FemaleShadekin
-  - FemaleShadekin # Floof: Better than "HL1 scream with effects"
+  - MaleShadekin
   voices:
-  - FemaleShadekin # Floof: Better than "HL1 scream with effects"
+  - MaleShadekin
   - FemaleShadekin
