@@ -274,3 +274,19 @@ Entries:
       message: Added the big marking update!
   id: 36
   time: '2026-07-31T14:20:49.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added male Shadekin sounds.
+    - type: Remove
+      message: Removed a secondary Shadekin scream.
+    - type: Tweak
+      message: Improved the Shadekin NV to be a toggle.
+    - type: Fix
+      message: Fixed the Shock Collar.
+    - type: Fix
+      message: Fixed Shadekin loadout vocal names.
+    - type: Fix
+      message: Fixed Feroxi Vision/Goob NV.
+  id: 37
+  time: '2026-08-02T14:34:04.0000000+00:00'
