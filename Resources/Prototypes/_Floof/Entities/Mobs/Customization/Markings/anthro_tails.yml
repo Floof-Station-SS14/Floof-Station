@@ -1,9 +1,0 @@
-- type: marking
-  id: TailFox
-  bodyPart: Tail
-  sprites:
-  - sprite: _Floof/Mobs/Customization/skyrattails.rsi
-    state: tail_fox_secondary
-  - sprite: _Floof/Mobs/Customization/skyrattails.rsi
-    state: tail_fox_primary
-

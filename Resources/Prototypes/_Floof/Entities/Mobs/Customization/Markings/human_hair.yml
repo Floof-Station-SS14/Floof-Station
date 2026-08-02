@@ -1,7 +1,0 @@
-- type: marking
-  id: HumanHairPolseSpecial
-  bodyPart: Hair
-  sprites:
-  - sprite: _Floof/Mobs/Customization/human_hair.rsi
-    state: polsespecial
-
