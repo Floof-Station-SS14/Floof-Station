@@ -23,4 +23,4 @@ public sealed partial class NightVisionOverlayComponent : SwitchableVisionOverla
     public EntityUid? SelfToggleActionEntity;
 }
 
-public sealed partial class ToggleNightVisionEvent : InstantActionEvent;
+public sealed partial class ToggleNightVisionOverlayEvent : InstantActionEvent;

@@ -8,4 +8,4 @@
 
 namespace Content.Shared._Goobstation.Overlays;
 
-public sealed class SharedNightVisionSystem : SwitchableOverlaySystem<NightVisionOverlayComponent, ToggleNightVisionEvent>;
+public sealed class SharedNightVisionSystem : SwitchableOverlaySystem<NightVisionOverlayComponent, ToggleNightVisionOverlayEvent>;

@@ -85,6 +85,7 @@
   parent:
   - AppearanceShadekin
   - BaseSpeciesMob
+  - MobNightVision
   id: MobShadekin
   components:
   - type: Shadekin
@@ -102,7 +103,7 @@
   - type: Speech
     allowedEmotes: ["Marr", "Wurble"]
   - type: Vocal
-    emoteSounds: FemaleShadekin
+    emoteSounds: MaleShadekin
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw
@@ -142,34 +143,6 @@
         Heat: 1.5
   - type: TypingIndicator
     proto: alien
-  # - type: Destructible
-  #   thresholds:
-  #     - trigger: !type:DamageTypeTrigger
-  #         damageType: Blunt
-  #         damage: 400
-  #       behaviors:
-  #         - !type:GibBehavior {}
-  #         - !type:SpawnEntitiesBehavior
-  #           spawn:
-  #             ShadekinShadow:
-  #               min: 1
-  #               max: 1
-  #     - trigger: !type:DamageTypeTrigger
-  #         damageType: Heat
-  #         damage: 1500
-  #       behaviors:
-  #         - !type:SpawnEntitiesBehavior
-  #           spawnInContainer: true
-  #           spawn:
-  #             Ash:
-  #               min: 1
-  #               max: 1
-  #             ShadekinShadow:
-  #               min: 1
-  #               max: 1
-  #         - !type:BurnBodyBehavior {}
-
-  # BaseMobSpeciesOrganic // Because we dont want respirator to be used.
   - type: Barotrauma
     damage:
       types:
@@ -184,6 +157,7 @@
         Blunt: -0.07
         Piercing: -0.07
         Slash: -0.07
+        Asphyxiation: -0.07 # Floof: Added.
   - type: TemperatureSpeed
     thresholds:
       293: 0.8
@@ -210,5 +184,49 @@
   - type: Fingerprint
   - type: Blindable
   - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Generic_mob_burning
     alternateState: Standing
   - type: StunVisuals
+  - type: InjectableSolution
+    solution: bloodstream
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 400
+      behaviors:
+      - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 1500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:BurnBodyBehavior
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MeatLaserImpact
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: mouth-taste-metal
+        popupType: LargeCaution
+        targetOnly: true
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 40
+      behaviors:
+      - !type:VomitBehavior
+  - type: NightVision
+    enabled: false
