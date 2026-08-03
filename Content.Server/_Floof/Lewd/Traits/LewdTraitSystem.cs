@@ -72,7 +72,7 @@ public sealed partial class LewdTraitSystem : EntitySystem
         if (args.Using == null ||
              !args.CanInteract ||
              args.User != args.Target ||
-             !EntityManager.HasComponent<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
+             !HasComp<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
             return;
 
         _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out var soln);
@@ -94,7 +94,7 @@ public sealed partial class LewdTraitSystem : EntitySystem
         if (args.Using == null ||
              !args.CanInteract ||
              args.User != args.Target ||
-             !EntityManager.HasComponent<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
+             !HasComp<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
             return;
 
         _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out var soln);
@@ -115,7 +115,7 @@ public sealed partial class LewdTraitSystem : EntitySystem
     {
         if (args.Using == null ||
              !args.CanInteract ||
-             !EntityManager.HasComponent<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
+             !HasComp<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
             return;
 
         _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out _);
@@ -278,7 +278,7 @@ public sealed partial class LewdTraitSystem : EntitySystem
             if (_mobState.IsDead(uid))
                 continue;
 
-            if (EntityManager.TryGetComponent(uid, out HungerComponent? hunger))
+            if (TryComp(uid, out HungerComponent? hunger))
             {
                 if (_hunger.GetHungerThreshold(hunger) < HungerThreshold.Okay)
                     continue;
@@ -302,7 +302,7 @@ public sealed partial class LewdTraitSystem : EntitySystem
             if (_mobState.IsDead(uid))
                 continue;
 
-            if (EntityManager.TryGetComponent(uid, out HungerComponent? hunger))
+            if (TryComp(uid, out HungerComponent? hunger))
             {
                 if (_hunger.GetHungerThreshold(hunger) < HungerThreshold.Okay)
                     continue;
@@ -326,7 +326,7 @@ public sealed partial class LewdTraitSystem : EntitySystem
             if (_mobState.IsDead(uid))
                 continue;
 
-            if (EntityManager.TryGetComponent(uid, out HungerComponent? hunger))
+            if (TryComp(uid, out HungerComponent? hunger))
             {
                 if (_hunger.GetHungerThreshold(hunger) < HungerThreshold.Okay)
                     continue;
