@@ -296,3 +296,9 @@ Entries:
       message: Fixed most markings locale.
   id: 38
   time: '2026-08-02T20:59:14.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added clothes from floof
+  id: 39
+  time: '2026-08-03T02:45:52.0000000+00:00'
