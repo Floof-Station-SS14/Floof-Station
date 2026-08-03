@@ -13,7 +13,7 @@ public sealed partial class MilkProducerComponent : Component
     public string SolutionName = "breasts";
 
     [DataField]
-    public ProtoId<ReagentPrototype> ReagentId = "Milk";
+    public ProtoId<ReagentPrototype> ReagentId = "MilkBreast";
 
     [DataField]
     public FixedPoint2 MaxVolume = FixedPoint2.New(50);

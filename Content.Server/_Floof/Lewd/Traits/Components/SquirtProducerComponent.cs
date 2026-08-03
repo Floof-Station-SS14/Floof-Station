@@ -16,7 +16,7 @@ public sealed partial class SquirtProducerComponent : Component
     public string SolutionName = "vagina";
 
     [DataField]
-    public ProtoId<ReagentPrototype> ReagentId = "NaturalLubricant";
+    public ProtoId<ReagentPrototype> ReagentId = "Squirt";
 
     [DataField]
     public FixedPoint2 MaxVolume = FixedPoint2.New(25);

@@ -1,4 +1,4 @@
-using Content.Server.Chemistry.Containers.EntitySystems;
+using Content.Server.Chemistry.EntitySystems;
 using Content.Server.Popups;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.DoAfter;
@@ -15,14 +15,15 @@ using JetBrains.Annotations;
 namespace Content.Server._Floof.Lewd.Traits;
 
 [UsedImplicitly]
-public sealed class LewdTraitSystem : EntitySystem
+public sealed partial class LewdTraitSystem : EntitySystem
 {
-    [Dependency] private readonly HungerSystem _hunger = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly SolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private HungerSystem _hunger = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private SolutionContainerSystem _solutionContainer = default!;
+    
 
     public override void Initialize()
     {
@@ -47,26 +48,23 @@ public sealed class LewdTraitSystem : EntitySystem
     #region event handling
     private void OnComponentInitCum(Entity<CumProducerComponent> entity, ref ComponentStartup args)
     {
-        var solutionCum = _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName);
-        solutionCum.MaxVolume = entity.Comp.MaxVolume;
-
-        solutionCum.AddReagent(entity.Comp.ReagentId, entity.Comp.MaxVolume - solutionCum.Volume);
+        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out var soln); //TODO code duplication fix this
+        _solutionContainer.SetCapacity(soln, entity.Comp.MaxVolume);
+        _solutionContainer.TryAddReagent(soln, entity.Comp.ReagentId, entity.Comp.MaxVolume);
     }
 
     private void OnComponentInitMilk(Entity<MilkProducerComponent> entity, ref ComponentStartup args)
     {
-        var solutionMilk = _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName);
-        solutionMilk.MaxVolume = entity.Comp.MaxVolume;
-
-        solutionMilk.AddReagent(entity.Comp.ReagentId, entity.Comp.MaxVolume - solutionMilk.Volume);
+        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out var soln);
+        _solutionContainer.SetCapacity(soln, entity.Comp.MaxVolume);
+        _solutionContainer.TryAddReagent(soln, entity.Comp.ReagentId, entity.Comp.MaxVolume);
     }
 
     private void OnComponentInitSquirt(Entity<SquirtProducerComponent> entity, ref ComponentStartup args)
     {
-        var solutionSquirt = _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName);
-        solutionSquirt.MaxVolume = entity.Comp.MaxVolume;
-
-        solutionSquirt.AddReagent(entity.Comp.ReagentId, entity.Comp.MaxVolume - solutionSquirt.Volume);
+        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out var soln);
+        _solutionContainer.SetCapacity(soln, entity.Comp.MaxVolume);
+        _solutionContainer.TryAddReagent(soln, entity.Comp.ReagentId, entity.Comp.MaxVolume);
     }
 
     public void AddCumVerb(Entity<CumProducerComponent> entity, ref GetVerbsEvent<InnateVerb> args)
@@ -77,7 +75,7 @@ public sealed class LewdTraitSystem : EntitySystem
              !EntityManager.HasComponent<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
             return;
 
-        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName);
+        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out var soln);
 
         var user = args.User;
         var used = args.Using.Value;
@@ -99,7 +97,7 @@ public sealed class LewdTraitSystem : EntitySystem
              !EntityManager.HasComponent<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
             return;
 
-        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName);
+        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out var soln);
 
         var user = args.User;
         var used = args.Using.Value;
@@ -120,7 +118,7 @@ public sealed class LewdTraitSystem : EntitySystem
              !EntityManager.HasComponent<RefillableSolutionComponent>(args.Using.Value)) //see if removing this part lets you milk on the ground.
             return;
 
-        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName);
+        _solutionContainer.EnsureSolution(entity.Owner, entity.Comp.SolutionName, out _);
 
         var user = args.User;
         var used = args.Using.Value;
