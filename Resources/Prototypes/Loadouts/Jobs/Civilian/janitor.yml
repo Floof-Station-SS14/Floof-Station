@@ -9,6 +9,15 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later AND MIT
 
 - type: loadoutEffectGroup
+  id: SeniorJanitorial
+  effects:
+    - !type:JobRequirementLoadoutEffect
+      requirement:
+        !type:RoleTimeRequirement
+        role: JobJanitor
+        time: 52h # 1 hour per week for 1 year
+
+- type: loadoutEffectGroup
   id: BronzeJanitorial
   effects:
   - !type:JobRequirementLoadoutEffect
