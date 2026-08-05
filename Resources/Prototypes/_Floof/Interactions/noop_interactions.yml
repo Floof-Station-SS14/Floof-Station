@@ -31,6 +31,8 @@
   requirement:
     !type:ComplexRequirement
     requirements:
+    - !type:BodyOrganRequirement
+      organCategory: Breasts
     - !type:MobStateRequirement
       inverted: true
     - !type:EntityWhitelistRequirement
