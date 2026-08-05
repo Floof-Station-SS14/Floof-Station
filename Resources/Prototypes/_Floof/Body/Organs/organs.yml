@@ -1,0 +1,38 @@
+- type: entity
+  parent:
+    - OrganBase
+    - OrganBaseChildInternal
+  id: OrganDick
+  name: dick
+  components:
+    - type: Organ
+      category: Dick
+    - type: Sprite
+      layers:
+        - state: dick
+
+- type: entity
+  parent:
+    - OrganBase
+    - OrganBaseChildInternal
+  id: OrganVagina
+  name: vagina
+  components:
+    - type: Organ
+      category: Vagina
+    - type: Sprite
+      layers:
+        - state: vagina
+
+- type: entity
+  parent:
+    - OrganBase
+    - OrganBaseChildInternal
+  id: OrganBreasts
+  name: breasts
+  components:
+    - type: Organ
+      category: Breasts
+    - type: Sprite
+      layers:
+        - state: breasts       
