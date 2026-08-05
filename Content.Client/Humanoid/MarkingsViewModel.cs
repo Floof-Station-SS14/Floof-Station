@@ -2,7 +2,9 @@ using System.Linq;
 using Content.Shared.Body;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
+using Content.Shared.Humanoid.Prototypes;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Humanoid;
@@ -14,6 +16,14 @@ public sealed partial class MarkingsViewModel
 {
     [Dependency] private MarkingManager _marking = default!;
     [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IRobustRandom _random = default!;
+
+    /// <summary>
+    ///     FLOOF SPECIFIC
+    ///     The species the markings are being edited for.
+    ///     Used to look up species-appropriate hair color.
+    /// </summary>
+    public ProtoId<SpeciesPrototype>? Species;
 
     private bool _enforceLimits = true;
 
@@ -276,11 +286,50 @@ public sealed partial class MarkingsViewModel
         organMarkings[layer] = organMarkings.GetValueOrDefault(layer) ?? [];
         var layerMarkings = organMarkings[layer];
 
+        // FLOOF:
+        // When swapping single-slot markings, such as hair, we carry the color over.
+        var limits = groupPrototype.Limits.GetValueOrDefault(layer);
+        List<Color>? carriedColor = null;
+        if (limits is not null && limits.Limit == 1 && layerMarkings.Count == 1)
+        {
+            carriedColor = PadOrTruncate(layerMarkings[0].MarkingColors, markingProto.Sprites.Count);
+        }
+
+        // FLOOF:
+        // If the hair/facial hair has no prior color, it should NOT default to skin-color.
+        // Rather it defaults to:
+        //      * Hair/Facial hair color
+        //      * Species-appropriate hair colors
+        //      * Skin-color, as a last resort.
+        List<Color>? fallbackColor = null;
+        if (carriedColor is null && (layer == HumanoidVisualLayers.Hair || layer == HumanoidVisualLayers.FacialHair))
+        {
+            var otherLayer = layer == HumanoidVisualLayers.Hair
+                ? HumanoidVisualLayers.FacialHair
+                : HumanoidVisualLayers.Hair;
+
+            var otherLayerColors = organMarkings.GetValueOrDefault(otherLayer)?.FirstOrDefault().MarkingColors;
+            if (otherLayerColors is { Count: > 0 })
+            {
+                fallbackColor = PadOrTruncate(otherLayerColors, markingProto.Sprites.Count);
+            }
+            else if (Species is { } species && _prototype.TryIndex(species, out var speciesProto) &&
+                     _prototype.TryIndex(speciesProto.SkinColoration, out var skinColoration) &&
+                     (skinColoration.RealisticColors || skinColoration.SquashEyeHairColors))
+            {
+                var clamped = HumanoidCharacterAppearance.ClampHairColorToStrategy(profileData.SkinColor, skinColoration, _random);
+                fallbackColor = Enumerable.Repeat(clamped, markingProto.Sprites.Count).ToList();
+            }
+        }
+
+        // FLOOF:
+        // Added carriedColors and fallbackColors
         var colors = _previousColors.GetValueOrDefault(markingId) ??
+                     carriedColor ??
+                     fallbackColor ??
                      MarkingColoring.GetMarkingLayerColors(markingProto, profileData.SkinColor, profileData.EyeColor, layerMarkings);
         var newMarking = new Marking(markingId, colors) { Forced = AnyEnforcementsLifted };
 
-        var limits = groupPrototype.Limits.GetValueOrDefault(layer);
         if (limits is null || !EnforceLimits)
         {
             layerMarkings.Add(newMarking);
@@ -304,6 +353,22 @@ public sealed partial class MarkingsViewModel
         }
 
         return false;
+    }
+
+    /// <summary>
+    ///     FLOOF SPECIFIC
+    ///     Pads/truncates marking lists to the target count.
+    ///     This is used to carry over color(s) across marking groups.
+    /// </summary>
+    private static List<Color> PadOrTruncate(IReadOnlyList<Color> colors, int targetCount)
+    {
+        var result = new List<Color>(targetCount);
+        for (var i = 0; i < targetCount; i++)
+        {
+            result.Add(i < colors.Count ? colors[i] : colors[^1]);
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -406,7 +471,7 @@ public sealed partial class MarkingsViewModel
             _marking.EnsureValidColors(actualMarkings);
             _marking.EnsureValidGroupAndSex(actualMarkings, organData.Group, organProfileData.Sex);
             _marking.EnsureValidLayers(actualMarkings, organData.Layers);
-            _marking.EnsureValidLimits(actualMarkings, organData.Group, organData.Layers, organProfileData.SkinColor, organProfileData.EyeColor);
+            _marking.EnsureValidLimits(actualMarkings, organData.Group, organData.Layers, organProfileData.SkinColor, organProfileData.EyeColor, Species); // FLOOF: Added species.
 
             _markings[organ] = actualMarkings;
         }

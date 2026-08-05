@@ -254,6 +254,7 @@ namespace Content.Shared.Preferences
         }
 
         /// <summary>
+        /// FLOOF: Remove random markings.
         /// A randomize config that covers all possible values (including appearance).
         /// </summary>
         public const RandomizeCfg RandomizeConfigAll =
@@ -263,8 +264,7 @@ namespace Content.Shared.Preferences
             | RandomizeCfg.Sex
             | RandomizeCfg.Gender
             | RandomizeCfg.Eyes
-            | RandomizeCfg.Skin
-            | RandomizeCfg.Markings;
+            | RandomizeCfg.Skin;
 
         /// <summary>
         /// Picks a random species from roundstart species.

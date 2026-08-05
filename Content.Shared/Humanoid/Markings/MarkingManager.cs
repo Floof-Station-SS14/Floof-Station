@@ -4,6 +4,7 @@ using System.Linq;
 using Content.Shared.Body;
 using Content.Shared.Humanoid.Prototypes;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Markings;
@@ -15,6 +16,7 @@ public sealed partial class MarkingManager
 {
     [Dependency] private IComponentFactory _component = default!;
     [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IRobustRandom _random = default!; // FLOOF: Added.
 
     private FrozenDictionary<HumanoidVisualLayers, FrozenDictionary<string, MarkingPrototype>> _categorizedMarkings = default!;
     private FrozenDictionary<string, MarkingPrototype> _markings = default!;
@@ -212,9 +214,10 @@ public sealed partial class MarkingManager
     }
 
     /// <summary>
+    /// FLOOF: Added species.
     /// Ensures the list of <see cref="markingSets"/> is valid per the limits of the <see cref="group"/>
     /// </summary>
-    public void EnsureValidLimits(Dictionary<HumanoidVisualLayers, List<Marking>> markingSets, ProtoId<MarkingsGroupPrototype> group, HashSet<HumanoidVisualLayers> layers, Color? skinColor, Color? eyeColor)
+    public void EnsureValidLimits(Dictionary<HumanoidVisualLayers, List<Marking>> markingSets, ProtoId<MarkingsGroupPrototype> group, HashSet<HumanoidVisualLayers> layers, Color? skinColor, Color? eyeColor, ProtoId<SpeciesPrototype>? species = null)
     {
         var groupProto = _prototype.Index(group);
         var counts = new Dictionary<HumanoidVisualLayers, int>();
@@ -258,10 +261,56 @@ public sealed partial class MarkingManager
                     continue;
 
                 markingSets[layer] = markingSets.GetValueOrDefault(layer) ?? [];
-                var colors = MarkingColoring.GetMarkingLayerColors(markingProto, skinColor, eyeColor, markingSets[layer]);
+
+                // FLOOF:
+                // Try to pull colors from hair or facial hair first.
+                List<Color>? colors = null;
+                if (layer is HumanoidVisualLayers.Hair or HumanoidVisualLayers.FacialHair)
+                {
+                    colors = GetDefaultHairColors(markingProto, layer, markingSets, skinColor, species);
+                }
+
+                colors ??= MarkingColoring.GetMarkingLayerColors(markingProto, skinColor, eyeColor, markingSets[layer]);
                 markingSets[layer].Add(new(marking, colors));
             }
         }
+    }
+
+    /// <summary>
+    ///     FLOOF SPECIFIC
+    ///     Chooses default colors for hair/facial hair, in this order:
+    ///         * Chosen color(s) from the present marking(s)
+    ///         * Species-specific hair, such as realistic or clamped.
+    ///         * Skin color as a last resort.
+    /// </summary>
+    private List<Color>? GetDefaultHairColors(MarkingPrototype markingProto, HumanoidVisualLayers layer, Dictionary<HumanoidVisualLayers, List<Marking>> markingSets, Color? skinColor, ProtoId<SpeciesPrototype>? species)
+    {
+        var otherLayer = layer == HumanoidVisualLayers.Hair ? HumanoidVisualLayers.FacialHair : HumanoidVisualLayers.Hair;
+        var otherLayerColors = markingSets.GetValueOrDefault(otherLayer)?.FirstOrDefault().MarkingColors;
+        if (otherLayerColors is { Count: > 0 })
+            return PadOrTruncate(otherLayerColors, markingProto.Sprites.Count);
+
+        if (species is not { } speciesId ||
+            !_prototype.TryIndex(speciesId, out var speciesProto) ||
+            !_prototype.TryIndex(speciesProto.SkinColoration, out var skinColoration) ||
+            !(skinColoration.RealisticColors || skinColoration.SquashEyeHairColors))
+        {
+            return null;
+        }
+
+        var clamped = HumanoidCharacterAppearance.ClampHairColorToStrategy(skinColor ?? Color.White, skinColoration, _random);
+        return Enumerable.Repeat(clamped, markingProto.Sprites.Count).ToList();
+    }
+
+    private static List<Color> PadOrTruncate(IReadOnlyList<Color> colors, int targetCount)
+    {
+        var result = new List<Color>(targetCount);
+        for (var i = 0; i < targetCount; i++)
+        {
+            result.Add(i < colors.Count ? colors[i] : colors[^1]);
+        }
+
+        return result;
     }
 
     /// <summary>
