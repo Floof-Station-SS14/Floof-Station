@@ -1,0 +1,77 @@
+- type: entity
+  parent:
+    - OrganBase
+    - OrganBaseChildInternal
+  id: OrganDick
+  name: dick
+  components:
+    - type: Organ
+      category: Dick
+    - type: Sprite
+      sprite: _Floof/Mobs/Species/Generic/penis.rsi
+      layers:
+        - state: penis
+    - type: ProducerGenital
+      solutionId: balls
+    - type: BodyFluidProducer
+      solutionName: balls
+      reagentId: Cum
+    - type: Solution
+      id: balls
+      solution:
+        maxVol: 240 # yes, totally normal
+        canReact: false
+        reagents:
+          - ReagentId: Cum
+            Quantity: 240
+
+- type: entity
+  parent:
+    - OrganBase
+    - OrganBaseChildInternal
+  id: OrganVagina
+  name: vagina
+  components:
+    - type: Organ
+      category: Vagina
+    - type: Sprite
+      sprite: _Floof/Mobs/Species/Generic/vagina.rsi
+      layers:
+        - state: vagina-a
+    - type: ProducerGenital
+      solutionId: vagina
+    - type: BodyFluidProducer
+      solutionName: vagina
+      reagentId: Squirt
+    - type: Solution
+      id: vagina
+      solution:
+        maxVol: 120 # yes, totally normal
+        canReact: false
+            
+- type: entity
+  parent:
+    - OrganBase
+    - OrganBaseChildInternal
+  id: OrganBreasts
+  name: breasts
+  components:
+    - type: Organ
+      category: Breasts
+    - type: Sprite
+      sprite: _Floof/Mobs/Species/Generic/breasts.rsi
+      layers:
+        - state: breasts
+    - type: ProducerGenital
+      solutionId: breasts
+    - type: BodyFluidProducer
+      solutionName: breasts
+      reagentId: MilkBreast
+    - type: Solution
+      id: breasts
+      solution:
+        maxVol: 480 # yes, two jugs
+        canReact: false
+        reagents:
+          - ReagentId: MilkBreast
+            Quantity: 480

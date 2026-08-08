@@ -9,11 +9,12 @@
       component: BorgChassis
       invert: true
   effects:
-  - !type:AddCompsEffect
-    components:
-    - type: CumProducer
-      solutionname: "penis"
-
+  - !type:AddOrganEffect
+    organs:
+      Dick: OrganDick
+    relationships:
+      Torso: [Dick]
+      
 - type: trait
   id: MilkProducer
   name: trait-name-MilkProducer
@@ -25,10 +26,11 @@
       component: BorgChassis
       invert: true
   effects:
-  - !type:AddCompsEffect
-    components:
-    - type: MilkProducer
-      solutionname: "breasts"
+    - !type:AddOrganEffect
+      organs:
+        Breasts: OrganBreasts
+      relationships:
+        Torso: [Breasts]
 
 - type: trait
   id: SquirtProducer
@@ -41,7 +43,8 @@
       component: BorgChassis
       invert: true
   effects:
-  - !type:AddCompsEffect
-    components:
-    - type: SquirtProducer
-      solutionname: "vagina"
+    - !type:AddOrganEffect
+      organs:
+        Vagina: OrganVagina
+      relationships:
+        Torso: [Vagina]
