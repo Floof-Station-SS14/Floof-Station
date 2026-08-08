@@ -318,3 +318,15 @@ Entries:
       message: Added Janitorial plungers!
   id: 41
   time: '2026-08-04T14:51:48.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added addOrganEffect!
+    - type: Tweak
+      message: tweaked Breastfeeding to require breasts.
+    - type: Add
+      message: >-
+        Added Several Organs to represent genitals with their respective
+        solutions.
+  id: 42
+  time: '2026-08-08T18:35:30.0000000+00:00'
