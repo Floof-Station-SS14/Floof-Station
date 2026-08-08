@@ -1,0 +1,68 @@
+- type: Interaction
+  id: MilkIntoContainer
+  parent: BaseGlobal
+  priority: 4
+  delay: 3
+  range: {max: 1}
+  effectSuccess:
+    popup: Obvious
+    soundPerceivedByOthers: false
+  hideByRequirement: true
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+      - !type:BodyOrganRequirement
+        organCategory: Breasts
+        targetSelf: true
+      - !type:EntityWhitelistRequirement
+        whitelist:
+          components: [RefillableSolution]
+  action:
+    !type:OrganSolutionTransferAction
+      sourceSolution: breasts
+
+- type: Interaction
+  id: CumIntoContainer
+  parent: BaseGlobal
+  priority: 4
+  delay: 3
+  range: {max: 1}
+  effectSuccess:
+    popup: Obvious
+    soundPerceivedByOthers: false
+  hideByRequirement: true
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+      - !type:BodyOrganRequirement
+        organCategory: Dick
+        targetSelf: true
+      - !type:EntityWhitelistRequirement
+        whitelist:
+          components: [RefillableSolution]
+  action:
+    !type:OrganSolutionTransferAction
+      sourceSolution: balls
+      
+- type: Interaction
+  id: SquirtIntoContainer
+  parent: BaseGlobal
+  priority: 4
+  delay: 3
+  range: {max: 1}
+  effectSuccess:
+    popup: Obvious
+    soundPerceivedByOthers: false
+  hideByRequirement: true
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+      - !type:BodyOrganRequirement
+        organCategory: Vagina
+        targetSelf: true
+      - !type:EntityWhitelistRequirement
+        whitelist:
+          components: [RefillableSolution]
+  action:
+    !type:OrganSolutionTransferAction
+      sourceSolution: vagina
