@@ -67,9 +67,10 @@ public sealed partial class HumanoidCharacterAppearance
     }
 
     /// <summary>
+    ///     FLOOF: Made public.
     ///     Clamps a hair color to a <see cref="SkinColorationPrototype"/> strategy.
     /// </summary>
-    private static Color ClampHairColorToStrategy(Color color, SkinColorationPrototype skinType, IRobustRandom random)
+    public static Color ClampHairColorToStrategy(Color color, SkinColorationPrototype skinType, IRobustRandom random)
 
     {
         if (skinType.RealisticColors)
