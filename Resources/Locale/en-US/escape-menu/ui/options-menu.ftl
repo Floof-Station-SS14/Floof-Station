@@ -113,6 +113,7 @@ ui-options-fps-counter = Show FPS counter
 ui-options-vp-width = Viewport width:
 ui-options-hud-layout = HUD layout:
 ui-options-sharpness = Sharpness:
+ui-options-hud-chatbar = Chatbox max height:
 
 ## Controls menu
 
