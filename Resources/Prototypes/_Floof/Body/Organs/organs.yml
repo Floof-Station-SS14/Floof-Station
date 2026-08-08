@@ -8,8 +8,9 @@
     - type: Organ
       category: Dick
     - type: Sprite
+      sprite: _Floof/Mobs/Species/Generic/penis.rsi
       layers:
-        - state: dick
+        - state: penis
     - type: ProducerGenital
       solutionId: balls
     - type: BodyFluidProducer
@@ -34,8 +35,9 @@
     - type: Organ
       category: Vagina
     - type: Sprite
+      sprite: _Floof/Mobs/Species/Generic/vagina.rsi
       layers:
-        - state: vagina
+        - state: vagina-a
     - type: ProducerGenital
       solutionId: vagina
     - type: BodyFluidProducer
@@ -57,8 +59,9 @@
     - type: Organ
       category: Breasts
     - type: Sprite
+      sprite: _Floof/Mobs/Species/Generic/breasts.rsi
       layers:
-        - state: breasts    
+        - state: breasts
     - type: ProducerGenital
       solutionId: breasts
     - type: BodyFluidProducer
