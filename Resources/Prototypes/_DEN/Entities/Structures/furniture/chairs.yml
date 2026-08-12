@@ -11,6 +11,10 @@
     sprite: _DEN/Structures/Furniture/lounge_chair.rsi
   - type: Construction
     graph: ChairBeachLounge
+  - type: Strap
+    position: Down
+    rotation: -90
+    buckleOffset: -0.05, 0
 
 - type: entity
   parent: BaseChairBeachLounge
