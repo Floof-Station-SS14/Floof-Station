@@ -3,6 +3,9 @@
 
 - type: organCategory
   id: Vagina
-  
+
 - type: organCategory
   id: Breasts
+
+- type: organCategory
+  id: Bladder
