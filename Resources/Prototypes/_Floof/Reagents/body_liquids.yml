@@ -64,3 +64,23 @@
       effects:
       - !type:SatiateThirst
         factor: 4
+
+- type: reagent
+  id: Piss
+  name: reagent-name-piss
+  group: Biological
+  desc: reagent-desc-piss
+  physicalDesc: reagent-physical-desc-dirty
+  flavor: piss
+  color: "#FFFBE8"
+  recognizable: true
+  plantMetabolism:
+  - !type:PlantAdjustNutrition
+    amount: 0.1
+  - !type:PlantAdjustWater
+    amount: 0.9
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 0.3

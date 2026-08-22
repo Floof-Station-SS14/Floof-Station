@@ -367,3 +367,8 @@
   id: pussytonic
   flavorType: Complex
   description: flavor-complex-pussytonic
+
+- type: flavor
+  id: piss
+  flavorType: Complex
+  description: flavor-complex-piss

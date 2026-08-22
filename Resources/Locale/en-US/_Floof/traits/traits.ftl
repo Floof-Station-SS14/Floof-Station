@@ -7,6 +7,9 @@ trait-description-MilkProducer = You have a pair of large mammaries.
 trait-name-SquirtProducer = Pussy
 trait-description-SquirtProducer = You have a slit between your legs.
 
+trait-name-PissProducer = Bladder
+trait-description-PissProducer = You have a bladder to relieve your natural needs.
+
 trait-name-EggLayer = Egg Layer
 trait-description-EggLayer = Your body through either mutation, oviposition, cybernetic or noospheric influence has the ability to lay eggs.
 

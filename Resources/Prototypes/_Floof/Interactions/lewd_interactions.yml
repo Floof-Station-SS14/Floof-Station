@@ -43,7 +43,7 @@
   action:
     !type:OrganSolutionTransferAction
       sourceSolution: balls
-      
+
 - type: Interaction
   id: SquirtIntoContainer
   parent: BaseGlobal
@@ -66,3 +66,26 @@
   action:
     !type:OrganSolutionTransferAction
       sourceSolution: vagina
+
+- type: Interaction
+  id: PissIntoContainer
+  parent: BaseGlobal
+  priority: 4
+  delay: 3
+  range: {max: 1}
+  effectSuccess:
+    popup: Subtle
+    soundPerceivedByOthers: false
+  hideByRequirement: true
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+    - !type:BodyOrganRequirement
+      organCategory: Bladder
+      targetSelf: true
+    - !type:EntityWhitelistRequirement
+      whitelist:
+        components: [RefillableSolution]
+  action:
+    !type:OrganSolutionTransferAction
+    sourceSolution: bladder
