@@ -1,6 +1,10 @@
 using System.Numerics;
 using Content.Shared._DV.Traits.Effects;
+using Content.Shared._Floof.Body;
 using Content.Shared.Body;
+using Content.Shared.Clothing.EntitySystems;
+using Content.Shared.Humanoid;
+using Content.Shared.Inventory;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -23,8 +27,10 @@ public sealed partial class AddOrganEffect : BaseTraitEffect
     public override void Apply(TraitEffectContext ctx)
     {
         var transform = ctx.EntMan.System<SharedTransformSystem>();
+        var hidelayer = ctx.EntMan.System<SharedHideableHumanoidLayersSystem>();
         var containerSystem = ctx.EntMan.System<SharedContainerSystem>();
         var organRelation = ctx.EntMan.System<OrganRelationSystem>();
+        var var = ctx.EntMan.System<SharedVisualBodySystem>();
         
         if (!ctx.EntMan.TryGetComponent<ContainerManagerComponent>(ctx.Player, out var containerComp))
             return;
@@ -33,15 +39,14 @@ public sealed partial class AddOrganEffect : BaseTraitEffect
             return;
         
         
-        var xform = ctx.EntMan.GetComponent<TransformComponent>(ctx.Player);
         var coords = transform.ToMapCoordinates(new EntityCoordinates(ctx.Player, Vector2.Zero));
         var spawned = new Dictionary<ProtoId<OrganCategoryPrototype>, EntityUid>();
         
         foreach (var (organCategory, proto) in Organs)
         {
             var spawn = ctx.EntMan.Spawn(proto.Id, coords);
-
-            if (!containerSystem.Insert(spawn, container, containerXform: xform))
+            
+            if (!containerSystem.Insert(spawn, container, containerXform: ctx.Transform))
             {
                 ctx.EntMan.DeleteEntity(spawn);
                 continue;
@@ -76,5 +81,14 @@ public sealed partial class AddOrganEffect : BaseTraitEffect
                 organRelation.Relate(parent, childUid);
             }
         }
+        
+        if (!ctx.EntMan.TryGetComponent<ProfileTrackerComponent>(ctx.Player, out var profileTracker))
+            return;
+        var.ApplyMarkings(ctx.Player, profileTracker.Markings);
+
+        // Yes this is horrible, I'll scrap the whole system later anyway so fuck it, for a week it can stay terrible.
+        hidelayer.SetLayerOcclusion(ctx.Player, HumanoidVisualLayers.Breasts, true, SlotFlags.INNERCLOTHING);
+        hidelayer.SetLayerOcclusion(ctx.Player, HumanoidVisualLayers.Vagina, true, SlotFlags.INNERCLOTHING);
+        hidelayer.SetLayerOcclusion(ctx.Player, HumanoidVisualLayers.Penis, true, SlotFlags.INNERCLOTHING);
     }
 }

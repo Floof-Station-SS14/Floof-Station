@@ -52,6 +52,7 @@ public sealed partial class ProfilePreviewSpriteView
         {
             var dummy = _prototypeManager.Index(humanoid.Species).DollPrototype;
             PreviewDummy = EntMan.SpawnEntity(dummy, MapCoordinates.Nullspace);
+            ApplyTraits(PreviewDummy, humanoid.TraitPreferences); // Floof
             EntMan.System<SharedVisualBodySystem>().ApplyProfileTo(PreviewDummy, humanoid);
         }
         else
