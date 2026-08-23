@@ -16,6 +16,18 @@
     - type: BodyFluidProducer
       solutionName: balls
       reagentId: Cum
+    - type: VisualOrganMarkings
+      markingData:
+        group: Genital
+        layers: 
+          - Penis
+      hideableLayers:
+        - enum.HumanoidVisualLayers.Penis
+    - type: VisualOrgan
+      layer: enum.HumanoidVisualLayers.Penis
+      data:
+        sprite: _Floof/Mobs/Customization/Genital/cocks.rsi
+#        state: penis_nondescript_1_0_FRONT
     - type: Solution
       id: balls
       solution:
@@ -43,6 +55,18 @@
     - type: BodyFluidProducer
       solutionName: vagina
       reagentId: Squirt
+    - type: VisualOrganMarkings
+      markingData:
+        group: Genital
+        layers:
+          - Vagina
+      hideableLayers:
+        - enum.HumanoidVisualLayers.Vagina
+    - type: VisualOrgan
+      layer: enum.HumanoidVisualLayers.Vagina
+      data:
+        sprite: _Floof/Mobs/Customization/Genital/vagina.rsi
+#        state: vagina_dentata_1_0_FRONT
     - type: Solution
       id: vagina
       solution:
@@ -67,6 +91,18 @@
     - type: BodyFluidProducer
       solutionName: breasts
       reagentId: MilkBreast
+    - type: VisualOrganMarkings
+      markingData:
+        group: Genital
+        layers:
+          - Breasts
+      hideableLayers:
+        - enum.HumanoidVisualLayers.Breasts
+    - type: VisualOrgan
+      layer: enum.HumanoidVisualLayers.Breasts
+      data:
+        sprite: _Floof/Mobs/Customization/Genital/breasts.rsi
+#        state: breasts_pair_a_0_FRONT
     - type: Solution
       id: breasts
       solution:

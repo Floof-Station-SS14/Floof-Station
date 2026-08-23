@@ -27,6 +27,7 @@ using Content.Client._Floof.Consent.UI;
 using Content.Client.Lobby.UI.Roles;
 // End CD - Character Records
 using Content.Shared._DV.Traits;
+using Content.Shared.Body;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles; // DV - Traits
 
@@ -368,6 +369,8 @@ namespace Content.Client.Lobby.UI
                 Profile = Profile.WithTraitPreference(trait.Id, _prototypeManager);
             }
 
+            ReloadPreview(); // Floof
+            UpdateMarkings();
             SetDirty();
         }
 
@@ -580,6 +583,7 @@ namespace Content.Client.Lobby.UI
             UpdateAgeEdit();
             UpdateEyePickers();
             UpdateSaveButton();
+            ReloadPreview();
             UpdateMarkings();
 
             UpdateTraitsSelection(); // DeltaV - Traits
