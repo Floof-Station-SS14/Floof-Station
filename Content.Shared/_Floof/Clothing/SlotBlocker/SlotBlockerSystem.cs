@@ -10,12 +10,11 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Floof.Clothing.SlotBlocker;
 
 
-public sealed class SlotBlockerSystem : EntitySystem
+public sealed partial class SlotBlockerSystem : EntitySystem
 {
     public static SlotFlags IgnoredSlots = SlotFlags.POCKET;
-
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     private EntityQuery<SlotBlockerComponent> _blockerQuery = default!;
     private EntityQuery<ClothingComponent> _clothingQuery = default!;
