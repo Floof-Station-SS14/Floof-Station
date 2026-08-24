@@ -336,3 +336,13 @@ Entries:
       message: Bladder organ
   id: 43
   time: '2026-08-22T04:07:20.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added separate underwear slots
+    - type: Add
+      message: Added fishnet clothes
+    - type: Tweak
+      message: Converted thongs into underwear garments.
+  id: 44
+  time: '2026-08-24T13:05:38.0000000+00:00'
