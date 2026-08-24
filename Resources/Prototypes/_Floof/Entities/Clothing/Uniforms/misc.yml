@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingUniformThongBase
+  parent: [ClothingUniformShirtlessBase, ClothingUniformBase]
   id: ClothingUniformNudityPermit
   name: public nudity permit
   description: This permit entitles the bearer to conduct their duties without a uniform. Normally issued to furred crewmembers or those with nothing to hide.
@@ -37,7 +37,7 @@
     unequipDelay: 0
 
 - type: entity
-  parent: ClothingUniformThongBase
+  parent: ClothingUndergarmentBottomBase
   id: ClothingUniformThongPlain
   name: plain thong
   description: Is this even considered a piece of clothing?
@@ -46,9 +46,9 @@
     sprite: _Floof/Clothing/Uniforms/plainthong.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/plainthong.rsi
-
+    
 - type: entity
-  parent: ClothingUniformThongBase
+  parent: ClothingUndergarmentBottomBase
   id: ClothingUniformThongBee
   name: bee thong
   description: Is this even considered a piece of clothing?
@@ -57,9 +57,9 @@
     sprite: _Floof/Clothing/Uniforms/beethong.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/beethong.rsi
-
+    
 - type: entity
-  parent: ClothingUniformThongBase
+  parent: ClothingUndergarmentBottomBase
   id: ClothingUniformThongCoder
   name: coder thong
   description: Is this even considered a piece of clothing?
@@ -68,9 +68,9 @@
     sprite: _Floof/Clothing/Uniforms/coderthong.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/coderthong.rsi
-
+    
 - type: entity
-  parent: ClothingUniformThongBase
+  parent: ClothingUndergarmentBottomBase
   id: ClothingUniformThongCoderValid
   name: coder valid thong
   description: Is this even considered a piece of clothing?
@@ -79,9 +79,9 @@
     sprite: _Floof/Clothing/Uniforms/codervalidthong.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/codervalidthong.rsi
-
+    
 - type: entity
-  parent: ClothingUniformThongBase
+  parent: ClothingUndergarmentBottomBase
   id: ClothingUniformStripedThongWhite
   name: striped white thong
   description: Is this even considered a piece of clothing?
@@ -90,9 +90,9 @@
     sprite: _Floof/Clothing/Uniforms/stripethongwhite.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/stripethongwhite.rsi
-
+    
 - type: entity
-  parent: ClothingUniformThongBase
+  parent: ClothingUndergarmentBottomBase
   id: ClothingUniformStripedThongPurple
   name: striped purple thong
   description: Is this even considered a piece of clothing?
@@ -101,9 +101,9 @@
     sprite: _Floof/Clothing/Uniforms/stripethongpurple.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/stripethongpurple.rsi
-
+    
 - type: entity
-  parent: ClothingUniformThongBase
+  parent: ClothingUndergarmentBottomBase
   id: ClothingUniformStripedThongRainbow
   name: striped rainbow thong
   description: Is this even considered a piece of clothing?
@@ -112,7 +112,6 @@
     sprite: _Floof/Clothing/Uniforms/stripethongrainbow.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/stripethongrainbow.rsi
-
 
 #Other Outfits
 - type: entity

@@ -23,6 +23,10 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+
+    # Feet - Floof moved these to be below the socks 
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
     
     # Genitals Front - Floof
     
@@ -34,11 +38,12 @@
     # Underwear & clothing
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: [ "undergarmentBottom" ] # Floof - undergarment layers
+    - map: [ "undergarmentTop" ] # Floof - undergarment layers
+    - map: [ "undergarmentSocks" ] # Floof - undergarment layers one has to wonder why the feet are in front of the jumpsuit
     - map: ["jumpsuit"]
 
-    # Extremities
-    - map: ["enum.HumanoidVisualLayers.LFoot"]
-    - map: ["enum.HumanoidVisualLayers.RFoot"]
+    # Hands 
     - map: ["enum.HumanoidVisualLayers.LHand"]
     - map: ["enum.HumanoidVisualLayers.RHand"]
 
