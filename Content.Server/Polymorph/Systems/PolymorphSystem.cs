@@ -1,6 +1,7 @@
 using Content.Server.Actions;
 using Content.Server.Inventory;
 using Content.Server.Polymorph.Components;
+using Content.Shared._DV.Polymorph;
 using Content.Shared.Body;
 using Content.Shared.Buckle;
 using Content.Shared.Coordinates;
@@ -254,7 +255,11 @@ public sealed partial class PolymorphSystem : EntitySystem
         {
             _damageable.SetDamage((child, damageParent), damage);
         }
-
+        
+        // DeltaV - Drop MindContainer entities on polymorph
+        var beforePolymorphedEv = new BeforePolymorphedEvent();
+        RaiseLocalEvent(uid, ref beforePolymorphedEv);
+        
         if (configuration.Inventory == PolymorphInventoryChange.Transfer)
         {
             _inventory.TransferEntityInventories(uid, child);
