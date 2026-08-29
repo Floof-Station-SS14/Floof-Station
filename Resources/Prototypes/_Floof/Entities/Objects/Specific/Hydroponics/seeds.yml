@@ -5,7 +5,7 @@
   id: HumpShroomSeeds
   components:
   - type: Seed
-    seedId: humpShroom
+    plantId: HumpShroom
   - type: Sprite
     sprite: _Floof/Objects/Specific/Hydroponics/humpshroom.rsi
 
@@ -15,7 +15,7 @@
   id: BreedShroomSeeds
   components:
   - type: Seed
-    seedId: breedShroom
+    plantId: BreedShroom
   - type: Sprite
     sprite: _Floof/Objects/Specific/Hydroponics/breedshroom.rsi
 
@@ -26,6 +26,6 @@
   id: PomegranateSeeds
   components:
   - type: Seed
-    seedId: pomegranate
+    plantId: Pomegranate
   - type: Sprite
     sprite: _Floof/Objects/Specific/Hydroponics/pomegranate.rsi

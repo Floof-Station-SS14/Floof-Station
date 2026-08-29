@@ -15,7 +15,7 @@
 #      - Blindable
 #  components:
 #    - type: PermanentBlindness
-#
+
 #- type: trait
 #  id: PoorVision
 #  name: trait-poor-vision-name
@@ -28,7 +28,7 @@
 #  components:
 #    - type: PermanentBlindness
 #      blindness: 4
-#
+
 #- type: trait
 #  id: Narcolepsy
 #  name: trait-narcolepsy-name
@@ -40,7 +40,7 @@
 #      minTimeBetweenIncidents: 300
 #      maxDurationOfIncident: 30
 #      minDurationOfIncident: 10
-#
+
 #- type: trait
 #  id: Unrevivable
 #  name: trait-unrevivable-name
@@ -49,7 +49,7 @@
 #  components:
 #    - type: Unrevivable
 #      cloneable: true
-#
+
 #- type: trait
 #  id: Monochromacy
 #  name: trait-monochromacy-name
@@ -57,7 +57,7 @@
 #  category: Disabilities
 #  components:
 #  - type: BlackAndWhiteOverlay
-#
+
 #- type: trait
 #  id: Muted
 #  name: trait-muted-name
@@ -66,9 +66,11 @@
 #  blacklist:
 #    components:
 #      - BorgChassis
-#  components:
-#    - type: Muted
-#
+#  specials:
+#    - !type:ApplyStatusEffectSpecial
+#      statusEffects:
+#        - TraitStatusEffectMuted
+
 #- type: trait
 #  id: Paracusia
 #  name: trait-paracusia-name
@@ -81,7 +83,7 @@
 #      maxSoundDistance: 7
 #      sounds:
 #        collection: Paracusia
-#
+
 #- type: trait
 #  id: PainNumbness
 #  name: trait-painnumbness-name
@@ -91,7 +93,7 @@
 #  - !type:ApplyStatusEffectSpecial
 #    statusEffects:
 #    - TraitStatusEffectPainNumbness
-#
+
 #- type: trait
 #  id: Hemophilia
 #  name: trait-hemophilia-name
@@ -101,7 +103,7 @@
 #  - !type:ApplyStatusEffectSpecial
 #    statusEffects:
 #    - TraitStatusEffectHemophilia
-#
+
 #- type: trait
 #  id: ImpairedMobility
 #  name: trait-impaired-mobility-name
@@ -109,4 +111,4 @@
 #  traitGear: OffsetCane
 #  category: Disabilities
 #  components:
-#  - type: ImpairedMobility
+#    - type: ImpairedMobility

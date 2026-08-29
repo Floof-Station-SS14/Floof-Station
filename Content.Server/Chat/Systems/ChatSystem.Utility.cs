@@ -2,7 +2,7 @@ using System.Linq;
 using System.Text;
 using Content.Shared._Starlight.Language;
 using Content.Shared.Chat;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Players;
 using Content.Shared.Popups;
 using Content.Shared.Speech.Prototypes;

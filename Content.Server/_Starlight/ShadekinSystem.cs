@@ -209,7 +209,7 @@ public sealed partial class ShadekinSystem : EntitySystem
             // passive.DamageCap = 20;
             passive.AllowedStates.Clear();
             passive.AllowedStates.Add(MobState.Alive);
-            passive.Interval = 1f;
+            passive.Interval = TimeSpan.FromSeconds(1);
         }
         else if (state != ShadekinState.Dark)
         {
@@ -218,7 +218,7 @@ public sealed partial class ShadekinSystem : EntitySystem
             passive.AllowedStates.Add(MobState.Alive);
             passive.AllowedStates.Add(MobState.Critical);
             passive.AllowedStates.Add(MobState.Dead);
-            passive.Interval = 0.5f;
+            passive.Interval = TimeSpan.FromSeconds(0.5);
         }
     }
 

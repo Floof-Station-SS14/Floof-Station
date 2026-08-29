@@ -6,6 +6,6 @@ namespace Content.Server._DV.Speech.Components;
 [RegisterComponent]
 public sealed partial class SyllableObfuscationAccentComponent : Component
 {
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<SyllableObfuscationAccentPrototype>), required: true)]
+    [DataField(required: true)]
     public string Accent = default!;
 }

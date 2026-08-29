@@ -2,75 +2,74 @@
   id: CrateSecure
   start: start
   graph:
-    - node: start
-      edges:
-        - to: cratesecure
-          steps:
-            - material: Steel
-              amount: 5
-            - material: Cable
-              amount: 2
-              doAfter: 5
+  - node: start
+    edges:
+    - to: cratesecure
+      steps:
+      - material: Plasteel
+        amount: 5
+      - material: Cable
+        amount: 2
+        doAfter: 5
 
-
-    - node: cratesecure
-      entity: CrateSecure
-      edges:
-        - to: start
-          steps:
-            - tool: Screwing
-              doAfter: 5
-          conditions:
-            - !type:StorageWelded
-              welded: false
-            - !type:Locked
-              locked: false
-          completed:
-            - !type:SpawnPrototype
-              prototype: SheetSteel1
-              amount: 5
-            - !type:SpawnPrototype
-              prototype: CableApcStack1
-              amount: 2
-            - !type:EmptyAllContainers
-            - !type:DeleteEntity
-          # Floof edit section - upgrade to ID-lockable version
-        - to: idLockable
-          steps:
-          - material: Cable
-            amount: 3
-            doAfter: 3
-          - tool: Screwing
-            doAfter: 2
-          conditions:
-          - !type:StorageWelded
-            welded: false
-          - !type:Locked
-            locked: false
-          completed:
-          - !type:RaiseEvent
-            event: !type:IdLockSetEvent
-              enable: true
-    - node: idLockable
-      edges:
-      - to: start # Note: as much as I want this to go back to "done", it would replace the crate with the default secure crate, which we obviously don't want.
-        steps:
-        - tool: Prying
+  - node: cratesecure
+    entity: CrateSecure
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 5
+      conditions:
+      - !type:StorageWelded
+        welded: false
+      - !type:Locked
+        locked: false
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetPlasteel1
+        amount: 5
+      - !type:SpawnPrototype
+        prototype: CableApcStack1
+        amount: 2
+      - !type:EmptyAllContainers
+      - !type:DeleteEntity
+            # Floof edit section - upgrade to ID-lockable version
+    - to: idLockable
+      steps:
+        - material: Cable
+          amount: 3
           doAfter: 3
         - tool: Screwing
-          doAfter: 5
-        conditions:
+          doAfter: 2
+      conditions:
         - !type:StorageWelded
           welded: false
         - !type:Locked
           locked: false
+      completed:
+        - !type:RaiseEvent
+          event: !type:IdLockSetEvent
+            enable: true
+  - node: idLockable
+    edges:
+      - to: start # Note: as much as I want this to go back to "done", it would replace the crate with the default secure crate, which we obviously don't want.
+        steps:
+          - tool: Prying
+            doAfter: 3
+          - tool: Screwing
+            doAfter: 5
+        conditions:
+          - !type:StorageWelded
+            welded: false
+          - !type:Locked
+            locked: false
         completed:
-        - !type:SpawnPrototype
-          prototype: SheetSteel1
-          amount: 4
-        - !type:SpawnPrototype
-          prototype: CableApcStack1
-          amount: 5
-        - !type:EmptyAllContainers
-        - !type:DeleteEntity
+          - !type:SpawnPrototype
+            prototype: SheetSteel1
+            amount: 4
+          - !type:SpawnPrototype
+            prototype: CableApcStack1
+            amount: 5
+          - !type:EmptyAllContainers
+          - !type:DeleteEntity
         # Floof edit section end
