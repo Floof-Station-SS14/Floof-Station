@@ -9,8 +9,7 @@ namespace Content.Shared._Floof.Body;
 
 public sealed partial class BodyFluidProducerSystem : EntitySystem
 {
-    [Dependency] private HungerSystem _hunger = default!;
-    [Dependency] private ThirstSystem _thirst = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
@@ -52,18 +51,16 @@ public sealed partial class BodyFluidProducerSystem : EntitySystem
 
             if (solution.AvailableVolume == 0)
                 continue;
+
+            if (!TryComp(body, out SatiationComponent? satiation))
+                continue;
+            var entity = (body, satiation);
+            var threshold = "Okay";
             
-            if (!TryComp(body, out HungerComponent? hunger))
+            if (_satiation.IsValueInRange(entity, SatiationSystem.Hunger, below: threshold))
                 continue;
-
-            if (_hunger.GetHungerThreshold(hunger) < HungerThreshold.Okay)
-                continue;
-
-            if (!TryComp(body, out ThirstComponent? thirst))
-                continue;
-
-            //You gotta wonder why the hunger system had the cool update but the thirst system was neglected.
-            if (thirst.CurrentThirstThreshold < ThirstThreshold.Okay)
+            
+            if (_satiation.IsValueInRange(entity, SatiationSystem.Thirst, below: threshold))
                 continue;
 
             _solutionContainerSystem.TryAddReagent(comp.Solution.Value, comp.ReagentId, comp.QuantityPerUpdate,
@@ -71,9 +68,8 @@ public sealed partial class BodyFluidProducerSystem : EntitySystem
             
             if (quantity == 0)
                 continue;
-            
-            _hunger.ModifyHunger(body, -comp.HungerUsage * quantity.Float(), hunger);
-            _thirst.ModifyThirst(body, thirst, -comp.ThirstUsage * quantity.Float());
+            _satiation.ModifyValue(entity,SatiationSystem.Hunger, -comp.HungerUsage * quantity.Float());
+            _satiation.ModifyValue(entity,SatiationSystem.Thirst, -comp.HungerUsage * quantity.Float());
             
         }
     }

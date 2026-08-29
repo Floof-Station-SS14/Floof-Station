@@ -19,12 +19,13 @@
     radius: 1.5
     energy: 1.6
     color: "#4ba3ad"
+  - type: VendingMachineVisuals
+    denyState: deny-unshaded
+    brokenState: broken-base
+    offState: unpowered-base
+    normalState: powered-unshaded
   - type: VendingMachine
     pack: PetVendorInventory
-    offState: unpowered-base
-    brokenState: broken-base
-    normalState: powered-unshaded
-    denyState: deny-unshaded
   - type: Wires
     layoutId: Vending
   - type: Rotatable

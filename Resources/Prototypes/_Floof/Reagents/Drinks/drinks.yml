@@ -12,7 +12,8 @@
     Bloodstream:
       metabolismRate : 0.5
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
       - !type:PopupMessage
         type: Local
@@ -46,7 +47,8 @@
   metabolisms:
     Bloodstream:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 #      - !type:MovespeedModifier
 #        walkSpeedModifier: 1.15

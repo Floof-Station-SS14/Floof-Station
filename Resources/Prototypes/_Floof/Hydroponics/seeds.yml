@@ -1,94 +1,98 @@
-- type: seed
-  id: humpShroom
+- type: entity
+  parent: BasePlant
+  id: HumpShroom
   name: seeds-humpshroom-name
-  noun: seeds-noun-spores
-  displayName: seeds-humpshroom-display-name
-  plantRsi: _Floof/Objects/Specific/Hydroponics/humpshroom.rsi
-  packetPrototype: HumpShroomSeeds
-  productPrototypes:
-    - FoodHumpShroom
-  mutationPrototypes:
-    - breedShroom
-  lifespan: 25
-  maturation: 12
-  production: 3
-  yield: 3
-  potency: 10
-  growthStages: 2
-  waterConsumption: 0.60
-  nutrientConsumption: 0.50
-  chemicals:
-    Philterex:
-      Min: 1
-      Max: 5
-      PotencyDivisor: 4
-    Cum:
-      Min: 1
-      Max: 20
-      PotencyDivisor: 10
-    Nutriment:
-      Min: 1
-      Max: 5
-      PotencyDivisor: 20
+  components:
+    - type: Sprite
+      sprite: _Floof/Objects/Specific/Hydroponics/humpshroom.rsi
+    - type: PlantData
+      name: seeds-humpshroom-name
+      packetPrototype: HumpShroomSeeds
+      productPrototypes: [ FoodHumpShroom ]
+    - type: Plant
+      lifespan: 25
+      maturation: 12
+      production: 3
+      yield: 4
+      potency: 10
+    - type: PlantChemicals
+      chemicals:
+        Philterex:
+          min: 1
+          max: 5
+          potencyDivisor: 4
+        Cum:
+          min: 1
+          max: 20
+          potencyDivisor: 10
+        Nutriment:
+          min: 1
+          max: 5
+          potencyDivisor: 20 
 
-- type: seed
-  id: breedShroom
+- type: entity
+  parent: BasePlant
+  id: BreedShroom
   name: seeds-breedshroom-name
-  noun: seeds-noun-spores
-  displayName: seeds-breedshroom-display-name
-  plantRsi: _Floof/Objects/Specific/Hydroponics/breedshroom.rsi
-  packetPrototype: BreedShroomSeeds
-  productPrototypes:
-    - FoodBreedShroom
-  lifespan: 25
-  maturation: 12
-  production: 3
-  yield: 3
-  potency: 10
-  growthStages: 2
-  waterConsumption: 0.80
-  nutrientConsumption: 0.60
-  chemicals:
-    Libidozenithizine:
-      Min: 1
-      Max: 2
-      PotencyDivisor: 4
-    Cum:
-      Min: 1
-      Max: 20
-      PotencyDivisor: 20
-    Philterex:
-      Min: 1
-      Max: 4
-      PotencyDivisor: 5
-    Happiness:
-      Min: 1
-      Max: 4
-      PotencyDivisor: 5
+  components:
+    - type: Sprite
+      sprite: _Floof/Objects/Specific/Hydroponics/breedshroom.rsi
+    - type: PlantData
+      name: seeds-breedshroom-name
+      packetPrototype: BreedShroomSeeds
+      productPrototypes: [ FoodBreedShroom ]
+    - type: Plant
+      lifespan: 25
+      maturation: 12
+      production: 3
+      yield: 3
+      potency: 10
+    - type: PlantChemicals
+      chemicals:
+        Libidozenithizine:
+          min: 1
+          max: 2
+          potencyDivisor: 4
+        Cum:
+          min: 1
+          max: 20
+          potencyDivisor: 20
+        Philterex:
+          min: 1
+          max: 4
+          potencyDivisor: 5
+        Happiness:
+          min: 1
+          max: 4
+          potencyDivisor: 5
 
-- type: seed
-  id: pomegranate
+
+- type: entity
+  parent: BasePlant
+  id: Pomegranate
   name: seeds-pomegranate-name
-  noun: seeds-noun-seeds
-  displayName: seeds-pomegranate-display-name
-  plantRsi: _Floof/Objects/Specific/Hydroponics/pomegranate.rsi
-  packetPrototype: PomegranateSeeds
-  productPrototypes:
-  - FoodPomegranate
-  harvestRepeat: Repeat
-  lifespan: 55
-  maturation: 6
-  production: 6
-  yield: 3
-  potency: 10
-  idealLight: 6
-  waterConsumption: 0.60
-  chemicals:
-    Pomelustine:
-      Min: 5
-      Max: 30
-      PotencyDivisor: 10
-    Nutriment:
-      Min: 1
-      Max: 10
-      PotencyDivisor: 25
+  components:
+    - type: Sprite
+      sprite: _Floof/Objects/Specific/Hydroponics/pomegranate.rsi
+    - type: PlantData
+      name: seeds-pomegranate-name
+      packetPrototype: PomegranateSeeds
+      productPrototypes: [ FoodPomegranate ]
+    - type: PlantHarvest
+      harvestRepeat: Repeat
+    - type: Plant
+      lifespan: 55
+      maturation: 6
+      production: 6
+      yield: 3
+      potency: 10
+    - type: PlantChemicals
+      chemicals:
+        Pomelustine:
+          min: 5
+          max: 30
+          potencyDivisor: 10
+        Nutriment:
+          min: 1
+          max: 10
+          potencyDivisor: 25

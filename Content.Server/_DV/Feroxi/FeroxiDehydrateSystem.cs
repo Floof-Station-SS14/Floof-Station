@@ -2,21 +2,25 @@ using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Metabolism;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
+using NetCord;
 
 namespace Content.Server._DV.Feroxi;
 
 public sealed partial class FeroxiDehydrateSystem : EntitySystem
 {
     [Dependency] private BodySystem _body = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
 
     public override void Update(float frameTime)
     {
-        var query = EntityQueryEnumerator<FeroxiDehydrateComponent, ThirstComponent>();
+        var query = EntityQueryEnumerator<FeroxiDehydrateComponent, SatiationComponent>();
 
         while (query.MoveNext(out var uid, out var feroxiDehydrate, out var thirst))
         {
-            var currentThirst = thirst.CurrentThirstThreshold;
-            var shouldBeDehydrated = currentThirst <= ThirstThreshold.Parched;
+            var threshold = "Parched";
+            var entity = (uid, thirst);
+            var shouldBeDehydrated = _satiation.IsValueInRange(entity, SatiationSystem.Hunger, below: threshold);
 
             if (feroxiDehydrate.Dehydrated != shouldBeDehydrated)
                 UpdateDehydrationStatus((uid, feroxiDehydrate), shouldBeDehydrated);
