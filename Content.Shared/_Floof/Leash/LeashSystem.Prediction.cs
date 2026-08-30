@@ -1,4 +1,4 @@
-using Content.Shared._Floof.CCVar;
+
 using Robust.Shared.Configuration;
 
 namespace Content.Shared._Floof.Leash;
@@ -14,7 +14,7 @@ public sealed partial class LeashSystem
         if (!_net.IsClient)
             return;
 
-        _config.OnValueChanged(CCVars.PredictLeashes, value => ClientLeashJointPrediction = value, true);
+        _config.OnValueChanged(CCVars.CCVars.PredictLeashes, value => ClientLeashJointPrediction = value, true);
     }
 
     private bool ShouldPredictLeashes()

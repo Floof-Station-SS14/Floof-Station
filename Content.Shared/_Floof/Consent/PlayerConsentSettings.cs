@@ -1,5 +1,8 @@
+// Originally from the Delta-v project. Copyright (c) Delta-v contributors.
+// Moved to this project; original copyright remains with its holders.
+// Licensed under the GNU Affero General Public License v3.0.
 using System.Linq;
-using Content.Shared._Floof.CCVar;
+using Content.Shared._Floof.CCVars;
 using Content.Shared._Floof.Consent.Prototypes;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;

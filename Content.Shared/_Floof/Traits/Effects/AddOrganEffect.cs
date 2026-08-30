@@ -1,8 +1,6 @@
 using System.Numerics;
-using Content.Shared._DV.Traits.Effects;
 using Content.Shared._Floof.Body;
 using Content.Shared.Body;
-using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Robust.Shared.Containers;

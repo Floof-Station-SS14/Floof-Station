@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Reflection;
-using Content.Server._DV.Traits;
-using Content.Shared._DV.Traits;
-using Content.Shared._DV.Traits.Conditions;
-using Content.Shared._DV.Traits.Effects;
+using Content.Server._Floof.Traits;
+using Content.Shared._Floof.Traits;
+using Content.Shared._Floof.Traits.Conditions;
+using Content.Shared._Floof.Traits.Effects;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Nutrition.Components;

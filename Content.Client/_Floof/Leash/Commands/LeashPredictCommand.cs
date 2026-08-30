@@ -1,5 +1,5 @@
 using Content.Client.UserInterface.Systems.Bwoink;
-using Content.Shared._Floof.CCVar;
+using Content.Shared._Floof.CCVars;
 using Content.Shared.Administration;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
