@@ -279,11 +279,7 @@ public sealed partial class TraitSystem : SharedTraitSystem
         {
             try
             {
-                // Handle SpawnItemInHandEffect specially since it needs server-side systems
-                if (effect is SpawnItemInHandEffect spawnEffect)
-                    ApplySpawnItemEffect(player, spawnEffect, transform);
-                else
-                    effect.Apply(effectCtx);
+                effect.Apply(effectCtx);
             }
             catch (Exception e)
             {
