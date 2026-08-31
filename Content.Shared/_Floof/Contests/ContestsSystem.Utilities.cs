@@ -1,4 +1,4 @@
-using Content.Shared._Floof.CCVar;
+using Content.Shared._Floof.CCVars;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Contests;

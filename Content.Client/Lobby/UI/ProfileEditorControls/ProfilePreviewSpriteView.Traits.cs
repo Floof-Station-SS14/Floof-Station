@@ -1,5 +1,8 @@
-using Content.Shared._DV.Traits;
-using Content.Shared._DV.Traits.Effects;
+// Originally from the Delta-v project. Copyright (c) Delta-v contributors.
+// Moved to this project; original copyright remains with its holders.
+// Licensed under the GNU Affero General Public License v3.0.
+using Content.Shared._Floof.Traits;
+using Content.Shared._Floof.Traits.Effects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Lobby.UI.ProfileEditorControls;

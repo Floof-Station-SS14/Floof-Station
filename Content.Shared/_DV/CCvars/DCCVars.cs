@@ -139,7 +139,7 @@ public sealed partial class DCCVars
     /*
      * Traits
      */
-
+    /* Moved to floof namespace for convenience
     /// <summary>
     /// Maximum number of traits that can be selected globally.
     /// </summary>
@@ -158,7 +158,7 @@ public sealed partial class DCCVars
     /// </summary>
     public static readonly CVarDef<bool> SkipDisabledTraitsPopup =
         CVarDef.Create("traits.skip_disabled_traits_popup", false, CVar.CLIENT | CVar.ARCHIVE);
-
+    */
     /*
      * Feedback webhook
      */

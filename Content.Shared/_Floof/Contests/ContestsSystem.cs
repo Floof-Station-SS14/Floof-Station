@@ -1,4 +1,4 @@
-using Content.Shared._Floof.CCVar;
+using Content.Shared._Floof.CCVars;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;

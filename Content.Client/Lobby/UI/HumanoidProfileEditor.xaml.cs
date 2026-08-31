@@ -26,7 +26,7 @@ using Content.Client._Floof.Consent.Managers;
 using Content.Client._Floof.Consent.UI;
 using Content.Client.Lobby.UI.Roles;
 // End CD - Character Records
-using Content.Shared._DV.Traits;
+using Content.Shared._Floof.Traits;
 using Content.Shared.Body;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles; // DV - Traits
