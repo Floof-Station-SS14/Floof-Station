@@ -6,7 +6,6 @@ using Content.Shared._Floof.CCVars;
 using Content.Shared._Floof.Traits;
 using Content.Shared._Floof.Traits.Conditions;
 using Content.Shared._Floof.Traits.Effects;
-using Content.Shared._Floof.Traits;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
