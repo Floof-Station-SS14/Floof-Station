@@ -45,7 +45,7 @@ public sealed partial class WahSystem : EntitySystem
 
                     var layerId = $"{proto.ID}-{rsi.RsiState}";
 
-                    if (!_sprite.LayerMapTryGet(ent.Owner, layerId, out var index, true))
+                    if (!_sprite.LayerMapTryGet(ent.Owner, layerId, out var index, false))
                         continue;
 
                     _sprite.LayerSetVisible(ent.Owner, index, false);
