@@ -89,3 +89,26 @@
   action:
     !type:OrganSolutionTransferAction
     sourceSolution: bladder
+
+- type: Interaction
+  id: BreastFeed
+  parent: BaseGlobal
+  priority: 4
+  icon: /Textures/_Floof/Interface/Actions/breastfeed.png
+  delay: 1.1
+  range: {max: 1}
+  effectSuccess:
+    popup: Obvious
+    sound: {path: /Audio/_Floof/Effects/suckle-swallow.ogg}
+    soundPerceivedByOthers: false
+  hideByRequirement: true
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+      - !type:MobStateRequirement
+        inverted: true
+      - !type:EntityWhitelistRequirement
+        whitelist:
+          components: [HumanoidProfile]
+  action:
+    !type:NoOpAction
