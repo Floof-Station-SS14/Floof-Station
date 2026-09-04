@@ -33,6 +33,16 @@ namespace Content.Shared.Humanoid
         StencilMask,
         Ensnare,
         Fire,
-
+        
+        //Genitals - Floof
+        Breasts,
+        BreastsBehind,
+        Testicles,
+        TesticlesBehind,
+        Penis,
+        PenisBehind,
+        Vagina,
+        VaginaBehind // This one is currently unused but adding it anyway for future support.
+        
     }
 }

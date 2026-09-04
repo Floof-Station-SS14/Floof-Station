@@ -91,5 +91,8 @@ namespace Content.Shared.Verbs
 
         public static readonly VerbCategory Metabolizers =
             new("verb-categories-select-target", "/Textures/Interface/VerbIcons/group.svg.192dpi.png");
+
+        public static readonly VerbCategory Interaction = new("verb-categories-interaction", null); // Floof
+
     }
 }

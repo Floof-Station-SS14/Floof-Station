@@ -4,6 +4,12 @@
   components:
   - type: Sprite
     layers:
+    # Genitals Behind - Floof
+    - map: [ "enum.HumanoidVisualLayers.PenisBehind" ]
+    - map: [ "enum.HumanoidVisualLayers.TesticlesBehind" ]
+    - map: [ "enum.HumanoidVisualLayers.VaginaBehind" ]
+    - map: [ "enum.HumanoidVisualLayers.BreastsBehind" ]
+                
     # Torso
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
 
@@ -18,14 +24,26 @@
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
 
+    # Feet - Floof moved these to be below the socks 
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    
+    # Genitals Front - Floof
+    
+    - map: [ "enum.HumanoidVisualLayers.Breasts" ]
+    - map: [ "enum.HumanoidVisualLayers.Vagina" ]
+    - map: [ "enum.HumanoidVisualLayers.Testicles" ]
+    - map: [ "enum.HumanoidVisualLayers.Penis" ]
+
     # Underwear & clothing
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: [ "undergarmentBottom" ] # Floof - undergarment layers
+    - map: [ "undergarmentTop" ] # Floof - undergarment layers
+    - map: [ "undergarmentSocks" ] # Floof - undergarment layers one has to wonder why the feet are in front of the jumpsuit
     - map: ["jumpsuit"]
 
-    # Extremities
-    - map: ["enum.HumanoidVisualLayers.LFoot"]
-    - map: ["enum.HumanoidVisualLayers.RFoot"]
+    # Hands 
     - map: ["enum.HumanoidVisualLayers.LHand"]
     - map: ["enum.HumanoidVisualLayers.RHand"]
 

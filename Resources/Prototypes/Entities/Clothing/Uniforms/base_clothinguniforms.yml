@@ -13,6 +13,11 @@
     refineResult:
     - id: MaterialCloth1
       amount: 3
+  - type: HideLayerClothing
+    layers:
+      Vagina: INNERCLOTHING
+      Penis: INNERCLOTHING
+      Breasts: INNERCLOTHING
   - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
     materialComposition:
       Cloth: 150

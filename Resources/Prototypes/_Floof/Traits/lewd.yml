@@ -1,0 +1,67 @@
+- type: trait
+  id: CumProducer
+  name: trait-name-CumProducer
+  description: trait-description-CumProducer
+  category: Medical
+  cost: 0
+  conditions:
+    - !type:HasCompCondition
+      component: BorgChassis
+      invert: true
+  effects:
+  - !type:AddOrganEffect
+    organs:
+      Dick: OrganDick
+    relationships:
+      Torso: [Dick]
+
+- type: trait
+  id: MilkProducer
+  name: trait-name-MilkProducer
+  description: trait-description-MilkProducer
+  category: Medical
+  cost: 0
+  conditions:
+    - !type:HasCompCondition
+      component: BorgChassis
+      invert: true
+  effects:
+    - !type:AddOrganEffect
+      organs:
+        Breasts: OrganBreasts
+      relationships:
+        Torso: [Breasts]
+
+- type: trait
+  id: SquirtProducer
+  name: trait-name-SquirtProducer
+  description: trait-description-SquirtProducer
+  category: Medical
+  cost: 0
+  conditions:
+    - !type:HasCompCondition
+      component: BorgChassis
+      invert: true
+  effects:
+    - !type:AddOrganEffect
+      organs:
+        Vagina: OrganVagina
+      relationships:
+        Torso: [Vagina]
+
+- type: trait
+  id: PissProducer
+  name: trait-name-PissProducer
+  description: trait-description-PissProducer
+  category: Medical
+  cost: 0
+  conditions:
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddOrganEffect
+    organs:
+      Dick: OrganBladder
+    relationships:
+      Torso: [Bladder]

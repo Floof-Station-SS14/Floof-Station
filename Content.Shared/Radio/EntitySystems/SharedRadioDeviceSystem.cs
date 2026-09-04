@@ -24,7 +24,7 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
     [Dependency] private SharedRadioSystem _radio = default!;
     [Dependency] private SharedPowerReceiverSystem _power = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
-
+    
     // Used to prevent a shitter from using a bunch of radios to spam chat.
     private readonly HashSet<(string, EntityUid, RadioChannelPrototype)> _recentlySent = [];
 
@@ -261,14 +261,16 @@ public abstract partial class SharedRadioDeviceSystem : EntitySystem
         var name = Loc.GetString("speech-name-relay",
             ("speaker", Name(ent.Owner)),
             ("originalName", nameEv.VoiceName));
-
+        // log to chat so people can identity the speaker/source, but avoid clogging ghost chat if there are many radios
+        var message = args.OriginalChatMsg.Message; // Starlight-edit: The chat system will handle the rest and re-obfuscate if needed.
         // log to chat so people can identity the speaker/source, but avoid clogging ghost chat if there are many radios
         _chat.TrySendInGameICMessage(ent.Owner,
-            args.Message,
+            message,
             InGameICChatType.Whisper,
             ChatTransmitRange.GhostRangeLimit,
             nameOverride: name,
-            checkRadioPrefix: false);
+            checkRadioPrefix: false,
+            languageOverride: args.Language);
     }
 
     [SubscribeLocalEvent]
