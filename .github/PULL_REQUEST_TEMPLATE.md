@@ -38,8 +38,8 @@ This just saves them the trouble. Note that AGPL or MIT licensing is only applic
 <!-- See https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html#changelog for guidelines. -->
 <!--
 :cl:
-- add: Added fun!
-- remove: Removed fun!
-- tweak: Changed fun!
-- fix: Fixed fun!
+- add: Crowbars now randomly spawn in maintenance lockers.
+- remove: Crowbars no longer spawn in maintenance crates.
+- tweak: Crowbar spawn rates have been increased for tool lockers.
+- fix: Crowbars no longer accidentally spawn in microwaves.
 -->

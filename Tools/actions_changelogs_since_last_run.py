@@ -141,33 +141,83 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
 
         for entry in group:
             for change in entry["changes"]:
-                emoji = TYPES_TO_EMOJI.get(change['type'], "❓")
-                message = change['message']
-                url = entry.get("url")
-                if url and url.strip():
-                    group_content.write(f"{emoji} - [{message}]({url})\n")
-                else:
-                    group_content.write(f"{emoji} - {message}\n")
+                emoji = TYPES_TO_EMOJI.get(change["type"], "❓")
+                message = change["message"]
 
-        group_text = group_content.getvalue()
-        message_text = message_content.getvalue()
-        message_length = len(message_text)
-        group_length = len(group_text)
+                labels = entry.get("labels") or []
+                if EXPERIMENTAL_LABEL in labels:
+                    emoji = f"{emoji}{EXPERIMENTAL_EMOJI}"
 
-        # If adding the text would bring it over the group limit then send the message and start a new one
-        if message_length + group_length >= DISCORD_SPLIT_LIMIT:
-            print("Split changelog and sending to discord")
-            send_discord(message_text)
+                message_lines.append(create_change_line(emoji, message, url))
 
-            # Reset the message
-            message_content = io.StringIO()
+    return message_lines
 
-        # Flush the group to the message
-        message_content.write(group_text)
 
-    # Clean up anything remaining
-    message_text = message_content.getvalue()
-    if len(message_text) > 0:
+def split_message_lines(message_lines: list[str]) -> list[list[str]]:
+    """Join message lines into chunks that are each below Discord's message length limit."""
+    chunks = []
+    chunk_lines = []
+    chunk_length = 0
+
+    for line in message_lines:
+        line_length = len(line)
+        if line_length > DISCORD_SPLIT_LIMIT:
+            raise ValueError(
+                f"Changelog line is too long for Discord after truncation: {line_length}"
+            )
+
+        new_chunk_length = chunk_length + line_length
+
+        if new_chunk_length > DISCORD_SPLIT_LIMIT:
+            if chunk_lines:
+                chunks.append(chunk_lines)
+
+            new_chunk_length = line_length
+            chunk_lines = []
+
+        chunk_lines.append(line)
+        chunk_length = new_chunk_length
+
+    if chunk_lines:
+        chunks.append(chunk_lines)
+
+    return chunks
+
+
+def dump_debug_markdown(message_lines: list[str]):
+    chunks = split_message_lines(message_lines)
+
+    with DEBUG_DISCORD_DUMP_FILE.open("w", encoding="utf-8", newline="\n") as f:
+        f.write("# Discord Changelog Debug Dump\n\n")
+        f.write(
+            f"Generated from `{DEBUG_CHANGELOG_FILE_OLD}` to `{CHANGELOG_FILE}`.\n\n"
+        )
+
+        if not chunks:
+            f.write("_No changelog entries to send._\n")
+            return
+
+        for i, chunk_lines in enumerate(chunks, start=1):
+            content = "".join(chunk_lines)
+            f.write(
+                f"<!-- Discord message break: chunk {i}/{len(chunks)}, {len(content)}/{DISCORD_SPLIT_LIMIT} characters -->\n\n"
+            )
+            f.write(f"## Discord Message {i}\n\n")
+            f.write(content.lstrip("\n"))
+            f.write("\n")
+
+    print(f"Wrote Discord changelog debug dump to {DEBUG_DISCORD_DUMP_FILE}")
+
+
+def send_message_lines(message_lines: list[str]):
+    """Join a list of message lines into chunks that are each below Discord's message length limit, and send them."""
+    chunks = split_message_lines(message_lines)
+
+    for chunk_lines in chunks[:-1]:
+        print("Split changelog and sending to discord")
+        send_discord_webhook(chunk_lines)
+
+    if chunks:
         print("Sending final changelog to discord")
         send_discord(message_text)
 
