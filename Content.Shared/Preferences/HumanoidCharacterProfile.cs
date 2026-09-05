@@ -335,7 +335,7 @@ namespace Content.Shared.Preferences
         /// <returns>A new character profile with values randomized</returns>
         public static HumanoidCharacterProfile Random(HashSet<string>? ignoredSpecies = null)
         {
-            var config = RandomizeConfigAll &~ RandomizeCfg.Markings;
+            var config = RandomizeConfigAll &~ RandomizeCfg.Markings; // Floof - random markings look terrible, so we skip them on character creation.
             var baseProfile = new HumanoidCharacterProfile();
             if (ignoredSpecies != null)
             {
