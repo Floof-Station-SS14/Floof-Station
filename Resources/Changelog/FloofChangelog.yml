@@ -358,3 +358,9 @@ Entries:
       message: Fixed fleshlights.
   id: 46
   time: '2026-09-01T04:30:51.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Fix
+      message: New characters don't have random markings anymore.
+  id: 47
+  time: '2026-09-05T12:29:28.0000000+00:00'
