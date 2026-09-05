@@ -266,6 +266,7 @@
     - CargoBoardsStatic
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
+    - DenBoardsStatic # DEN
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
@@ -539,6 +540,7 @@
     - ThighHighsRecipePack
     - ThongsRecipePack
     # Floofstation section end
+    - DenClothingJob #DEN
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm
