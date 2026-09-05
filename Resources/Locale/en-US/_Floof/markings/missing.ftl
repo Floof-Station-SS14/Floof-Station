@@ -1268,3 +1268,5 @@ marking-LizardChestSpinesLongMembraneWithoutTail-spines_longmembrane_alt = Long 
 marking-LizardChestSpinesShortWithoutTail-spines_short_alt = Short Chest Spines
 marking-LizardChestSpinesShortMembrane-spines_shortmembrane = Short Chest Spines with Membrane
 marking-LizardChestSpinesShortMembraneWithoutTail-spines_shortmembrane_alt = Short Chest Spines with Membrane
+
+changelog-tab-title-FloofChangelog = Floof Changelog
