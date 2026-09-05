@@ -1,6 +1,7 @@
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
+using Content.Shared.Nutrition.Prototypes;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -33,7 +34,13 @@ public sealed partial class BodyFluidProducerComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public FixedPoint2 QuantityPerUpdate = 10;
-
+    
+    /// <summary>
+    /// If the entity's hunger satiation is below this value, it cannot spin web.
+    /// </summary>
+    [DataField(required: true), AutoNetworkedField]
+    public SatiationValue MinHungerThreshold;
+    
     /// <summary>
     ///     The amount of nutrient consumed on update.
     /// </summary>

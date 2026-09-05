@@ -55,12 +55,11 @@ public sealed partial class BodyFluidProducerSystem : EntitySystem
             if (!TryComp(body, out SatiationComponent? satiation))
                 continue;
             var entity = (body, satiation);
-            var threshold = "Okay";
             
-            if (_satiation.IsValueInRange(entity, SatiationSystem.Hunger, below: threshold))
+            if (_satiation.IsValueInRange(entity, SatiationSystem.Hunger, below: comp.MinHungerThreshold))
                 continue;
             
-            if (_satiation.IsValueInRange(entity, SatiationSystem.Thirst, below: threshold))
+            if (_satiation.IsValueInRange(entity, SatiationSystem.Thirst, below: comp.MinHungerThreshold))
                 continue;
 
             _solutionContainerSystem.TryAddReagent(comp.Solution.Value, comp.ReagentId, comp.QuantityPerUpdate,
