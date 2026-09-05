@@ -335,7 +335,7 @@ namespace Content.Shared.Preferences
         /// <returns>A new character profile with values randomized</returns>
         public static HumanoidCharacterProfile Random(HashSet<string>? ignoredSpecies = null)
         {
-            var config = RandomizeConfigAll;
+            var config = RandomizeConfigAll &~ RandomizeCfg.Markings; // Floof - random markings look terrible, so we skip them on character creation.
             var baseProfile = new HumanoidCharacterProfile();
             if (ignoredSpecies != null)
             {
@@ -375,7 +375,7 @@ namespace Content.Shared.Preferences
             profile.Gender = (randomizeCfg & RandomizeCfg.Gender) != 0 ? RandomGender(profile.Sex) : baseProfile.Gender;
             profile.Name = (randomizeCfg & RandomizeCfg.Name) != 0 ? RandomName(speciesProto, profile.Gender) : baseProfile.Name;
             profile.Age = (randomizeCfg & RandomizeCfg.Age) != 0 ? RandomAge(speciesProto) : baseProfile.Age;
-
+            
             profile.Appearance = HumanoidCharacterAppearance.Random(speciesProto, profile.Sex, randomizeCfg, baseProfile.Appearance);
 
             return profile;
