@@ -1270,3 +1270,7 @@ marking-LizardChestSpinesShortMembrane-spines_shortmembrane = Short Chest Spines
 marking-LizardChestSpinesShortMembraneWithoutTail-spines_shortmembrane_alt = Short Chest Spines with Membrane
 
 changelog-tab-title-FloofChangelog = Floof Changelog
+
+markings-layer-Vagina = Vagina 
+markings-layer-Penis = Penis
+markings-layer-Breasts = Breasts

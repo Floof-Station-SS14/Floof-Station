@@ -16,6 +16,7 @@
     - type: BodyFluidProducer
       solutionName: balls
       reagentId: Cum
+      minHungerThreshold: Peckish
     - type: VisualOrganMarkings
       markingData:
         group: Genital
@@ -55,6 +56,7 @@
     - type: BodyFluidProducer
       solutionName: vagina
       reagentId: Squirt
+      minHungerThreshold: Peckish
     - type: VisualOrganMarkings
       markingData:
         group: Genital
@@ -91,6 +93,7 @@
     - type: BodyFluidProducer
       solutionName: breasts
       reagentId: MilkBreast
+      minHungerThreshold: Peckish
     - type: VisualOrganMarkings
       markingData:
         group: Genital
@@ -130,6 +133,7 @@
   - type: BodyFluidProducer
     solutionName: bladder
     reagentId: Piss
+    minHungerThreshold: Peckish
   - type: Solution
     id: bladder
     solution:
