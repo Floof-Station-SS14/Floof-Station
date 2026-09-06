@@ -364,3 +364,9 @@ Entries:
       message: New characters don't have random markings anymore.
   id: 47
   time: '2026-09-05T12:29:28.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Added a map auto-vote at the end of rounds/in lobbies.
+  id: 48
+  time: '2026-09-06T04:48:55.0000000+00:00'
