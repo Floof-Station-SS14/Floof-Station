@@ -24,7 +24,7 @@
       canCollide: false
     - type: InteractionOutline
     - type: Damageable
-      damageContainer: Inorganic
+      # damageContainer: Inorganic #Floof
       damageModifierSet: Metallic
     - type: Construction
       graph: Shower
