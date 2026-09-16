@@ -1,4 +1,15 @@
 ## PET ROCK!
+- type: entityTable # size: 2x2
+  id: HappyHonkPetRockEntityTable
+  table: !type:GroupSelector
+    children:
+      - id: PetRockFred
+        weight: 0.1
+      - id: PetRock
+        weight: 0.8
+      - id: PetRockRoxie
+        weight: 0.1
+
 - type: entity
   id: PetRockCarrier
   parent: HappyHonk
@@ -11,17 +22,10 @@
   - type: Item
     sprite: _Floof/Objects/Fun/rock_carrier.rsi
     heldPrefix: box
-  - type: StorageFill
-    contents:
-    - id: PetRock
-      prob: 0.8
-      orGroup: Rock
-    - id: PetRockFred
-      prob: 0.1
-      orGroup: Rock
-    - id: PetRockRoxie
-      prob: 0.1
-      orGroup: Rock
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: HappyHonkPetRockEntityTable
 
 - type: entity
   parent: [BaseItem, MrChips]

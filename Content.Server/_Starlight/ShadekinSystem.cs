@@ -45,11 +45,11 @@ public sealed partial class ShadekinSystem : EntitySystem
     }
     private readonly Dictionary<string, List<LightCone>> _lightMasks = new()
     {
-        ["/Textures/Effects/LightMasks/cone.png"] = new List<LightCone>
+            ["Cone"] = new List<LightCone>
         {
             new() { Direction = 0, InnerWidth = 30, OuterWidth = 60 }
         },
-            ["/Textures/Effects/LightMasks/double_cone.png"] = new List<LightCone>
+            ["ConeDouble"] = new List<LightCone>
         {
             new() { Direction = 0, InnerWidth = 30, OuterWidth = 60 },
             new() { Direction = 180, InnerWidth = 30, OuterWidth = 60 }

@@ -1,3 +1,35 @@
+- type: entityTable
+  id: CrateFunSprayPaintsTable
+  table: !type:AllSelector
+    children:
+      - !type:NestedSelector
+        tableId: SprayPaintTable
+      - id: SprayPaintBlue
+        amount: 2
+        prob: 0.33
+      - id: SprayPaintRed
+        amount: 2
+        prob: 0.33
+      - id: SprayPaintOrange
+        amount: 2
+        prob: 0.33
+      - id: SprayPaintBlack
+        amount: 2
+        prob: 0.33
+      - id: SprayPaintGreen
+        amount: 2
+        prob: 0.33
+      - id: SprayPaintPurple
+        amount: 2
+        prob: 0.33
+      - id: SprayPaintWhite
+        amount: 2
+        prob: 0.33
+      - id: DeathPaint
+        amount: 2
+      - id: DeathPaintTwo
+        amount: 2
+
 - type: entity
   id: CrateFunSprayPaints
   name: spray paint crate
@@ -5,36 +37,7 @@
   parent: CratePlastic
   suffix: Spray Paint
   components:
-  - type: StorageFill
-    contents:
-    - id: SprayPaintBlue
-      amount: 2
-      prob: 0.33
-    - id: SprayPaintRed
-      amount: 2
-      prob: 0.33
-    - id: SprayPaintOrange
-      amount: 2
-      prob: 0.33
-    - id: SprayPaintBlack
-      amount: 2
-      prob: 0.33
-    - id: SprayPaintGreen
-      amount: 2
-      prob: 0.33
-    - id: SprayPaintPurple
-      amount: 2
-      prob: 0.33
-    - id: SprayPaintWhite
-      amount: 2
-      prob: 0.33
-    - id: DeathPaint
-      amount: 2
-    - id: DeathPaintTwo
-      amount: 2
-  - type: EntityTableContainerFill # Some additional loot from the maint table
-    containers:
-      entity_storage: !type:NestedSelector
-        rolls: !type:RangeNumberSelector
-          range: 3, 6
-        tableId: SprayPaintTable
+    - type: EntityTableContainerFill
+      containers:
+        entity_storage: !type:NestedSelector
+          tableId: CrateFunSprayPaintsTable
