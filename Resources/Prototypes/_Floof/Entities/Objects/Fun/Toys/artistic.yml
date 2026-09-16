@@ -22,7 +22,7 @@
     requiresSpecialDigestion: true # Stop eating my paintbrushes you evil mothroaches
   - type: Solution
     id: food
-    solutions:
+    solution:
       reagents:
       - ReagentId: Nutriment
         Quantity: 15
