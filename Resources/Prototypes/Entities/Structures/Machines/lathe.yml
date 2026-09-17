@@ -124,6 +124,9 @@
     unlitIdleState: unlit
     unlitRunningState: unlit-building
     staticPacks:
+    # Begin DeltaV Additions
+    - CutterMachineStaticDen
+    # End DeltaV Additions
     - ToolsStatic
     - PartsStatic
     - AtmosStatic
