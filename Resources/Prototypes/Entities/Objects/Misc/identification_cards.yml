@@ -25,6 +25,7 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
+  - type: FishingPoints # DeltaV
 
 #IDs with layers
 
