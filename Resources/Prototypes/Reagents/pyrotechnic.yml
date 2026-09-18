@@ -45,7 +45,7 @@
   contrabandSeverity: Major
   flavor: bitter
   color: "#FA00AF"
-  flammability: 5 // Floof - tile fires
+  flammability: 5 # Floof - tile fires
   tileReactions:
   - !type:FlammableTileReaction
     temperatureMultiplier: 5
