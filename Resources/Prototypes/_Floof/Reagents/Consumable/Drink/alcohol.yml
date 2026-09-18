@@ -1628,13 +1628,13 @@
   id: DrinkSyndicateEggnogGlass
   suffix: eggnog
   components:
-  - type: SolutionContainerManager
-    solutions:
-      Bloodstream:
-        maxVol: 30
-        reagents:
-        - ReagentId: SyndicateEggnog
-          Quantity: 30
+  - type: Solution
+    id: Bloodstream
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: SyndicateEggnog
+        Quantity: 30
   - type: Icon
     sprite: _Floof/Objects/Consumable/Drinks/syndicate_eggnog.rsi
     state: icon

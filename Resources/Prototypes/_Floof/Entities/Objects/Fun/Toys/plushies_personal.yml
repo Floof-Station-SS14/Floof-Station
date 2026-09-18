@@ -462,10 +462,10 @@
     destroyOnEmpty: false
     utensil: None
     solution: fleshlight
-  - type: SolutionContainerManager
-    solutions:
-      fleshlight:
-        maxVol: 10
+  - type: Solution
+    id: fleshlight
+    solution:
+      maxVol: 10
   - type: SolutionTransfer
     transferAmount: 5
     maxTransferAmount: 10
@@ -993,10 +993,10 @@
     destroyOnEmpty: false
     utensil: None
     solution: fleshlight
-  - type: SolutionContainerManager
-    solutions:
-      fleshlight:
-        maxVol: 10
+  - type: Solution
+    id: fleshlight
+    solution:
+      maxVol: 10
   - type: SolutionTransfer
     transferAmount: 5
     maxTransferAmount: 10

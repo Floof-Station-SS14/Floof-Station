@@ -34,13 +34,13 @@
     - 0,0,1,0 # 1x2
   - type: Edible
     requiresSpecialDigestion: true
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 5
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 5
   - type: ToolRefinable
     refineResult:
       - id: MaterialCloth1
