@@ -6,10 +6,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._DV.Fishing.Systems;
 
-public sealed class FishingVendorSystem : EntitySystem
+public sealed partial class FishingVendorSystem : EntitySystem
 {
-    [Dependency] private readonly FishingPointsSystem _fishingPoints = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private FishingPointsSystem _fishingPoints = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

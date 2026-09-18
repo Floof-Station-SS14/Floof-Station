@@ -4,7 +4,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._DV.Fishing.Systems;
 
-public sealed class FishingPointsSystem : EntitySystem
+public sealed partial class FishingPointsSystem : EntitySystem
 {
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedIdCardSystem _idCard = default!;
