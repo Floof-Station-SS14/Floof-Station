@@ -2,7 +2,7 @@
   id: Snowball
   mapName: 'Snowball Station'
   mapPath: /Maps/snowball.yml
-  minPlayers: 5
+  minPlayers: 0 # Floof - lower min players
   maxPlayers: 25
   stations:
     Snowball:

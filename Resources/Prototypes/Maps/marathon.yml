@@ -2,7 +2,7 @@
   id: Marathon
   mapName: 'Marathon Station'
   mapPath: /Maps/marathon.yml
-  minPlayers: 45
+  minPlayers: 0 # Floof - lower min players
   stations:
     Marathon:
       stationProto: StandardNanotrasenStation

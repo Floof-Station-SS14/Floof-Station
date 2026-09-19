@@ -2,7 +2,7 @@
   id: Plasma
   mapName: 'Plasma'
   mapPath: /Maps/plasma.yml
-  minPlayers: 30
+  minPlayers: 0 # Floof - lower min players
   maxPlayers: 65
   stations:
     Plasma:

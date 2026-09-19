@@ -2,7 +2,7 @@
   id: Box
   mapName: 'Box Station'
   mapPath: /Maps/box.yml
-  minPlayers: 45
+  minPlayers: 0 # Floof - lower min players
   stations:
     Boxstation:
       stationProto: StandardNanotrasenStation

@@ -2,7 +2,7 @@
   id: Bagel
   mapName: 'Bagel Station'
   mapPath: /Maps/bagel.yml
-  minPlayers: 45 #removing max players since server already has a max doesnt matter
+  minPlayers: 0 # Floof - lower min players
   stations:
     Bagel:
       stationProto: StandardNanotrasenStation
