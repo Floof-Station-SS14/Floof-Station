@@ -1,7 +1,7 @@
 - type: gameMap
   id: Sushi
   mapName: 'Sushi Station'
-  mapPath: /Maps/sushi.yml
+  mapPath: /Maps/_Floof/sushi.yml
   minPlayers: 0 # Floof - lower min players
   stations:
     Sushi:

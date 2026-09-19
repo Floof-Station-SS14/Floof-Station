@@ -1,7 +1,7 @@
 - type: gameMap
   id: Bagel
   mapName: 'Bagel Station'
-  mapPath: /Maps/bagel.yml
+  mapPath: /Maps/_Floof/bagel.yml
   minPlayers: 0 # Floof - lower min players
   stations:
     Bagel:
