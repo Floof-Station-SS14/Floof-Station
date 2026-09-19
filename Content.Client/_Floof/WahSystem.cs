@@ -5,7 +5,7 @@ using Robust.Client.GameObjects;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Body.Systems;
-
+/*
 public sealed partial class WahSystem : EntitySystem
 {
     [Dependency] private MarkingManager _marking = default!;
@@ -16,8 +16,6 @@ public sealed partial class WahSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<BodyComponent, OrganInsertedIntoEvent>(OnBodyInit);
-
-        
     }
 
     private void OnBodyInit(Entity<BodyComponent> ent, ref OrganInsertedIntoEvent args)
@@ -25,9 +23,10 @@ public sealed partial class WahSystem : EntitySystem
 
         if (!TryComp<VisualOrganMarkingsComponent>(args.Organ, out var visualOrganMarkingsComponent))
             return;
+        
         if (!TryComp<HideableHumanoidLayersComponent>(ent.Owner, out var comp))
             return;
-        
+
         foreach (var markings in visualOrganMarkingsComponent.Markings.Values)
         {
             foreach (var marking in markings)
@@ -55,5 +54,5 @@ public sealed partial class WahSystem : EntitySystem
     }
             
 }
-    
+*/    
 
