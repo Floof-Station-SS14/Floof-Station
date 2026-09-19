@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 290.0.0
+  engineVersion: 289.0.3
   forkId: ""
   forkVersion: ""
-  time: 09/19/2026 01:47:56
+  time: 09/15/2026 18:12:53
   entityCount: 25496
 maps:
 - 1
@@ -54763,36 +54763,6 @@ entities:
           decals:
             180: 76,98
         - node:
-            id: FloofStationSign1
-            color: '#FFFFFFFF'
-          decals:
-            4: 74,110
-        - node:
-            id: FloofStationSign2
-            color: '#FFFFFFFF'
-          decals:
-            3: 75,110
-        - node:
-            id: FloofStationSign3
-            color: '#FFFFFFFF'
-          decals:
-            2: 76,110
-        - node:
-            id: FloofStationSign4
-            color: '#FFFFFFFF'
-          decals:
-            0: 77,110
-        - node:
-            id: FloofStationSign5
-            color: '#FFFFFFFF'
-          decals:
-            1: 78,110
-        - node:
-            id: FloofStationSign6
-            color: '#FFFFFFFF'
-          decals:
-            5: 79,110
-        - node:
             id: HalfTileOverlayGreyscale270
             color: '#334E6DC8'
           decals:
@@ -59402,6 +59372,11 @@ entities:
             3851: 92,85
             3852: 92,84
         - node:
+            id: SpaceStationSign7
+            color: '#FFFFFFFF'
+          decals:
+            253: 80.5,92.5
+        - node:
             id: StandClear
             color: '#FFFFFFFF'
           decals:
@@ -60649,11 +60624,6 @@ entities:
           decals:
             4929: 92,104
         - node:
-            id: FloofStationSign7
-            color: '#FFFFFFFF'
-          decals:
-            0: 80,110
-        - node:
             id: HalfTileOverlayGreyscale
             color: '#DE3A3A96'
           decals:
@@ -61609,6 +61579,36 @@ entities:
             color: '#334E6DC8'
           decals:
             196: 74,95
+        - node:
+            id: SpaceStationSign1
+            color: '#FFFFFFFF'
+          decals:
+            256: 74.5,92.5
+        - node:
+            id: SpaceStationSign2
+            color: '#FFFFFFFF'
+          decals:
+            255: 75.5,92.5
+        - node:
+            id: SpaceStationSign3
+            color: '#FFFFFFFF'
+          decals:
+            254: 76.5,92.5
+        - node:
+            id: SpaceStationSign4
+            color: '#FFFFFFFF'
+          decals:
+            250: 77.5,92.5
+        - node:
+            id: SpaceStationSign5
+            color: '#FFFFFFFF'
+          decals:
+            251: 78.5,92.5
+        - node:
+            id: SpaceStationSign6
+            color: '#FFFFFFFF'
+          decals:
+            252: 79.5,92.5
         - node:
             id: WarnLineGreyscaleW
             color: '#9FED5896'
@@ -69395,13 +69395,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 29.889854,93.58724
-- proto: DebugGenerator
-  entities:
-  - uid: 16744
-    components:
-    - type: Transform
-      parent: 2
-      pos: 32.5,43.5
 - proto: DecalSpawnerBloodSplatters
   entities:
   - uid: 9719
@@ -119782,6 +119775,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 86.5,97.5
+- proto: HolopadGeneralArrivals
+  entities:
+  - uid: 16744
+    components:
+    - type: Transform
+      parent: 2
+      pos: 77.5,110.5
 - proto: HolopadGeneralEvac
   entities:
   - uid: 16745
@@ -122483,16 +122483,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 96.50233,81.55272
-    - type: ContainerContainer
-      containers:
-        brainslot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        brain_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
 - proto: ModularReceiver
   entities:
   - uid: 17163
