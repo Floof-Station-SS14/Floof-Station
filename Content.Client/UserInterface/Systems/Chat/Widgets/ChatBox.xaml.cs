@@ -23,8 +23,8 @@ public partial class ChatBox : UIWidget
     private readonly ISawmill _sawmill;
     private readonly ChatUIController _controller;
     private readonly IEntityManager _entManager;
-    private readonly IConfigurationManager _cfg = default!; // EE - Chat stacking
-    private readonly ILocalizationManager _loc = default!; // EE - Chat stacking
+    [Dependency] private IConfigurationManager _cfg = default!; // EE - Chat stacking
+    [Dependency] private ILocalizationManager _loc = default!; // EE - Chat stacking
     [Dependency] private ILogManager _log = default!;
 
     public bool Main { get; set; }
