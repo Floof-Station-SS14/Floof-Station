@@ -7,6 +7,7 @@
   - CaptainJumpsuit
   - CaptainBackpack
   - CaptainOuterClothing
+  - CaptainShoes # FLOOF
   - AssistiveItems
   - Survival
   - Trinkets
@@ -22,6 +23,7 @@
   - HoPJumpsuit
   - HoPBackpack
   - HoPOuterClothing
+  - HoPShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -64,9 +66,11 @@
   groups:
   - GroupTankHarness
   - BartenderHead
+  - BartenderNeck # FLOOF
   - BartenderJumpsuit
   - CommonBackpack
   - BartenderOuterClothing
+  - BartenderShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -78,7 +82,9 @@
   id: JobServiceWorker
   groups:
   - GroupTankHarness
-  - BartenderJumpsuit
+  - ServiceWorkerNeck # FLOOF
+  - ServiceWorkerJumpsuit # FLOOF: 'BartenderJumpsuit'
+  - ServiceWorkerShoes # FLOOF
   - CommonBackpack
   - Glasses
   - AssistiveItems
@@ -92,10 +98,12 @@
   groups:
   - GroupTankHarness
   - ChefHead
+  - ChefNeck # FLOOF
   - ChefMask
   - ChefJumpsuit
   - CommonBackpack
   - ChefOuterClothing
+  - ChefShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -107,8 +115,10 @@
   id: JobLibrarian
   groups:
   - GroupTankHarness
+  - LibrarianNeck # FLOOF
   - LibrarianJumpsuit
   - CommonBackpack
+  - LibrarianShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -123,6 +133,7 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
+  - LawyerShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -155,10 +166,12 @@
   groups:
   - GroupTankHarness
   - JanitorHead
+  - JanitorNeck # FLOOF
   - JanitorJumpsuit
   - JanitorGloves
   - CommonBackpack
   - JanitorOuterClothing
+  - JanitorShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -171,9 +184,11 @@
   groups:
   - GroupTankHarness
   - BotanistHead
+  - BotanistNeck # FLOOF
   - BotanistJumpsuit
   - BotanistBackpack
   - BotanistOuterClothing
+  - BotanistShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -187,6 +202,7 @@
   groups:
   - GroupTankHarness
   - ClownHead
+  - ClownNeck # FLOOF
   - ClownJumpsuit
   - ClownBackpack
   - ClownOuterClothing
@@ -203,11 +219,13 @@
   groups:
   - GroupTankHarness
   - MimeHead
+  - MimeNeck # FLOOF
   - MimeMask
   - MimeJumpsuit
   - MimeBackpack
   - MimeOuterClothing
   - MimeBelt
+  - MimeShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -219,9 +237,11 @@
   canCustomizeName: true
   groups:
   - GroupTankHarness
+  - MusicianNeck # FLOOF
   - MusicianJumpsuit
   - CommonBackpack
   - MusicianOuterClothing
+  - MusicianShoes # FLOOF
   - Instruments
   - Glasses
   - AssistiveItems
@@ -253,6 +273,7 @@
   groups:
   - GroupTankHarness
   - CargoTechnicianHead
+  - CargoTechnicianNeck # FLOOF
   - CargoTechnicianJumpsuit
   - CargoTechnicianBackpack
   - CargoTechnicianOuterClothing
@@ -269,6 +290,7 @@
   id: JobSalvageSpecialist
   groups:
   - GroupTankHarness
+  - SalvageSpecialistNeck # FLOOF
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
@@ -300,8 +322,10 @@
   id: JobTechnicalAssistant
   groups:
   - GroupTankHarness
+  - TechnicalAssistantNeck # FLOOF
   - TechnicalAssistantJumpsuit
   - StationEngineerBackpack
+  - TechnicalAssistantShoes # FLOOF
   - AssistiveItems
   - SurvivalExtended
   - Trinkets
@@ -313,6 +337,7 @@
   groups:
   - GroupTankHarness
   - StationEngineerHead
+  - StationEngineerNeck # FLOOF
   - StationEngineerJumpsuit
   - StationEngineerBackpack
   - StationEngineerOuterClothing
@@ -328,6 +353,7 @@
   id: JobAtmosphericTechnician
   groups:
   - GroupTankHarness
+  - AtmosphericTechnicianNeck # FLOOF
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
@@ -380,8 +406,10 @@
   id: JobResearchAssistant
   groups:
   - GroupTankHarness
+  - ResearchAssistantNeck # FLOOF
   - ResearchAssistantJumpsuit
   - ScientistBackpack
+  - ResearchAssistantShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -410,6 +438,7 @@
   id: JobWarden
   groups:
   - WardenHead
+  - WardenNeck # FLOOFS@
   - WardenJumpsuit
   - SecurityBackpack
   - SecurityBelt
@@ -425,6 +454,7 @@
   id: JobSecurityOfficer
   groups:
   - SecurityHead
+  - SecurityNeck # FLOOF
   - SecurityJumpsuit
   - SecurityBackpack
   - SecurityOuterClothing
@@ -455,6 +485,7 @@
 - type: roleLoadout
   id: JobSecurityCadet
   groups:
+  - SecurityCadetNeck # FLOOF
   - SecurityCadetJumpsuit
   - SecurityBackpack
   - AssistiveItems
@@ -470,7 +501,9 @@
   - GroupTankHarness
   - ReporterJumpsuit
   - ReporterHead
+  - ReporterNeck # FLOOF
   - ReporterOuterClothing
+  - ReporterShoes # FLOOF
   - CommonBackpack
   - Glasses
   - AssistiveItems
@@ -483,8 +516,10 @@
   id: JobPsychologist
   groups:
   - GroupTankHarness
+  - PsychologistNeck # FLOOF
   - PsychologistJumpsuit
   - MedicalBackpack
+  - PsychologistShoes # FLOOF
   - Glasses
   - AssistiveItems
   - Survival
@@ -496,11 +531,13 @@
   id: JobTramDriver
   groups:
   - GroupTankHarness
+  - TramDriverNeck # FLOOF
   - CommonBackpack
   - TramDriverJumpsuit
   - TramDriverOuterClothing #Vest and such
   - TramDriverHat
   - TramDriverGloves
+  - TramDriverShoes # FLOOF
   - Glasses
   - Survival
   - Trinkets

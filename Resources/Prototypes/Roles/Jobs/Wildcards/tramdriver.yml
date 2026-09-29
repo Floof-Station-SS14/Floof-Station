@@ -18,7 +18,7 @@
 - type: startingGear
   id: TramDriverGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
+  #  shoes: ClothingShoesBootsLaceup # FLOOF
     id: TramDriverPDA
     ears: ClothingHeadsetService
     neck: ClothingNeckTieSerious

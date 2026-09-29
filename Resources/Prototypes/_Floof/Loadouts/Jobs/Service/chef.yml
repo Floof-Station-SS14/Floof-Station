@@ -1,0 +1,5 @@
+- type: loadout
+  id: ClothingShoesChef
+  groupBy: ChefGear
+  equipment:
+    shoes: ClothingShoesChef

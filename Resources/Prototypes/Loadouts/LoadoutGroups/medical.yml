@@ -18,6 +18,8 @@
 - type: loadoutGroup
   id: MedicalShoes
   name: loadout-group-medical-doctor-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - WhiteShoes
   - MedicalWinterBoots
@@ -63,6 +65,7 @@
   - ChiefMedicalOfficerWintercoat
 
 - type: loadoutGroup
+  parent: CommandCollars # FLOOF
   id: ChiefMedicalOfficerNeck
   name: loadout-group-chief-medical-officer-neck
   minLimit: 0
@@ -73,6 +76,8 @@
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
   name: loadout-group-chief-medical-officer-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - BrownShoes
   - MedicalWinterBoots
@@ -206,6 +211,8 @@
 - type: loadoutGroup
   id: ParamedicShoes
   name: loadout-group-paramedic-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - BlueShoes
   - WhiteShoes

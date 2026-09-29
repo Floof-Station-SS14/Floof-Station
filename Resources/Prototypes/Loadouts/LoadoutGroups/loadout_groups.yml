@@ -322,6 +322,8 @@
 - type: loadoutGroup
   id: PassengerShoes
   name: loadout-group-passenger-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - BlackShoes
   - WinterBoots
@@ -498,6 +500,8 @@
 - type: loadoutGroup
   id: ChaplainShoes
   name: loadout-group-chaplain-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - BlackShoes
   - BlackSandals
@@ -809,6 +813,8 @@
 - type: loadoutGroup
   id: QuartermasterShoes
   name: loadout-group-quartermaster-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - BrownShoes
   - CargoWinterBoots
@@ -851,6 +857,8 @@
 - type: loadoutGroup
   id: CargoTechnicianShoes
   name: loadout-group-cargo-technician-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - BlackShoes
   - CargoWinterBoots
@@ -886,6 +894,8 @@
 - type: loadoutGroup
   id: SalvageSpecialistShoes
   name: loadout-group-salvage-specialist-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - SalvageBoots
   - CargoWinterBoots
@@ -933,6 +943,8 @@
 - type: loadoutGroup
   id: ChiefEngineerShoes
   name: loadout-group-chief-engineer-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - BrownShoes
   - EngineeringWinterBoots
@@ -995,6 +1007,8 @@
 - type: loadoutGroup
   id: StationEngineerShoes
   name: loadout-group-station-engineer-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - WorkBoots
   - EngineeringWinterBoots
@@ -1038,6 +1052,8 @@
 - type: loadoutGroup
   id: AtmosphericTechnicianShoes
   name: loadout-group-atmospheric-technician-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - WhiteShoes
   - EngineeringWinterBoots
@@ -1096,6 +1112,8 @@
 - type: loadoutGroup
   id: ResearchDirectorShoes
   name: loadout-group-research-director-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - BrownShoes
   - ScienceWinterBoots
@@ -1157,6 +1175,8 @@
 - type: loadoutGroup
   id: ScientistShoes
   name: loadout-group-scientist-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - WhiteShoes
   - BlackShoes
@@ -1317,6 +1337,8 @@
 - type: loadoutGroup
   id: SecurityShoes
   name: loadout-group-security-shoes
+  minLimit: 0 # FLOOF
+  defaultSelected: 1 # FLOOF
   loadouts:
   - JackBoots
   - SecurityWinterBoots

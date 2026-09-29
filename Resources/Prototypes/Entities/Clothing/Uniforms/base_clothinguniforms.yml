@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionFood, SolutionToolNormal, Clothing, BaseSlicingRefinable]
+  parent: [SolutionFood, SolutionToolNormal, Clothing, AllowSuitStorageClothing, BaseSlicingRefinable ] # FLOOF: 'AllowSuitStorageClothing'
   id: UnsensoredClothingUniformBase
   components:
   - type: Sprite
@@ -65,6 +65,9 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  - type: Tag # FLOOF
+    tags:
+    - Jumpskirt
 
 - type: entity
   abstract: true

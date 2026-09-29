@@ -1,0 +1,38 @@
+- type: loadoutGroup
+  parent: MedicalCollars
+  id: ChemistNeck
+  name: loadout-group-chemist-neck
+  minLimit: 0
+
+- type: loadoutGroup
+  parent: MedicalCollars
+  id: ParamedicNeck
+  name: loadout-group-paramedic-neck
+  minLimit: 0
+
+- type: loadoutGroup
+  parent: MedicalCollars
+  id: PsychologistNeck
+  name: loadout-group-psychologist-neck
+  minLimit: 0
+
+- type: loadoutGroup
+  parent: MedicalCollars
+  id: MedicalDoctorNeck
+  name: loadout-group-medical-doctor-neck
+  minLimit: 0
+
+- type: loadoutGroup
+  parent: MedicalCollars
+  id: MedicalInternNeck
+  name: loadout-group-medical-intern-neck
+  minLimit: 0
+
+# Shoes
+- type: loadoutGroup
+  id: PsychologistShoes
+  name: loadout-group-psychologist-shoes
+  minLimit: 0
+  defaultSelected: 1
+  loadouts:
+  - LeatherShoes

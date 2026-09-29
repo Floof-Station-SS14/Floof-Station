@@ -42,3 +42,145 @@
   chatTriggers:
   - bellow
   - bellows
+
+- type: emote
+  id: Hoot
+  name: chat-emote-name-hoot
+  category: Vocal
+  icon: Interface/Emotes/vocal.png
+  whitelist:
+    components:
+    - Vocal
+    - Singer # Harpies
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-hoot"]
+  chatTriggers:
+  - hoot
+  - hooting
+  - hoots
+
+- type: emote
+  id: Caw
+  name: chat-emote-name-caw
+  category: Vocal
+  icon: _DeltaV/Interface/Emotes/caw.png
+  whitelist:
+    components:
+    - Vocal
+    - Singer # Harpies
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-caw"]
+  chatTriggers:
+  - caw
+  - cawing
+  - caws
+
+- type: emote
+  id: Rev
+  name: chat-emote-name-rev
+  category: Vocal
+  icon: Interface/Emotes/vocal.png
+  whitelist:
+    components:
+    - Vocal
+    - Singer # Harpies
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-rev"]
+  chatTriggers:
+  - rev
+  - revving
+  - revs
+
+- type: emote
+  id: Bang
+  name: chat-emote-name-bang
+  category: Vocal
+  icon: Interface/Emotes/vocal.png
+  whitelist:
+    components:
+    - Vocal
+    - Singer # Harpies
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-bang"]
+  chatTriggers:
+  - bang
+  - banging
+  - bangs
+
+- type: emote
+  id: Pew
+  name: chat-emote-name-pew
+  category: Vocal
+  icon: Interface/Emotes/vocal.png
+  whitelist:
+    components:
+    - Vocal
+    - Singer # Harpies
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-pew"]
+  chatTriggers:
+  - pew
+  - pews
+
+- type: emote
+  id: Ring
+  name: chat-emote-name-ring
+  category: Vocal
+  icon: _DeltaV/Interface/Emotes/ring.png
+  whitelist:
+    components:
+    - Vocal
+    - Singer # Harpies
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-ring"]
+  chatTriggers:
+  - ring
+  - ringing
+  - rings
+
+- type: emote
+  id: Purr
+  name: chat-emote-name-purr
+  category: Vocal
+  icon: _DeltaV/Interface/Emotes/purr.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-purr"]
+  chatTriggers:
+  - purr
+  - purring
+  - purrs
+
+- type: emote
+  id: Mew
+  name: chat-emote-name-mew
+  category: Vocal
+  icon: _DeltaV/Interface/Emotes/mew.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-mew"]
+  chatTriggers:
+  - mew
+  - mewing
+  - mews
+

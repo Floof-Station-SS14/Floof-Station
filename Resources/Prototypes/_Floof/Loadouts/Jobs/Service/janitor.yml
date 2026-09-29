@@ -1,0 +1,5 @@
+- type: loadout
+  id: Galoshes
+  groupBy: JanitorGear
+  equipment:
+    shoes: ClothingShoesGaloshes

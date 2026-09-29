@@ -1,0 +1,25 @@
+- type: loadoutGroup
+  parent: EngineeringCollars
+  id: TechnicalAssistantNeck
+  name: loadout-group-technical-assistant-neck
+  minLimit: 0
+
+- type: loadoutGroup
+  parent: EngineeringCollars
+  id: StationEngineerNeck
+  name: loadout-group-station-engineer-neck
+  minLimit: 0
+
+- type: loadoutGroup
+  parent: EngineeringCollars
+  id: AtmosphericTechnicianNeck
+  name: loadout-group-atmospheric-technician-neck
+  minLimit: 0
+
+- type: loadoutGroup
+  id: TechnicalAssistantShoes
+  name: loadout-group-technical-assistant-shoes
+  minLimit: 0
+  defaultSelected: 1
+  loadouts:
+  - WorkBoots

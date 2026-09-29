@@ -33,3 +33,14 @@
   id: ClothingNeckCowBellCollar #The Den
   equipment:
     neck: ClothingNeckCowBellCollar #The Den
+
+- type: loadout
+  id: ClothingNeckTieRed
+  equipment:
+    neck: ClothingNeckTieRed
+
+# Shoes
+- type: loadout
+  id: LeatherShoes
+  equipment:
+    shoes: ClothingShoesLeather

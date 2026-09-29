@@ -24,6 +24,7 @@
   - GroupTankHarness
   - MedicalDoctorHead
   - MedicalMask
+  - MedicalDoctorNeck # FLOOF
   - MedicalDoctorJumpsuit
   - MedicalBackpack
   - MedicalDoctorOuterClothing
@@ -40,8 +41,10 @@
   id: JobMedicalIntern
   groups:
   - GroupTankHarness
+  - MedicalInternNeck # FLOOF
   - MedicalInternJumpsuit
   - MedicalBackpack
+  - MedicalShoes # FLOOF
   - Glasses
   - AssistiveItems
   - SurvivalMedical
@@ -54,6 +57,7 @@
   groups:
   - GroupTankHarness
   - MedicalMask
+  - ChemistNeck # FLOOF
   - ChemistJumpsuit
   - ChemistBackpack
   - ChemistOuterClothing
@@ -71,6 +75,7 @@
   - GroupTankHarness
   - ParamedicHead
   - MedicalMask
+  - ParamedicNeck # FLOOF
   - ParamedicJumpsuit
   - MedicalBackpack
   - ParamedicOuterClothing

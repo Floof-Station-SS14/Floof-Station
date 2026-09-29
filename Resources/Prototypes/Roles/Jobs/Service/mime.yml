@@ -24,7 +24,7 @@
   id: MimeGear
   equipment:
     gloves: ClothingHandsGlovesColorWhite
-    shoes: ClothingShoesColorWhite
+  #  shoes: ClothingShoesColorWhite # FLOOF
     id: MimePDA
     ears: ClothingHeadsetService
   storage:

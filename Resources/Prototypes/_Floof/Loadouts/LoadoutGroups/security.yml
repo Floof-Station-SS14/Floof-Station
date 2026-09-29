@@ -1,0 +1,30 @@
+## CADET ##
+- type: loadoutGroup
+  parent: SecurityCollars
+  id: SecurityCadetNeck
+  name: loadout-group-security-cadet-neck
+  minLimit: 0
+
+## OFFICER ##
+- type: loadoutGroup
+  parent: SecurityCollars
+  id: SecurityNeck
+  name: loadout-group-security-officer-neck
+  minLimit: 0
+
+## WARDEN ##
+# neckwear
+- type: loadoutGroup
+  parent: SecurityCollars
+  id: WardenNeck
+  name: loadout-group-warden-neck
+  minLimit: 0
+
+# Shoes
+- type: loadoutGroup
+  id: LawyerShoes
+  name: loadout-group-lawyer-shoes
+  minLimit: 0
+  defaultSelected: 1
+  loadouts:
+  - LaceupShoes

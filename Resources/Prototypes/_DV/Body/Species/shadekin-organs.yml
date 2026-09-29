@@ -9,7 +9,7 @@
   abstract: true
   components:
   - type: Metabolizer
-    metabolizerTypes: [ Human ]
+    metabolizerTypes: [ Shadekin ]
 
 - type: entity
   parent: OrganShadekin

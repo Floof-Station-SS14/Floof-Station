@@ -1,0 +1,11 @@
+- type: loadoutGroup
+  parent: CargoCollars
+  id: CargoTechnicianNeck
+  name: loadout-group-cargo-technician-neck
+  minLimit: 0
+
+- type: loadoutGroup
+  parent: CargoCollars
+  id: SalvageSpecialistNeck
+  name: loadout-group-salvage-specialist-neck
+  minLimit: 0

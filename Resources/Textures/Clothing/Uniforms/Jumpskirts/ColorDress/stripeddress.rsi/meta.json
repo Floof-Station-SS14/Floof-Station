@@ -28,6 +28,14 @@
     {
       "name": "inhand-right",
       "directions": 4
-    }
+    },
+      {
+          "name": "color-equipped-INNERCLOTHING-harpy",
+          "directions": 4
+      },
+      {
+          "name": "equipped-INNERCLOTHING-harpy",
+          "directions": 4
+      }
   ]
 }

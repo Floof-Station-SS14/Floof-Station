@@ -50,6 +50,11 @@
 - type: Tag
   id: Katana
 
+## J ##
+
+- type: Tag
+  id: Jumpskirt
+
 ## P ##
 
 - type: Tag
@@ -66,3 +71,4 @@
 ## W ##
 - type: Tag
   id: Wakizashi
+

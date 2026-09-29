@@ -201,6 +201,7 @@
     - GalacticCommon
     - Moffic
   # Starlight-end
+  - type: Flight # FLOOF
 
 - type: entity
   parent: OrganBaseOrganic

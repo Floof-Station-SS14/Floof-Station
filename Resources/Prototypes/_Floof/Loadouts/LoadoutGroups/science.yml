@@ -1,0 +1,14 @@
+- type: loadoutGroup
+  id: ResearchAssistantNeck
+  parent: ScienceCollars
+  name: loadout-group-research-assistant-neck
+  minLimit: 0
+
+# Shoes
+- type: loadoutGroup
+  id: ResearchAssistantShoes
+  name: loadout-group-research-assistant-shoes
+  minLimit: 0
+  defaultSelected: 1
+  loadouts:
+  - WhiteShoes

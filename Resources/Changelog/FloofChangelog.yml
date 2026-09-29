@@ -429,3 +429,53 @@ Entries:
       message: Fixed a number of issues with the horny plants
   id: 57
   time: '2026-09-24T17:36:25.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: Librarians can now select red ties.
+    - type: Tweak
+      message: Every job now has a collar selection.
+    - type: Tweak
+      message: Made most jobs shoe-optional.
+    - type: Tweak
+      message: Service workers now have Chef and Bartender outfit selections.
+    - type: Tweak
+      message: Most job loadout options are now grouped together.
+  id: 58
+  time: '2026-09-27T13:03:07.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: >-
+        Added Harpies, they have ulravision, can fly for a limited time, and can
+        sing.
+    - type: Add
+      message: Added Harpy-specific jumpskirt sprites.
+  id: 59
+  time: '2026-09-27T21:50:03.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Fix
+      message: Fixed Harpy displacements.
+  id: 60
+  time: '2026-09-27T23:25:06.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Tweak
+      message: Shadekin and Harpies can now digest raw animal proteins. (Aka mice)
+  id: 61
+  time: '2026-09-28T04:11:57.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Tweak
+      message: >-
+        The back slot for shotguns, instruments, .etc now requires a JUMPSUIT
+        than outer clothing.
+  id: 62
+  time: '2026-09-28T04:13:00.0000000+00:00'
+- author: DaCookieCakes
+  changes:
+    - type: Tweak
+      message: Moths can now fly like Harpies.
+  id: 63
+  time: '2026-09-28T05:37:55.0000000+00:00'

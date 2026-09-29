@@ -14,6 +14,7 @@
   - Vulpkanin
   - GuideEntryFeroxi # Floof: Added.
   - Shadekin # Starlight: Added.
+  - GuideEntryHarpy # EE
 
 - type: guideEntry
   id: Arachnid
@@ -65,3 +66,9 @@
   id: Shadekin
   name: species-name-shadekin
   text: "/ServerInfo/Guidebook/_Floof/Mobs/Shadekin.xml" # Floof: Custom lore.
+
+# EE: Added.
+- type: guideEntry
+  id: GuideEntryHarpy
+  name: species-name-harpy
+  text: "/ServerInfo/Guidebook/Mobs/_EE/Harpy.xml"

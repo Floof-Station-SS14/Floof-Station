@@ -11,48 +11,57 @@
 # Jumpsuit
 - type: loadout
   id: QuartermasterJumpsuit
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     jumpsuit: ClothingUniformJumpsuitQM
 
 - type: loadout
   id: QuartermasterJumpskirt
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     jumpsuit: ClothingUniformJumpskirtQM
 
 - type: loadout
   id: QuartermasterTurtleneck
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     jumpsuit: ClothingUniformJumpsuitQMTurtleneck
 
 - type: loadout
   id: QuartermasterTurtleneckSkirt
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     jumpsuit: ClothingUniformJumpskirtQMTurtleneck
 
 - type: loadout
   id: QuartermasterFormalSuit
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     jumpsuit: ClothingUniformJumpsuitQMFormal
 
 # Head
 - type: loadout
   id: QuartermasterHead
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     head: ClothingHeadHatQMsoft
 
 - type: loadout
   id: QuartermasterBeret
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     head: ClothingHeadHatBeretQM
 
 # Neck
 - type: loadout
   id: QuartermasterCloak
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     neck: ClothingNeckCloakQm
 
 - type: loadout
   id: QuartermasterMantle
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     neck: ClothingNeckMantleQM
   effects:
@@ -67,5 +76,6 @@
 # OuterClothing
 - type: loadout
   id: QuartermasterWintercoat
+  groupBy: QuartermasterGear # FLOOF
   equipment:
     outerClothing: ClothingOuterWinterQM

@@ -93,45 +93,53 @@
 # Head
 - type: loadout
   id: JanitorHead
+  groupBy: JanitorGear # FLOOF
   equipment:
     head: ClothingHeadHatPurplesoft
 
 # Jumpsuit
 - type: loadout
   id: JanitorJumpsuit
+  groupBy: JanitorGear # FLOOF
   equipment:
     jumpsuit: ClothingUniformJumpsuitJanitor
 
 - type: loadout
   id: JanitorJumpskirt
+  groupBy: JanitorGear # FLOOF
   equipment:
     jumpsuit: ClothingUniformJumpskirtJanitor
 
 # Gloves
 - type: loadout
   id: JanitorRubberGloves
+  groupBy: JanitorGear # FLOOF
   equipment:
     gloves: ClothingHandsGlovesJanitor
 
 - type: loadout
   id: OrangeGloves
+  groupBy: JanitorGear # FLOOF
   equipment:
     gloves: ClothingHandsGlovesColorOrange
 
 - type: loadout
   id: PurpleGloves
+  groupBy: JanitorGear # FLOOF
   equipment:
     gloves: ClothingHandsGlovesColorPurple
 
 # Outer clothing
 - type: loadout
   id: JanitorWintercoat
+  groupBy: JanitorGear # FLOOF
   equipment:
     outerClothing: ClothingOuterWinterJani
 
 # Misc
 - type: loadout
   id: JanitorBronzePlunger
+  groupBy: JanitorGear # FLOOF
   effects:
   - !type:GroupLoadoutEffect
     proto: BronzeJanitorial
@@ -141,6 +149,7 @@
 
 - type: loadout
   id: JanitorSilverPlunger
+  groupBy: JanitorGear # FLOOF
   effects:
   - !type:GroupLoadoutEffect
     proto: SilverJanitorial
@@ -150,6 +159,7 @@
 
 - type: loadout
   id: JanitorGoldPlunger
+  groupBy: JanitorGear # FLOOF
   effects:
   - !type:GroupLoadoutEffect
     proto: GoldJanitorial
@@ -159,6 +169,7 @@
 
 - type: loadout
   id: JanitorPlatinumPlunger
+  groupBy: JanitorGear # FLOOF
   effects:
   - !type:GroupLoadoutEffect
     proto: PlatinumJanitorial
@@ -168,6 +179,7 @@
 
 - type: loadout
   id: JanitorRubyPlunger
+  groupBy: JanitorGear # FLOOF
   effects:
   - !type:GroupLoadoutEffect
     proto: RubyJanitorial
@@ -177,6 +189,7 @@
 
 - type: loadout
   id: JanitorAmethystPlunger
+  groupBy: JanitorGear # FLOOF
   effects:
   - !type:GroupLoadoutEffect
     proto: AmethystJanitorial
@@ -186,6 +199,7 @@
 
 - type: loadout
   id: JanitorEmeraldPlunger
+  groupBy: JanitorGear # FLOOF
   effects:
   - !type:GroupLoadoutEffect
     proto: EmeraldJanitorial
@@ -195,6 +209,7 @@
 
 - type: loadout
   id: JanitorPrismaticPlunger
+  groupBy: JanitorGear # FLOOF
   effects:
   - !type:GroupLoadoutEffect
     proto: PrismaticJanitorial

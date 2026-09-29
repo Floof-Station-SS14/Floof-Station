@@ -63,6 +63,18 @@
         {
             "name": "prisoner-equipped-INNERCLOTHING-monkey",
             "directions": 4
+        },
+        {
+            "name": "equipped-INNERCLOTHING-harpy",
+            "directions": 4
+        },
+        {
+            "name": "prisoner-equipped-INNERCLOTHING-harpy",
+            "directions": 4
+        },
+        {
+            "name": "trinkets-equipped-INNERCLOTHING-harpy",
+            "directions": 4
         }
     ]
 }

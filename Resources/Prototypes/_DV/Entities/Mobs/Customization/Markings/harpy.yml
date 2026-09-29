@@ -1,16 +1,4 @@
-- type: marking
-  id: HarpyEarsDefault
-  bodyPart: Head
-  coloring:
-    default:
-      type: !type:CategoryColoring
-        category: Hair
-      fallbackTypes:
-      - !type:SimpleColoring
-        color: "#964b00"
-  sprites:
-  - sprite: _DV/Mobs/Customization/Harpy/harpy_ears.rsi
-    state: harpy_ears_default
+
 
 - type: marking
   id: HarpyTailPhoenix

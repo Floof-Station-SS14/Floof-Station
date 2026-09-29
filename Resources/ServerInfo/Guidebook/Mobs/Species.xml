@@ -10,12 +10,13 @@
   <GuideEntityEmbed Entity="AppearanceFeroxi" Caption="Feroxi"/>
   </Box>
   <Box>
+  <GuideEntityEmbed Entity="AppearanceHarpy" Caption="Harpy"/>
   <GuideEntityEmbed Entity="AppearanceHuman" Caption="Human"/>
   <GuideEntityEmbed Entity="AppearanceMoth" Caption="Moth Person"/>
   <GuideEntityEmbed Entity="AppearanceReptilian" Caption="Reptilian"/>
-  <GuideEntityEmbed Entity="AppearanceShadekin" Caption="Shadekin"/>
   </Box>
   <Box>
+    <GuideEntityEmbed Entity="AppearanceShadekin" Caption="Shadekin"/>
     <GuideEntityEmbed Entity="AppearanceSlimePerson" Caption="Slime Person"/>
     <GuideEntityEmbed Entity="AppearanceVox" Caption="Vox"/>
     <GuideEntityEmbed Entity="AppearanceVulpkanin" Caption="Vulpkanin"/>
