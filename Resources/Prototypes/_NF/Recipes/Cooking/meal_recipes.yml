@@ -124,6 +124,7 @@
   id: RecipeHoneyBun
   name: honey bun recipe
   result: FoodBakedBunHoney
+  group: Dessert
   time: 5
   solids:
     FoodBreadBun: 1
@@ -134,6 +135,7 @@
   id: RecipeHoneyChallah
   name: honey challah recipe
   result: FoodBreadChallah
+  group: Dessert
   time: 15
   solids:
     FoodDoughRope: 3

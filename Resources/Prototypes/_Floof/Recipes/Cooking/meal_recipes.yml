@@ -18,6 +18,7 @@
   id: RecipeIceCreamBloodDrop
   name: blood drop ice cream recipe
   result: IceCreamBloodDrop
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -30,6 +31,7 @@
   id: RecipeIceCreamCaramel
   name: caramel ice cream recipe
   result: IceCreamCaramel
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -43,6 +45,7 @@
   id: RecipeIceCreamCoffee
   name: coffee ice cream recipe
   result: IceCreamCoffee
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -54,6 +57,7 @@
   id: RecipeIceCreamGreenTea
   name: green tea ice cream recipe
   result: IceCreamGreenTea
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -65,6 +69,8 @@
   id: RecipeIceCreamLemon
   name: lemon tea ice cream recipe
   result: IceCreamLemon
+  group: Dessert
+  time: 5
   reagents:
     IceCream: 20
     JuiceLemon: 15
@@ -75,6 +81,7 @@
   id: RecipeIceCreamOrange
   name: orange ice cream recipe
   result: IceCreamOrange
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -86,6 +93,7 @@
   id: RecipeIceCreamRainbow
   name: rainbow ice cream recipe
   result: IceCreamRainbow
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -99,6 +107,7 @@
   id: RecipeIceCreamSaltedCaramel
   name: salted caramel ice cream recipe
   result: IceCreamSaltedCaramel
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -111,6 +120,7 @@
   id: RecipeIceCreamSpaghetti
   name: spaghetti ice cream recipe
   result: IceCreamSpaghetti
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -123,6 +133,7 @@
   id: RecipeIceCreamStrawberry
   name: strawberry ice cream recipe
   result: IceCreamStrawberry
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -135,6 +146,7 @@
   id: RecipeIceCreamBananaSplit
   name: banana split ice cream recipe
   result: IceCreamBananaSplit
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -149,6 +161,7 @@
   id: RecipeIceCreamChoco
   name: chocolate ice cream recipe
   result: IceCreamChoco
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -161,6 +174,7 @@
   id: RecipeIceCreamCoconut
   name: coconut ice cream recipe
   result: IceCreamCoconut
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -172,6 +186,7 @@
   id: RecipeIceCreamCosmos
   name: cosmos ice cream recipe
   result: IceCreamCosmos
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -184,6 +199,7 @@
   id: RecipeIceCreamGilded
   name: gilded ice cream recipe
   result: IceCreamGilded
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -195,6 +211,7 @@
   id: RecipeIceCreamLoversDelight
   name: gilded ice cream recipe
   result: IceCreamLoversDelight
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -206,6 +223,7 @@
   id: RecipeIceCreamMintChoco
   name: mint chocolate ice cream recipe
   result: IceCreamMintChoco
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -218,6 +236,7 @@
   id: RecipeIceCreamSolar
   name: napalm ice cream recipe
   result: IceCreamSolar
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -230,6 +249,7 @@
   id: RecipeIceCreamNebula
   name: Nebula ice cream recipe
   result: IceCreamNebula
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -242,6 +262,7 @@
   id: RecipeIceCreamNeapolitan
   name: neapolitan ice cream recipe
   result: IceCreamNeapolitan
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -254,6 +275,7 @@
   id: RecipeIceCreamWatermelon
   name: neapolitan ice cream recipe
   result: IceCreamWatermelon
+  group: Dessert
   time: 5
   reagents:
     IceCream: 20
@@ -265,6 +287,7 @@
   id: RecipeIceCreamVanilla
   name: neapolitan ice cream recipe
   result: IceCreamVanilla
+  group: Dessert
   time: 5
   reagents:
     IceCream: 35
