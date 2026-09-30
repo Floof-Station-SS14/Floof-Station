@@ -1,3 +1,11 @@
+# Belts
+- type: loadoutGroup
+  id: HoPBelts
+  name: loadout-group-hop-belts
+  minLimit: 0
+  loadouts:
+  - BeltPaperwork
+
 # Shoes
 - type: loadoutGroup
   id: CaptainShoes

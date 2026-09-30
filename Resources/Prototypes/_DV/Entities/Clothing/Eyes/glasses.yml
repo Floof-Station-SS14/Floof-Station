@@ -12,6 +12,8 @@
     modifiers:
       coefficients:
         Caustic: 0.85
+  - type: IdentityBlocker # FLOOF
+    coverage: EYES
 
 - type: entity
   parent: ClothingEyesBase

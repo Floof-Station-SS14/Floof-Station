@@ -1,0 +1,6 @@
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: NudityPermitRecipe
+  result: ClothingUniformNudityPermit
+  materials:
+    Cloth: 100

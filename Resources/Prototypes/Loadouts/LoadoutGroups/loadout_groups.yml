@@ -218,7 +218,10 @@
   name: loadout-group-captain-outerclothing
   loadouts:
   - CaptainOuterClothing
+  - CaptainArmoredLongcoat  # FLOOF
+  - CaptainLongCoat         # FLOOF
   - CaptainWintercoat
+  - CaptainArmoredWinterCoat  # FLOOF
 
 #- type: loadoutGroup
 #  id: CaptainJobTrinkets
@@ -263,6 +266,9 @@
   name: loadout-group-hop-outerclothing
   minLimit: 0
   loadouts:
+  - HoPArmoredCoat  # FLOOF
+  - HoPFormalJacket # FLOOF
+  - HoPLongCoat     # FLOOF
   - HoPWintercoat
 
 #- type: loadoutGroup
@@ -341,6 +347,7 @@
   loadouts:
   - BartenderHead
   - BartenderBowler
+  - SodaJerkHat # FLOOF
 
 - type: loadoutGroup
   id: BartenderJumpsuit
@@ -939,6 +946,7 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
+  - CELongCoat # FLOOF
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
@@ -1108,6 +1116,7 @@
   loadouts:
   - ResearchDirectorLabCoat
   - ResearchDirectorWintercoat
+  - RDLongcoat # FLOOF
 
 - type: loadoutGroup
   id: ResearchDirectorShoes
@@ -1166,6 +1175,7 @@
   minLimit: 0
   loadouts:
   - RegularLabCoat
+  - LongLabCoat # FLOOF
   - ScienceLabCoat
   - ScienceWintercoat
   - RoboticistLabCoat
@@ -1251,6 +1261,7 @@
   name: loadout-group-head-of-security-outerclothing
   loadouts:
   - HeadofSecurityCoat
+  - HoSArmoredLongcoat # FLOOF
   - HeadofSecurityWinterCoat
 
 - type: loadoutGroup
@@ -1280,6 +1291,7 @@
   name: loadout-group-warden-outerclothing
   loadouts:
   - WardenCoat
+  - WardenArmoredLongcoat # FLOOF
   - WardenArmoredWinterCoat
 
 - type: loadoutGroup
@@ -1332,6 +1344,7 @@
   loadouts:
   - ArmorVest
   - ArmorVestSlim
+  - SecurityOfficerArmoredLongcoat # FLOOF
   - SecurityOfficerWintercoat
 
 - type: loadoutGroup
@@ -1389,6 +1402,8 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  - DetectiveLongCoat # FLOOF
+  - InspectorCoat     # FLOOF
   - SecurityOfficerWintercoat
 
 - type: loadoutGroup

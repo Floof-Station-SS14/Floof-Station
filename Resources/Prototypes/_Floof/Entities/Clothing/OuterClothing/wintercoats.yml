@@ -90,7 +90,7 @@
 - type: entity
   parent: ClothingOuterWinterCoat
   id: ClothingLongcoatRD
-  name: mystagogue's longcoat
+  name: research director's longcoat # FLOOF: 'mystagogue's'
   description: A Double-Breasted longcoat, specifically. This one is a pure white with a purple stripe, fit for the Mystagogue. Longcoats are fairly robust, offering some protection from the wear and tear of the universe.
   components:
   - type: Sprite
@@ -248,7 +248,7 @@
     sprite: _Floof/Clothing/OuterClothing/WinterCoats/longcoatCC.rsi
   - type: Clothing
     sprite: _Floof/Clothing/OuterClothing/WinterCoats/longcoatCC.rsi
-    
+
 - type: entity
   parent: ClothingOuterWinterCoat
   id: ClothingOuterExpressBuffCourierCoat

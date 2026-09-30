@@ -139,6 +139,7 @@
   - ClothingUniformJumpskirtMime
   - ClothingUniformJumpsuitMusician
   - ClothingUniformJumpsuitTramDriver
+  - NudityPermitRecipe # FLOOF: Yes, this is clothing.
 
 - type: latheRecipePack
   id: WinterCoats

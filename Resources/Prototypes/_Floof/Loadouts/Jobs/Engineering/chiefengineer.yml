@@ -1,0 +1,6 @@
+# Outer clothing
+- type: loadout
+  id: CELongCoat
+  groupBy: ChiefEngineerGear
+  equipment:
+    outerClothing: ClothingLongcoatCE

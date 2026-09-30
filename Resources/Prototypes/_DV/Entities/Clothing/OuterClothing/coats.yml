@@ -355,7 +355,6 @@
     sprite: _DV/Clothing/OuterClothing/Coats/paramedic.rsi
   - type: TemperatureProtection
     coefficient: 0.5
-    
 
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatParamedicJacket]

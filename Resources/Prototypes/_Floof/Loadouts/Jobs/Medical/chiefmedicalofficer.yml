@@ -1,0 +1,12 @@
+# Coats
+- type: loadout
+  id: CMOLongLabCoat
+  groupBy: CMOGear
+  equipment:
+    outerClothing: ClothingOuterCoatLabLongCMO
+
+- type: loadout
+  id: CMOLongCoat
+  groupBy: CMOGear
+  equipment:
+    outerClothing: ClothingLongcoatCMO

@@ -1,0 +1,6 @@
+# Outer clothing
+- type: loadout
+  id: RDLongcoat
+  groupBy: RDGear
+  equipment:
+    outerClothing: ClothingLongcoatRD

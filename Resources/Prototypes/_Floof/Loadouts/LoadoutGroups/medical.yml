@@ -1,3 +1,23 @@
+# Glasses
+- type: loadoutGroup
+  parent: Glasses
+  id: ChemistGlasses
+  name: loadout-group-chemist-glasses
+  minLimit: 0
+  loadouts:
+  - ChemicalGoggles
+  - SafetyGlasses
+
+- type: loadoutGroup
+  parent: Glasses
+  id: MedicalGlasses
+  name: loadout-group-medical-glasses
+  minLimit: 0
+  loadouts:
+  - MedicalHud
+  - PrescriptionMedicalHud
+
+# Collars
 - type: loadoutGroup
   parent: MedicalCollars
   id: ChemistNeck
