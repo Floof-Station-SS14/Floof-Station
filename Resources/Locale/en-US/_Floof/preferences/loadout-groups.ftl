@@ -18,6 +18,7 @@ loadout-group-reporter-shoes = Reporter shoes
 ## COMMAND ##
 loadout-group-captain-shoes = Captain shoes
 loadout-group-hop-shoes = Head of Personnel shoes
+loadout-group-hop-belts = Head of Personnel belts
 
 ## ENGINEERING ##
 loadout-group-technical-assistant-neck = Technical Assistant neck
@@ -26,18 +27,29 @@ loadout-group-station-engineer-neck = Station Engineer neck
 loadout-group-atmospheric-technician-neck = Atmospheric Technician neck
 
 ## MEDICAL ##
+loadout-group-chemist-glasses = Chemist glasses
 loadout-group-chemist-neck = Chemist neck
+
+loadout-group-medical-glasses = Medical glasses
+
 loadout-group-medical-doctor-neck = Medical Doctor neck
+
 loadout-group-medical-intern-neck = Medical intern neck
+
 loadout-group-paramedic-neck = Paramedic neck
 loadout-group-psychologist-neck = Psychologist neck
 loadout-group-psychologist-shoes = Psychologist shoes
 
 ## SCIENCE ##
+loadout-group-scientist-glasses = Scientist glasses
+
 loadout-group-research-assistant-neck = Research Assistant neck
 loadout-group-research-assistant-shoes = Research Assistant shoes
 
 ## SECURITY ##
+loadout-group-security-glasses = Security glasses
+loadout-group-security-masks = Security mask
+
 loadout-group-warden-neck = Warden neck
 loadout-group-security-cadet-neck = Security cadet neck
 loadout-group-security-officer-neck = Security neck
@@ -54,4 +66,5 @@ loadout-group-janitor-neck = Janitor neck
 loadout-group-janitor-shoes = Janitor shoes
 loadout-group-service-worker-neck = Service Worker neck
 loadout-group-service-worker-jumpsuit = Service Worker jumpsuit
+loadout-group-service-worker-outerclothing = Service Worker outer clothing
 loadout-group-service-worker-shoes = Service Worker shoes

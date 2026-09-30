@@ -11,7 +11,7 @@
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
-  - Glasses
+  - MedicalGlasses # FLOOF: 'Glasses'
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
@@ -30,7 +30,7 @@
   - MedicalDoctorOuterClothing
   - MedicalShoes
   - MedicalDoctorPDA
-  - Glasses
+  - MedicalGlasses # FLOOF: 'Glasses'
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
@@ -62,7 +62,7 @@
   - ChemistBackpack
   - ChemistOuterClothing
   - MedicalShoes
-  - Glasses
+  - ChemistGlasses # FLOOF: 'Glasses'
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
@@ -80,7 +80,7 @@
   - MedicalBackpack
   - ParamedicOuterClothing
   - ParamedicShoes
-  - Glasses
+  - MedicalGlasses # FLOOF: 'Glasses'
   - AssistiveItems
   - SurvivalMedical
   - Trinkets

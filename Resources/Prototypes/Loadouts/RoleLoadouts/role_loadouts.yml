@@ -23,6 +23,7 @@
   - HoPJumpsuit
   - HoPBackpack
   - HoPOuterClothing
+  - HoPBelts # FLOOF
   - HoPShoes # FLOOF
   - Glasses
   - AssistiveItems
@@ -82,9 +83,10 @@
   id: JobServiceWorker
   groups:
   - GroupTankHarness
-  - ServiceWorkerNeck # FLOOF
-  - ServiceWorkerJumpsuit # FLOOF: 'BartenderJumpsuit'
-  - ServiceWorkerShoes # FLOOF
+  - ServiceWorkerNeck           # FLOOF
+  - ServiceWorkerJumpsuit       # FLOOF: 'BartenderJumpsuit'
+  - ServiceWorkerOuterClothing  # FLOOF
+  - ServiceWorkerShoes          # FLOOF
   - CommonBackpack
   - Glasses
   - AssistiveItems
@@ -376,7 +378,7 @@
   - ResearchDirectorOuterClothing
   - ScientistGloves
   - ResearchDirectorShoes
-  - Glasses
+  - ScientistGlasses # FLOOF: 'Glasses'
   - AssistiveItems
   - Survival
   - Trinkets
@@ -395,7 +397,7 @@
   - ScientistGloves
   - ScientistShoes
   - ScientistPDA
-  - Glasses
+  - ScientistGlasses # FLOOF: 'Glasses'
   - AssistiveItems
   - Survival
   - Trinkets
@@ -422,6 +424,8 @@
   id: JobHeadOfSecurity
   groups:
   - HeadofSecurityHead
+  - SecurityGlasses # FLOOF
+  - SecurityMask # FLOOF
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
@@ -438,7 +442,9 @@
   id: JobWarden
   groups:
   - WardenHead
-  - WardenNeck # FLOOFS@
+  - SecurityGlasses # FLOOF
+  - SecurityMask # FLOOF
+  - WardenNeck # FLOOF
   - WardenJumpsuit
   - SecurityBackpack
   - SecurityBelt
@@ -454,6 +460,8 @@
   id: JobSecurityOfficer
   groups:
   - SecurityHead
+  - SecurityGlasses # FLOOF
+  - SecurityMask # FLOOF
   - SecurityNeck # FLOOF
   - SecurityJumpsuit
   - SecurityBackpack
@@ -471,6 +479,8 @@
   id: JobDetective
   groups:
   - DetectiveHead
+  - SecurityGlasses # FLOOF
+  - SecurityMask # FLOOF
   - DetectiveNeck
   - DetectiveJumpsuit
   - SecurityBackpack

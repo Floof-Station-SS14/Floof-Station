@@ -1,0 +1,6 @@
+# Head
+- type: loadout
+  id: SodaJerkHat
+  groupBy: BartenderGear
+  equipment:
+    head: ClothingHeadHatSodaJerk

@@ -16,5 +16,6 @@
     ClothingHandsGlovesLatex: 1
     ClothingShoesColorWhite: 1
     ClothingNeckCollarMed: 2 # Floof
+    ClothingOuterApronChemist: 2 # FLOOF
   contrabandInventory:
     ToyFigurineChemist: 1

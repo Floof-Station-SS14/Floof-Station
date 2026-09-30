@@ -46,7 +46,7 @@
     sprite: _Floof/Clothing/Uniforms/plainthong.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/plainthong.rsi
-    
+
 - type: entity
   parent: ClothingUndergarmentBottomBase
   id: ClothingUniformThongBee
@@ -57,7 +57,7 @@
     sprite: _Floof/Clothing/Uniforms/beethong.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/beethong.rsi
-    
+
 - type: entity
   parent: ClothingUndergarmentBottomBase
   id: ClothingUniformThongCoder
@@ -68,7 +68,7 @@
     sprite: _Floof/Clothing/Uniforms/coderthong.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/coderthong.rsi
-    
+
 - type: entity
   parent: ClothingUndergarmentBottomBase
   id: ClothingUniformThongCoderValid
@@ -79,7 +79,7 @@
     sprite: _Floof/Clothing/Uniforms/codervalidthong.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/codervalidthong.rsi
-    
+
 - type: entity
   parent: ClothingUndergarmentBottomBase
   id: ClothingUniformStripedThongWhite
@@ -90,7 +90,7 @@
     sprite: _Floof/Clothing/Uniforms/stripethongwhite.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/stripethongwhite.rsi
-    
+
 - type: entity
   parent: ClothingUndergarmentBottomBase
   id: ClothingUniformStripedThongPurple
@@ -101,7 +101,7 @@
     sprite: _Floof/Clothing/Uniforms/stripethongpurple.rsi
   - type: Clothing
     sprite: _Floof/Clothing/Uniforms/stripethongpurple.rsi
-    
+
 - type: entity
   parent: ClothingUndergarmentBottomBase
   id: ClothingUniformStripedThongRainbow
@@ -245,7 +245,7 @@
   parent: ClothingUniformSkirtBase
   id: ClothingUniformBlackPetticoatDress
   name: black petticoat dress
-  description: Aahhh, yes dahling.  You're ravashing!
+  description: Aahhh, yes dahling. You're ravashing!
   components:
   - type: Sprite
     sprite: _Floof/Clothing/Uniforms/blackpetticoatdress.rsi

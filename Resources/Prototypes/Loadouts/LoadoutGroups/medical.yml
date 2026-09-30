@@ -62,6 +62,8 @@
   minLimit: 0
   loadouts:
   - ChiefMedicalOfficerLabCoat
+  - CMOLongLabCoat  # FLOOF
+  - CMOLongCoat     # FLOOF
   - ChiefMedicalOfficerWintercoat
 
 - type: loadoutGroup
@@ -121,6 +123,9 @@
   minLimit: 0
   loadouts:
   - RegularLabCoat
+  - LongLabCoat # FLOOF
+  - MedicalLabCoat # FLOOF
+  - MedicalLongLabCoat # FLOOF
   - MedicalDoctorWintercoat
   - SeniorPhysicianLabCoat
 
@@ -167,8 +172,15 @@
   minLimit: 0
   loadouts:
   - RegularLabCoat
+  - LongLabCoat # FLOOF
+  - MedicalLabCoat # FLOOF
+  - MedicalLongLabCoat # FLOOF
   - ChemistLabCoat
+  - ChemistLongLabCoat # FLOOF
+  - SeniorChemistLabCoat # FLOOF
+  - PharmacistLabCoat # FLOOF
   - ChemistWintercoat
+  - ChemicalResistantApron # FLOOF
 
 - type: loadoutGroup
   id: ChemistBackpack
@@ -207,6 +219,7 @@
   loadouts:
   - ParamedicWindbreaker
   - ParamedicWintercoat
+  - ParamedicJacket # FLOOF
 
 - type: loadoutGroup
   id: ParamedicShoes

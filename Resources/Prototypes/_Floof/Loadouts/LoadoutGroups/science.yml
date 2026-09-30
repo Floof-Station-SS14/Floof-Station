@@ -1,3 +1,14 @@
+# Glasses
+- type: loadoutGroup
+  parent: Glasses
+  id: ScientistGlasses
+  name: loadout-group-scientist-glasses
+  minLimit: 0
+  loadouts:
+  - PrescriptionDiagnosticHud
+  - SafetyGlasses
+
+# Collars
 - type: loadoutGroup
   id: ResearchAssistantNeck
   parent: ScienceCollars

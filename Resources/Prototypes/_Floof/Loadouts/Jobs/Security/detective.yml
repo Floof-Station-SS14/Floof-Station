@@ -1,0 +1,12 @@
+# Coats
+- type: loadout
+  id: DetectiveLongCoat
+  groupBy: DetectiveGear
+  equipment:
+    outerClothing: DetPlatedCoat
+
+- type: loadout
+  id: InspectorCoat
+  groupBy: DetectiveGear
+  equipment:
+    outerClothing: ClothingOuterCoatInspector

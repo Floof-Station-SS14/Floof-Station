@@ -107,7 +107,7 @@
 # OuterClothing
 - type: loadout
   id: RegularLabCoat
-  groupBy: ScientistGear # FLOOF
+  groupBy: CommonGear # FLOOF
   equipment:
     outerClothing: ClothingOuterCoatLab
 

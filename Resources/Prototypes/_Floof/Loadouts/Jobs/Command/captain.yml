@@ -1,0 +1,18 @@
+# Outer clothing
+- type: loadout
+  id: CaptainArmoredLongcoat
+  groupBy: "CaptainGear"
+  equipment:
+    outerClothing: ClothingLongcoatCaptainArmored
+
+- type: loadout
+  id: CaptainArmoredWinterCoat
+  groupBy: "CaptainGear"
+  equipment:
+    outerClothing: ClothingOuterWinterCapArmored
+
+- type: loadout
+  id: CaptainLongCoat
+  groupBy: CaptainGear
+  equipment:
+    outerClothing: ClothingLongcoatCap

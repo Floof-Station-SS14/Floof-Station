@@ -44,3 +44,8 @@
   id: LeatherShoes
   equipment:
     shoes: ClothingShoesLeather
+
+- type: loadout
+  id: LaceupShoes
+  equipment:
+    shoes: ClothingShoesBootsLaceup

@@ -1,0 +1,6 @@
+# Coats
+- type: loadout
+  id: ParamedicJacket
+  groupBy: ParamedicGear
+  equipment:
+    outerClothing: ClothingOuterCoatParamedicJacket

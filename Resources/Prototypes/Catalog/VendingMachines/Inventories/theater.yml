@@ -58,7 +58,15 @@
     ClothingShoesBootsCowboyWhite: 1
     ClothingHeadHatWizardFake: 1
     ClothingOuterWizardFake: 1
-    ClothingNeckCollarBell: 2 # Floof
+    ClothingNeckCollarBell: 2 # FLOOF
+    ClothingUniformClassicalMaidDress: 1    # FLOOF
+    ClothingUniformRedDancersGarb: 2        # FLOOF
+    ClothingUniformBandedDancersGarb: 2     # FLOOF
+    ClothingUniformRedSidelessDress: 2      # FLOOF
+    ClothingUniformPurpleNightclubDress: 2  # FLOOF
+    ClothingUniformBlackPetticoatDress: 2   # FLOOF
+    ClothingUniformBlueFancyLad: 2          # FLOOF
+    ClothingUniformWeddingDress: 1          # FLOOF
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ToyFigurineBoxer: 1
