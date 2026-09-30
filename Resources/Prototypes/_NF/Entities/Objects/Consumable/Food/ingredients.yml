@@ -64,7 +64,7 @@
   - type: Edible
   - type: Solution
     id: food
-    solutions:
+    solution:
       maxVol: 6
       reagents:
       - ReagentId: CoffeeGrounds

@@ -8,7 +8,7 @@
     flavors:
     - pear
   - type: Solution
-    solutions:
+    solution:
       food:
         maxVol: 15
         reagents:
