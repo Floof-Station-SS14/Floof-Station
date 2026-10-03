@@ -21,7 +21,8 @@
     tags:
     - HighRiskItem
   - type: StealTarget
-    stealGroup: NukeDisk
+    stealGroup:
+    - NukeDisk
   - type: EmitSoundOnPickup # Euphoria - Bring back interaction SFX from EE
     sound:
       path: /Audio/_EE/Items/Handling/disk_pickup.ogg
