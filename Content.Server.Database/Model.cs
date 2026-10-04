@@ -76,7 +76,14 @@ namespace Content.Server.Database
                 .HasIndex(c => c.UserId)
                 .IsUnique();
             // End Floof - Consent System
-
+            // Floof - Genitals
+            modelBuilder.Entity<Profile>()
+                .HasOne(p => p.Genitals)
+                .WithOne(g => g.Profile)
+                .HasForeignKey<Genitals>(g => g.ProfileId);
+            modelBuilder.Entity<Genitals>()
+                .HasKey(g => g.ProfileId);
+            // End Floof - Genitals
             modelBuilder.Entity<ProfileRoleLoadout>()
                 .HasOne(e => e.Profile)
                 .WithMany(e => e.Loadouts)
@@ -338,6 +345,7 @@ namespace Content.Server.Database
         [Column("char_name")] public string CharacterName { get; set; } = null!;
         public string FlavorText { get; set; } = null!;
         public string ConsentText { get; set; } = null!; // Floof: Added consent.
+        public Genitals? Genitals { get; set; } = null!;
         public int Age { get; set; }
         public string Sex { get; set; } = null!;
         public string? Voice { get; set; } = null!; // If null, the voice gets defaulted to the sex associated value
@@ -363,7 +371,16 @@ namespace Content.Server.Database
         public int PreferenceId { get; set; }
         public Preference Preference { get; set; } = null!;
     }
-
+    // Floof - Genitals
+    public class Genitals
+    {
+        public int ProfileId { get; set; }
+        public bool Penis { get; set; }
+        public bool Vagina { get; set; }
+        public bool Breasts { get; set; }
+        public Profile Profile { get; set; } = null!;
+    }
+    // End Floof - Genitals
     // Floof - Consent System
     public class ConsentSettings
     {
