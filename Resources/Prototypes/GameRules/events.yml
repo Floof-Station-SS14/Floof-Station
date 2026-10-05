@@ -158,6 +158,9 @@
     duration: 1
     minimumPlayers: 0 # Floof - no more minimum player count
   - type: BreakerFlipRule
+    blacklist:
+      components:
+        - ProtectedGrid
   - type: DynamicRuleCost
     cost: 10
 

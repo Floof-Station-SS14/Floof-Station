@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Light.EntitySystems;
 using Content.Server.StationEvents.Components;
 using Content.Shared.Doors.Components;
@@ -26,7 +25,7 @@ public sealed partial class SolarFlareRule : StationEventSystem<SolarFlareRuleCo
 
     [Dependency] private EntityQuery<HeadsetComponent> _headsetQuery;
 
-    private float _effectTimer;
+    private float _effectTimer = 0;
 
     protected override void Started(Entity<SolarFlareRuleComponent, GameRuleComponent> ent, ref GameRuleStartedEvent args)
     {
@@ -37,13 +36,6 @@ public sealed partial class SolarFlareRule : StationEventSystem<SolarFlareRuleCo
             var channel = RobustRandom.Pick(ent.Comp1.ExtraChannels);
             ent.Comp1.AffectedChannels.Add(channel);
         }
-
-        ent.Comp1.AffectedLights = Station.GetEntitiesWithComponentOnStation<PoweredLightComponent>(true)
-            .Select(e => (e.Owner, e.Comp))
-            .ToHashSet();
-        ent.Comp1.AffectedAirlocks = Station.GetEntitiesWithComponentOnStation<AirlockComponent>(true)
-            .Select(e => (e.Owner, e.Comp))
-            .ToHashSet();
     }
 
     protected override void ActiveTick(EntityUid uid, SolarFlareRuleComponent component, GameRuleComponent gameRule, float frameTime)
@@ -51,20 +43,21 @@ public sealed partial class SolarFlareRule : StationEventSystem<SolarFlareRuleCo
         base.ActiveTick(uid, component, gameRule, frameTime);
 
         _effectTimer -= frameTime;
-        if (!(_effectTimer < 0))
-            return;
-
-        _effectTimer += 1;
-        foreach (var light in component.AffectedLights)
+        if (_effectTimer < 0)
         {
-            if (RobustRandom.Prob(component.LightBreakChancePerSecond))
-                _poweredLight.TryDestroyBulb(light.Item1, light.Item2);
-        }
-
-        foreach (var airlockEnt in component.AffectedAirlocks)
-        {
-            if (airlockEnt.Item2.AutoClose && RobustRandom.Prob(component.DoorToggleChancePerSecond))
-                _door.TryToggleDoor(airlockEnt.Item1);
+            _effectTimer += 1;
+            var lightQuery = EntityQueryEnumerator<PoweredLightComponent>();
+            while (lightQuery.MoveNext(out var lightEnt, out var light))
+            {
+                if (RobustRandom.Prob(component.LightBreakChancePerSecond))
+                    _poweredLight.TryDestroyBulb(lightEnt, light);
+            }
+            var airlockQuery = EntityQueryEnumerator<AirlockComponent, DoorComponent>();
+            while (airlockQuery.MoveNext(out var airlockEnt, out var airlock, out var door))
+            {
+                if (airlock.AutoClose && RobustRandom.Prob(component.DoorToggleChancePerSecond))
+                    _door.TryToggleDoor(airlockEnt, door);
+            }
         }
     }
 

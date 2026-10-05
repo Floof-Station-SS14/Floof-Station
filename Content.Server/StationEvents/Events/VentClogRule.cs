@@ -6,6 +6,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Station.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -24,6 +25,9 @@ public sealed partial class VentClogRule : StationEventSystem<VentClogRuleCompon
     {
         base.Started(ent, ref args);
 
+        if (!Station.TryGetRandomStation<StationEventEligibleComponent>(out var chosenStation))
+            return;
+
         var ventClog = ent.Comp1;
 
         // TODO: "safe random" for chems. Right now this includes admin chemicals.
@@ -31,9 +35,13 @@ public sealed partial class VentClogRule : StationEventSystem<VentClogRuleCompon
             .Where(x => !x.Abstract)
             .Select(x => new ProtoId<ReagentPrototype>(x.ID)).ToList();
 
-        foreach (var ventPump in Station.GetEntitiesWithComponentOnStation<GasVentPumpComponent>(true))
+        foreach (var (_, transform) in EntityQuery<GasVentPumpComponent, TransformComponent>())
         {
-            var targetCoords = Transform(ventPump).Coordinates;
+            if (CompOrNull<StationMemberComponent>(transform.GridUid)?.Station != chosenStation.Value.Owner)
+            {
+                continue;
+            }
+
             var solution = new Solution();
 
             if (!RobustRandom.Prob(0.33f))
@@ -46,10 +54,10 @@ public sealed partial class VentClogRule : StationEventSystem<VentClogRuleCompon
             var quantity = weak ? ventClog.WeakReagentQuantity : ventClog.ReagentQuantity;
             solution.AddReagent(reagent, quantity);
 
-            var foamEnt = Spawn(ChemicalReactionSystem.FoamReaction, targetCoords);
+            var foamEnt = Spawn(ChemicalReactionSystem.FoamReaction, transform.Coordinates);
             var spreadAmount = weak ? ventClog.WeakSpread : ventClog.Spread;
             _smoke.StartSmoke(foamEnt, solution, ventClog.Time, spreadAmount);
-            Audio.PlayPvs(ventClog.Sound, targetCoords);
+            Audio.PlayPvs(ventClog.Sound, transform.Coordinates);
         }
     }
 }

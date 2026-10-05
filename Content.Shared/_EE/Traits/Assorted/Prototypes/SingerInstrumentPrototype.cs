@@ -16,7 +16,7 @@ public sealed partial class SingerInstrumentPrototype : IPrototype
     ///     byte 2 = instrument midi bank
     /// </summary>
     [DataField(required: true)]
-    public Dictionary<LocId, (byte, byte)> InstrumentList = new();
+    public Dictionary<string, (byte, byte)> InstrumentList = new();
 
     /// <summary>
     ///     Instrument in <see cref="InstrumentList"/> that is used by default.
