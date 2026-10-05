@@ -1237,3 +1237,11 @@
   completetime: 0.1
   materials:
     PrizeTicket: 100
+
+- type: latheRecipe
+  id: PlushieDingDong
+  result: PlushieDingDong
+  applyMaterialDiscount: false
+  completetime: 0.1
+  materials:
+    PrizeTicket: 100

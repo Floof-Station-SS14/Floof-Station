@@ -119,3 +119,65 @@
   - type: Sprite
     sprite: _Floof/Objects/Fun/toys.rsi
     state: ipc
+
+- type: entity
+  parent: BaseItem
+  id: PlushieDingDong
+  name: ding dong
+  description: A helpful travel companion, ask him anything.
+  components:
+    - type: Sprite
+      sprite: _Floof/Objects/Fun/bingbong.rsi
+      layers:
+        - state: icon
+          map: [ "enum.ToggleableVisuals.Layer" ]
+    - type: Item
+      size: Small
+      sprite: _Floof/Objects/Fun/bingbong.rsi
+    - type: MeleeWeapon
+      wideAnimationRotation: -135
+      attackRate: .6666
+      angle: 100
+      damage:
+        types:
+          Blunt: 0
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleableVisuals.Enabled:
+          enum.ToggleableVisuals.Layer:
+            True: {state: bing}
+            False: {state: bong}
+    - type: TriggerOnActivate
+    - type: TriggerOnSignal
+    - type: UseDelay
+      delay: 5
+    - type: UseDelayOnTrigger
+    - type: UseDelayTriggerCondition
+    - type: SpeakOnTrigger
+      pack: DingDong
+    - type: Speech
+      speechSounds: Pai
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: BasicDevice
+    - type: WirelessNetworkConnection
+      range: 20
+    - type: DeviceLinkSink
+      ports:
+        - Trigger
+    - type: Clothing
+      quickEquip: false
+      sprite: _Floof/Objects/Fun/bingbong.rsi
+      slots:
+        - HEAD
+      clothingVisuals:
+        head:
+          - state: equipped-HELMET
+            offset: "0, 0.04"
+    - type: EmitSoundOnCollide
+      sound: &BasePlushieSound
+        collection: ToySqueak
+        params:
+          volume: -4
+    - type: EmitSoundOnLand
+      sound: *BasePlushieSound          
