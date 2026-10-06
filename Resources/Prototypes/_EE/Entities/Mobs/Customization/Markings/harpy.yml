@@ -290,8 +290,6 @@
   id: HarpyWingBionic
   bodyPart: RArm
   groupWhitelist: [ MarkingsGroupHarpy ]
-  shaders:
-    bionic_wings_tone_2: unshaded
   sprites:
   - sprite: _EE/Mobs/Customization/Harpy/harpy_wings.rsi
     state: bionic_wings_tone_1
