@@ -48,6 +48,7 @@ public sealed partial class StationSpawningSystem : EntitySystem
     [Dependency] private SharedAccessSystem _accessSystem = default!;
     [Dependency] private SharedIdCardSystem _cardSystem = default!;
     [Dependency] private SharedPdaSystem _pdaSystem = default!;
+    [Dependency] private OrganSystem _organ = default!; // Floof - Genitals
 
     [Dependency] private EntityQuery<HandsComponent> _handsQuery;
     [Dependency] private EntityQuery<InventoryComponent> _inventoryQuery;
@@ -364,6 +365,15 @@ public sealed partial class StationSpawningSystem : EntitySystem
 
         if (profile != null)
         {
+            // Floof Section - Genitals
+            if (profile.Genitals.Penis)
+                _organ.AddOrgan(entity.Value, "OrganDick", "Torso");
+            if (profile.Genitals.Breasts)
+                _organ.AddOrgan(entity.Value, "OrganBreasts", "Torso");
+            if (profile.Genitals.Vagina)
+                _organ.AddOrgan(entity.Value, "OrganVagina", "Torso");
+            // End Floof Section - Genitals
+
             _visualBody.ApplyProfileTo(entity.Value, profile);
             _humanoidProfile.ApplyProfileTo(entity.Value, profile);
             _metadata.SetEntityName(entity.Value, profile.Name);

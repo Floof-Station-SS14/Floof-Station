@@ -5,7 +5,7 @@
 namespace Content.Server.Database.Migrations.Postgres
 {
     /// <inheritdoc />
-    public partial class Genitals : Migration
+    public partial class Floof_Genitals : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -29,11 +29,26 @@ namespace Content.Server.Database.Migrations.Postgres
                         principalColumn: "profile_id",
                         onDelete: ReferentialAction.Cascade);
                 });
+            
+            migrationBuilder.Sql("""
+                INSERT INTO genitals (profile_id, penis, vagina, breasts)
+                SELECT p.profile_id,
+                    EXISTS (SELECT 1 FROM trait t WHERE t.profile_id = p.profile_id AND t.trait_name = 'CumProducer'),
+                    EXISTS (SELECT 1 FROM trait t WHERE t.profile_id = p.profile_id AND t.trait_name = 'SquirtProducer'),
+                    EXISTS (SELECT 1 FROM trait t WHERE t.profile_id = p.profile_id AND t.trait_name = 'MilkProducer')
+                FROM (SELECT DISTINCT profile_id FROM trait WHERE trait_name IN ('CumProducer', 'SquirtProducer', 'MilkProducer')) p;
+                """);
+
+            migrationBuilder.Sql("DELETE FROM trait WHERE trait_name IN ('CumProducer', 'SquirtProducer', 'MilkProducer');");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql("INSERT INTO trait (profile_id, trait_name) SELECT profile_id, 'CumProducer' FROM genitals WHERE penis;");
+            migrationBuilder.Sql("INSERT INTO trait (profile_id, trait_name) SELECT profile_id, 'SquirtProducer' FROM genitals WHERE vagina;");
+            migrationBuilder.Sql("INSERT INTO trait (profile_id, trait_name) SELECT profile_id, 'MilkProducer' FROM genitals WHERE breasts;");
+
             migrationBuilder.DropTable(
                 name: "genitals");
         }

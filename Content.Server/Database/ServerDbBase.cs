@@ -50,6 +50,7 @@ namespace Content.Server.Database
                 .Include(p => p.Profiles).ThenInclude(h => h.Jobs)
                 .Include(p => p.Profiles).ThenInclude(h => h.Antags)
                 .Include(p => p.Profiles).ThenInclude(h => h.Traits)
+                .Include(p => p.Profiles).ThenInclude(h => h.Genitals) // Floof - Genitals
                 .Include(p => p.Profiles)
                     .ThenInclude(h => h.Loadouts)
                     .ThenInclude(l => l.Groups)
@@ -108,6 +109,7 @@ namespace Content.Server.Database
                 .Include(p => p.Jobs)
                 .Include(p => p.Antags)
                 .Include(p => p.Traits)
+                .Include(p => p.Genitals) // Floof - Genitals
                 .Include(p => p.Loadouts)
                     .ThenInclude(l => l.Groups)
                     .ThenInclude(group => group.Loadouts)
@@ -224,6 +226,14 @@ namespace Content.Server.Database
             profile.SkinColor = appearance.SkinColor.ToHex();
             profile.SpawnPriority = (int) humanoid.SpawnPriority;
             profile.OrganMarkings = JsonSerializer.SerializeToDocument(dataNode.ToJsonNode());
+
+            // Floof Section - Genitals
+            if (profile.Genitals == null)
+                profile.Genitals = new Genitals();
+            profile.Genitals.Penis = humanoid.Genitals.Penis;
+            profile.Genitals.Vagina = humanoid.Genitals.Vagina;
+            profile.Genitals.Breasts = humanoid.Genitals.Breasts;
+            // End Floof Section - Genitals
 
             // support for downgrades - at some point this should be removed
             var legacyMarkings = appearance.Markings

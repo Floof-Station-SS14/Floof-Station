@@ -21,8 +21,6 @@ public sealed partial class HumanoidProfileEditor
         {
             var organList = new OrganEnumerate(new List<Entity<OrganComponent>>());
             bodySystem.RelayEvent((dummy, body), ref organList);
-            var a = organList.Organs;
-            
             foreach (var (owner, organComp) in organList.Organs)
             {
                 if (!_entManager.TryGetComponent<VisualOrganMarkingsComponent>(owner, out var comp))

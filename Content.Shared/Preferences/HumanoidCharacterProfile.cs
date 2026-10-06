@@ -83,6 +83,11 @@ namespace Content.Shared.Preferences
         [DataField]
         public string ConsentText { get; set; } = string.Empty;
 
+        // Floof Section - Genitals
+        [DataField]
+        public Genitals Genitals { get; set; } = new();
+        // End Floof Section - Genitals
+
         /// <summary>
         /// Associated <see cref="SpeciesPrototype"/> for this profile.
         /// </summary>
@@ -139,6 +144,7 @@ namespace Content.Shared.Preferences
             string name,
             string flavortext,
             string consenttext, // Floof: Added consent.
+            Genitals genitals, // Floof - Genitals
             string species,
             int age,
             Sex sex,
@@ -155,6 +161,7 @@ namespace Content.Shared.Preferences
             Name = name;
             FlavorText = flavortext;
             ConsentText = consenttext; // Floof: Added consent.
+            Genitals = genitals; // Floof - Genitals
             Species = species;
             Age = age;
             Sex = sex;
@@ -188,6 +195,7 @@ namespace Content.Shared.Preferences
             : this(other.Name,
                 other.FlavorText,
                 other.ConsentText, // Floof: Added consent.
+                other.Genitals with { }, // Floof - Genitals
                 other.Species,
                 other.Age,
                 other.Sex,
@@ -227,6 +235,7 @@ namespace Content.Shared.Preferences
             {
                 Species = species.Value,
                 Sex = sex.Value,
+                Genitals = Genitals.DefaultForSex(sex.Value), // Floof - Genitals
                 Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species.Value, sex.Value),
             };
         }
@@ -372,6 +381,7 @@ namespace Content.Shared.Preferences
             var speciesProto = prototypeManager.Index(profile.Species);
 
             profile.Sex = (randomizeCfg & RandomizeCfg.Sex) != 0 ? RandomSex(speciesProto) : baseProfile.Sex;
+            profile.Genitals = (randomizeCfg & RandomizeCfg.Sex) != 0 ? Genitals.DefaultForSex(profile.Sex) : baseProfile.Genitals with { }; // Floof - Genitals
             profile.Voice = speciesProto.DefaultSoundsBySex[(int)profile.Sex];
             profile.Gender = (randomizeCfg & RandomizeCfg.Gender) != 0 ? RandomGender(profile.Sex) : baseProfile.Gender;
             profile.Name = (randomizeCfg & RandomizeCfg.Name) != 0 ? RandomName(speciesProto, profile.Gender) : baseProfile.Name;
@@ -412,6 +422,13 @@ namespace Content.Shared.Preferences
         {
             return new(this) { ConsentText = consentText };
         }
+
+        // Floof Section - Genitals
+        public HumanoidCharacterProfile WithGenitals(Genitals genitals)
+        {
+            return new(this) { Genitals = genitals };
+        }
+        // End Floof Section - Genitals
 
         public HumanoidCharacterProfile WithAge(int age)
         {
@@ -641,6 +658,7 @@ namespace Content.Shared.Preferences
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
             if (ConsentText != other.ConsentText) return false; // Floof: Added consent.
+            if (Genitals != other.Genitals) return false; // Floof - Genitals
             return Appearance.Equals(other.Appearance);
         }
 
@@ -902,6 +920,7 @@ namespace Content.Shared.Preferences
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
             hashCode.Add(ConsentText); // Floof: Added consent.
+            hashCode.Add(Genitals); // Floof - Genitals
             hashCode.Add(Species);
             hashCode.Add(Age);
             hashCode.Add((int)Sex);

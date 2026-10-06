@@ -16,8 +16,8 @@ using NpgsqlTypes;
 namespace Content.Server.Database.Migrations.Postgres
 {
     [DbContext(typeof(PostgresServerDbContext))]
-    [Migration("20261003042941_Genitals")]
-    partial class Genitals
+    [Migration("20261003042941_Floof_Genitals")]
+    partial class Floof_Genitals
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -114,6 +114,15 @@
                                     <OptionButton Name="SpawnPriorityButton" HorizontalAlignment="Right" />
                                 </BoxContainer>
                             </BoxContainer>
+                            <!-- Floof Section - Genitals -->
+                            <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Horizontal">
+                                <Label Text="{Loc 'humanoid-profile-editor-genital-label'}" />
+                                <Control HorizontalExpand="True"/>
+                                <Button Name="Penis" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-genital-penis'}" HorizontalAlignment="Right" />
+                                <Button Name="Vagina" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-genital-vagina'}" HorizontalAlignment="Right" />
+                                <Button Name="Breasts" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-genital-breasts'}" HorizontalAlignment="Right" />
+                            </BoxContainer>
+                            <!-- End Floof Section - Genitals -->
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">
                                 <Label Text="{Loc 'humanoid-profile-editor-skin-color-label'}" />

@@ -1,13 +1,4 @@
-﻿trait-name-CumProducer = Cock
-trait-description-CumProducer = You have a schlong between your legs.
-
-trait-name-MilkProducer = Boobs
-trait-description-MilkProducer = You have a pair of large mammaries.
-
-trait-name-SquirtProducer = Pussy
-trait-description-SquirtProducer = You have a slit between your legs.
-
-trait-name-PissProducer = Bladder
+﻿trait-name-PissProducer = Bladder
 trait-description-PissProducer = You have a bladder to relieve your natural needs.
 
 trait-name-EggLayer = Egg Layer

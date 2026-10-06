@@ -303,6 +303,8 @@ namespace Content.Client.Lobby.UI
 
             #endregion Jobs
 
+            GenitalsInit(); // Floof - Genitals
+
             TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
 
             // RefreshTraits(); // DeltaV
@@ -575,6 +577,7 @@ namespace Content.Client.Lobby.UI
             UpdateNameEdit();
             UpdateFlavorTextEdit();
             UpdateConsentTextEdit(); // Floof: Added consent.
+            UpdateGenitals(); // Floof - Genitals
             UpdateSexControls();
             UpdateVoiceControls();
             UpdateGenderControls();
