@@ -144,9 +144,12 @@ public sealed partial class OrganMarkingPicker : Control
         return (toAdd, toRemove);
     }
     
+    public bool Reordering => LayerTabs.Children.OfType<LayerMarkingPicker>().Any(x => x.Reordering);
+
     public bool Equals(MarkingsViewModel markingsModel, ProtoId<OrganCategoryPrototype> organ,
-        HashSet<HumanoidVisualLayers> layers, ProtoId<MarkingsGroupPrototype> group) => 
+        HashSet<HumanoidVisualLayers> layers, ProtoId<MarkingsGroupPrototype> group, bool reordering = false) => 
         _markingsModel == markingsModel
+        && Reordering == reordering
         && _layers.SetEquals(layers)
         && _group == group
         && _organ == organ;

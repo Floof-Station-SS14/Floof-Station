@@ -113,11 +113,15 @@ public sealed partial class LayerMarkingPicker : BoxContainer
         Items.Columns = (int)(Width / _columnWidth);
     }
 
+    public bool Reordering => ReorderButton.Pressed;
+
     public bool Equals(
         ProtoId<OrganCategoryPrototype> organ,
         HumanoidVisualLayers layer,
-        bool enforceGroupAndSexRestrictions)
+        bool enforceGroupAndSexRestrictions,
+        bool reordering = false)
         => _organ == organ
            && _layer == layer
-           && _enforceGroupAndSexRestrictions == enforceGroupAndSexRestrictions;
+           && _enforceGroupAndSexRestrictions == enforceGroupAndSexRestrictions
+           && Reordering == reordering;
 }
