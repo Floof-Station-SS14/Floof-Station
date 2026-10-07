@@ -22,7 +22,7 @@ public sealed partial class SingerInstrumentPrototype : IPrototype
     ///     Instrument in <see cref="InstrumentList"/> that is used by default.
     /// </summary>
     [DataField(required: true)]
-    public string DefaultInstrument = string.Empty;
+    public LocId DefaultInstrument = "";
 
     /// <summary>
     ///     The BUI configuration for the instrument.
