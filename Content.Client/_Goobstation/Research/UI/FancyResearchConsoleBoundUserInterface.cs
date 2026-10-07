@@ -66,9 +66,14 @@ public sealed class FancyResearchConsoleBoundUserInterface : BoundUserInterface
         // Thats for avoiding refresh spam when only points are updated
         if (_consoleMenu == null)
             return;
+        // Floof Section - Tech Tree
         if (!_consoleMenu.List.SequenceEqual(castState.Researches))
+        {
             _consoleMenu.UpdatePanels(castState.Researches);
-        if (_consoleMenu.Points != castState.Points)
             _consoleMenu.UpdateInformationPanel(castState.Points);
+        }
+        else if (_consoleMenu.Points != castState.Points)
+            _consoleMenu.UpdateInformationPanel(castState.Points);
+        // Floof Section End
     }
 }

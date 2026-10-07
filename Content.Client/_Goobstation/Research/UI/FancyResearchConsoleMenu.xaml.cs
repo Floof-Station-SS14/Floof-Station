@@ -107,6 +107,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
 
             // Set position for all tech, relating to _position
             LayoutContainer.SetPosition(control, _position + proto.Position * 150 * _zoom);
+            control.SetScale(_zoom); // Floof - Tech Tree
             control.SelectAction += SelectTech;
 
             if (tech.Key == CurrentTech)
@@ -191,6 +192,11 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         if (MathHelper.CloseTo(oldZoom, _zoom))
             return;
 
+        // Floof Section - Tech Tree
+        var pivot = DragContainer.Size / 2;
+        _position = pivot + (_position - pivot) * (_zoom / oldZoom);
+        // Floof Section End
+
         foreach (var child in DragContainer.Children)
         {
             if (child is not FancyResearchConsoleItem research)
@@ -248,6 +254,18 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
     public void Recenter()
     {
         _position = new(45, 250);
+
+        // Floof Section - Tech Tree
+        var items = DragContainer.Children.OfType<FancyResearchConsoleItem>().ToList();
+        if (items.Count > 0 && DragContainer.Size != Vector2.Zero)
+        {
+            var min = items.Select(i => (Vector2) i.Prototype.Position).Aggregate(Vector2.Min);
+            var max = items.Select(i => (Vector2) i.Prototype.Position).Aggregate(Vector2.Max);
+            var center = (min + max) / 2 * 150 * _zoom + new Vector2(40 * _zoom);
+            _position = DragContainer.Size / 2 - center;
+        }
+        // Floof Section End
+
         foreach (var item in DragContainer.Children)
         {
             if (item is not FancyResearchConsoleItem research)
