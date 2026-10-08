@@ -1,7 +1,6 @@
 # Message
 chat-emote-msg-bang = bangs.
 chat-emote-msg-bellow = bellows.
-chat-emote-msg-caw = caws.
 chat-emote-msg-chomp = chomps {POSS-ADJ($entity)} teeth together.
 chat-emote-msg-hoot = hoots.
 chat-emote-msg-mew = mews.
@@ -13,7 +12,6 @@ chat-emote-msg-ring = rings.
 # Names
 chat-emote-name-bang = Bang
 chat-emote-name-bellow = Bellow
-chat-emote-name-caw = Caw
 chat-emote-name-chomp = Chomp
 chat-emote-name-hoot = Hoot
 chat-emote-name-mew = Mew
