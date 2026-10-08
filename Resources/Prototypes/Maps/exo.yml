@@ -1,8 +1,8 @@
 - type: gameMap
   id: Exo
   mapName: 'Exo'
-  mapPath: /Maps/exo.yml
-  minPlayers: 45
+  mapPath: /Maps/_Floof/exo.yml
+  minPlayers: 0 # Floof - lower min players
   stations:
     Exo:
       stationProto: StandardNanotrasenStation

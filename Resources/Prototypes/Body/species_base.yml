@@ -49,6 +49,7 @@
         - MobMask
         layer:
         - MobLayer
+  - type: UnderTableCrawling # Floof - under-furniture crawling
   - type: FloorOcclusion
   - type: RangedDamageSound
     soundGroups:
@@ -151,6 +152,9 @@
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost
+  - type: BloodstreamAffectedByMass # Floof - HeightWidth
+    power: 0.6
+  - type: FlightAffectedByScale # Floof - HeightWidth
 
 - type: entity
   abstract: true

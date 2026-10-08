@@ -23,8 +23,8 @@
 - type: startingGear
   id: MimeGear
   equipment:
-    gloves: ClothingHandsGlovesColorWhite
-    shoes: ClothingShoesColorWhite
+  #  gloves: ClothingHandsGlovesColorWhite  # FLOOF
+  #  shoes: ClothingShoesColorWhite         # FLOOF
     id: MimePDA
     ears: ClothingHeadsetService
   storage:
