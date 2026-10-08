@@ -10,10 +10,10 @@ using Robust.Shared.Configuration;
 
 namespace Content.Server._EE.HeightAdjust;
 
-public sealed class BloodstreamAdjustSystem : EntitySystem
+public sealed partial class BloodstreamAdjustSystem : EntitySystem
 {
-    [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private BloodstreamSystem _bloodstream = default!;
+    [Dependency] private IConfigurationManager _config = default!;
 
     public override void Initialize()
     {
