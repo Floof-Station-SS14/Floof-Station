@@ -20,7 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Traits.Assorted; // DV
 using System.Numerics; // Floof - HeightWidth
-using Content.Shared._EinsteinEngines.HeightAdjust; // Floof - HeightWidth
+using Content.Shared._EE.HeightAdjust; // Floof - HeightWidth
 
 namespace Content.Server.Cloning;
 

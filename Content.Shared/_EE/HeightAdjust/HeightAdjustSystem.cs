@@ -2,13 +2,12 @@
 
 using System.Numerics;
 using Content.Shared._Floof.HeightAdjust;
-using Content.Shared.CCVar;
 using Content.Shared.Sprite;
 using Robust.Shared.Configuration;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 
-namespace Content.Shared._EinsteinEngines.HeightAdjust;
+namespace Content.Shared._EE.HeightAdjust;
 
 public sealed class HeightAdjustSystem : EntitySystem
 {
@@ -38,7 +37,7 @@ public sealed class HeightAdjustSystem : EntitySystem
         var succeeded = true;
         var avg = (scale.X + scale.Y) / 2;
 
-        if (_config.GetCVar(CCVars.HeightAdjustModifiesHitbox) && EntityManager.TryGetComponent<FixturesComponent>(uid, out var fixtures))
+        if (_config.GetCVar(CCVar.CCVars.HeightAdjustModifiesHitbox) && EntityManager.TryGetComponent<FixturesComponent>(uid, out var fixtures)) // Floof - HeightWidth
         {
             // Floof Section - HeightWidth
             var adjusted = EnsureComp<HeightAdjustedFixturesComponent>(uid);

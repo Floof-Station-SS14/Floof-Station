@@ -5,10 +5,10 @@ using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.FixedPoint;
-using Content.Shared._EinsteinEngines.HeightAdjust;
+using Content.Shared._EE.HeightAdjust;
 using Robust.Shared.Configuration;
 
-namespace Content.Server._EinsteinEngines.HeightAdjust;
+namespace Content.Server._EE.HeightAdjust;
 
 public sealed class BloodstreamAdjustSystem : EntitySystem
 {

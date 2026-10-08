@@ -1,5 +1,5 @@
 using System.Numerics;
-using Content.Shared._EinsteinEngines.HeightAdjust;
+using Content.Shared._EE.HeightAdjust;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.IdentityManagement;

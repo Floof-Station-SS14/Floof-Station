@@ -2,7 +2,7 @@
 
 using Content.Shared.FixedPoint;
 
-namespace Content.Server._EinsteinEngines.HeightAdjust;
+namespace Content.Server._EE.HeightAdjust;
 
 /// <summary>
 ///     When applied to a humanoid or any mob, adjusts their blood volume based on their height and width.
