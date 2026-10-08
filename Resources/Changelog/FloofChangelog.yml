@@ -543,3 +543,11 @@ Entries:
       message: Goob tech tree
   id: 71
   time: '2026-10-07T19:48:13.0000000+00:00'
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added height and width sliders to the character editor.
+    - type: Tweak
+      message: Character size now affects hitbox, blood volume and flight.
+  id: 72
+  time: '2026-10-08T10:23:23.0000000+00:00'

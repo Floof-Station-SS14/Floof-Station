@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Numerics;
 using Content.Shared._Floof.Body; // Floof - Genitals
 using Content.Shared.Body;
 using Content.Shared.Clothing;
@@ -7,6 +8,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
+using Content.Shared.Sprite;
 using Content.Shared.Station.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -26,6 +28,7 @@ public sealed partial class ProfilePreviewSpriteView
             return;
 
         EntMan.System<SharedVisualBodySystem>().ApplyProfileTo(PreviewDummy, humanoid);
+        EntMan.System<SharedScaleVisualsSystem>().SetSpriteScale(PreviewDummy, new Vector2(humanoid.Width, humanoid.Height)); // Floof - HeightWidth
     }
 
     /// <summary>
@@ -63,6 +66,7 @@ public sealed partial class ProfilePreviewSpriteView
             // End Floof Section - Genitals
 
             EntMan.System<SharedVisualBodySystem>().ApplyProfileTo(PreviewDummy, humanoid);
+            EntMan.System<SharedScaleVisualsSystem>().SetSpriteScale(PreviewDummy, new Vector2(humanoid.Width, humanoid.Height)); // Floof - HeightWidth
         }
         else
         {
