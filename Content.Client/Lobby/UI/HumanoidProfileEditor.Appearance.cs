@@ -222,6 +222,7 @@ public sealed partial class HumanoidProfileEditor
         UpdateVoiceControls();
         UpdateSpeciesGuidebookIcon();
         ReloadPreview();
+        UpdateHeightWidthSliders(); // Goobstation: port EE height/width sliders
     }
 
     private void SetAge(int newAge)

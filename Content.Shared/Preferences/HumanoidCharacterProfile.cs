@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -106,6 +108,14 @@ namespace Content.Shared.Preferences
         [DataField]
         public Gender Gender { get; private set; } = Gender.Male;
 
+        // begin Goobstation: port EE height/width sliders
+        [DataField]
+        public float Height { get; private set; } = 1f;
+
+        [DataField]
+        public float Width { get; private set; } = 1f;
+        // end Goobstation: port EE height/width sliders
+
         /// <summary>
         /// Stores markings, eye colors, etc for the profile.
         /// </summary>
@@ -146,6 +156,8 @@ namespace Content.Shared.Preferences
             string consenttext, // Floof: Added consent.
             Genitals genitals, // Floof - Genitals
             string species,
+            float height, // Goobstation: port EE height/width sliders
+            float width, // Goobstation: port EE height/width sliders
             int age,
             Sex sex,
             ProtoId<EmoteSoundsPrototype> voice,
@@ -163,6 +175,8 @@ namespace Content.Shared.Preferences
             ConsentText = consenttext; // Floof: Added consent.
             Genitals = genitals; // Floof - Genitals
             Species = species;
+            Height = height; // Goobstation: port EE height/width sliders
+            Width = width; // Goobstation: port EE height/width sliders
             Age = age;
             Sex = sex;
             Voice = voice;
@@ -197,6 +211,8 @@ namespace Content.Shared.Preferences
                 other.ConsentText, // Floof: Added consent.
                 other.Genitals with { }, // Floof - Genitals
                 other.Species,
+                other.Height, // Goobstation: port EE height/width sliders
+                other.Width, // Goobstation: port EE height/width sliders
                 other.Age,
                 other.Sex,
                 other.Voice,
@@ -386,6 +402,10 @@ namespace Content.Shared.Preferences
             profile.Gender = (randomizeCfg & RandomizeCfg.Gender) != 0 ? RandomGender(profile.Sex) : baseProfile.Gender;
             profile.Name = (randomizeCfg & RandomizeCfg.Name) != 0 ? RandomName(speciesProto, profile.Gender) : baseProfile.Name;
             profile.Age = (randomizeCfg & RandomizeCfg.Age) != 0 ? RandomAge(speciesProto) : baseProfile.Age;
+            // Floof Section - HeightWidth
+            profile.Height = Math.Clamp(baseProfile.Height, speciesProto.MinHeight, speciesProto.MaxHeight);
+            profile.Width = Math.Clamp(baseProfile.Width, speciesProto.MinWidth, speciesProto.MaxWidth);
+            // Floof Section End
             
             profile.Appearance = HumanoidCharacterAppearance.Random(speciesProto, profile.Sex, randomizeCfg, baseProfile.Appearance);
 
@@ -454,6 +474,18 @@ namespace Content.Shared.Preferences
         {
             return new(this) { Species = species };
         }
+
+        // begin Goobstation: port EE height/width sliders
+        public HumanoidCharacterProfile WithHeight(float height)
+        {
+            return new(this) { Height = height };
+        }
+
+        public HumanoidCharacterProfile WithWidth(float width)
+        {
+            return new(this) { Width = width };
+        }
+        // end Goobstation: port EE height/width sliders
 
 
         public HumanoidCharacterProfile WithCharacterAppearance(HumanoidCharacterAppearance appearance)
@@ -650,6 +682,8 @@ namespace Content.Shared.Preferences
             if (Voice != other.Voice) return false;
             if (Gender != other.Gender) return false;
             if (Species != other.Species) return false;
+            if (Height != other.Height) return false; // Goobstation: port EE height/width sliders
+            if (Width != other.Width) return false; // Goobstation: port EE height/width sliders
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
@@ -750,6 +784,16 @@ namespace Content.Shared.Preferences
                 ? FormattedMessage.RemoveMarkupOrThrow(ConsentText)[..maxConsentTextLength]
                 : FormattedMessage.RemoveMarkupOrThrow(ConsentText);
 
+            // begin Goobstation: port EE height/width sliders
+            var height = Height;
+            if (speciesPrototype != null)
+                height = Math.Clamp(Height, speciesPrototype.MinHeight, speciesPrototype.MaxHeight);
+
+            var width = Width;
+            if (speciesPrototype != null)
+                width = Math.Clamp(Width, speciesPrototype.MinWidth, speciesPrototype.MaxWidth);
+            // end Goobstation: port EE height/width sliders
+
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
             var prefsUnavailableMode = PreferenceUnavailable switch
@@ -800,6 +844,8 @@ namespace Content.Shared.Preferences
             FlavorText = flavortext;
             ConsentText = consentText;
             Age = age;
+            Height = height; // Goobstation: port EE height/width sliders
+            Width = width; // Goobstation: port EE height/width sliders
             Sex = sex;
             Voice = voice;
             Gender = gender;
@@ -922,6 +968,8 @@ namespace Content.Shared.Preferences
             hashCode.Add(ConsentText); // Floof: Added consent.
             hashCode.Add(Genitals); // Floof - Genitals
             hashCode.Add(Species);
+            hashCode.Add(Height); // Goobstation: port EE height/width sliders
+            hashCode.Add(Width); // Goobstation: port EE height/width sliders
             hashCode.Add(Age);
             hashCode.Add((int)Sex);
             hashCode.Add(Voice);

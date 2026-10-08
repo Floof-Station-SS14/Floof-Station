@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Client.Humanoid;
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
@@ -304,6 +306,7 @@ namespace Content.Client.Lobby.UI
             #endregion Jobs
 
             GenitalsInit(); // Floof - Genitals
+            HeightWidthInit(); // Goobstation: port EE height/width sliders
 
             TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
 
@@ -588,6 +591,7 @@ namespace Content.Client.Lobby.UI
             UpdateSaveButton();
             ReloadPreview();
             UpdateMarkings();
+            UpdateHeightWidthSliders(); // Goobstation: port EE height/width sliders
 
             UpdateTraitsSelection(); // DeltaV - Traits
 
