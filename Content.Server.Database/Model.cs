@@ -20,6 +20,7 @@ namespace Content.Server.Database
 
         public DbSet<Preference> Preference { get; set; } = null!;
         public DbSet<Profile> Profile { get; set; } = null!;
+        public DbSet<ConsentSettings> ConsentSettings { get; set; } = null!; // Floof - Consent System
         public DbSet<AssignedUserId> AssignedUserId { get; set; } = null!;
         public DbSet<Player> Player { get; set; } = default!;
         public DbSet<Admin> Admin { get; set; } = null!;
@@ -70,6 +71,19 @@ namespace Content.Server.Database
                 .HasIndex(p => new {HumanoidProfileId = p.ProfileId, p.TraitName})
                 .IsUnique();
 
+            // Floof - Code related to consent
+            modelBuilder.Entity<ConsentSettings>()
+                .HasIndex(c => c.UserId)
+                .IsUnique();
+            // End Floof - Consent System
+            // Floof Section - Genitals
+            modelBuilder.Entity<Profile>()
+                .HasOne(p => p.Genitals)
+                .WithOne(g => g.Profile)
+                .HasForeignKey<Genitals>(g => g.ProfileId);
+            modelBuilder.Entity<Genitals>()
+                .HasKey(g => g.ProfileId);
+            // End Floof Section - Genitals
             modelBuilder.Entity<ProfileRoleLoadout>()
                 .HasOne(e => e.Profile)
                 .WithMany(e => e.Loadouts)
@@ -330,6 +344,8 @@ namespace Content.Server.Database
         public int Slot { get; set; }
         [Column("char_name")] public string CharacterName { get; set; } = null!;
         public string FlavorText { get; set; } = null!;
+        public string ConsentText { get; set; } = null!; // Floof: Added consent.
+        public Genitals? Genitals { get; set; } = null!; // Floof - Genitals
         public int Age { get; set; }
         public string Sex { get; set; } = null!;
         public string? Voice { get; set; } = null!; // If null, the voice gets defaulted to the sex associated value
@@ -355,6 +371,25 @@ namespace Content.Server.Database
         public int PreferenceId { get; set; }
         public Preference Preference { get; set; } = null!;
     }
+    // Floof Section - Genitals
+    public class Genitals
+    {
+        public int ProfileId { get; set; }
+        public bool Penis { get; set; }
+        public bool Vagina { get; set; }
+        public bool Breasts { get; set; }
+        public Profile Profile { get; set; } = null!;
+    }
+    // End Floof Section - Genitals
+    // Floof - Consent System
+    public class ConsentSettings
+    {
+        public int Id { get; set; }
+        public Guid UserId { get; set; }
+
+        public string ConsentFreetext { get; set; } = null!;
+    }
+    // End Floof - Consent System
 
     public class Job
     {

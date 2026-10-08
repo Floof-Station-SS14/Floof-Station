@@ -4,6 +4,7 @@
          xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
          xmlns:ui="clr-namespace:Content.Client.Lobby.UI"
          xmlns:profile="clr-namespace:Content.Client.Lobby.UI.ProfileEditorControls"
+         xmlns:ui1="clr-namespace:Content.Client._Floof.Traits.UI"
          HorizontalExpand="True">
         <!-- Left side -->
         <BoxContainer Orientation="Vertical" Margin="10 10 10 10" HorizontalExpand="True">
@@ -113,6 +114,15 @@
                                     <OptionButton Name="SpawnPriorityButton" HorizontalAlignment="Right" />
                                 </BoxContainer>
                             </BoxContainer>
+                            <!-- Floof Section - Genitals -->
+                            <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Horizontal">
+                                <Label Text="{Loc 'humanoid-profile-editor-genital-label'}" />
+                                <Control HorizontalExpand="True"/>
+                                <Button Name="Penis" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-genital-penis'}" HorizontalAlignment="Right" />
+                                <Button Name="Vagina" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-genital-vagina'}" HorizontalAlignment="Right" />
+                                <Button Name="Breasts" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-genital-breasts'}" HorizontalAlignment="Right" />
+                            </BoxContainer>
+                            <!-- End Floof Section - Genitals -->
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">
                                 <Label Text="{Loc 'humanoid-profile-editor-skin-color-label'}" />
@@ -140,12 +150,15 @@
                         <BoxContainer Name="AntagList" Orientation="Vertical" />
                     </ScrollContainer>
                 </BoxContainer>
-                <BoxContainer Orientation="Vertical" Margin="10">
-                    <!-- Traits -->
-                    <ScrollContainer VerticalExpand="True">
-                        <BoxContainer Name="TraitsList" Orientation="Vertical" />
-                    </ScrollContainer>
-                </BoxContainer>
+                <!-- DV - Traits -->
+                <!-- <BoxContainer Orientation="Vertical" Margin="10"> -->
+                <!--     ~1~ Traits @1@ -->
+                <!--     <ScrollContainer VerticalExpand="True"> -->
+                <!--         <BoxContainer Name="TraitsList" Orientation="Vertical" /> -->
+                <!--     </ScrollContainer> -->
+                <!-- </BoxContainer> -->
+                <ui1:TraitsTab Name="Traits"/>
+                <!-- End DV -->
                 <BoxContainer Name="MarkingsTab" Orientation="Vertical" Margin="10">
                     <!-- Markings -->
                     <humanoid:MarkingPicker Name="Markings" HorizontalExpand="True" VerticalExpand="True" />

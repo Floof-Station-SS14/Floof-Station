@@ -1,0 +1,217 @@
+﻿#Breads & Sandwiches
+
+- type: microwaveMealRecipe
+  id: RecipeAvocadoToast
+  name: microwave-meal-recipe-avocado-toast-name
+  result: FoodBreadAvocadoToast
+  time: 5
+  solids:
+    FoodBreadPlainSlice: 1
+    FoodAvocadoSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeBreakfastBagel
+  name: microwave-meal-recipe-breakfast-bagel-name
+  result: FoodMealBreakfastBagel
+  time: 5
+  solids:
+    FoodBagel: 1
+    FoodEgg: 2
+    FoodAvocadoSlice: 1
+    FoodCheeseSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeBreakfastBagelPoppy
+  name: microwave-meal-recipe-breakfast-bagel-poppy-name
+  result: FoodMealBreakfastBagelPoppy
+  time: 5
+  solids:
+    FoodBagelPoppy: 1
+    FoodEgg: 2
+    FoodAvocadoSlice: 1
+    FoodCheeseSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeCucumberSandwich
+  name: microwave-meal-recipe-cucumber-sandwich-name
+  result: FoodMealCucumberSandwich
+  time: 5
+  solids:
+    FoodBreadPlainSlice: 2
+    FoodCucumberSlice: 4
+    FoodChevreSlice: 1
+  reagents:
+    Mayo: 5
+
+# Sushi
+
+- type: microwaveMealRecipe
+  id: RecipeAvocadoSushi
+  name: microwave-meal-recipe-avocado-sushi-name
+  result: FoodMealAvocadoSushi
+  time: 5
+  solids:
+    FoodAvocadoSlice: 2
+    FoodCarrot: 1
+    FoodCucumberSlice: 2
+  reagents:
+    Rice: 15
+    Water: 10
+
+- type: microwaveMealRecipe
+  id: RecipeCarpSushi
+  name: microwave-meal-recipe-carp-sushi-name
+  result: FoodMealCarpSushi
+  time: 5
+  solids:
+    FoodAvocadoSlice: 2
+    FoodCucumberSlice: 2
+    FoodMeatFish: 1
+  reagents:
+    Rice: 15
+    Water: 10
+
+# Salad
+
+- type: microwaveMealRecipe
+  id: RecipeGreekSalad
+  name: microwave-meal-recipe-greek-salad-name
+  result: FoodSaladGreek
+  time: 5
+  reagents:
+    Vinaigrette: 5
+  solids:
+    FoodBowlBig: 1
+    FoodCucumber: 1
+    FoodTomato: 1
+    FoodChevreSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeAvocadoSalad
+  name: microwave-meal-recipe-avocado-salad-name
+  result: FoodSaladAvocado
+  time: 5
+  reagents:
+    OilOlive: 5
+    JuiceLime: 5
+  solids:
+    FoodBowlBig: 1
+    FoodCucumber: 1
+    FoodAvocado: 1
+    FoodTomato: 1
+
+#Other
+
+- type: microwaveMealRecipe
+  id: RecipeRaisins
+  name: microwave-meal-recipe-raisins-name
+  result: ReagentContainerRaisin # A little bit cursed, spawning a bag
+  time: 30
+  solids:
+    FoodGrape: 5
+
+- type: microwaveMealRecipe
+  id: RecipePickle
+  name: microwave-meal-recipe-pickle-name
+  result: FoodPickle
+  time: 5
+  solids:
+    FoodCucumber: 1
+  reagents:
+    Saline: 10
+
+- type: microwaveMealRecipe
+  id: RecipeHoneyBun
+  name: microwave-meal-recipe-honey-bun-name
+  result: FoodBakedBunHoney
+  group: Dessert
+  time: 5
+  solids:
+    FoodBreadBun: 1
+  reagents:
+    Honey: 5
+
+- type: microwaveMealRecipe
+  id: RecipeHoneyChallah
+  name: microwave-meal-recipe-honey-challah-name
+  result: FoodBreadChallah
+  group: Dessert
+  time: 15
+  solids:
+    FoodDoughRope: 3
+    PoppySeeds: 1
+  reagents:
+    Honey: 10
+
+- type: microwaveMealRecipe
+  id: RecipeGlazedHam
+  name: microwave-meal-recipe-glazed-ham-name
+  result: FoodMeatGlazedHam
+  time: 15
+  solids:
+    FoodMeat: 2
+  reagents:
+    Honey: 10
+    TableSalt: 5
+
+- type: microwaveMealRecipe
+  id: RecipeAppleHoneyDutchBaby
+  name: microwave-meal-recipe-apple-honey-dutch-baby-name
+  result: FoodPieAppleHoney
+  time: 15
+  solids:
+    FoodPlateTin: 1
+    FoodDoughPie: 1
+    FoodApple: 2
+  reagents:
+    Honey: 10
+    Oats: 10
+
+- type: microwaveMealRecipe
+  id: RecipePoachedPears
+  name: microwave-meal-recipe-poached-pears-name
+  result: FoodMealPoachedPears
+  time: 10
+  solids:
+    FoodBowlBig: 1
+    FoodPear: 3
+    FoodOrange: 2
+  reagents:
+    Wine: 10
+
+- type: microwaveMealRecipe
+  id: RecipePearsBelleHelene
+  name: microwave-meal-recipe-pears-belle-helene-name
+  result: FoodMealPearsBelleHelene
+  time: 10
+  solids:
+    FoodBowlBig: 1
+    FoodPear: 3
+    FoodSnackChocolateBar: 2
+    FoodLemon: 1
+  reagents:
+    Cream: 5
+
+- type: microwaveMealRecipe
+  id: RecipePearMuffin
+  name: microwave-meal-recipe-pear-muffin-name
+  result: FoodBakedMuffinPear
+  time: 10
+  solids:
+    FoodPear: 1
+    FoodSnackChocolateBar: 1
+  reagents:
+    Flour: 5
+    Oats: 5
+    Sugar: 5
+
+- type: microwaveMealRecipe
+  id: RecipePearCheeseTart
+  name: microwave-meal-recipe-pear-cheese-tart-name
+  result: FoodTartPearCheese
+  time: 15
+  solids:
+    FoodPlateTin: 1
+    FoodDoughPie: 1
+    FoodPear: 2
+    FoodChevre: 1

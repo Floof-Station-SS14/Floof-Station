@@ -19,7 +19,7 @@
 - type: startingGear
   id: LawyerGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
+  #  shoes: ClothingShoesBootsLaceup # FLOOF
     id: LawyerPDA
     ears: ClothingHeadsetSecurity
   inhand:

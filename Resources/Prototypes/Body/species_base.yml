@@ -49,6 +49,7 @@
         - MobMask
         layer:
         - MobLayer
+  - type: UnderTableCrawling # Floof - under-furniture crawling
   - type: FloorOcclusion
   - type: RangedDamageSound
     soundGroups:

@@ -8,6 +8,9 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers;
+using Content.Shared._Floof.Consent;
+using Content.Shared._Floof.Consent.Prototypes;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
@@ -47,6 +50,7 @@ namespace Content.Server.Database
                 .Include(p => p.Profiles).ThenInclude(h => h.Jobs)
                 .Include(p => p.Profiles).ThenInclude(h => h.Antags)
                 .Include(p => p.Profiles).ThenInclude(h => h.Traits)
+                .Include(p => p.Profiles).ThenInclude(h => h.Genitals) // Floof - Genitals
                 .Include(p => p.Profiles)
                     .ThenInclude(h => h.Loadouts)
                     .ThenInclude(l => l.Groups)
@@ -105,6 +109,7 @@ namespace Content.Server.Database
                 .Include(p => p.Jobs)
                 .Include(p => p.Antags)
                 .Include(p => p.Traits)
+                .Include(p => p.Genitals) // Floof - Genitals
                 .Include(p => p.Loadouts)
                     .ThenInclude(l => l.Groups)
                     .ThenInclude(group => group.Loadouts)
@@ -211,6 +216,7 @@ namespace Content.Server.Database
 
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
+            profile.ConsentText = humanoid.ConsentText; // Floof: Added consent.
             profile.Species = humanoid.Species;
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
@@ -220,6 +226,14 @@ namespace Content.Server.Database
             profile.SkinColor = appearance.SkinColor.ToHex();
             profile.SpawnPriority = (int) humanoid.SpawnPriority;
             profile.OrganMarkings = JsonSerializer.SerializeToDocument(dataNode.ToJsonNode());
+
+            // Floof Section - Genitals
+            if (profile.Genitals == null)
+                profile.Genitals = new Genitals();
+            profile.Genitals.Penis = humanoid.Genitals.Penis;
+            profile.Genitals.Vagina = humanoid.Genitals.Vagina;
+            profile.Genitals.Breasts = humanoid.Genitals.Breasts;
+            // End Floof Section - Genitals
 
             // support for downgrades - at some point this should be removed
             var legacyMarkings = appearance.Markings
@@ -1073,6 +1087,65 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             var entry = await db.DbContext.Blacklist.SingleAsync(w => w.UserId == player);
             db.DbContext.Blacklist.Remove(entry);
             await db.DbContext.SaveChangesAsync();
+        }
+
+        #endregion
+
+        #region Consent Settings
+
+        // Floof - Part of consent system, ported in large part from https://github.com/Fansana/floofstation1/pull/4/
+
+        private static async Task DeletePlayerConsentSettings(ServerDbContext db, NetUserId userId)
+        {
+            var consentSettings = await db.ConsentSettings
+                .Where(c => c.UserId == userId.UserId)
+                .SingleOrDefaultAsync();
+
+            if (consentSettings is null)
+                return;
+
+            db.ConsentSettings.Remove(consentSettings);
+        }
+
+        public async Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings? consentSettings)
+        {
+            await using var db = await GetDb();
+
+            if (consentSettings is null)
+            {
+                await DeletePlayerConsentSettings(db.DbContext, userId);
+                await db.DbContext.SaveChangesAsync();
+                return;
+            }
+
+            // Get current consent settings, so we know if freetext needs updating and which toggles to add or remove
+            var currentConsentSettings = await db.DbContext.ConsentSettings
+                .AsSplitQuery()
+                .SingleOrDefaultAsync(c => c.UserId == userId);
+
+            if (currentConsentSettings is null)
+            {
+                currentConsentSettings = new ConsentSettings { UserId = userId};
+
+                db.DbContext.ConsentSettings.Add(currentConsentSettings);
+            }
+
+            currentConsentSettings.ConsentFreetext = consentSettings.Freetext;
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
+        {
+            await using var db = await GetDb();
+
+            var consentSettings = await db.DbContext.ConsentSettings
+                .SingleOrDefaultAsync(c => c.UserId == userId);
+
+            if (consentSettings is null)
+                return new PlayerConsentSettings();
+
+            return new PlayerConsentSettings(consentSettings.ConsentFreetext);
         }
 
         #endregion
