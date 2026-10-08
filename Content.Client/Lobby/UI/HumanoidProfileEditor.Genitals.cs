@@ -6,25 +6,19 @@ public sealed partial class HumanoidProfileEditor
     {
         Penis.OnToggled += args =>
         {
-            if (Profile is null)
-                return;
-            Profile = Profile.WithGenitals(Profile.Genitals with { Penis = args.Pressed });
+            Profile = Profile?.WithPenis(args.Pressed);
             ReloadPreview();
             UpdateMarkings();
         };
         Vagina.OnToggled += args =>
         {
-            if (Profile is null)
-                return;
-            Profile = Profile.WithGenitals(Profile.Genitals with { Vagina = args.Pressed });
+            Profile = Profile?.WithVagina(args.Pressed);
             ReloadPreview();
             UpdateMarkings();
         };
         Breasts.OnToggled += args =>
         {
-            if (Profile is null)
-                return;
-            Profile = Profile.WithGenitals(Profile.Genitals with { Breasts = args.Pressed });
+            Profile = Profile?.WithBreasts(args.Pressed);
             ReloadPreview();
             UpdateMarkings();
         };
