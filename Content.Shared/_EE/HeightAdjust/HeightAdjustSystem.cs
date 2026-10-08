@@ -9,11 +9,11 @@ using Robust.Shared.Physics.Systems;
 
 namespace Content.Shared._EE.HeightAdjust;
 
-public sealed class HeightAdjustSystem : EntitySystem
+public sealed partial class HeightAdjustSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedScaleVisualsSystem _scaleVisuals = default!; // Floof - HeightWidth
-    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedScaleVisualsSystem _scaleVisuals = default!; // Floof - HeightWidth
+    [Dependency] private IConfigurationManager _config = default!;
 
     /// <summary>
     ///     Changes the radius of fixtures based on a provided float scale
@@ -37,7 +37,7 @@ public sealed class HeightAdjustSystem : EntitySystem
         var succeeded = true;
         var avg = (scale.X + scale.Y) / 2;
 
-        if (_config.GetCVar(CCVar.CCVars.HeightAdjustModifiesHitbox) && EntityManager.TryGetComponent<FixturesComponent>(uid, out var fixtures)) // Floof - HeightWidth
+        if (_config.GetCVar(CCVar.CCVars.HeightAdjustModifiesHitbox) && TryComp<FixturesComponent>(uid, out var fixtures)) // Floof - HeightWidth
         {
             // Floof Section - HeightWidth
             var adjusted = EnsureComp<HeightAdjustedFixturesComponent>(uid);
