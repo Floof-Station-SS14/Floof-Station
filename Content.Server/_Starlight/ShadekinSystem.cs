@@ -45,7 +45,7 @@ public sealed partial class ShadekinSystem : EntitySystem
     }
     private readonly Dictionary<string, List<LightCone>> _lightMasks = new()
     {
-            ["Cone"] = new List<LightCone>
+            ["ConeSingle"] = new List<LightCone>
         {
             new() { Direction = 0, InnerWidth = 30, OuterWidth = 60 }
         },
