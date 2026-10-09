@@ -1,0 +1,16 @@
+- type: trait
+  id: PissProducer
+  name: trait-name-PissProducer
+  description: trait-description-PissProducer
+  category: Medical
+  cost: 0
+  conditions:
+  - !type:HasCompCondition
+    component: BorgChassis
+    invert: true
+  effects:
+  - !type:AddOrganEffect
+    organs:
+      Dick: OrganBladder
+    relationships:
+      Torso: [Bladder]

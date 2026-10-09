@@ -1,3 +1,4 @@
+using Content.Server._Floof.Consent.Managers;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -133,6 +134,8 @@ namespace Content.Server.Entry
             _watchlistWebhookManager.Initialize();
             _job.Initialize();
             _rateLimit.Initialize();
+
+            IoCManager.Resolve<IServerConsentManager>().Initialize(); // Floof - Consent System
         }
 
         public override void PostInit()

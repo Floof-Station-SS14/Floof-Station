@@ -1,0 +1,329 @@
+
+
+# BANANA DUCK RECIPE
+- type: microwaveMealRecipe
+  id: RecipeBananaDuck
+  name: microwave-meal-recipe-banana-duck-name
+  result: MobBananaDuck
+  time: 15
+  reagents:
+    BananaHonk: 10
+    Cognizine: 5
+    UnstableMutagen: 5
+  solids:
+    TrashBananaPeel: 1
+    FoodEgg: 1 # Change because FoodEggDuckFertilized turns into a duck in like 20 seconds
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamBloodDrop
+  name: microwave-meal-recipe-ice-cream-blood-drop-name
+  result: IceCreamBloodDrop
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Blood: 10
+    JuiceBerry: 5
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamCaramel
+  name: microwave-meal-recipe-ice-cream-caramel-name
+  result: IceCreamCaramel
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Sugar: 10
+    Butter: 5
+  solids:
+    IceCreamBowl: 1
+    FoodCoffeeBeansRoastedLight: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamCoffee
+  name: microwave-meal-recipe-ice-cream-coffee-name
+  result: IceCreamCoffee
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Coffee: 20
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamGreenTea
+  name: microwave-meal-recipe-ice-cream-green-tea-name
+  result: IceCreamGreenTea
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    GreenTea: 15
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamLemon
+  name: microwave-meal-recipe-ice-cream-lemon-name
+  result: IceCreamLemon
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    JuiceLemon: 15
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamOrange
+  name: microwave-meal-recipe-ice-cream-orange-name
+  result: IceCreamOrange
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    JuiceOrange: 15
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamRainbow
+  name: microwave-meal-recipe-ice-cream-rainbow-name
+  result: IceCreamRainbow
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    JuiceBerry: 5
+    JuiceLemon: 5
+    JuiceOrange: 5
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamSaltedCaramel
+  name: microwave-meal-recipe-ice-cream-salted-caramel-name
+  result: IceCreamSaltedCaramel
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Sugar: 10
+    TableSalt: 5
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamSpaghetti
+  name: microwave-meal-recipe-ice-cream-spaghetti-name
+  result: IceCreamSpaghetti
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Sugar: 10
+    JuiceBerry: 5
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamStrawberry
+  name: microwave-meal-recipe-ice-cream-strawberry-name
+  result: IceCreamStrawberry
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    JuiceBerry: 15
+  solids:
+    IceCreamBowl: 1
+    FoodBerries: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamBananaSplit
+  name: microwave-meal-recipe-ice-cream-banana-split-name
+  result: IceCreamBananaSplit
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    CocoaPowder: 5
+    JuiceBerry: 5
+  solids:
+    IceCreamBowl: 1
+    FoodBanana: 1
+    FoodCherry: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamChoco
+  name: microwave-meal-recipe-ice-cream-choco-name
+  result: IceCreamChoco
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    CocoaPowder: 5
+  solids:
+    IceCreamBowl: 1
+    FoodSnackChocolateBar: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamCoconut
+  name: microwave-meal-recipe-ice-cream-coconut-name
+  result: IceCreamCoconut
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    CoconutWater: 20
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamCosmos
+  name: microwave-meal-recipe-ice-cream-cosmos-name
+  result: IceCreamCosmos
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Nothing: 5
+    JuiceBerry: 15
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamGilded
+  name: microwave-meal-recipe-ice-cream-gilded-name
+  result: IceCreamGilded
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Gold: 20
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamLoversDelight
+  name: microwave-meal-recipe-ice-cream-lovers-delight-name
+  result: IceCreamLoversDelight
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    JuicePomegranate: 20
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamMintChoco
+  name: microwave-meal-recipe-ice-cream-mint-choco-name
+  result: IceCreamMintChoco
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    FrostOil: 10
+    CocoaPowder: 5
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamSolar
+  name: microwave-meal-recipe-ice-cream-solar-name
+  result: IceCreamSolar
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Napalm: 10
+    Hydrogen: 10
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamNebula
+  name: microwave-meal-recipe-ice-cream-nebula-name
+  result: IceCreamNebula
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    Nothing: 10
+    Hydrogen: 10
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamNeapolitan
+  name: microwave-meal-recipe-ice-cream-neapolitan-name
+  result: IceCreamNeapolitan
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    JuiceBerry: 10
+    CocoaPowder: 5
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamWatermelon
+  name: microwave-meal-recipe-ice-cream-watermelon-name
+  result: IceCreamWatermelon
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 20
+    JuiceWatermelon: 20
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeIceCreamVanilla
+  name: microwave-meal-recipe-ice-cream-vanilla-name
+  result: IceCreamVanilla
+  group: Dessert
+  time: 5
+  reagents:
+    IceCream: 35
+    Cream: 5
+  solids:
+    IceCreamBowl: 1
+
+- type: microwaveMealRecipe
+  id: RecipeRicePudding2
+  name: microwave-meal-recipe-rice-pudding2-name
+  result: FoodRicePudding
+  time: 15
+  reagents:
+    Rice: 15
+    Cream: 15
+  solids:
+    FoodBowlBig: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotX
+  name: microwave-meal-recipe-hot-x-name
+  result: FoodBakedBunHotX
+  #resultCount: 2 #MicrowaveSystem must be modified to allow for multiple products from the same recipe
+  time: 10
+  reagents:
+    Sugar: 5
+    Raisins: 5
+  solids:
+    FoodDoughSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMeatBun
+  name: microwave-meal-recipe-meat-bun-name
+  result: FoodBakedBunMeat
+  #resultCount: 2
+  time: 10
+  solids:
+    FoodDoughSlice: 1
+    FoodMeatCutlet: 1

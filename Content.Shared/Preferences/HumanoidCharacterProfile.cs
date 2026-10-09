@@ -1,16 +1,15 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
 using Content.Shared.Chat.Prototypes;
-using Content.Shared.EntityEffects.Effects;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
-using Content.Shared.Speech.Components;
-using Content.Shared.Traits;
 using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
@@ -21,6 +20,7 @@ using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared._Floof.Traits; // DeltaV - Traits rework
 using Robust.Shared;
 using YamlDotNet.RepresentationModel;
 
@@ -79,6 +79,18 @@ namespace Content.Shared.Preferences
         public string FlavorText { get; set; } = string.Empty;
 
         /// <summary>
+        /// FLOOF
+        /// Detailed consent text that can appear for the character.
+        /// </summary>
+        [DataField]
+        public string ConsentText { get; set; } = string.Empty;
+
+        // Floof Section - Genitals
+        [DataField]
+        public Genitals Genitals { get; set; } = new();
+        // End Floof Section - Genitals
+
+        /// <summary>
         /// Associated <see cref="SpeciesPrototype"/> for this profile.
         /// </summary>
         [DataField]
@@ -95,6 +107,14 @@ namespace Content.Shared.Preferences
 
         [DataField]
         public Gender Gender { get; private set; } = Gender.Male;
+
+        // begin Goobstation: port EE height/width sliders
+        [DataField]
+        public float Height { get; private set; } = 1f;
+
+        [DataField]
+        public float Width { get; private set; } = 1f;
+        // end Goobstation: port EE height/width sliders
 
         /// <summary>
         /// Stores markings, eye colors, etc for the profile.
@@ -133,7 +153,11 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
+            string consenttext, // Floof: Added consent.
+            Genitals genitals, // Floof - Genitals
             string species,
+            float height, // Goobstation: port EE height/width sliders
+            float width, // Goobstation: port EE height/width sliders
             int age,
             Sex sex,
             ProtoId<EmoteSoundsPrototype> voice,
@@ -148,7 +172,11 @@ namespace Content.Shared.Preferences
         {
             Name = name;
             FlavorText = flavortext;
+            ConsentText = consenttext; // Floof: Added consent.
+            Genitals = genitals; // Floof - Genitals
             Species = species;
+            Height = height; // Goobstation: port EE height/width sliders
+            Width = width; // Goobstation: port EE height/width sliders
             Age = age;
             Sex = sex;
             Voice = voice;
@@ -180,7 +208,11 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(HumanoidCharacterProfile other)
             : this(other.Name,
                 other.FlavorText,
+                other.ConsentText, // Floof: Added consent.
+                other.Genitals with { }, // Floof - Genitals
                 other.Species,
+                other.Height, // Goobstation: port EE height/width sliders
+                other.Width, // Goobstation: port EE height/width sliders
                 other.Age,
                 other.Sex,
                 other.Voice,
@@ -219,6 +251,7 @@ namespace Content.Shared.Preferences
             {
                 Species = species.Value,
                 Sex = sex.Value,
+                Genitals = Genitals.DefaultForSex(sex.Value), // Floof - Genitals
                 Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species.Value, sex.Value),
             };
         }
@@ -327,7 +360,7 @@ namespace Content.Shared.Preferences
         /// <returns>A new character profile with values randomized</returns>
         public static HumanoidCharacterProfile Random(HashSet<string>? ignoredSpecies = null)
         {
-            var config = RandomizeConfigAll;
+            var config = RandomizeConfigAll &~ RandomizeCfg.Markings; // Floof - random markings look terrible, so we skip them on character creation.
             var baseProfile = new HumanoidCharacterProfile();
             if (ignoredSpecies != null)
             {
@@ -364,11 +397,16 @@ namespace Content.Shared.Preferences
             var speciesProto = prototypeManager.Index(profile.Species);
 
             profile.Sex = (randomizeCfg & RandomizeCfg.Sex) != 0 ? RandomSex(speciesProto) : baseProfile.Sex;
+            profile.Genitals = (randomizeCfg & RandomizeCfg.Sex) != 0 ? Genitals.DefaultForSex(profile.Sex) : baseProfile.Genitals with { }; // Floof - Genitals
             profile.Voice = speciesProto.DefaultSoundsBySex[(int)profile.Sex];
             profile.Gender = (randomizeCfg & RandomizeCfg.Gender) != 0 ? RandomGender(profile.Sex) : baseProfile.Gender;
             profile.Name = (randomizeCfg & RandomizeCfg.Name) != 0 ? RandomName(speciesProto, profile.Gender) : baseProfile.Name;
             profile.Age = (randomizeCfg & RandomizeCfg.Age) != 0 ? RandomAge(speciesProto) : baseProfile.Age;
-
+            // Floof Section - HeightWidth
+            profile.Height = Math.Clamp(baseProfile.Height, speciesProto.MinHeight, speciesProto.MaxHeight);
+            profile.Width = Math.Clamp(baseProfile.Width, speciesProto.MinWidth, speciesProto.MaxWidth);
+            // Floof Section End
+            
             profile.Appearance = HumanoidCharacterAppearance.Random(speciesProto, profile.Sex, randomizeCfg, baseProfile.Appearance);
 
             return profile;
@@ -399,6 +437,12 @@ namespace Content.Shared.Preferences
             return new(this) { FlavorText = flavorText };
         }
 
+        // Floof: Added consent.
+        public HumanoidCharacterProfile WithConsentText(string consentText)
+        {
+            return new(this) { ConsentText = consentText };
+        }
+
         public HumanoidCharacterProfile WithAge(int age)
         {
             return new(this) { Age = age };
@@ -423,6 +467,18 @@ namespace Content.Shared.Preferences
         {
             return new(this) { Species = species };
         }
+
+        // begin Goobstation: port EE height/width sliders
+        public HumanoidCharacterProfile WithHeight(float height)
+        {
+            return new(this) { Height = height };
+        }
+
+        public HumanoidCharacterProfile WithWidth(float width)
+        {
+            return new(this) { Width = width };
+        }
+        // end Goobstation: port EE height/width sliders
 
 
         public HumanoidCharacterProfile WithCharacterAppearance(HumanoidCharacterAppearance appearance)
@@ -555,12 +611,12 @@ namespace Content.Shared.Preferences
             // Category not found so dump it.
             TraitCategoryPrototype? traitCategory = null;
 
-            if (category != null && !protoManager.Resolve(category, out traitCategory))
+            if (!protoManager.Resolve(category, out traitCategory)) // DeltaV 13/01/26 - Traits: Category is no longer nullable
                 return new(this);
 
             var list = new HashSet<ProtoId<TraitPrototype>>(_traitPreferences) { traitId };
 
-            if (traitCategory == null || traitCategory.MaxTraitPoints < 0)
+            if (traitCategory.MaxPoints < 0) // DeltaV 13/01/26 - Traits: Changed to MaxPoints
             {
                 return new(this)
                 {
@@ -581,7 +637,7 @@ namespace Content.Shared.Preferences
                 count += otherProto.Cost;
             }
 
-            if (count > traitCategory.MaxTraitPoints && traitProto.Cost != 0)
+            if (count > traitCategory.MaxPoints && traitProto.Cost != 0) // DeltaV 13/01/26 - Traits: Changed to MaxPoints
             {
                 return new(this);
             }
@@ -619,6 +675,8 @@ namespace Content.Shared.Preferences
             if (Voice != other.Voice) return false;
             if (Gender != other.Gender) return false;
             if (Species != other.Species) return false;
+            if (Height != other.Height) return false; // Goobstation: port EE height/width sliders
+            if (Width != other.Width) return false; // Goobstation: port EE height/width sliders
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
@@ -626,6 +684,8 @@ namespace Content.Shared.Preferences
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
+            if (ConsentText != other.ConsentText) return false; // Floof: Added consent.
+            if (Genitals != other.Genitals) return false; // Floof - Genitals
             return Appearance.Equals(other.Appearance);
         }
 
@@ -711,6 +771,22 @@ namespace Content.Shared.Preferences
                 flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
             }
 
+            // Floof: Added consent
+            var maxConsentTextLength = configManager.GetCVar(CCVars.MaxConsentTextLength);
+            var consentText = ConsentText.Length > maxConsentTextLength
+                ? FormattedMessage.RemoveMarkupOrThrow(ConsentText)[..maxConsentTextLength]
+                : FormattedMessage.RemoveMarkupOrThrow(ConsentText);
+
+            // begin Goobstation: port EE height/width sliders
+            var height = Height;
+            if (speciesPrototype != null)
+                height = Math.Clamp(Height, speciesPrototype.MinHeight, speciesPrototype.MaxHeight);
+
+            var width = Width;
+            if (speciesPrototype != null)
+                width = Math.Clamp(Width, speciesPrototype.MinWidth, speciesPrototype.MaxWidth);
+            // end Goobstation: port EE height/width sliders
+
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
             var prefsUnavailableMode = PreferenceUnavailable switch
@@ -759,7 +835,10 @@ namespace Content.Shared.Preferences
 
             Name = name;
             FlavorText = flavortext;
+            ConsentText = consentText;
             Age = age;
+            Height = height; // Goobstation: port EE height/width sliders
+            Width = width; // Goobstation: port EE height/width sliders
             Sex = sex;
             Voice = voice;
             Gender = gender;
@@ -819,11 +898,11 @@ namespace Content.Shared.Preferences
                     continue;
 
                 // Always valid.
-                if (traitProto.Category == null)
-                {
-                    result.Add(trait);
-                    continue;
-                }
+                // if (traitProto.Category == null) // DeltaV 13/01/26 - Traits rework
+                // {
+                //     result.Add(trait);
+                //     continue;
+                // }
 
                 // No category so dump it.
                 if (!protoManager.Resolve(traitProto.Category, out var category))
@@ -833,7 +912,7 @@ namespace Content.Shared.Preferences
                 existing += traitProto.Cost;
 
                 // Too expensive.
-                if (existing > category.MaxTraitPoints)
+                if (existing > category.MaxPoints) // DeltaV 13/01/26 - Traits:  Was MaxTraitPoints
                     continue;
 
                 groups[category.ID] = existing;
@@ -879,7 +958,11 @@ namespace Content.Shared.Preferences
             hashCode.Add(_loadouts);
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
+            hashCode.Add(ConsentText); // Floof: Added consent.
+            hashCode.Add(Genitals); // Floof - Genitals
             hashCode.Add(Species);
+            hashCode.Add(Height); // Goobstation: port EE height/width sliders
+            hashCode.Add(Width); // Goobstation: port EE height/width sliders
             hashCode.Add(Age);
             hashCode.Add((int)Sex);
             hashCode.Add(Voice);

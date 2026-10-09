@@ -16,7 +16,7 @@
 - type: startingGear
   id: PsychologistGear
   equipment:
-    shoes: ClothingShoesLeather
+  #  shoes: ClothingShoesLeather # FLOOF
     id: PsychologistPDA
     ears: ClothingHeadsetMedical
   storage:
