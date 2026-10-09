@@ -2,6 +2,11 @@ namespace Content.Shared.Preferences;
 
 public sealed partial class HumanoidCharacterProfile
 {
+    public HumanoidCharacterProfile WithGenitals(Genitals genitals)
+    {
+        return new(this) { Genitals = genitals };
+    }
+
     public HumanoidCharacterProfile WithPenis(bool penis)
     {
         return new(this) { Genitals = Genitals with { Penis = penis } };
