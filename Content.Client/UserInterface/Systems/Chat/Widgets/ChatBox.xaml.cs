@@ -101,6 +101,13 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
         {
             _controller.NotifyChatFocus(focused);
             _focused = focused;
+
+            // Floof Section - typing preview
+            if (focused)
+                _controller.UpdateTypingPreview(this);
+            else
+                _controller.ClearTypingPreview();
+            // End Floof Section
         }
     }
 
@@ -485,6 +492,9 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
 
         // Warn typing indicator about change
         _controller.NotifyChatTextChange();
+
+        // Update the typing preview speech bubble above character's head.
+        _controller.UpdateTypingPreview(this);
     }
 
     // private void OnFocusEnter(LineEditEventArgs args)
