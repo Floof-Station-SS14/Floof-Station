@@ -443,13 +443,6 @@ namespace Content.Shared.Preferences
             return new(this) { ConsentText = consentText };
         }
 
-        // Floof Section - Genitals
-        public HumanoidCharacterProfile WithGenitals(Genitals genitals)
-        {
-            return new(this) { Genitals = genitals };
-        }
-        // End Floof Section - Genitals
-
         public HumanoidCharacterProfile WithAge(int age)
         {
             return new(this) { Age = age };
