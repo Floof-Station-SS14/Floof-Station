@@ -146,3 +146,7 @@ loadout-group-service-worker-outerclothing = Service Worker outer clothing
 loadout-group-service-worker-gloves = Service Worker gloves
 loadout-group-service-worker-socks = Service Worker socks
 loadout-group-service-worker-shoes = Service Worker shoes
+
+## UNDERWEAR ##
+loadout-group-underwear-top = Underwear top
+loadout-group-underwear-bottom = Underwear bottom

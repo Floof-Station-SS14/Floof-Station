@@ -12,6 +12,8 @@
   - CaptainShoes # FLOOF
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- CaptainJobTrinkets
   - GroupSpeciesBreathTool
@@ -32,6 +34,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- HoPJobTrinkets
   - GroupSpeciesBreathTool
@@ -63,6 +67,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- PassengerJobTrinkets
   - GroupSpeciesBreathTool
@@ -82,6 +88,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   - BartenderJobTrinkets
   - GroupSpeciesBreathTool
@@ -100,6 +108,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
@@ -120,6 +130,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- ChefJobTrinkets
   - GroupSpeciesBreathTool
@@ -137,6 +149,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- LibrarianJobTrinkets
   - GroupSpeciesBreathTool
@@ -154,6 +168,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- LawyerJobTrinkets
   - GroupSpeciesBreathTool
@@ -176,6 +192,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- ChaplainJobTrinkets
   - GroupSpeciesBreathTool
@@ -195,6 +213,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   - JanitorJobTrinkets
   - GroupSpeciesBreathTool
@@ -214,6 +234,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- BotanistJobTrinkets
   - GroupSpeciesBreathTool
@@ -234,6 +256,8 @@
   - Glasses
   - AssistiveItems
   - SurvivalClown
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   - ClownJobTrinkets
 
@@ -255,6 +279,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- MimeJobTrinkets
 
@@ -274,6 +300,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- MusicianJobTrinkets
   - GroupSpeciesBreathTool
@@ -294,6 +322,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- QuartermasterJobTrinkets
   - GroupSpeciesBreathTool
@@ -314,6 +344,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
@@ -331,6 +363,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- SalvageSpecialistJobTrinkets
   - GroupSpeciesBreathTool
@@ -350,6 +384,8 @@
   - ChiefEngineerShoes
   - AssistiveItems
   - SurvivalExtended
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- ChiefEngineerJobTrinkets
   - GroupSpeciesBreathTool
@@ -364,6 +400,8 @@
   - TechnicalAssistantShoes # FLOOF
   - AssistiveItems
   - SurvivalExtended
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- TechnicalAssistantJobTrinkets
   - GroupSpeciesBreathTool
@@ -383,6 +421,8 @@
   - StationEngineerID
   - AssistiveItems
   - SurvivalExtended
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- StationEngineerJobTrinkets
   - GroupSpeciesBreathTool
@@ -400,6 +440,8 @@
   - AtmosphericTechnicianShoes
   - AssistiveItems
   - SurvivalExtended
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- AtmosphericTechnicianJobTrinkets
   - GroupSpeciesBreathTool
@@ -420,6 +462,8 @@
   - ScientistGlasses # FLOOF: 'Glasses'
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- ResearchDirectorJobTrinkets
   - GroupSpeciesBreathTool
@@ -440,6 +484,8 @@
   - ScientistGlasses  # FLOOF: 'Glasses'
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- ScientistJobTrinkets
   - GroupSpeciesBreathTool
@@ -455,6 +501,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- ResearchAssistantJobTrinkets
   - GroupSpeciesBreathTool
@@ -476,6 +524,8 @@
   - SecurityShoes
   - AssistiveItems
   - SurvivalSecurity
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   - HeadofSecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
@@ -496,6 +546,8 @@
   - SecurityShoes
   - AssistiveItems
   - SurvivalSecurity
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   - WardenJobTrinkets
   - GroupSpeciesBreathToolSecurity
@@ -517,6 +569,8 @@
   - SecurityBelt
   - AssistiveItems
   - SurvivalSecurity
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   - SecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
@@ -536,6 +590,8 @@
   - SecurityShoes
   - AssistiveItems
   - SurvivalSecurity
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   - DetectiveJobTrinkets
   - GroupSpeciesBreathToolSecurity
@@ -548,6 +604,8 @@
   - SecurityBackpack
   - AssistiveItems
   - SurvivalSecurity
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- SecurityCadetJobTrinkets
   - GroupSpeciesBreathToolSecurity
@@ -568,6 +626,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- ReporterJobTrinkets
   - GroupSpeciesBreathTool
@@ -585,6 +645,8 @@
   - Glasses
   - AssistiveItems
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- PsychologistJobTrinkets
   - GroupSpeciesBreathTool
@@ -603,6 +665,8 @@
   - TramDriverShoes # FLOOF
   - Glasses
   - Survival
+  - UnderwearTop # Floof - Underwear
+  - UnderwearBottom # Floof - Underwear
   - Trinkets
   #- TramDriverJobTrinkets
   - GroupSpeciesBreathTool
