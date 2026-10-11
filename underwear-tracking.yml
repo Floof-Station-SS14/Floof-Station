@@ -1,0 +1,168 @@
+# Underwear marking -> clothing item it was collapsed into. null = not converted yet.
+
+# Resources/Prototypes/Entities/Mobs/Customization/Markings/undergarments.yml (24)
+UndergarmentBottomBoxers:          ClothingUnderBottomBoxers
+UndergarmentBottomBriefs:          ClothingUnderBottomBriefs
+UndergarmentBottomSatin:           ClothingUnderBottomSatin
+UndergarmentTopBra:                ClothingUnderTopClassic
+UndergarmentTopSportsbra:          ClothingUnderTopSports
+UndergarmentTopBinder:             ClothingUnderTopBinder
+UndergarmentTopTanktop:            ClothingUnderTopTanktop
+UndergarmentBottomBoxersVox:       ClothingUnderBottomBoxers  # vox variant
+UndergarmentBottomBriefsVox:       ClothingUnderBottomBriefs  # vox variant
+UndergarmentBottomSatinVox:        ClothingUnderBottomSatin  # vox variant
+UndergarmentTopBraVox:             ClothingUnderTopClassic  # vox variant
+UndergarmentTopSportsbraVox:       ClothingUnderTopSports  # vox variant
+UndergarmentTopBinderVox:          ClothingUnderTopBinder  # vox variant
+UndergarmentTopTanktopVox:         ClothingUnderTopTanktop  # vox variant
+UndergarmentBottomBoxersReptilian: ClothingUnderBottomBoxers  # reptilian/feroxi variant
+UndergarmentBottomBriefsReptilian: ClothingUnderBottomBriefs  # reptilian/feroxi variant
+UndergarmentBottomSatinReptilian:  ClothingUnderBottomSatin  # reptilian/feroxi variant
+UndergarmentBottomBoxersVulpkanin: ClothingUnderBottomBoxers  # vulpkanin variant
+UndergarmentBottomBriefsVulpkanin: ClothingUnderBottomBriefs  # vulpkanin variant
+UndergarmentBottomSatinVulpkanin:  ClothingUnderBottomSatin  # vulpkanin variant
+UndergarmentTopBraVulpkanin:       ClothingUnderTopClassic  # vulpkanin variant
+UndergarmentTopSportsbraVulpkanin: ClothingUnderTopSports  # vulpkanin variant
+UndergarmentTopBinderVulpkanin:    ClothingUnderTopBinder  # vulpkanin variant
+UndergarmentTopTanktopVulpkanin:   ClothingUnderTopTanktop  # vulpkanin variant
+
+# Resources/Prototypes/_Floof/Entities/Mobs/Customization/Markings/underwear.yml (35)
+UnderwearBoxers:                    ClothingUnderBottomSnowBoxers
+UnderwearLowriders:                 ClothingUnderBottomSnowLowriders
+UnderwearBriefs:                    ClothingUnderBottomSnowBriefs
+UnderwearSatin:                     ClothingUnderBottomSnowSatin
+UnderwearTanga:                     ClothingUnderBottomSnowTanga
+UnderwearClassicbriefs:             ClothingUnderBottomBriefs  # floof version dropped
+UnderwearClassicjockstrap:          ClothingUnderBottomJockstrap
+UnderwearClassicmankini:            ClothingUnderBottomMankini
+UnderwearClassicboxers:             ClothingUnderBottomBoxers  # floof version dropped
+UnderwearClassicheartboxers:        ClothingUnderBottomBoxersHeart
+UnderwearClassicukboxers:           ClothingUnderBottomBoxersUk
+UnderwearClassicassblastusaboxers:  ClothingUnderBottomBoxersAssblastusa
+UnderwearClassiccommieboxers:       ClothingUnderBottomBoxersCommie
+UnderwearClassicstripedboxers:      ClothingUnderBottomBoxersStriped
+UnderwearClassicboxerbriefs:        ClothingUnderBottomBoxerBriefs
+UnderwearClassicbeeshorts:          ClothingUnderBottomBeeShorts
+UnderwearClassicpanties:            ClothingUnderBottomPanties
+UnderwearClassicpantiesalt:         ClothingUnderBottomPantiesAlt
+UnderwearClassicpantiesslim:        ClothingUnderBottomPantiesSlim
+UnderwearClassicpantiesthin:        ClothingUnderBottomPantiesThin
+UnderwearClassicpantiesneko:        ClothingUnderBottomPantiesNeko
+UnderwearClassicpantiesswimming:    ClothingUnderBottomPantiesSwimming
+UnderwearClassicthong:              ClothingUnderBottomThong
+UnderwearClassicthongbabydoll:      ClothingUnderBottomThongBabydoll
+UnderwearFishnetlower:              ClothingUnderBottomFishnetLower
+UnderwearClassicpantiesassblastusa: ClothingUnderBottomPantiesAssblastusa
+UnderwearClassicpantiesbeekini:     ClothingUnderBottomPantiesBeeKini
+UnderwearClassicpantiescommie:      ClothingUnderBottomPantiesCommie
+UnderwearClassicpantiesuk:          ClothingUnderBottomPantiesUk
+UnderwearClassicpantiesstriped:     ClothingUnderBottomStripedPanties
+UnderwearClassicpantiesbow:         ClothingUnderBottomBowpanties
+UnderwearClassicpantiesbowslim:     ClothingUnderBottomBowpantiesSlim
+UnderwearClassicthongbow:           ClothingUnderBottomBowthong
+UnderwearClassicthongbowbabydoll:   ClothingUnderBottomBowthongBabydoll
+UnderwearClassicpantiescow:         ClothingUnderBottomPantiesCow
+
+# Resources/Prototypes/_Floof/Entities/Mobs/Customization/Markings/undershirt.yml (96)
+UndershirtStandard:                ClothingUnderTopTUndershirt
+UndershirtSleeveless:              ClothingUnderTopTUndershirtSleeveless
+UndershirtRolled:                  ClothingUnderTopTRolledUndershirt
+UndershirtRolledSleeveless:        ClothingUnderTopTRolledUndershirtSleeveless
+UndershirtLong:                    ClothingUnderTopTLongUndershirt
+UndershirtClassic:                 ClothingUnderTopSnowBra
+UndershirtSports:                  ClothingUnderTopSnowSports
+UndershirtStrapless:               ClothingUnderTopSnowStrapless
+UndershirtBra:                     ClothingUnderTopBra
+UndershirtBraalt:                  ClothingUnderTopBraAlt
+UndershirtBrathin:                 ClothingUnderTopBraThin
+UndershirtSportsbra:               ClothingUnderTopSportsBra
+UndershirtSportsbraalt:            ClothingUnderTopSportsBraAlt
+UndershirtBrastrapless:            ClothingUnderTopBraStrapless
+UndershirtBrastraplessalt:         ClothingUnderTopBraStraplessAlt
+UndershirtHalterneckbra:           ClothingUnderTopHalterneckBra
+UndershirtBraneko:                 ClothingUnderTopBraNeko
+UndershirtBraswimming:             ClothingUnderTopBraSwimming
+UndershirtBraswimmingalt:          ClothingUnderTopBraSwimmingAlt
+UndershirtTubetop:                 ClothingUnderTopTubetop
+UndershirtBabydoll:                ClothingUnderTopBabydoll
+UndershirtBrakinky:                ClothingUnderTopBraKinky
+UndershirtBraassblastusa:          ClothingUnderTopBraAssblastusa
+UndershirtBrabeekini:              ClothingUnderTopBraBeeKini
+UndershirtBracommie:               ClothingUnderTopBraCommie
+UndershirtBrauk:                   ClothingUnderTopBraUk
+UndershirtBrastriped:              ClothingUnderTopStripedBra
+UndershirtSwimsuitblue:            ClothingUnderTopSwimmingBlue
+UndershirtSwimsuitred:             ClothingUnderTopSwimmingRed
+UndershirtSwimsuitblack:           ClothingUnderTopSwimmingBlack
+UndershirtFishnet:                 ClothingUnderTopFishnet
+UndershirtFishnetbody:             ClothingUnderTopFishnetBody
+UndershirtFishnetsleeves:          ClothingUnderTopFishnetSleeves
+UndershirtFishnetgloves:           ClothingUnderTopFishnetGloves
+UndershirtUndershirtgeneric:       ClothingUnderTopUndershirt
+UndershirtShortsleeve:             ClothingUnderTopShortsleeve
+UndershirtPolo:                    ClothingUnderTopPolo
+UndershirtTanktop:                 ClothingUnderTopTanktop  # floof version dropped
+UndershirtTanktoprainbow:          ClothingUnderTopTankRainbow
+UndershirtTanktopstripes:          ClothingUnderTopTankStripes
+UndershirtTanktopalt:              ClothingUnderTopTanktopAlt
+UndershirtTanktopmidriff:          ClothingUnderTopTankMidriff
+UndershirtTanktopmidriffalt:       ClothingUnderTopTankMidriffAlt
+UndershirtTanktopsun:              ClothingUnderTopTankSun
+UndershirtIanshirt:                ClothingUnderTopIan
+UndershirtLovershirt:              ClothingUnderTopLover
+UndershirtLoventshirt:             ClothingUnderTopIlovent
+UndershirtUkshirt:                 ClothingUnderTopUk
+UndershirtPeaceshirt:              ClothingUnderTopPeace
+UndershirtBandshirt:               ClothingUnderTopBand
+UndershirtPogomanshirt:            ClothingUnderTopPogoman
+UndershirtGreensportshirt:         ClothingUnderTopGreenshirtsport
+UndershirtRedsportshirt:           ClothingUnderTopRedshirtsport
+UndershirtBluesportshirt:          ClothingUnderTopBlueshirtsport
+UndershirtMatroska:                ClothingUnderTopMatroska
+UndershirtSs13shirt:               ClothingUnderTopShirtSs13
+UndershirtQuestionshirt:           ClothingUnderTopShirtQuestion
+UndershirtSkullshirt:              ClothingUnderTopShirtSkull
+UndershirtTankfireshirt:           ClothingUnderTopTankFire
+UndershirtCommieshirt:             ClothingUnderTopShirtCommie
+UndershirtNanoshirt:               ClothingUnderTopShirtNano
+UndershirtMeatshirt:               ClothingUnderTopShirtMeat
+UndershirtStripesshirt:            ClothingUnderTopShirtStripes
+UndershirtTiedyeshirt:             ClothingUnderTopShirtTiedye
+UndershirtRedjersey:               ClothingUnderTopShirtRedjersey
+UndershirtBluejersey:              ClothingUnderTopShirtBluejersey
+UndershirtBowlingshirt:            ClothingUnderTopBowling
+UndershirtBowlingpshirt:           ClothingUnderTopBowlingp
+UndershirtBowlingashirt:           ClothingUnderTopBowlinga
+UndershirtBowlingwshirt:           ClothingUnderTopBowlingw
+UndershirtBeeshirt:                ClothingUnderTopBeeShirt
+UndershirtAlienshirt:              ClothingUnderTopShirtAlien
+UndershirtClownshirt:              ClothingUnderTopShirtClown
+UndershirtNavycowboyshirt:         ClothingUnderTopCowboyshirtNavy
+UndershirtRedcowboyshirt:          ClothingUnderTopCowboyshirtRed
+UndershirtLongstripeshirt:         ClothingUnderTopLongstripe
+UndershirtBluelongstripeshirt:     ClothingUnderTopLongstripeBlue
+UndershirtShapelyshirtgirlish:     ClothingUnderTopShapelyGirlish  # commented out
+UndershirtShapelyshirtpetite:      ClothingUnderTopShapelyPetite  # commented out
+UndershirtShapelyshirtcurvy:       ClothingUnderTopShapelyCurvy  # commented out
+UndershirtShapelyshirtbusty:       ClothingUnderTopShapelyBusty  # commented out
+UndershirtShapelyshirtmassive:     ClothingUnderTopShapelyMassive  # commented out
+UndershirtShapelyshirtbackbreaker: ClothingUnderTopShapelyBackbreaker  # commented out
+UndershirtBrabinder:               ClothingUnderTopBinder  # floof version dropped
+UndershirtBrabinderstrapless:      ClothingUnderTopBraBinderStrapless
+UndershirtScrubsgreen:             ClothingUnderTopScrubsgreen
+UndershirtScrubspurple:            ClothingUnderTopScrubspurple
+UndershirtBluebridebra:            ClothingUnderTopBrideBlue
+UndershirtOrangebridebra:          ClothingUnderTopBrideOrange
+UndershirtPurplebridebra:          ClothingUnderTopBridePurple
+UndershirtRedbridebra:             ClothingUnderTopBrideRed
+UndershirtBowbra:                  ClothingUnderTopBowbra
+UndershirtBowbraalt:               ClothingUnderTopBowbraalt
+UndershirtBowbraneko:              ClothingUnderTopBowbraNeko
+UndershirtBowbraswimming:          ClothingUnderTopBowbraSwimming
+UndershirtBowbraswimmingalt:       ClothingUnderTopBowbraSwimmingAlt
+
+# Resources/Prototypes/_Impstation/Entities/Mobs/Customization/Markings/undershirt.yml (4)
+UndershirtDefault:         ClothingUnderTopUndershirtImpstation
+UndershirtGrossSleeveless: ClothingUnderTopGrossSleeveless
+UndershirtNanotrasen:      ClothingUnderTopNanotrasen
+UndershirtBraStrapless:    ClothingUnderTopStrapless
