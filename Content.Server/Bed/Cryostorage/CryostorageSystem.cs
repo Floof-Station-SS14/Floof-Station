@@ -28,7 +28,6 @@ using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Content.Shared._DEN.Bed.Cryostorage.Components;
-using Content.Shared.Station.Components;
 
 namespace Content.Server.Bed.Cryostorage;
 
