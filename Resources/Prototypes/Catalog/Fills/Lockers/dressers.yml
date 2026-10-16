@@ -103,7 +103,6 @@
           # FLOOF: Start
         - id: ClothingHandsHeadSecurityWarmers
         - id: ClothingUnderSocksHeadSecurity
-        - id: ClothingUniformHeadSecurityThong
           # FLOOF: End
 
 - type: entity
