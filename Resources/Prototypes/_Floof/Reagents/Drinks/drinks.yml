@@ -81,7 +81,7 @@
   color: "#7CE33A"
   recognizable: true
   metabolisms:
-    Digestion:p
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
