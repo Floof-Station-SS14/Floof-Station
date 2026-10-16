@@ -4,16 +4,16 @@
   Nanotrasen employs a variety of sapient species.
 
   <Box>
-  <GuideEntityEmbed Entity="AppearanceArachnid" Caption="Arachnid"/>
-  <GuideEntityEmbed Entity="AppearanceDiona" Caption="Diona"/>
-  <GuideEntityEmbed Entity="AppearanceDwarf" Caption="Dwarf"/>
-  <GuideEntityEmbed Entity="AppearanceFeroxi" Caption="Feroxi"/>
+    <GuideEntityEmbed Entity="AppearanceArachnid" Caption="Arachnid"/>
+    <GuideEntityEmbed Entity="AppearanceDiona" Caption="Diona"/>
+    <GuideEntityEmbed Entity="AppearanceDwarf" Caption="Dwarf"/>
+    <GuideEntityEmbed Entity="AppearanceFeroxi" Caption="Feroxi"/>
   </Box>
   <Box>
-  <GuideEntityEmbed Entity="AppearanceHarpy" Caption="Harpy"/>
-  <GuideEntityEmbed Entity="AppearanceHuman" Caption="Human"/>
-  <GuideEntityEmbed Entity="AppearanceMoth" Caption="Moth Person"/>
-  <GuideEntityEmbed Entity="AppearanceReptilian" Caption="Reptilian"/>
+    <GuideEntityEmbed Entity="AppearanceHarpy" Caption="Harpy"/>
+    <GuideEntityEmbed Entity="AppearanceHuman" Caption="Human"/>
+    <GuideEntityEmbed Entity="AppearanceMoth" Caption="Moth Person"/>
+    <GuideEntityEmbed Entity="AppearanceReptilian" Caption="Reptilian"/>
   </Box>
   <Box>
     <GuideEntityEmbed Entity="AppearanceShadekin" Caption="Shadekin"/>
