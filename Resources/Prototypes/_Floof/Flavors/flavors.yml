@@ -377,3 +377,8 @@
   id: gatoraid
   flavorType: Complex
   description: flavor-complex-gatoraid
+
+- type: flavor
+  id: roastedcrickets
+  flavorType: Complex
+  description: flavor-complex-roasted-crickets
