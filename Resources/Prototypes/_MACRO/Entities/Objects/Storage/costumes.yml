@@ -15,16 +15,12 @@
 # - label: The outer label part of the sprite. This is often `#dd6b17` as a fallback, especially for
 #     "generic" costumes, but this can be anything, like an accent color. It doesn't really matter.
 #
-# Then, modify the EntityTableContainerFill component to contain the parts of your costume.
-#
-# Note that costume bundles have a whitelist: entities with the Clothing component, and entities with the
-# CostumeItem tag. If you're inserting prop items, make sure to add the CostumeItem tag if it's not wearable
-# - for example, the pirate's foam cutlass, or the shrine maiden's gohei.
+# Then, list the parts of your costume in the SpawnItemsOnUse component. # Floof - Unwrap bundles
 # =======================
 
 - type: entity
   abstract: true
-  parent: [BaseStorageItem, BaseBagOpenClose]
+  parent: BaseItem # Floof - Unwrap bundles
   id: BaseCostumeBundle
   name: costume bundle
   description: A bag containing assorted costume parts.
@@ -47,39 +43,12 @@
     size: Large
     storedRotation: 90
     heldPrefix: empty
-  - type: Storage
-    maxItemSize: Normal
-    grid:
-    - 0,0,5,3
-    whitelist:
-      tags:
-      - CostumeItem
-      components:
-      - Clothing
-  - type: StorageFillVisualizer
-    maxFillLevels: 3
-    fillBaseName: outfit
-  - type: Appearance
+  - type: SpawnItemsOnUse # Floof - Unwrap bundles
+    items: []
+    sound:
+      path: /Audio/Effects/unwrap.ogg
   - type: StaticPrice
     price: 10
-
-- type: entity
-  parent: BaseCostumeBundle
-  id: EmptyCostumeBundle
-  suffix: Empty
-  description: A bag for storing assorted costume parts.
-  components:
-  - type: Sprite
-    sprite: _MACRO/Objects/Storage/costume_bundle.rsi
-    layers:
-    - state: outfit-0 # starts with nothing
-      map: [ "enum.StorageFillLayers.Fill" ]
-      color: "#ffffff"
-    - state: wrapper-fill
-      color: "#ffffff22"
-    - state: wrapper
-    - state: label
-      color: "#dd6b17"
 
 - type: entity
   parent: BaseCostumeBundle
@@ -96,12 +65,10 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatCardborg
-        - id: ClothingOuterCardborg
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatCardborg
+    - id: ClothingOuterCardborg
 
 - type: entity
   parent: BaseCostumeBundle
@@ -118,12 +85,10 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatChickenhead
-        - id: ClothingOuterSuitChicken
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatChickenhead
+    - id: ClothingOuterSuitChicken
 
 - type: entity
   parent: BaseCostumeBundle
@@ -140,12 +105,10 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatGladiator
-        - id: ClothingUniformJumpsuitGladiator
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatGladiator
+    - id: ClothingUniformJumpsuitGladiator
 
 - type: entity
   parent: BaseCostumeBundle
@@ -162,12 +125,10 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatPwig
-        - id: ClothingOuterRobesJudge
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatPwig
+    - id: ClothingOuterRobesJudge
 
 - type: entity
   parent: BaseCostumeBundle
@@ -184,12 +145,10 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatAnimalMonkey
-        - id: ClothingOuterSuitMonkey
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatAnimalMonkey
+    - id: ClothingOuterSuitMonkey
 
 - type: entity
   parent: BaseCostumeBundle
@@ -206,17 +165,15 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatPirate
-        - id: ClothingHeadBandRed
-        - id: ClothingEyesEyepatch
-        - id: ClothingUniformJumpsuitPirate
-        - id: ClothingOuterCoatPirate
-        - id: ClothingShoesBootsLaceup
-        - id: FoamCutlass
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatPirate
+    - id: ClothingHeadBandRed
+    - id: ClothingEyesEyepatch
+    - id: ClothingUniformJumpsuitPirate
+    - id: ClothingOuterCoatPirate
+    - id: ClothingShoesBootsLaceup
+    - id: FoamCutlass
 
 - type: entity
   parent: BaseCostumeBundle
@@ -233,13 +190,12 @@
     - state: wrapper
     - state: label
       color: "#70cac4"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformJumpskirtPerformer
-        - id: ClothingShoesBootsPerformer
-        - id: FoodMealMemoryleek
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadVirtualSingerWig # Floof - Costume bundles
+    - id: ClothingUniformJumpskirtVirtualSinger # Floof - Costume bundles
+    - id: ClothingShoesBootsVirtualSinger # Floof - Costume bundles
+    - id: FoodMealMemoryleek
 
 - type: entity
   parent: BaseCostumeBundle
@@ -256,12 +212,10 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatRedRacoon
-        - id: ClothingOuterRedRacoon
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatRedRacoon
+    - id: ClothingOuterRedRacoon
 
 - type: entity
   parent: BaseCostumeBundle
@@ -278,12 +232,10 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadSafari
-        - id: ClothingUniformJumpsuitSafari
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadSafari
+    - id: ClothingUniformJumpsuitSafari
 
 - type: entity
   parent: BaseCostumeBundle
@@ -300,12 +252,10 @@
     - state: wrapper
     - state: label
       color: "#f2c735"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatSantahat
-        - id: ClothingOuterSanta
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatSantahat
+    - id: ClothingOuterSanta
 
 - type: entity
   parent: BaseCostumeBundle
@@ -322,13 +272,11 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatShrineMaidenWig
-        - id: ClothingOuterSuitShrineMaiden
-        - id: Gohei
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatShrineMaidenWig
+    - id: ClothingOuterSuitShrineMaiden
+    - id: Gohei
 
 - type: entity
   parent: BaseCostumeBundle
@@ -345,12 +293,10 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatSkub
-        - id: ClothingOuterSkub
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatSkub
+    - id: ClothingOuterSkub
 
 - type: entity
   parent: BaseCostumeBundle
@@ -367,13 +313,11 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatWitch1
-        - id: ClothingHeadHatWitch
-        - id: ClothingOuterSuitWitchRobes
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatWitch1
+    - id: ClothingHeadHatWitch
+    - id: ClothingOuterSuitWitchRobes
 
 - type: entity
   parent: BaseCostumeBundle
@@ -390,10 +334,8 @@
     - state: wrapper
     - state: label
       color: "#dd6b17"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformJumpsuitDameDane
-        - id: ClothingOuterDameDane
-        - id: ClothingShoesDameDane
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingUniformJumpsuitDameDane
+    - id: ClothingOuterDameDane
+    - id: ClothingShoesDameDane

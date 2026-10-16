@@ -397,7 +397,7 @@
     count: 1
 
 - type: entity
-  parent: [SheetGlassBase, BaseQuickConstructionMaterial] # DEN add quick construction parent
+  parent: SheetGlassBase
   id: SheetClockworkGlass
   name: clockwork glass
   description: A sheet of brass-hardened glass, primarily used by clockwork enthusiasts and remnants of Ratvarian cults.
@@ -447,8 +447,6 @@
         Quantity: 10
       - ReagentId: Brass
         Quantity: 10
-  - type: QuickConstructable # DEN quick construction
-    category: ClockworkGlass
 
 - type: entity
   parent: SheetClockworkGlass

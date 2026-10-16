@@ -16,13 +16,10 @@
     - state: wrapper
     - state: label
       color: "#74ff33"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingHeadHatJester
-        - id: ClothingHeadHatJesterAlt
-        - id: ClothingUniformJumpsuitJester
-        - id: ClothingUniformJumpsuitJesterAlt
-        - id: ClothingShoesJester
-        - id: ClothingShoesJester
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingHeadHatJester
+    - id: ClothingHeadHatJesterAlt
+    - id: ClothingUniformJumpsuitJester
+    - id: ClothingUniformJumpsuitJesterAlt
+    - id: ClothingShoesJester
