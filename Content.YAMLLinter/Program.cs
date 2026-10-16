@@ -99,8 +99,11 @@ namespace Content.YAMLLinter
             // One pair for everything, server & client validated concurrently on their own instance threads.
             await using var pair = await PoolManager.GetServerClient(testContext: TestContext);
 
-            var serverTypesTask = Task.Run(() => GetTypeNames(pair.Server));
-            var clientTypesTask = Task.Run(() => GetTypeNames(pair.Client));
+            // Resolve while the instances are still idle, ResolveDependency throws once validation keeps them busy.
+            var serverRefl = pair.Server.ResolveDependency<IReflectionManager>();
+            var clientRefl = pair.Client.ResolveDependency<IReflectionManager>();
+            var serverTypesTask = Task.Run(() => GetTypeNames(serverRefl));
+            var clientTypesTask = Task.Run(() => GetTypeNames(clientRefl));
             var serverTask = ValidateInstance(pair.Server);
             var clientTask = ValidateInstance(pair.Client);
 
@@ -171,9 +174,8 @@ namespace Content.YAMLLinter
         }
 
         // Floof - YAML linter speedup
-        private static HashSet<string> GetTypeNames(RobustIntegrationTest.IntegrationInstance instance)
+        private static HashSet<string> GetTypeNames(IReflectionManager refl)
         {
-            var refl = instance.ResolveDependency<IReflectionManager>();
             return refl.Assemblies.SelectMany(n => n.GetTypes()).Select(t => t.Name).ToHashSet();
         }
     }
