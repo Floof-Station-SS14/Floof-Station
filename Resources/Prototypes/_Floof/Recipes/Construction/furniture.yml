@@ -10,3 +10,11 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+
+- type: construction
+  id: sleeping_bag
+  graph: SleepingBag
+  startNode: start
+  targetNode: sleepingbag
+  category: construction-category-furniture
+  objectType: Item
