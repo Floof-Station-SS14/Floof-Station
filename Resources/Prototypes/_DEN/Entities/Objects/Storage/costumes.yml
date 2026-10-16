@@ -13,15 +13,13 @@
     - state: wrapper
     - state: label
       color: "#454545"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformCostumeBunnySuit
-        - id: ClothingHeadBunnySuitHeadband
-        - id: ClothingNeckBunnySuitCollar
-        - id: ClothingHandsBunnySuitCuffs
-        - id: ClothingShoesBootsLaceup
+  - type: SpawnItemsOnUse # Floof - Unwrap bundles
+    items:
+    - id: ClothingUniformCostumeBunnySuit
+    - id: ClothingHeadBunnySuitHeadband
+    - id: ClothingNeckBunnySuitCollar
+    - id: ClothingHandsBunnySuitCuffs
+    - id: ClothingShoesBootsLaceup
 
 - type: entity
   parent: CostumeBundleBunnySuit
@@ -38,15 +36,13 @@
     - state: wrapper
     - state: label
       color: "#454545"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformCostumeBunnySuitBlue
-        - id: ClothingHeadBunnySuitHeadbandBlue
-        - id: ClothingNeckBunnySuitCollarBlue
-        - id: ClothingHandsBunnySuitCuffsBlue
-        - id: ClothingShoesBootsLaceup
+  - type: SpawnItemsOnUse # Floof - Unwrap bundles
+    items:
+    - id: ClothingUniformCostumeBunnySuitBlue
+    - id: ClothingHeadBunnySuitHeadbandBlue
+    - id: ClothingNeckBunnySuitCollarBlue
+    - id: ClothingHandsBunnySuitCuffsBlue
+    - id: ClothingShoesBootsLaceup
 
 - type: entity
   parent: CostumeBundleBunnySuit
@@ -63,15 +59,13 @@
     - state: wrapper
     - state: label
       color: "#454545"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformCostumeBunnySuitGreen
-        - id: ClothingHeadBunnySuitHeadbandGreen
-        - id: ClothingNeckBunnySuitCollarGreen
-        - id: ClothingHandsBunnySuitCuffsGreen
-        - id: ClothingShoesBootsLaceup
+  - type: SpawnItemsOnUse # Floof - Unwrap bundles
+    items:
+    - id: ClothingUniformCostumeBunnySuitGreen
+    - id: ClothingHeadBunnySuitHeadbandGreen
+    - id: ClothingNeckBunnySuitCollarGreen
+    - id: ClothingHandsBunnySuitCuffsGreen
+    - id: ClothingShoesBootsLaceup
 
 - type: entity
   parent: CostumeBundleBunnySuit
@@ -88,15 +82,13 @@
     - state: wrapper
     - state: label
       color: "#454545"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformCostumeBunnySuitPink
-        - id: ClothingHeadBunnySuitHeadbandPink
-        - id: ClothingNeckBunnySuitCollarPink
-        - id: ClothingHandsBunnySuitCuffsPink
-        - id: ClothingShoesBootsLaceup
+  - type: SpawnItemsOnUse # Floof - Unwrap bundles
+    items:
+    - id: ClothingUniformCostumeBunnySuitPink
+    - id: ClothingHeadBunnySuitHeadbandPink
+    - id: ClothingNeckBunnySuitCollarPink
+    - id: ClothingHandsBunnySuitCuffsPink
+    - id: ClothingShoesBootsLaceup
 
 - type: entity
   parent: CostumeBundleBunnySuit
@@ -113,15 +105,13 @@
     - state: wrapper
     - state: label
       color: "#454545"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformCostumeBunnySuitRed
-        - id: ClothingHeadBunnySuitHeadbandRed
-        - id: ClothingNeckBunnySuitCollarRed
-        - id: ClothingHandsBunnySuitCuffsRed
-        - id: ClothingShoesBootsLaceup
+  - type: SpawnItemsOnUse # Floof - Unwrap bundles
+    items:
+    - id: ClothingUniformCostumeBunnySuitRed
+    - id: ClothingHeadBunnySuitHeadbandRed
+    - id: ClothingNeckBunnySuitCollarRed
+    - id: ClothingHandsBunnySuitCuffsRed
+    - id: ClothingShoesBootsLaceup
 
 - type: entity
   parent: CostumeBundleBunnySuit
@@ -138,12 +128,10 @@
     - state: wrapper
     - state: label
       color: "#454545"
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformCostumeBunnySuitWhite
-        - id: ClothingHeadBunnySuitHeadbandWhite
-        - id: ClothingNeckBunnySuitCollarWhite
-        - id: ClothingHandsBunnySuitCuffsWhite
-        - id: ClothingShoesBootsLaceup
+  - type: SpawnItemsOnUse # Floof - Unwrap bundles
+    items:
+    - id: ClothingUniformCostumeBunnySuitWhite
+    - id: ClothingHeadBunnySuitHeadbandWhite
+    - id: ClothingNeckBunnySuitCollarWhite
+    - id: ClothingHandsBunnySuitCuffsWhite
+    - id: ClothingShoesBootsLaceup

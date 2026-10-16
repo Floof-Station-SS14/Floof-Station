@@ -122,10 +122,17 @@
   id: ClothingShoesSlippers
   result: ClothingShoesSlippers
 
+# Floof Section - Sandals
 - type: latheRecipe
   parent: BaseShoesRecipe
-  id: ClothingShoesTourist
-  result: ClothingShoesTourist
+  id: ClothingShoesSandalsBlack
+  result: ClothingShoesSandalsBlack
+
+- type: latheRecipe
+  parent: BaseShoesRecipe
+  id: ClothingShoesSandalsBrown
+  result: ClothingShoesSandalsBrown
+# Floof Section End
 
 - type: latheRecipe
   parent: BaseShoesRecipe
