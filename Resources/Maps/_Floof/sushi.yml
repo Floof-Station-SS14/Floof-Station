@@ -124519,7 +124519,7 @@ entities:
     - type: Transform
       parent: 2
       pos: 75.5,65.5
-- proto: PosterLegitNoERP
+- proto: PosterLegitYesERP
   entities:
   - uid: 17465
     components:

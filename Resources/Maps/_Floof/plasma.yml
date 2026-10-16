@@ -139322,7 +139322,7 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -57.5,0.5
-- proto: PosterLegitNoERP
+- proto: PosterLegitYesERP
   entities:
   - uid: 14841
     components:

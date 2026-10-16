@@ -92619,7 +92619,7 @@ entities:
     - type: Transform
       parent: 1
       pos: 19.5,54.5
-- proto: PosterLegitNoERP
+- proto: PosterLegitYesERP
   entities:
   - uid: 8945
     components:

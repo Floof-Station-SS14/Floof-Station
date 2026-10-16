@@ -51566,7 +51566,7 @@ entities:
     - type: Transform
       parent: 31
       pos: 43.5,-26.5
-- proto: PosterLegitNoERP
+- proto: PosterLegitYesERP
   entities:
   - uid: 7808
     components:
