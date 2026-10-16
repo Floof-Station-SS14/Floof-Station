@@ -19,7 +19,5 @@
   - type: SpawnItemsOnUse
     items:
     - id: ClothingHeadHatJester
-    - id: ClothingHeadHatJesterAlt
     - id: ClothingUniformJumpsuitJester
-    - id: ClothingUniformJumpsuitJesterAlt
     - id: ClothingShoesJester
