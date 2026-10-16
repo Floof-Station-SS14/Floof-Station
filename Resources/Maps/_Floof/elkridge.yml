@@ -67178,7 +67178,6 @@ entities:
       pos: 28.5,2.5
     - type: FaxMachine
       name: Medical
-      destinationAddress: Medical
   - uid: 4072
     components:
     - type: Transform
@@ -67194,7 +67193,6 @@ entities:
       pos: 26.5,-15.5
     - type: FaxMachine
       name: Engineering
-      destinationAddress: Engineering
   - uid: 4947
     components:
     - type: Transform
@@ -67202,7 +67200,6 @@ entities:
       pos: -4.5,2.5
     - type: FaxMachine
       name: Service
-      destinationAddress: Service
   - uid: 5571
     components:
     - type: Transform
@@ -67217,7 +67214,6 @@ entities:
       pos: -14.5,20.5
     - type: FaxMachine
       name: Science
-      destinationAddress: Science
   - uid: 7129
     components:
     - type: Transform
@@ -67241,7 +67237,6 @@ entities:
       pos: 4.5,35.5
     - type: FaxMachine
       name: Cargo
-      destinationAddress: Cargo
   - uid: 9403
     components:
     - type: Transform
@@ -67249,7 +67244,6 @@ entities:
       pos: -31.5,-5.5
     - type: FaxMachine
       name: Bridge
-      destinationAddress: Bridge
   - uid: 11803
     components:
     - type: Transform
@@ -67277,7 +67271,6 @@ entities:
       pos: -24.5,-19.5
     - type: FaxMachine
       name: Library
-      destinationAddress: Library
 - proto: FaxMachineCaptain
   entities:
   - uid: 4528
