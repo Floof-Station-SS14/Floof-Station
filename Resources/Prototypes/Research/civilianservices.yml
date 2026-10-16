@@ -3,6 +3,7 @@
 - type: technology
   id: PackagedLights
   name: research-technology-packaged-lights
+  position: -1,4 # Floof - Goob tech tree
   icon:
     sprite: Objects/Storage/EntityProvider/packaged_lights.rsi
     state: base # Doesn't seem to work with sprite layers.
