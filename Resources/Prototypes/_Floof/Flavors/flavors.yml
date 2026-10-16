@@ -372,3 +372,8 @@
   id: piss
   flavorType: Complex
   description: flavor-complex-piss
+
+- type: flavor
+  id: gatoraid
+  flavorType: Complex
+  description: flavor-complex-gatoraid

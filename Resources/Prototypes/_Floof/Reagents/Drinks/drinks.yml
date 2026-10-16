@@ -70,3 +70,30 @@
     collection: FootstepSticky
     params:
       volume: 3
+
+- type: reagent
+  id: GatorAid
+  name: reagent-name-gator-aid
+  parent: BaseDrink
+  desc: reagent-desc-gator-aid
+  physicalDesc: reagent-physical-desc-refreshing
+  flavor: gatoraid
+  color: "#7CE33A"
+  recognizable: true
+  metabolisms:
+    Digestion:p
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 4
+      - !type:StaminaDamage
+        damage: -2
+      - !type:PopupMessage
+        type: Local
+        visualType: Small
+        messages:
+        - reagent-effect-gator-aid-1
+        - reagent-effect-gator-aid-2
+        - reagent-effect-gator-aid-3
+        - reagent-effect-gator-aid-4
+        probability: 0.05

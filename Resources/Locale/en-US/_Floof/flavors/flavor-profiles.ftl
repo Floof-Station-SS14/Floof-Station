@@ -72,6 +72,7 @@ flavor-complex-syndicate-eggnog = like eggnog, and war profiteering
 flavor-complex-ginandpussy = like wet pussy, with extra gin
 flavor-complex-pussytonic = like pussy, but with tonic
 flavor-complex-piss = like piss
+flavor-complex-gatoraid = like electrolytes and swamp water
 
 # This would go in a different file but it's being used for just drinks
 reagent-physical-desc-earthy = earthy
