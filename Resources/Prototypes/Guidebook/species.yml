@@ -71,4 +71,4 @@
 - type: guideEntry
   id: GuideEntryHarpy
   name: species-name-harpy
-  text: "/ServerInfo/Guidebook/Mobs/_EE/Harpy.xml"
+  text: "/ServerInfo/Guidebook/_Floof/Mobs/Harpy.xml" # Floof: Species description only, no lore.

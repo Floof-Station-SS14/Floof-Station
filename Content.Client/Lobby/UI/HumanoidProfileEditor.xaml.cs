@@ -323,6 +323,8 @@ namespace Content.Client.Lobby.UI
 
             RefreshFlavorText();
             RefreshConsentText();
+            SpeciesTabInit(); // Floof - Species tab
+            PreviewSizeInit(); // Floof - Preview size
 
             #region Dummy
 
@@ -552,6 +554,7 @@ namespace Content.Client.Lobby.UI
                 return;
 
             SpriteView.LoadPreview(Profile, JobOverride, ShowClothes.Pressed);
+            UpdateSpeciesTab(); // Floof - Species tab
 
             // Check and set the dirty flag to enable the save/reset buttons as appropriate.
             SetDirty();
