@@ -422,6 +422,7 @@
         enum.ToggleableVisuals.Layer:
           True: {visible: true}
           False: {visible: false}
+  - type: Damageable # Floof - injurable needs damageable
   - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
@@ -496,6 +497,7 @@
     layers:
     - state: tripwire
   - type: Appearance
+  - type: Damageable # Floof - injurable needs damageable
   - type: Injurable
     damageContainer: Inorganic
   - type: Destructible

@@ -401,6 +401,7 @@
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    - MedicalStaticFloof # Floof
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -486,6 +487,7 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
+    - MedicalStaticFloof # Floof
     dynamicPacks:
     - Chemistry
   - type: Machine

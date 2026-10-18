@@ -134,7 +134,10 @@ public sealed class TryAllReactionsTest : GameTest
 
                                 Logger.GetSawmill("reactions test").Error($"Reaction {reactionPrototype.ID} does not succeeded (conflict?): expected to produce [{expected}], but produced [{found}]");
                                 Assert.That(false);
+                                continue;
                             }
+
+                            foundProductsMap[foundProduct.Value.Key] = true;
                             // Floofstation section end
                         }
 
