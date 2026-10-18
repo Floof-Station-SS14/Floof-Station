@@ -1,21 +1,21 @@
 using Content.Shared.Popups;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Input;
+using Content.Shared._EE.Input;
 using Content.Shared.Hands.Components;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Player;
 
-namespace Content.Shared.OfferItem;
+namespace Content.Shared._EE.OfferItem;
 
 public abstract partial class SharedOfferItemSystem
 {
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private void InitializeInteractions()
     {
         CommandBinds.Builder
-            .Bind(ContentKeyFunctions.OfferItem, InputCmdHandler.FromDelegate(SetInOfferMode, handle: false, outsidePrediction: false))
+            .Bind(EEKeyFunctions.OfferItem, InputCmdHandler.FromDelegate(SetInOfferMode, handle: false, outsidePrediction: false))
             .Register<SharedOfferItemSystem>();
     }
 
@@ -38,10 +38,10 @@ public abstract partial class SharedOfferItemSystem
         if (!TryComp<OfferItemComponent>(uid, out var offerItem))
             return;
 
-        if (!TryComp<HandsComponent>(uid, out var hands) || hands.ActiveHand == null)
+        if (!TryComp<HandsComponent>(uid, out var hands) || hands.ActiveHandId == null)
             return;
 
-        offerItem.Item = hands.ActiveHand.HeldEntity;
+        offerItem.Item = _hands.GetActiveItem((uid, hands));
 
         if (offerItem.IsInOfferMode == false)
         {
@@ -54,7 +54,7 @@ public abstract partial class SharedOfferItemSystem
             if (offerItem.Hand == null || offerItem.Target == null)
             {
                 offerItem.IsInOfferMode = true;
-                offerItem.Hand = hands.ActiveHand.Name;
+                offerItem.Hand = hands.ActiveHandId;
 
                 Dirty(uid, offerItem);
                 return;

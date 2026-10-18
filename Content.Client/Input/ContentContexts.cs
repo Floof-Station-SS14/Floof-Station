@@ -1,4 +1,5 @@
 using Content.Shared.Input;
+using Content.Shared._EE.Input; // Floof - item offering
 using Robust.Shared.Input;
 
 namespace Content.Client.Input
@@ -99,7 +100,7 @@ namespace Content.Client.Input
                 ContentKeyFunctions.SmartEquipSuitStorage,
                 ContentKeyFunctions.OpenBackpack,
                 ContentKeyFunctions.OpenBelt,
-                ContentKeyFunctions.OfferItem, // Floof - item offering
+                EEKeyFunctions.OfferItem, // Floof - item offering
                 ContentKeyFunctions.RotateObjectClockwise,
                 ContentKeyFunctions.RotateObjectCounterclockwise,
                 ContentKeyFunctions.FlipObject,

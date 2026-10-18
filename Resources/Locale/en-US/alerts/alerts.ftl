@@ -116,6 +116,3 @@ alerts-prying-desc = You can innately pry doors open using alternative interacti
 
 alerts-changeling-chemicals-name = Chemicals
 alerts-changeling-chemicals-desc = The chemicals stored within our glands. We use them for many of our abilities to function. They regenerate over time.
-
-alerts-offer-name = Offer
-alerts-offer-desc = Someone offers you an item.

@@ -1,23 +1,25 @@
-using Content.Shared.CCVar;
-using Content.Shared.OfferItem;
+using Content.Shared._EE.CCVars;
+using Content.Shared._EE.OfferItem;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
 
-namespace Content.Client.OfferItem;
+namespace Content.Client._EE.OfferItem;
 
-public sealed class OfferItemSystem : SharedOfferItemSystem
+public sealed partial class OfferItemSystem : SharedOfferItemSystem
 {
-    [Dependency] private readonly IOverlayManager _overlayManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IInputManager _inputManager = default!;
-    [Dependency] private readonly IEyeManager _eye = default!;
+    [Dependency] private IOverlayManager _overlayManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IInputManager _inputManager = default!;
+    [Dependency] private IEyeManager _eye = default!;
 
     public override void Initialize()
     {
-        Subs.CVar(_cfg, CCVars.OfferModeIndicatorsPointShow, OnShowOfferIndicatorsChanged, true);
+        base.Initialize();
+
+        Subs.CVar(_cfg, EECVars.OfferModeIndicatorsPointShow, OnShowOfferIndicatorsChanged, true);
     }
     public override void Shutdown()
     {

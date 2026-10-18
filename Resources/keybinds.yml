@@ -277,9 +277,9 @@ binds:
   type: State
   key: V
   mod1: Shift
-- function: OfferItem
+- function: OfferItem # Floof - item offering
   type: State
-  key: F
+  key: O # F is FlipObject
 - function: ShowDebugConsole
   type: State
   key: Tilde

@@ -61,7 +61,7 @@ public sealed partial class MiscTab : Control
         Control.AddOptionCheckBox(CCVars.LoocAboveHeadShow, ShowLoocAboveHeadCheckBox);
         Control.AddOptionCheckBox(CCVars.HudHeldItemShow, ShowHeldItemCheckBox);
         Control.AddOptionCheckBox(CCVars.CombatModeIndicatorsPointShow, ShowCombatModeIndicatorsCheckBox);
-        Control.AddOptionCheckBox(CCVars.OfferModeIndicatorsPointShow, ShowOfferModeIndicatorsCheckBox); // Floof - item offering
+        Control.AddOptionCheckBox(EECVars.OfferModeIndicatorsPointShow, ShowOfferModeIndicatorsCheckBox); // Floof - item offering
         Control.AddOptionCheckBox(CCVars.OpaqueStorageWindow, OpaqueStorageWindowCheckBox);
         Control.AddOptionCheckBox(CCVars.ChatEnableFancyBubbles, FancySpeechBubblesCheckBox);
         Control.AddOptionCheckBox(CCVars.ChatFancyNameBackground, FancyNameBackgroundsCheckBox);
