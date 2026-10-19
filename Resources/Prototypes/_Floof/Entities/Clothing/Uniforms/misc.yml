@@ -12,6 +12,9 @@
     sprite: _Floof/Clothing/Uniforms/nuditypermit.rsi
     equipDelay: 0
     unequipDelay: 0
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 100
 
 - type: entity
   parent: [ClothingUniformShirtlessBase, ClothingUniformBaseSwitch]
