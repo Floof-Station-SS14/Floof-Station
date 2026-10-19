@@ -16,12 +16,12 @@ public sealed partial class HumanoidProfileEditor
     {
         _speciesTab.OnSpeciesSelected += SetSpecies;
 
-        // Put it in front of every other tab and open it by default.
+        // Put it in front of every other tab, but keep the appearance tab open by default.
         TabContainer.AddChild(_speciesTab);
         _speciesTab.SetPositionInParent(0);
         TabContainer.SetTabTitle(0, Loc.GetString("humanoid-profile-editor-species-tab"));
-        TabContainer.GetChild(1).Visible = false;
-        _speciesTab.Visible = true;
+        _speciesTab.Visible = false;
+        TabContainer.CurrentTab = 1;
     }
 
     private void UpdateSpeciesTab()
