@@ -1171,6 +1171,17 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .SingleOrDefaultAsync();
         }
 
+        public async Task<Dictionary<int, LiveCharacter>> GetLiveCharactersAsync(NetUserId userId)
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.LiveCharacter
+                .Where(l => l.Profile.Preference.UserId == userId.UserId)
+                .Include(l => l.Profile)
+                .AsNoTracking()
+                .ToDictionaryAsync(l => l.Profile.Slot);
+        }
+
         public async Task<bool> SaveLiveCharacterAsync(
             NetUserId userId,
             int slot,

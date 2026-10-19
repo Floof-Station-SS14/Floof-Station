@@ -1,3 +1,6 @@
+using Content.Shared._Floof.Sex;
+using Content.Shared.Preferences;
+
 namespace Content.Client.Lobby.UI;
 
 public sealed partial class HumanoidProfileEditor
@@ -6,22 +9,31 @@ public sealed partial class HumanoidProfileEditor
     {
         Penis.OnToggled += args =>
         {
-            Profile = Profile?.WithPenis(args.Pressed);
+            SetGenitalsProfile(Profile?.WithPenis(args.Pressed));
             ReloadPreview();
             UpdateMarkings();
         };
         Vagina.OnToggled += args =>
         {
-            Profile = Profile?.WithVagina(args.Pressed);
+            SetGenitalsProfile(Profile?.WithVagina(args.Pressed));
             ReloadPreview();
             UpdateMarkings();
         };
         Breasts.OnToggled += args =>
         {
-            Profile = Profile?.WithBreasts(args.Pressed);
+            SetGenitalsProfile(Profile?.WithBreasts(args.Pressed));
             ReloadPreview();
             UpdateMarkings();
         };
+    }
+
+    /// <summary>
+    ///     Gives newly enabled genitals their default markings, like the server does on save.
+    /// </summary>
+    private void SetGenitalsProfile(HumanoidCharacterProfile? profile)
+    {
+        Profile = profile?.WithCharacterAppearance(
+            GenitalMarkings.EnsureValid(profile.Appearance, profile.Genitals, profile.Sex));
     }
 
     private void SetGenitals(bool penis, bool vagina, bool breasts)

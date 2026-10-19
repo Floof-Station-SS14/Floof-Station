@@ -31,7 +31,8 @@ public sealed partial class CharacterPickerButton : ContainerButton
         ISharedPlayerManager playerMan,
         ButtonGroup group,
         HumanoidCharacterProfile profile,
-        bool isSelected)
+        bool isSelected,
+        bool isLive = false) // Floof - Persistence
     {
         RobustXamlLoader.Load(this);
         AddStyleClass(StyleClassButton);
@@ -52,6 +53,7 @@ public sealed partial class CharacterPickerButton : ContainerButton
         DeleteButton.Visible = !isSelected;
 
         DescriptionLabel.Text = description;
+        LiveLabel.Visible = isLive; // Floof - Persistence
 
         ConfirmDeleteButton.OnPressed += _ =>
         {

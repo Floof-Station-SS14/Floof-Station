@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Content.Server._Floof.Persistence.Migrations;
 using Content.Server.Database;
 using Content.Shared._Floof.Persistence;
+using Content.Shared._Floof.Sex;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -23,7 +24,7 @@ namespace Content.Server._Floof.Persistence;
 /// <summary>
 ///     Loads, migrates, saves and discards live characters.
 /// </summary>
-public sealed class LiveCharacterManager
+public sealed partial class LiveCharacterManager
 {
     [Dependency] private IServerDbManager _db = default!;
     [Dependency] private ISerializationManager _serialization = default!;
@@ -52,9 +53,26 @@ public sealed class LiveCharacterManager
     public async Task<LiveCharacterRecord?> Load(NetUserId userId, int slot)
     {
         var live = await _db.GetLiveCharacterAsync(userId, slot);
-        if (live == null)
-            return null;
+        return live == null ? null : await Read(userId, slot, live);
+    }
 
+    /// <summary>
+    ///     Loads the live characters of all of a player's slots, keyed by slot. Unusable ones are left out.
+    /// </summary>
+    public async Task<Dictionary<int, LiveCharacterInfo>> LoadAll(NetUserId userId)
+    {
+        var characters = new Dictionary<int, LiveCharacterInfo>();
+        foreach (var (slot, live) in await _db.GetLiveCharactersAsync(userId))
+        {
+            if (await Read(userId, slot, live) is { } record)
+                characters[slot] = new LiveCharacterInfo(record, live.LastSavedRound);
+        }
+
+        return characters;
+    }
+
+    private async Task<LiveCharacterRecord?> Read(NetUserId userId, int slot, LiveCharacter live)
+    {
         LiveCharacterRecord record;
         try
         {
@@ -99,6 +117,7 @@ public sealed class LiveCharacterManager
         }
 
         record.Appearance = HumanoidCharacterAppearance.EnsureValid(record.Appearance, record.Species, record.Sex);
+        record.Appearance = GenitalMarkings.EnsureValid(record.Appearance, record.Genitals, record.Sex);
 
         // Organs outside the species body (genitals) skip appearance validation, so drop their unknown markings here.
         foreach (var layers in record.Appearance.Markings.Values)
@@ -108,6 +127,12 @@ public sealed class LiveCharacterManager
                 markings.RemoveAll(m => !_marking.TryGetMarking(m, out _));
             }
         }
+
+        // Body and profile list organs in different orders; sort so equal records serialize the same.
+        var sorted = record.Appearance.Markings
+            .OrderBy(o => o.Key.Id, StringComparer.Ordinal)
+            .ToDictionary(o => o.Key, o => o.Value.OrderBy(l => l.Key).ToDictionary(l => l.Key, l => l.Value));
+        record.Appearance = record.Appearance.WithMarkings(sorted);
     }
 
     public Task<bool> Save(
@@ -117,21 +142,14 @@ public sealed class LiveCharacterManager
         int? roundId,
         LiveCharacterHistoryReason reason = LiveCharacterHistoryReason.RoundEnd)
     {
-        return _db.SaveLiveCharacterAsync(userId, slot, LiveCharacterRecord.CurrentVersion, Serialize(record), roundId, reason);
+        var yaml = Serialize(record);
+        Sawmill.Debug($"Saving live character {userId} slot {slot} ({reason}):\n{yaml}");
+        return _db.SaveLiveCharacterAsync(userId, slot, LiveCharacterRecord.CurrentVersion, yaml, roundId, reason);
     }
 
     public Task<bool> Discard(NetUserId userId, int slot)
     {
         return _db.DeleteLiveCharacterAsync(userId, slot);
-    }
-
-    /// <summary>
-    ///     Builds the profile to spawn with: the live character if there is one, otherwise the template.
-    /// </summary>
-    public async Task<HumanoidCharacterProfile> GetSpawnProfile(NetUserId userId, int slot, HumanoidCharacterProfile template)
-    {
-        var record = await Load(userId, slot);
-        return record?.ApplyTo(template) ?? template;
     }
 
     /// <summary>

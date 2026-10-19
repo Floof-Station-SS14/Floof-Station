@@ -306,6 +306,7 @@ namespace Content.Client.Lobby.UI
             #endregion Jobs
 
             GenitalsInit(); // Floof - Genitals
+            LiveCharacterInit(); // Floof - Persistence
             HeightWidthInit(); // Goobstation: port EE height/width sliders
 
             TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
@@ -581,6 +582,7 @@ namespace Content.Client.Lobby.UI
             UpdateFlavorTextEdit();
             UpdateConsentTextEdit(); // Floof: Added consent.
             UpdateGenitals(); // Floof - Genitals
+            UpdateLiveCharacter(); // Floof - Persistence
             UpdateSexControls();
             UpdateVoiceControls();
             UpdateGenderControls();

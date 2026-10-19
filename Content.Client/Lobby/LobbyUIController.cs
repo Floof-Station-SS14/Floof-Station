@@ -1,4 +1,5 @@
 using Content.Client._Floof.Consent.Managers;
+using Content.Client._Floof.Persistence; // Floof - Persistence
 using Content.Shared._Floof.Consent;
 using Content.Client.Guidebook;
 using Content.Client.Lobby.UI;
@@ -21,7 +22,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby;
 
-public sealed partial class LobbyUIController : UIController, IOnStateEntered<LobbyState>, IOnStateExited<LobbyState>
+public sealed partial class LobbyUIController : UIController, IOnStateEntered<LobbyState>, IOnStateExited<LobbyState>, IOnSystemChanged<LiveCharacterStatusSystem> // Floof - Persistence
 {
     [Dependency] private IClientPreferencesManager _preferencesManager = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
@@ -34,6 +35,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     [Dependency] private JobRequirementsManager _requirements = default!;
     [Dependency] private MarkingManager _markings = default!;
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
+    [UISystemDependency] private readonly LiveCharacterStatusSystem? _liveCharacter = default!; // Floof - Persistence
 
     private CharacterSetupGui? _characterSetup;
     private HumanoidProfileEditor? _profileEditor;
@@ -69,6 +71,33 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
 
         _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
     }
+
+    // Floof Section - Persistence
+    public void OnSystemLoaded(LiveCharacterStatusSystem system)
+    {
+        system.LiveUpdated += OnLiveUpdated;
+        system.Updated += OnLiveUpdated;
+    }
+
+    public void OnSystemUnloaded(LiveCharacterStatusSystem system)
+    {
+        system.LiveUpdated -= OnLiveUpdated;
+        system.Updated -= OnLiveUpdated;
+    }
+
+    /// <summary>
+    ///     Refreshes everything showing live characters without resetting the editor.
+    /// </summary>
+    private void OnLiveUpdated()
+    {
+        if (_stateManager.CurrentState is not LobbyState)
+            return;
+
+        RefreshLobbyPreview();
+        _characterSetup?.ReloadCharacterPickers();
+        _profileEditor?.UpdateLiveCharacter();
+    }
+    // Floof Section End
 
     private LobbyCharacterPreviewPanel? GetLobbyPreview()
     {
@@ -136,6 +165,8 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     public void OnStateEntered(LobbyState state)
     {
         PreviewPanel?.SetLoaded(_preferencesManager.ServerDataLoaded);
+        if (PreviewPanel != null) // Floof - Persistence
+            PreviewPanel.LiveToggleButton.OnToggled += _ => RefreshLobbyPreview(); // Floof - Persistence
         ReloadCharacterSetup();
     }
 
@@ -167,6 +198,8 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     /// </summary>
     private void RefreshLobbyPreview()
     {
+        (_stateManager.CurrentState as LobbyState)?.UpdateJoinButton(); // Floof - Persistence
+
         if (PreviewPanel == null)
             return;
 
@@ -179,6 +212,24 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             PreviewPanel.SetSummaryText(string.Empty);
             return;
         }
+
+        // Floof Section - Persistence
+        var slot = _preferencesManager.Preferences!.SelectedCharacterIndex;
+        if (_liveCharacter != null && _liveCharacter.TryGetLive(slot, out var info))
+        {
+            PreviewPanel.SetLiveText(info.LastSavedRound is { } round
+                ? Loc.GetString("live-character-preview-label-round", ("round", round))
+                : Loc.GetString("live-character-preview-label"));
+
+            if (!PreviewPanel.LiveToggleButton.Pressed)
+                humanoid = info.Record.ApplyTo(humanoid);
+        }
+        else
+        {
+            PreviewPanel.SetLiveText(null);
+            PreviewPanel.LiveToggleButton.Pressed = false;
+        }
+        // Floof Section End
 
         PreviewPanel.ProfilePreviewSpriteView.LoadPreview(humanoid);
         PreviewPanel.SetSummaryText(humanoid.Summary);
@@ -301,6 +352,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         _characterSetup.DeleteCharacter += args =>
         {
             _preferencesManager.DeleteCharacter(args);
+            _liveCharacter?.Forget(args); // Floof - Persistence
 
             // Reload everything
             if (EditedSlot == args)

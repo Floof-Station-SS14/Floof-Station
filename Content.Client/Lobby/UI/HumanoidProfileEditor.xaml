@@ -8,6 +8,12 @@
          HorizontalExpand="True">
         <!-- Left side -->
         <BoxContainer Orientation="Vertical" Margin="10 10 10 10" HorizontalExpand="True">
+            <!-- Floof Section - Persistence -->
+            <BoxContainer Name="LiveCharacterBanner" Orientation="Horizontal" Visible="False" Margin="0 0 0 10">
+                <RichTextLabel Name="LiveCharacterLabel" HorizontalExpand="True" VerticalAlignment="Center"/>
+                <controls:ConfirmButton Name="LiveCharacterDiscard" Text="{Loc 'live-character-discard'}" ConfirmationText="{Loc 'live-character-discard-confirm'}"/>
+            </BoxContainer>
+            <!-- Floof Section End -->
             <!-- Middle container -->
             <BoxContainer Orientation="Horizontal" SeparationOverride="10" HorizontalExpand="True">
                 <!-- Name box-->

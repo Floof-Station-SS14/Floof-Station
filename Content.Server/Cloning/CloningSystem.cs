@@ -21,6 +21,7 @@ using System.Linq;
 using Content.Server.Traits.Assorted; // DV
 using System.Numerics; // Floof - HeightWidth
 using Content.Shared._EE.HeightAdjust; // Floof - HeightWidth
+using Content.Shared._Floof.Body; // Floof - Genitals
 
 namespace Content.Server.Cloning;
 
@@ -41,6 +42,9 @@ public sealed partial class CloningSystem : SharedCloningSystem
     [Dependency] private NameModifierSystem _nameMod = default!;
     [Dependency] private IdentitySystem _identity = default!;
     [Dependency] private HeightAdjustSystem _heightAdjust = default!; // Floof - HeightWidth
+    [Dependency] private OrganSystem _organ = default!; // Floof - Genitals
+
+    private static readonly ProtoId<OrganCategoryPrototype>[] GenitalCategories = ["Dick", "Breasts", "Vagina"]; // Floof - Genitals
 
     public override bool TryCloning(
         EntityUid original,
@@ -67,6 +71,7 @@ public sealed partial class CloningSystem : SharedCloningSystem
         }
 
         clone = coords == null ? Spawn(speciesPrototype.Prototype) : Spawn(speciesPrototype.Prototype, coords.Value);
+        _organ.CopyOrgans(original, clone.Value, GenitalCategories, "Torso"); // Floof - Genitals
         _visualBody.CopyAppearanceFrom(original, clone.Value);
 
         CloneComponents(original, clone.Value, settings);

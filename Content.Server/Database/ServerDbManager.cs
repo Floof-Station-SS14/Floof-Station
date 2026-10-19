@@ -387,6 +387,11 @@ namespace Content.Server.Database
         Task<LiveCharacter?> GetLiveCharacterAsync(NetUserId userId, int slot);
 
         /// <summary>
+        ///     Gets the live characters of all of a player's slots, keyed by slot.
+        /// </summary>
+        Task<Dictionary<int, LiveCharacter>> GetLiveCharactersAsync(NetUserId userId);
+
+        /// <summary>
         ///     Creates or overwrites the live character of a slot. Returns false if the slot has no profile.
         /// </summary>
         /// <remarks>
@@ -1134,6 +1139,12 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetLiveCharacterAsync(userId, slot));
+        }
+
+        public Task<Dictionary<int, LiveCharacter>> GetLiveCharactersAsync(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetLiveCharactersAsync(userId));
         }
 
         public Task<bool> SaveLiveCharacterAsync(

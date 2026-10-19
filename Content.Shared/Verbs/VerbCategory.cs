@@ -94,5 +94,7 @@ namespace Content.Shared.Verbs
 
         public static readonly VerbCategory Interaction = new("verb-categories-interaction", null); // Floof
 
+        public static readonly VerbCategory SpawnHere = new("verb-categories-spawn-here", "/Textures/Interface/character.svg.192dpi.png"); // Floof - Persistence
+
     }
 }

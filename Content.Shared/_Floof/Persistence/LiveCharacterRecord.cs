@@ -4,6 +4,7 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Floof.Persistence;
 
@@ -14,7 +15,7 @@ namespace Content.Shared._Floof.Persistence;
 /// <remarks>
 ///     Changing the fields requires bumping <see cref="CurrentVersion"/> and adding a migration.
 /// </remarks>
-[DataDefinition]
+[DataDefinition, Serializable, NetSerializable]
 public sealed partial class LiveCharacterRecord
 {
     public const int CurrentVersion = 1;
