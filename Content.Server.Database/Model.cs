@@ -84,6 +84,15 @@ namespace Content.Server.Database
             modelBuilder.Entity<Genitals>()
                 .HasKey(g => g.ProfileId);
             // End Floof Section - Genitals
+            // Floof Section - Bank
+            modelBuilder.Entity<Profile>()
+                .HasOne(p => p.BankAccount)
+                .WithOne(b => b.Profile)
+                .HasForeignKey<BankAccount>(b => b.ProfileId)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<BankAccount>()
+                .HasKey(b => b.ProfileId);
+            // End Floof Section - Bank
             modelBuilder.Entity<ProfileRoleLoadout>()
                 .HasOne(e => e.Profile)
                 .WithMany(e => e.Loadouts)
@@ -346,6 +355,7 @@ namespace Content.Server.Database
         public string FlavorText { get; set; } = null!;
         public string ConsentText { get; set; } = null!; // Floof: Added consent.
         public Genitals? Genitals { get; set; } = null!; // Floof - Genitals
+        public BankAccount? BankAccount { get; set; } // Floof - Bank
         public int Age { get; set; }
         public string Sex { get; set; } = null!;
         public string? Voice { get; set; } = null!; // If null, the voice gets defaulted to the sex associated value
@@ -383,6 +393,14 @@ namespace Content.Server.Database
         public Profile Profile { get; set; } = null!;
     }
     // End Floof Section - Genitals
+    // Floof Section - Bank
+    public class BankAccount
+    {
+        public int ProfileId { get; set; }
+        public int Balance { get; set; }
+        public Profile Profile { get; set; } = null!;
+    }
+    // End Floof Section - Bank
     // Floof - Consent System
     public class ConsentSettings
     {

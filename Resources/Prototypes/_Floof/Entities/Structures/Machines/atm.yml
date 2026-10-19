@@ -1,0 +1,44 @@
+- type: entity
+  abstract: true
+  id: FloofBaseAtm
+  components:
+  - type: BankAtm
+  - type: ActivatableUI
+    key: enum.BankAtmUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.BankAtmUiKey.Key:
+        type: BankAtmBoundUserInterface
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#3db83b"
+
+- type: entity
+  parent: [FloofBaseAtm, BaseMachinePowered]
+  id: FloofAtm
+  name: ATM
+  description: Withdraws spesos from your personal account. NT disabled the deposit slot.
+  components:
+  - type: Sprite
+    sprite: _Floof/Structures/Machines/atm/atm.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+    - state: unshaded
+      shader: unshaded
+
+- type: entity
+  parent: [FloofBaseAtm, BaseWallmountMachine]
+  id: FloofAtmWallmount
+  name: wall ATM
+  description: Withdraws spesos from your personal account. NT disabled the deposit slot.
+  components:
+  - type: Sprite
+    sprite: _Floof/Structures/Machines/atm/wall_atm.rsi
+    drawdepth: WallMountedItems
+    layers:
+    - state: icon
+    - state: unshaded
+      shader: unshaded

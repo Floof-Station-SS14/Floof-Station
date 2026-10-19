@@ -1,5 +1,6 @@
 - type: job
   id: SecurityOfficer
+  pay: 550 # Floof - bank
   name: job-name-security
   description: job-description-security
   playTimeTracker: JobSecurityOfficer

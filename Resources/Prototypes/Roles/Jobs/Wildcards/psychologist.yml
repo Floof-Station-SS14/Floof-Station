@@ -1,5 +1,6 @@
 - type: job
   id: Psychologist
+  pay: 450 # Floof - bank
   name: job-name-psychologist
   description: job-description-psychologist
   playTimeTracker: JobPsychologist

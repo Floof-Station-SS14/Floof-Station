@@ -1,5 +1,6 @@
 - type: job
   id: Chef
+  pay: 400 # Floof - bank
   name: job-name-chef
   description: job-description-chef
   playTimeTracker: JobChef

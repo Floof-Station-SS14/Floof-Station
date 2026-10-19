@@ -1,5 +1,6 @@
 - type: job
   id: HeadOfPersonnel
+  pay: 800 # Floof - bank
   name: job-name-hop
   description: job-description-hop
   playTimeTracker: JobHeadOfPersonnel

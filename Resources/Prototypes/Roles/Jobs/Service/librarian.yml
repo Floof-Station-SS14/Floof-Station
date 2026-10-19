@@ -1,5 +1,6 @@
 - type: job
   id: Librarian
+  pay: 400 # Floof - bank
   name: job-name-librarian
   description: job-description-librarian
   playTimeTracker: JobLibrarian

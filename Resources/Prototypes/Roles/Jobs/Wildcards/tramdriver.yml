@@ -1,5 +1,6 @@
 - type: job
   id: TramDriver
+  pay: 400 # Floof - bank
   name: job-name-tram-driver
   description: job-description-tram-driver
   playTimeTracker: JobTramDriver

@@ -1,5 +1,6 @@
 - type: job
   id: Janitor
+  pay: 400 # Floof - bank
   name: job-name-janitor
   description: job-description-janitor
   playTimeTracker: JobJanitor

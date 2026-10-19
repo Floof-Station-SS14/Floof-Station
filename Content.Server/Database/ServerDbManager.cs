@@ -54,6 +54,19 @@ namespace Content.Server.Database
         // Single method for two operations for transaction.
         Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot);
         Task<Preference?> GetPlayerPreferencesAsync(NetUserId userId, CancellationToken cancel);
+
+        // Floof Section - Bank
+        /// <summary>
+        /// Balance of the bank account for a character slot, or null if the slot doesn't exist.
+        /// </summary>
+        Task<int?> GetBankBalanceAsync(NetUserId userId, int slot, int startingBalance);
+
+        /// <summary>
+        /// Adds to (or with a negative amount, takes from) the bank account of a character slot, creating it if needed.
+        /// Returns the new balance, or null if the slot doesn't exist or the balance would go negative.
+        /// </summary>
+        Task<int?> AddBankBalanceAsync(NetUserId userId, int slot, int amount, int startingBalance);
+        // End Floof Section - Bank
         #endregion
 
         #region User Ids
@@ -510,6 +523,20 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.DeleteSlotAndSetSelectedIndex(userId, deleteSlot, newSlot));
         }
+
+        // Floof Section - Bank
+        public Task<int?> GetBankBalanceAsync(NetUserId userId, int slot, int startingBalance)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetBankBalanceAsync(userId, slot, startingBalance));
+        }
+
+        public Task<int?> AddBankBalanceAsync(NetUserId userId, int slot, int amount, int startingBalance)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddBankBalanceAsync(userId, slot, amount, startingBalance));
+        }
+        // End Floof Section - Bank
 
         public Task SaveAdminOOCColorAsync(NetUserId userId, Color color)
         {

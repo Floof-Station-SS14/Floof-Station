@@ -1,5 +1,6 @@
 - type: job
   id: Mime
+  pay: 350 # Floof - bank
   name: job-name-mime
   description: job-description-mime
   playTimeTracker: JobMime

@@ -202,6 +202,42 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
+        // Floof Section - Bank
+        public async Task<int?> GetBankBalanceAsync(NetUserId userId, int slot, int startingBalance)
+        {
+            await using var db = await GetDb();
+            var profile = await db.DbContext.Profile
+                .Include(p => p.BankAccount)
+                .Where(p => p.Preference.UserId == userId.UserId)
+                .SingleOrDefaultAsync(p => p.Slot == slot);
+
+            if (profile == null)
+                return null;
+
+            return profile.BankAccount?.Balance ?? startingBalance;
+        }
+
+        public async Task<int?> AddBankBalanceAsync(NetUserId userId, int slot, int amount, int startingBalance)
+        {
+            await using var db = await GetDb();
+            var profile = await db.DbContext.Profile
+                .Include(p => p.BankAccount)
+                .Where(p => p.Preference.UserId == userId.UserId)
+                .SingleOrDefaultAsync(p => p.Slot == slot);
+
+            if (profile == null)
+                return null;
+
+            profile.BankAccount ??= new BankAccount { Balance = startingBalance };
+            if (profile.BankAccount.Balance + amount < 0)
+                return null;
+
+            profile.BankAccount.Balance += amount;
+            await db.DbContext.SaveChangesAsync();
+            return profile.BankAccount.Balance;
+        }
+        // End Floof Section - Bank
+
         private static async Task SetSelectedCharacterSlotAsync(NetUserId userId, int newSlot, ServerDbContext db)
         {
             var prefs = await db.Preference.SingleAsync(p => p.UserId == userId.UserId);

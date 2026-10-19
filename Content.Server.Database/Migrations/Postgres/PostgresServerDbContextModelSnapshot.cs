@@ -779,6 +779,22 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("ban_template", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.BankAccount", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("integer")
+                        .HasColumnName("profile_id");
+
+                    b.Property<int>("Balance")
+                        .HasColumnType("integer")
+                        .HasColumnName("balance");
+
+                    b.HasKey("ProfileId")
+                        .HasName("PK_bank_account");
+
+                    b.ToTable("bank_account", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Blacklist", b =>
                 {
                     b.Property<Guid>("UserId")
@@ -1925,6 +1941,18 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Round");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.BankAccount", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithOne("BankAccount")
+                        .HasForeignKey("Content.Server.Database.BankAccount", "ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_bank_account_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.HasOne("Content.Server.Database.Server", "Server")
@@ -2275,6 +2303,8 @@ namespace Content.Server.Database.Migrations.Postgres
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
                     b.Navigation("Antags");
+
+                    b.Navigation("BankAccount");
 
                     b.Navigation("Genitals");
 

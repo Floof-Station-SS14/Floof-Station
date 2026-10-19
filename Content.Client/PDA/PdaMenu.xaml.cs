@@ -10,6 +10,8 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
+using Content.Shared._Floof.Bank; // Floof - Bank
+using Robust.Client.Player; // Floof - Bank
 
 namespace Content.Client.PDA
 {
@@ -19,6 +21,8 @@ namespace Content.Client.PDA
         [Dependency] private IClipboardManager _clipboard = null!;
         [Dependency] private IGameTiming _gameTiming = default!;
         [Dependency] private IEntitySystemManager _entitySystem = default!;
+        [Dependency] private IEntityManager _entMan = default!; // Floof - Bank
+        [Dependency] private IPlayerManager _player = default!; // Floof - Bank
         private readonly AlertLevelSystem _alert = default!;
         private readonly GameTicker _gameTicker;
 
@@ -190,6 +194,12 @@ namespace Content.Client.PDA
             );
 
             AddressLabel.Text = state.Address?.ToUpper() ?? " - ";
+
+            // Floof Section - Bank
+            BalanceLabel.Visible = _entMan.TryGetComponent<BankAccountComponent>(_player.LocalEntity, out var account);
+            if (account != null)
+                BalanceLabel.SetMarkup(Loc.GetString("comp-pda-ui-balance", ("balance", account.Balance)));
+            // Floof Section End - Bank
 
             EjectIdButton.IsActive = state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null;
             EjectPenButton.IsActive = state.HasPen;
