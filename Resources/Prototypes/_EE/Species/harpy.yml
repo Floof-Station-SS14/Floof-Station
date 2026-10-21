@@ -16,7 +16,7 @@
   maxHeight: 1.0
   minWidth: 0.80
   defaultWidth: 0.80
-  maxWidth: 1.0
+  maxWidth: 1.2 # Floof - Wider species
   # end Goobstation: port EE height/width sliders
   defaultSoundsBySex:
   - UnisexHarpy

@@ -19,5 +19,5 @@
   maxHeight: 0.9
   minWidth: 0.9
   defaultWidth: 1
-  maxWidth: 1.1
+  maxWidth: 1.3 # Floof - Wider species
   # end Goobstation: port EE height/width sliders
