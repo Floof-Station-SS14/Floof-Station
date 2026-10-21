@@ -12,4 +12,4 @@
     soundCollection:
       collection: CowbellRings
       params: # Floof
-        volume: -5 # Floof
+        volume: -10 # Floof
