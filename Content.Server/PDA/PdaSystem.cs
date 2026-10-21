@@ -7,6 +7,7 @@ using Content.Server.PDA.Ringer;
 using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
 using Content.Shared.Access.Components;
+using Content.Shared._Floof.Bank; // Floof - Bank
 using Content.Shared.AlertLevel;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Chat;
@@ -216,7 +217,10 @@ namespace Content.Server.PDA
                 pda.StationName,
                 showUplink,
                 hasInstrument,
-                address);
+                address)
+            {
+                Balance = TryComp<BankAccountComponent>(pda.PdaOwner, out var account) ? account.Balance : null, // Floof - Bank
+            };
 
             _ui.SetUiState(uid, PdaUiKey.Key, state);
         }

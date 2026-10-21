@@ -19,7 +19,7 @@ public sealed partial class BankAtmComponent : Component
     public SoundSpecifier ErrorSound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_sigh.ogg");
 
     [DataField]
-    public SoundSpecifier ConfirmSound = new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg");
+    public SoundSpecifier ConfirmSound = new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg", AudioParams.Default.WithVolume(-10f));
 }
 
 [Serializable, NetSerializable]

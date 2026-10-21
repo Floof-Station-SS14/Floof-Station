@@ -1,12 +1,13 @@
-bank-payday = Payday! {$amount} spesos paid into your account. Balance: {$balance}.
-bank-payday-reduced = Payday! You were dead for part of the shift, so only {$amount} spesos were paid. Balance: {$balance}.
-bank-cc-bonus = You made it to Central Command: {$amount} spesos bonus paid. Balance: {$balance}.
+bank-payday = Payment received: ${$amount}. Balance: ${$balance}.
+bank-payday-reduced = Partial payment received: ${$amount}. Balance: ${$balance}.
+bank-cc-bonus = Shift end bonus received: ${$amount}. Balance: ${$balance}.
+bank-cc-bonus-reduced = Partial shift end bonus received: ${$amount}. Balance: ${$balance}.
 
-comp-pda-ui-balance = Balance: [color=white]{ $balance } spesos[/color]
+comp-pda-ui-balance = Balance: [color=white]${ $balance }[/color]
 
 bank-atm-title = Withdraw-only ATM
-bank-atm-balance = Balance: { $balance } spesos
+bank-atm-balance = Balance: ${ $balance }
 bank-atm-no-account = No bank account!
 bank-atm-withdraw = Withdraw
 bank-atm-insufficient-funds = Insufficient funds.
-bank-atm-withdrawn = Withdrew { $amount } spesos.
+bank-atm-withdrawn = Withdrew ${ $amount }.

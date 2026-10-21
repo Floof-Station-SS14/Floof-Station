@@ -1,11 +1,13 @@
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Database;
+using Content.Server.PDA;
 using Content.Server.Preferences.Managers;
 using Content.Shared._Floof.Bank;
 using Content.Shared._Floof.CCVars;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
+using Content.Shared.PDA;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 
@@ -20,7 +22,9 @@ public sealed partial class BankSystem : EntitySystem
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private PdaSystem _pda = default!;
     [Dependency] private IServerPreferencesManager _prefs = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -98,6 +102,36 @@ public sealed partial class BankSystem : EntitySystem
 
             account.Balance = balance;
             Dirty(uid, account);
+            UpdatePdas(uid);
         }
+    }
+
+    /// <summary>
+    /// PDAs show their original owner's balance, whoever is holding them.
+    /// </summary>
+    private void UpdatePdas(EntityUid owner)
+    {
+        var query = EntityQueryEnumerator<PdaComponent>();
+        while (query.MoveNext(out var uid, out var pda))
+        {
+            if (pda.PdaOwner == owner)
+                _pda.UpdatePdaUi(uid, pda);
+        }
+    }
+
+    /// <summary>
+    /// Finds the PDA originally issued to this mob, if the mob is carrying it.
+    /// </summary>
+    public bool TryGetCarriedPda(EntityUid owner, out EntityUid pda)
+    {
+        var query = EntityQueryEnumerator<PdaComponent>();
+        while (query.MoveNext(out pda, out var comp))
+        {
+            if (comp.PdaOwner == owner && _transform.ContainsEntity(owner, pda))
+                return true;
+        }
+
+        pda = default;
+        return false;
     }
 }
