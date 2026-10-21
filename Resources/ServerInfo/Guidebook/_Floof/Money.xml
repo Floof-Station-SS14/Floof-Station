@@ -1,0 +1,48 @@
+<Document>
+  # Money
+
+  <Box>
+    <GuideEntityEmbed Entity="Atm" Caption=""/>
+    <GuideEntityEmbed Entity="SpaceCash100" Caption=""/>
+  </Box>
+
+  ## Your Bank Account
+
+  Every character has [color=lightgreen]their own bank account[/color] that carries over from shift to shift. A new character starts with [color=lightgreen]$5000[/color].
+
+  Each character slot has a separate account. Deleting a character deletes its account too.
+
+  ## Paydays
+
+  NanoTrasen pays the crew [color=lightgreen]every 30 minutes[/color] straight into their accounts. How much depends on your job, from $250 for passengers up to $1000 for the captain. Heads of staff earn the most, assistants and interns the least.
+
+  Every 5 minutes NT checks whether you are actually working. You count as present when you are [color=lightgreen]in your body and alive or in crit[/color]. You count as missing when you are:
+  - dead
+  - ghosted, even if your body is still alive
+  - disconnected (SSD)
+  - not on the station yet, if you joined late
+
+  Your pay depends on how many checks you missed since the last payday:
+  - [color=lightgreen]Full pay[/color] if you missed less than half of them.
+  - [color=yellow]Half pay[/color] if you missed half or more, but were present at least once.
+  - [color=palevioletred]Nothing[/color] if you were never present.
+
+  ## Shift End Bonus
+
+  If your body reaches Central Command on the evacuation shuttle, you get a [color=lightgreen]shift end bonus of two paychecks[/color]. It follows the same full, half or nothing rule, counted over the whole shift.
+
+  Dying on the way there does not cost you the bonus if you worked the rest of the shift. Staying behind on the station gets you nothing.
+
+  ## Your PDA
+
+  Your PDA shows your balance. Payments and the bonus also show up as a message on screen and in chat, but [color=lightgreen]only while you carry your own PDA[/color]. Lose it and you still get paid, you just won't be told.
+
+  A PDA always shows the balance of the person it was issued to. Whoever picks up your PDA can see how much money you have.
+
+  ## ATMs
+
+  ATMs let you [color=lightgreen]withdraw spesos as cash[/color] from your account. NT disabled the deposit slots, so once money is withdrawn it stays cash.
+
+  Cash is a physical item like any other. It can be traded, lost or stolen, so only take out what you need.
+
+</Document>
