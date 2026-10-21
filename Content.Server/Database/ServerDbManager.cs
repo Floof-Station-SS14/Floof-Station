@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Shared._Floof.Consent;
+using FloofCCVars = Content.Shared._Floof.CCVars.CCVars; // Floof - Persistence
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -392,6 +393,38 @@ namespace Content.Server.Database
 
         // End Floof - Consent system
         #endregion
+
+        // Floof Section - Persistence
+        #region Live Characters
+
+        Task<LiveCharacter?> GetLiveCharacterAsync(NetUserId userId, int slot);
+
+        /// <summary>
+        ///     Gets the live characters of all of a player's slots, keyed by slot.
+        /// </summary>
+        Task<Dictionary<int, LiveCharacter>> GetLiveCharactersAsync(NetUserId userId);
+
+        /// <summary>
+        ///     Creates or overwrites the live character of a slot. Returns false if the slot has no profile.
+        /// </summary>
+        /// <remarks>
+        ///     The previous version is kept in the history with the given reason.
+        /// </remarks>
+        Task<bool> SaveLiveCharacterAsync(
+            NetUserId userId,
+            int slot,
+            int schemaVersion,
+            string data,
+            int? roundId,
+            LiveCharacterHistoryReason reason = LiveCharacterHistoryReason.RoundEnd);
+
+        /// <summary>
+        ///     Discards the live character of a slot, keeping it in the history.
+        /// </summary>
+        Task<bool> DeleteLiveCharacterAsync(NetUserId userId, int slot);
+
+        #endregion
+        // End Floof Section - Persistence
     }
 
     /// <summary>
@@ -1127,6 +1160,42 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.GetPlayerConsentSettingsAsync(userId));
         }
         // End Floof - Consent system
+
+        // Floof Section - Persistence
+        public Task<LiveCharacter?> GetLiveCharacterAsync(NetUserId userId, int slot)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetLiveCharacterAsync(userId, slot));
+        }
+
+        public Task<Dictionary<int, LiveCharacter>> GetLiveCharactersAsync(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetLiveCharactersAsync(userId));
+        }
+
+        public Task<bool> SaveLiveCharacterAsync(
+            NetUserId userId,
+            int slot,
+            int schemaVersion,
+            string data,
+            int? roundId,
+            LiveCharacterHistoryReason reason = LiveCharacterHistoryReason.RoundEnd)
+        {
+            DbWriteOpsMetric.Inc();
+            var min = _cfg.GetCVar(FloofCCVars.LiveCharacterHistoryMin);
+            var days = _cfg.GetCVar(FloofCCVars.LiveCharacterHistoryDays);
+            return RunDbCommand(() => _db.SaveLiveCharacterAsync(userId, slot, schemaVersion, data, roundId, reason, min, days));
+        }
+
+        public Task<bool> DeleteLiveCharacterAsync(NetUserId userId, int slot)
+        {
+            DbWriteOpsMetric.Inc();
+            var min = _cfg.GetCVar(FloofCCVars.LiveCharacterHistoryMin);
+            var days = _cfg.GetCVar(FloofCCVars.LiveCharacterHistoryDays);
+            return RunDbCommand(() => _db.DeleteLiveCharacterAsync(userId, slot, min, days));
+        }
+        // End Floof Section - Persistence
 
         // Wrapper functions to run DB commands from the thread pool.
         // This will avoid SynchronizationContext capturing and avoid running CPU work on the main thread.

@@ -11,3 +11,5 @@
   - type: EmitsSoundOnMove
     soundCollection:
       collection: CowbellRings
+      params: # Floof
+        volume: -10 # Floof

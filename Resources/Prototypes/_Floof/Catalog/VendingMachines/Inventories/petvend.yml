@@ -15,6 +15,10 @@
     # ClothingUncategorizedHarnessPink: 2
     # Other clothing options
     ClothingMaskMuzzle: 2
+    # Medal-style pins (also fit the medal case)
+    ClothingNeckGoodBoyPin: 2
+    ClothingNeckGoodGirlPin: 2
+    ClothingNeckFunctionalPin: 2
     # ClothingHeadHatRedRibbon: 2
     # Toys
     TennisBall: 2

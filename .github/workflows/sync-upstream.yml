@@ -2,7 +2,7 @@ name: Daily Upstream Sync
 
 on:
   schedule:
-    - cron: "0 3 * * *"  # every day at 03:00 UTC
+    - cron: "17 2 * * *"  # every day at 02:17 UTC (03:17 CET), off the hour to dodge GitHub queue delays
   workflow_dispatch:
 
 jobs:

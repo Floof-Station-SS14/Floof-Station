@@ -1,3 +1,4 @@
+using Content.Server._Floof.Persistence; // Floof - Persistence
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
@@ -351,6 +352,7 @@ namespace Content.Server.Preferences.Managers
 
             prefsData.Prefs = new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.ConstructionFavorites);
             _afkManager.PlayerDidAction(message.MsgChannel);
+            _dependencies.Resolve<IEntityManager>().System<LiveCharacterSystem>().Forget(userId, slot); // Floof - Persistence
 
             if (ShouldStorePrefs(message.MsgChannel.AuthType))
             {

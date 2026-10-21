@@ -1188,6 +1188,121 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
+        #region Live Characters
+
+        // Floof Section - Persistence
+
+        private IQueryable<LiveCharacter> LiveCharacterQuery(ServerDbContext db, NetUserId userId, int slot)
+        {
+            return db.LiveCharacter
+                .Where(l => l.Profile.Preference.UserId == userId.UserId && l.Profile.Slot == slot);
+        }
+
+        public async Task<LiveCharacter?> GetLiveCharacterAsync(NetUserId userId, int slot)
+        {
+            await using var db = await GetDb();
+
+            return await LiveCharacterQuery(db.DbContext, userId, slot)
+                .AsNoTracking()
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task<Dictionary<int, LiveCharacter>> GetLiveCharactersAsync(NetUserId userId)
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.LiveCharacter
+                .Where(l => l.Profile.Preference.UserId == userId.UserId)
+                .Include(l => l.Profile)
+                .AsNoTracking()
+                .ToDictionaryAsync(l => l.Profile.Slot);
+        }
+
+        public async Task<bool> SaveLiveCharacterAsync(
+            NetUserId userId,
+            int slot,
+            int schemaVersion,
+            string data,
+            int? roundId,
+            LiveCharacterHistoryReason reason,
+            int historyMin,
+            int historyDays)
+        {
+            await using var db = await GetDb();
+
+            var profile = await db.DbContext.Profile
+                .Include(p => p.LiveCharacter)
+                .SingleOrDefaultAsync(p => p.Preference.UserId == userId.UserId && p.Slot == slot);
+
+            if (profile == null)
+                return false;
+
+            var now = DateTime.UtcNow;
+            if (profile.LiveCharacter == null)
+                profile.LiveCharacter = new LiveCharacter { CreatedAt = now };
+            else
+                await BackupLiveCharacter(db.DbContext, profile.LiveCharacter, reason, historyMin, historyDays);
+
+            profile.LiveCharacter.SchemaVersion = schemaVersion;
+            profile.LiveCharacter.Data = data;
+            profile.LiveCharacter.LastSavedAt = now;
+            profile.LiveCharacter.LastSavedRound = roundId;
+
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> DeleteLiveCharacterAsync(NetUserId userId, int slot, int historyMin, int historyDays)
+        {
+            await using var db = await GetDb();
+
+            var live = await LiveCharacterQuery(db.DbContext, userId, slot).SingleOrDefaultAsync();
+            if (live == null)
+                return false;
+
+            await BackupLiveCharacter(db.DbContext, live, LiveCharacterHistoryReason.Discard, historyMin, historyDays);
+            db.DbContext.LiveCharacter.Remove(live);
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
+        /// <summary>
+        ///     Copies the current version into the history, then prunes backups that are
+        ///     both outside the newest <paramref name="historyMin"/> and older than <paramref name="historyDays"/>.
+        /// </summary>
+        private static async Task BackupLiveCharacter(
+            ServerDbContext db,
+            LiveCharacter live,
+            LiveCharacterHistoryReason reason,
+            int historyMin,
+            int historyDays)
+        {
+            db.LiveCharacterHistory.Add(new LiveCharacterHistory
+            {
+                ProfileId = live.ProfileId,
+                SchemaVersion = live.SchemaVersion,
+                Data = live.Data,
+                SavedAt = live.LastSavedAt,
+                SavedRound = live.LastSavedRound,
+                Reason = reason,
+            });
+
+            // The new backup isn't saved yet, so it takes one of the kept slots.
+            var cutoff = DateTime.UtcNow.AddDays(-historyDays);
+            var expired = await db.LiveCharacterHistory
+                .Where(h => h.ProfileId == live.ProfileId)
+                .OrderByDescending(h => h.SavedAt)
+                .Skip(Math.Max(historyMin - 1, 0))
+                .Where(h => h.SavedAt < cutoff)
+                .ToListAsync();
+
+            db.LiveCharacterHistory.RemoveRange(expired);
+        }
+
+        // End Floof Section - Persistence
+
+        #endregion
+
         #region Uploaded Resources Logs
 
         public async Task AddUploadedResourceLogAsync(NetUserId user, DateTimeOffset date, string path, byte[] data)

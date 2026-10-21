@@ -1,3 +1,4 @@
+using Content.Server._Floof.Persistence; // Floof - Persistence
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
@@ -36,6 +37,7 @@ namespace Content.Server.GameTicking
 #endif
         [Dependency] private IServerPreferencesManager _prefsManager = default!;
         [Dependency] private IServerDbManager _db = default!;
+        [Dependency] private LiveCharacterSystem _liveCharacter = default!; // Floof - Persistence
         [Dependency] private ChatSystem _chatSystem = default!;
         [Dependency] private GhostSystem _ghost = default!;
         [Dependency] private MapLoaderSystem _loader = default!;

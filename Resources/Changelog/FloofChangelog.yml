@@ -602,3 +602,17 @@ Entries:
   id: 77
   time: '2026-10-18T10:27:41.0000000+00:00'
   url: https://github.com/Floof-Station-SS14/Floof-Station/pull/280
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added good boy, good girl and functional pins to the pet store vendor!
+  id: 78
+  time: '2026-10-21T14:19:27.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/294
+- author: Pachat-Kas
+  changes:
+    - type: Tweak
+      message: The cowbell collar is now much quieter.
+  id: 79
+  time: '2026-10-21T15:00:33.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/296

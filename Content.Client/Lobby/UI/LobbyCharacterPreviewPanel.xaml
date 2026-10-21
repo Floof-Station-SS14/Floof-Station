@@ -19,6 +19,14 @@
                                                   Stretch="None"
                                                   Access="Public" />
             </BoxContainer>
+            <!-- Floof Section - Persistence -->
+            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="RotateLeft" Text="◀" StyleClasses="OpenRight"/>
+                <Button Name="RotateRight" Text="▶" StyleClasses="OpenLeft"/>
+            </BoxContainer>
+            <Label Name="LiveLabel" HorizontalAlignment="Center" Visible="False" StyleClasses="LabelSubText"/>
+            <Button Name="LiveToggle" HorizontalAlignment="Center" Visible="False" ToggleMode="True" Text="{Loc 'live-character-show-template'}"/>
+            <!-- Floof Section End -->
             <controls:VSpacer/>
             <Button Name="CharacterSetup" Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
                     HorizontalAlignment="Center"

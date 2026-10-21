@@ -150,6 +150,17 @@ namespace Content.Server.GameTicking
                     return;
             }
 
+            // Floof Section - Persistence
+            if (!_randomizeCharacters
+                && _liveCharacter.TryGetBody(player.UserId, _prefsManager.GetPreferences(player.UserId).SelectedCharacterIndex, out _))
+            {
+                _chatManager.DispatchServerMessage(player, Loc.GetString("live-character-already-in-round"));
+                if (!LobbyEnabled)
+                    JoinAsObserver(player);
+                return;
+            }
+            // Floof Section End
+
             SpawnPlayer(player, character, station, jobId, lateJoin, silent);
         }
 

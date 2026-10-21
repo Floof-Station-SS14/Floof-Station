@@ -16,7 +16,7 @@
   maxHeight: 1.20
   minWidth: 0.80
   defaultWidth: 1
-  maxWidth: 1.20
+  maxWidth: 1.45 # Floof - Wider species
   # end Goobstation: port EE height/width sliders
   defaultSoundsBySex:
   - UnisexMoth

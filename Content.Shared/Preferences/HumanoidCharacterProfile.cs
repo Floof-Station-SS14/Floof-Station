@@ -3,6 +3,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._Floof.Sex; // Floof - Genitals
 using Content.Shared.CCVar;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.GameTicking;
@@ -408,6 +409,7 @@ namespace Content.Shared.Preferences
             // Floof Section End
             
             profile.Appearance = HumanoidCharacterAppearance.Random(speciesProto, profile.Sex, randomizeCfg, baseProfile.Appearance);
+            profile.Appearance = GenitalMarkings.EnsureValid(profile.Appearance, profile.Genitals, profile.Sex); // Floof - Genitals
 
             return profile;
         }
@@ -788,6 +790,7 @@ namespace Content.Shared.Preferences
             // end Goobstation: port EE height/width sliders
 
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
+            appearance = GenitalMarkings.EnsureValid(appearance, Genitals, Sex); // Floof - Genitals
 
             var prefsUnavailableMode = PreferenceUnavailable switch
             {
