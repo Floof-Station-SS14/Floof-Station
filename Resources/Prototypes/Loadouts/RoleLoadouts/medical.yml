@@ -19,6 +19,7 @@
   - UnderwearTop # Floof - Underwear
   - UnderwearBottom # Floof - Underwear
   - Trinkets
+  - Wallet # Floof - Wallets
 #  - ChiefMedicalOfficerJobTrinkets
   - GroupSpeciesBreathToolMedical
 
@@ -42,6 +43,7 @@
   - UnderwearTop # Floof - Underwear
   - UnderwearBottom # Floof - Underwear
   - Trinkets
+  - Wallet # Floof - Wallets
 #  - MedicalDoctorJobTrinkets
   - GroupSpeciesBreathToolMedical
 
@@ -59,6 +61,7 @@
   - UnderwearTop # Floof - Underwear
   - UnderwearBottom # Floof - Underwear
   - Trinkets
+  - Wallet # Floof - Wallets
 #  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
 
@@ -80,6 +83,7 @@
   - UnderwearTop # Floof - Underwear
   - UnderwearBottom # Floof - Underwear
   - Trinkets
+  - Wallet # Floof - Wallets
 #  - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
 
@@ -102,5 +106,6 @@
   - UnderwearTop # Floof - Underwear
   - UnderwearBottom # Floof - Underwear
   - Trinkets
+  - Wallet # Floof - Wallets
 #  - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical

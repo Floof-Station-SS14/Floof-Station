@@ -150,3 +150,4 @@ loadout-group-service-worker-shoes = Service Worker shoes
 ## UNDERWEAR ##
 loadout-group-underwear-top = Underwear top
 loadout-group-underwear-bottom = Underwear bottom
+loadout-group-wallet = Wallet
