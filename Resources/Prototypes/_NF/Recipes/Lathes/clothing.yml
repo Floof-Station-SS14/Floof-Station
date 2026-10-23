@@ -5,7 +5,7 @@
   id: NFBaseJumpsuitRecipe
   parent: BaseJumpsuitRecipe
   categories:
-  - ClothesNF
+  - Belts # Floof - Wallets
   applyMaterialDiscount: false
 
 - type: latheRecipe

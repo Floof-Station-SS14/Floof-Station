@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseStorageItem, Clothing, RecyclableItemClothBasic]
+  parent: [BaseStorageItem, Clothing] # Floof - Wallets
   id: NFBaseWallet
   abstract: true
   name: wallet
@@ -32,9 +32,6 @@
       - Cash
       - Paper
       - NFCoin
-      - NFShipyardVoucher
-      - Card # single cards
-      - NFEmagPass
       tags:
       - FitsWallet
     blacklist:
@@ -54,9 +51,6 @@
         whitelist:
           components:
           - Paper
-          - NFShipyardVoucher
-          - Card
-          - NFEmagPass
           tags:
           - WalletPaper
       closed-cash:
