@@ -16,25 +16,37 @@ public sealed partial class BankAtmComponent : Component
     public ProtoId<StackPrototype> CashType = "Credit";
 
     [DataField]
-    public SoundSpecifier ErrorSound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_sigh.ogg");
+    public SoundSpecifier ErrorSound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_sigh.ogg", AudioParams.Default.WithVolume(-10f));
 
     [DataField]
     public SoundSpecifier ConfirmSound = new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg", AudioParams.Default.WithVolume(-10f));
+
+    /// <summary>
+    /// How long the printing animation plays after a withdrawal.
+    /// </summary>
+    [DataField]
+    public TimeSpan PrintDuration = TimeSpan.FromSeconds(1);
+
+    [ViewVariables]
+    public TimeSpan? PrintingEnd;
+}
+
+[Serializable, NetSerializable]
+public enum BankAtmVisuals : byte
+{
+    Printing,
+}
+
+[Serializable, NetSerializable]
+public enum BankAtmVisualLayers : byte
+{
+    Printing,
 }
 
 [Serializable, NetSerializable]
 public enum BankAtmUiKey : byte
 {
     Key,
-}
-
-/// <summary>
-/// Balance of whoever is using the ATM, or null if they have no bank account.
-/// </summary>
-[Serializable, NetSerializable]
-public sealed class BankAtmState(int? balance) : BoundUserInterfaceState
-{
-    public readonly int? Balance = balance;
 }
 
 [Serializable, NetSerializable]

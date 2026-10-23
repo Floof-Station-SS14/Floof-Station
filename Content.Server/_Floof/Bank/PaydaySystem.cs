@@ -1,15 +1,18 @@
-using Content.Server.Chat.Managers;
+using Content.Server._Floof.Persistence;
 using Content.Server.GameTicking;
 using Content.Server.Shuttles.Systems;
+using Content.Shared._Floof.Bank;
 using Content.Shared._Floof.CCVars;
-using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Popups;
+using Content.Shared.PDA;
 using Content.Shared.Roles;
-using Robust.Server.Player;
+using Content.Shared.Roles.Jobs;
+using Content.Shared.StationRecords;
+using Content.Shared.StationRecords.Components;
+using Content.Shared.StationRecords.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -19,24 +22,24 @@ using Robust.Shared.Timing;
 namespace Content.Server._Floof.Bank;
 
 /// <summary>
-/// Pays every crewmember at the same time each payday. Alive checks run in between;
-/// checks spent dead (or not spawned yet) reduce the pay to half or nothing.
+/// Pays every character at the same time each payday. Alive checks run in between;
+/// checks spent dead, ghosted, SSD (or not spawned yet) reduce the pay to half or nothing.
 /// </summary>
 public sealed partial class PaydaySystem : EntitySystem
 {
     [Dependency] private BankSystem _bank = default!;
-    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private BankPdaSystem _bankPda = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private EmergencyShuttleSystem _emergency = default!;
     [Dependency] private GameTicker _ticker = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedJobSystem _jobs = default!;
+    [Dependency] private LiveCharacterSystem _liveCharacter = default!;
     [Dependency] private MobStateSystem _mobState = default!;
-    [Dependency] private IPlayerManager _player = default!;
-    [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private StationRecordsSystem _stationRecords = default!;
 
-    private readonly Dictionary<NetUserId, PaydayRecord> _records = new();
+    private readonly Dictionary<(NetUserId User, int Slot), PaydayRecord> _records = new();
     private TimeSpan? _nextCheck;
     private int _checks;
     private int _roundChecks;
@@ -45,7 +48,6 @@ public sealed partial class PaydaySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn);
         SubscribeLocalEvent<GameRunLevelChangedEvent>(OnRunLevelChanged);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
     }
@@ -75,9 +77,21 @@ public sealed partial class PaydaySystem : EntitySystem
         _checks++;
         _roundChecks++;
 
-        foreach (var record in _records.Values)
+        // Only the minds of characters persistence tracks have accounts, so ghost roles and other mobs never count.
+        var query = EntityQueryEnumerator<BankAccountComponent, MindComponent>();
+        while (query.MoveNext(out var mindId, out var account, out var mind))
         {
-            if (!IsAlive(record))
+            var key = (account.UserId, account.Slot);
+            if (!_records.TryGetValue(key, out var record))
+            {
+                _records[key] = record = new PaydayRecord(_jobs.MindTryGetJobId(mindId, out var job) ? job : null);
+                // The PDA is issued when the character spawns, so one lookup is enough.
+                if (_bankPda.TryGetPda(account.UserId, account.Slot, out var pda))
+                    record.Pda = pda.Owner;
+            }
+
+            UpdateJob(record);
+            if (!IsPresent(account, mind))
                 continue;
 
             record.AliveChecks++;
@@ -87,25 +101,16 @@ public sealed partial class PaydaySystem : EntitySystem
         if (_checks < _cfg.GetCVar(CCVars.BankChecksPerPayday))
             return;
 
-        foreach (var (userId, record) in _records)
+        foreach (var (key, record) in _records)
         {
             var pay = GetPay(record);
             var amount = CalculatePay(pay, record.AliveChecks, _checks);
             var message = amount == pay ? "bank-payday" : "bank-payday-reduced";
             record.AliveChecks = 0;
-            Pay(userId, record, amount, message);
+            Pay(key.User, key.Slot, amount, message);
         }
 
         _checks = 0;
-    }
-
-    private void OnPlayerSpawn(PlayerSpawnCompleteEvent ev)
-    {
-        if (!_bank.TryGetSlot(ev, out var slot)
-            || !_mind.TryGetMind(ev.Mob, out var mindId, out _))
-            return;
-
-        _records[ev.Player.UserId] = new PaydayRecord(slot, mindId, ev.JobId);
     }
 
     private void OnRunLevelChanged(GameRunLevelChangedEvent ev)
@@ -113,9 +118,9 @@ public sealed partial class PaydaySystem : EntitySystem
         if (ev.New != GameRunLevel.PostRound)
             return;
 
-        foreach (var (userId, record) in _records)
+        foreach (var (key, record) in _records)
         {
-            if (CompOrNull<MindComponent>(record.Mind)?.OwnedEntity is not { } body
+            if (!_liveCharacter.TryGetBody(key.User, key.Slot, out var body)
                 || !HasComp<MobStateComponent>(body)
                 || !_emergency.IsTargetEscaping(body))
                 continue;
@@ -123,7 +128,7 @@ public sealed partial class PaydaySystem : EntitySystem
             // Same full/half/nothing rule as paydays, over the whole round.
             var pay = GetPay(record) * 2;
             var amount = CalculatePay(pay, record.RoundAliveChecks, _roundChecks);
-            Pay(userId, record, amount, amount == pay ? "bank-cc-bonus" : "bank-cc-bonus-reduced");
+            Pay(key.User, key.Slot, amount, amount == pay ? "bank-cc-bonus" : "bank-cc-bonus-reduced");
         }
     }
 
@@ -135,14 +140,34 @@ public sealed partial class PaydaySystem : EntitySystem
         _roundChecks = 0;
     }
 
-    private bool IsAlive(PaydayRecord record)
+    /// <summary>
+    /// The character's own player has to be in the character's body (or borg): ghosts (aghosts included),
+    /// ghost roles and SSD count as dead.
+    /// </summary>
+    private bool IsPresent(BankAccountComponent account, MindComponent mind)
     {
-        // The player has to be in the body: ghosts (aghosts included) and SSD count as dead.
-        return TryComp<MindComponent>(record.Mind, out var mind)
+        return mind.UserId == account.UserId
             && mind.OwnedEntity is { } body
-            && HasComp<ActorComponent>(body)
+            && TryComp<ActorComponent>(body, out var actor)
+            && actor.PlayerSession.UserId == account.UserId
             && HasComp<MobStateComponent>(body)
             && !_mobState.IsDead(body);
+    }
+
+    /// <summary>
+    /// Follows job changes made at the ID console, which update the character's station record.
+    /// </summary>
+    private void UpdateJob(PaydayRecord record)
+    {
+        if (record.RecordKey == null
+            && TryComp<PdaComponent>(record.Pda, out var pda)
+            && TryComp<StationRecordKeyStorageComponent>(pda.ContainedId, out var storage))
+            record.RecordKey = storage.Key;
+
+        if (record.RecordKey is { } key
+            && _stationRecords.TryGetRecord<GeneralStationRecord>(key, out var general)
+            && !string.IsNullOrEmpty(general.JobPrototype))
+            record.Job = general.JobPrototype;
     }
 
     private int GetPay(PaydayRecord record)
@@ -150,32 +175,17 @@ public sealed partial class PaydaySystem : EntitySystem
         return record.Job is { } job && _proto.TryIndex<JobPrototype>(job, out var proto) ? proto.Pay : 0;
     }
 
-    private async void Pay(NetUserId userId, PaydayRecord record, int amount, string message)
+    private async void Pay(NetUserId userId, int slot, int amount, LocId message)
     {
-        if (amount <= 0)
-            return;
-
-        var balance = await _bank.Deposit(userId, record.Slot, amount, message);
-        if (balance == null || !_player.TryGetSessionById(userId, out var session))
-            return;
-
-        // Notices come through the owner's own PDA, so only when they're in their body and carrying it.
-        if (session.AttachedEntity is not { } body
-            || !TryComp<MindComponent>(record.Mind, out var mind)
-            || body != mind.OwnedEntity
-            || !_bank.TryGetCarriedPda(body, out _))
-            return;
-
-        var text = Loc.GetString(message, ("amount", amount), ("balance", balance.Value));
-        _chat.ChatMessageToOne(ChatChannel.Notifications, text, text, EntityUid.Invalid, false, session.Channel);
-        _popup.PopupEntity(text, body, session);
+        if (amount > 0)
+            await _bank.Deposit(userId, slot, amount, message, message);
     }
 
-    private sealed class PaydayRecord(int slot, EntityUid mind, string? job)
+    private sealed class PaydayRecord(string? job)
     {
-        public readonly int Slot = slot;
-        public readonly EntityUid Mind = mind;
-        public readonly string? Job = job;
+        public string? Job = job;
+        public EntityUid? Pda;
+        public StationRecordKey? RecordKey;
         public int AliveChecks;
         public int RoundAliveChecks;
     }

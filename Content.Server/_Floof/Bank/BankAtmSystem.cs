@@ -4,29 +4,39 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Floof.Bank;
 
 public sealed partial class BankAtmSystem : EntitySystem
 {
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private BankSystem _bank = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private StackSystem _stack = default!;
+    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BankAtmComponent, BoundUIOpenedEvent>(OnOpened);
         SubscribeLocalEvent<BankAtmComponent, BankAtmWithdrawMessage>(OnWithdraw);
     }
 
-    private void OnOpened(Entity<BankAtmComponent> ent, ref BoundUIOpenedEvent args)
+    public override void Update(float frameTime)
     {
-        UpdateUi(ent, args.Actor);
+        var query = EntityQueryEnumerator<BankAtmComponent>();
+        while (query.MoveNext(out var uid, out var atm))
+        {
+            if (atm.PrintingEnd is not { } end || _timing.CurTime < end)
+                continue;
+
+            atm.PrintingEnd = null;
+            _appearance.SetData(uid, BankAtmVisuals.Printing, false);
+        }
     }
 
     private void OnWithdraw(Entity<BankAtmComponent> ent, ref BankAtmWithdrawMessage args)
@@ -36,25 +46,37 @@ public sealed partial class BankAtmSystem : EntitySystem
 
     private async void Withdraw(Entity<BankAtmComponent> ent, EntityUid user, int amount)
     {
-        if (!TryComp<BankAccountComponent>(user, out var account))
+        if (!_bank.TryGetAccount(user, out var account))
         {
             Deny(ent, user, "bank-atm-no-account");
             return;
         }
 
-        if (amount <= 0 || amount > account.Balance)
+        if (amount <= 0)
+        {
+            Deny(ent, user, "bank-atm-invalid-amount");
+            return;
+        }
+
+        if (amount > account.Comp.Balance)
         {
             Deny(ent, user, "bank-atm-insufficient-funds");
             return;
         }
 
-        var balance = await _bank.Withdraw((user, account), amount);
-        if (TerminatingOrDeleted(ent) || TerminatingOrDeleted(user))
-            return;
-
+        var balance = await _bank.Withdraw(account, amount);
+        var gone = TerminatingOrDeleted(ent) || TerminatingOrDeleted(user);
         if (balance == null)
         {
-            Deny(ent, user, "bank-atm-insufficient-funds");
+            if (!gone)
+                Deny(ent, user, "bank-atm-insufficient-funds");
+            return;
+        }
+
+        // Lost power or the user walked off while the bank was busy: no cash to hand out, so give the money back.
+        if (gone || !_ui.IsUiOpen(ent.Owner, BankAtmUiKey.Key, user))
+        {
+            await _bank.Deposit(account.Comp.UserId, account.Comp.Slot, amount, "ATM withdrawal refund");
             return;
         }
 
@@ -64,20 +86,14 @@ public sealed partial class BankAtmSystem : EntitySystem
         }
 
         _audio.PlayPvs(ent.Comp.ConfirmSound, ent);
+        ent.Comp.PrintingEnd = _timing.CurTime + ent.Comp.PrintDuration;
+        _appearance.SetData(ent, BankAtmVisuals.Printing, true);
         _popup.PopupEntity(Loc.GetString("bank-atm-withdrawn", ("amount", amount)), user, user);
-        UpdateUi(ent, user);
     }
 
     private void Deny(Entity<BankAtmComponent> ent, EntityUid user, string message)
     {
         _audio.PlayPvs(ent.Comp.ErrorSound, ent);
         _popup.PopupEntity(Loc.GetString(message), user, user);
-        UpdateUi(ent, user);
-    }
-
-    private void UpdateUi(Entity<BankAtmComponent> ent, EntityUid user)
-    {
-        var balance = TryComp<BankAccountComponent>(user, out var account) ? account.Balance : (int?) null;
-        _ui.SetUiState(ent.Owner, BankAtmUiKey.Key, new BankAtmState(balance));
     }
 }

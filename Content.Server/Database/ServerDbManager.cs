@@ -67,7 +67,7 @@ namespace Content.Server.Database
         /// Returns the new balance, or null if the slot doesn't exist or the balance would go negative.
         /// </summary>
         Task<int?> AddBankBalanceAsync(NetUserId userId, int slot, int amount, int startingBalance);
-        // End Floof Section - Bank
+        // Floof Section End - Bank
         #endregion
 
         #region User Ids
@@ -569,7 +569,7 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.AddBankBalanceAsync(userId, slot, amount, startingBalance));
         }
-        // End Floof Section - Bank
+        // Floof Section End - Bank
 
         public Task SaveAdminOOCColorAsync(NetUserId userId, Color color)
         {

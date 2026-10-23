@@ -1,4 +1,5 @@
 using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.Server._Floof.Bank;
 using Content.Server.GameTicking;
 using Content.Shared._Floof.Bank;
@@ -9,6 +10,7 @@ using Robust.Shared.GameObjects;
 namespace Content.IntegrationTests.Tests._Floof.Bank;
 
 [TestFixture]
+[TestOf(typeof(BankAtmSystem))]
 public sealed class BankAtmTests : GameTest
 {
     public override PoolSettings PoolSettings => new()
@@ -19,32 +21,34 @@ public sealed class BankAtmTests : GameTest
         InLobby = true,
     };
 
+    [SidedDependency(Side.Server)] private BankSystem _bank = default!;
+    [SidedDependency(Side.Server)] private ServerGameTicker _ticker = default!;
+    [SidedDependency(Side.Server)] private SharedUserInterfaceSystem _ui = default!;
+
     [Test]
+    [Description("Withdrawing zero, negative or uncovered amounts changes nothing; a valid withdrawal pays out cash.")]
     public async Task TestWithdrawInvalidAmounts()
     {
-        var pair = Pair;
-        var server = pair.Server;
-        var entMan = server.EntMan;
-        var ticker = server.System<ServerGameTicker>();
-        var bank = server.System<BankSystem>();
-        var user = pair.Client.User!.Value;
+        var user = Client.User!.Value;
 
-        await server.WaitPost(() =>
+        await Server.WaitPost(() =>
         {
-            ticker.ToggleReadyAll(true);
-            ticker.StartRound();
+            _ticker.ToggleReadyAll(true);
+            _ticker.StartRound();
         });
-        await pair.RunTicksSync(10);
-        Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound));
-        var player = pair.Player!.AttachedEntity!.Value;
+        await RunTicksSync(10);
+        Assert.That(_ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound));
+        var player = ServerSession!.AttachedEntity!.Value;
 
-        var atm = EntityUid.Invalid;
-        await server.WaitPost(() => atm = entMan.SpawnEntity("Atm", entMan.GetComponent<TransformComponent>(player).Coordinates));
+        var atm = await SpawnAtPosition("Atm", SComp<TransformComponent>(player).Coordinates);
+        // The client opens the window twice if the ATM arrives in the same state as the open UI.
+        await RunTicksSync(5);
+        await Server.WaitPost(() => _ui.OpenUi(atm, BankAtmUiKey.Key, player));
 
         int CashTotal()
         {
             var total = 0;
-            var query = entMan.EntityQueryEnumerator<StackComponent>();
+            var query = SEntMan.EntityQueryEnumerator<StackComponent>();
             while (query.MoveNext(out var stack))
             {
                 if (stack.StackTypeId == "Credit")
@@ -55,29 +59,30 @@ public sealed class BankAtmTests : GameTest
 
         async Task Withdraw(int amount)
         {
-            await server.WaitPost(() =>
-                entMan.EventBus.RaiseLocalEvent(atm, new BankAtmWithdrawMessage(amount) { Actor = player, UiKey = BankAtmUiKey.Key }));
-            await pair.RunTicksSync(10);
+            await Server.WaitPost(() =>
+                SEntMan.EventBus.RaiseLocalEvent(atm, new BankAtmWithdrawMessage(amount) { Actor = player, UiKey = BankAtmUiKey.Key }));
+            await RunTicksSync(10);
         }
 
-        var balance = await bank.GetBalance(user, 0);
+        var balance = await _bank.GetBalance(user, 0);
         Assert.That(balance, Is.Not.Null);
         var cash = 0;
-        await server.WaitPost(() => cash = CashTotal());
+        await Server.WaitPost(() => cash = CashTotal());
 
         foreach (var amount in new[] { 0, -1, -1000, int.MinValue, balance!.Value + 1, int.MaxValue })
         {
             await Withdraw(amount);
-            Assert.That(await bank.GetBalance(user, 0), Is.EqualTo(balance), $"withdrawing {amount} changed the balance");
-            await server.WaitPost(() => Assert.That(CashTotal(), Is.EqualTo(cash), $"withdrawing {amount} spawned cash"));
+            Assert.That(await _bank.GetBalance(user, 0), Is.EqualTo(balance), $"withdrawing {amount} changed the balance");
+            await Server.WaitPost(() => Assert.That(CashTotal(), Is.EqualTo(cash), $"withdrawing {amount} spawned cash"));
         }
 
         await Withdraw(100);
-        Assert.That(await bank.GetBalance(user, 0), Is.EqualTo(balance - 100));
-        await server.WaitPost(() =>
+        Assert.That(await _bank.GetBalance(user, 0), Is.EqualTo(balance - 100));
+        await Server.WaitPost(() =>
         {
             Assert.That(CashTotal(), Is.EqualTo(cash + 100));
-            Assert.That(entMan.GetComponent<BankAccountComponent>(player).Balance, Is.EqualTo(balance - 100));
+            Assert.That(_bank.TryGetAccount(player, out var account));
+            Assert.That(account.Comp.Balance, Is.EqualTo(balance - 100));
         });
     }
 }

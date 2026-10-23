@@ -1,4 +1,5 @@
 using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.Server._Floof.Bank;
 using Content.Server.Database;
 using Content.Shared.Preferences;
@@ -8,25 +9,27 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Log;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization.Manager;
-using Robust.UnitTesting;
 
 namespace Content.IntegrationTests.Tests._Floof.Bank;
 
 [TestFixture]
+[TestOf(typeof(ServerDbBase))]
 public sealed class BankDbTests : GameTest
 {
     private const int Start = 5000;
 
-    private static ServerDbSqlite GetDb(RobustIntegrationTest.ServerIntegrationInstance server)
+    [SidedDependency(Side.Server)] private IConfigurationManager _cfg = default!;
+    [SidedDependency(Side.Server)] private ILogManager _log = default!;
+    [SidedDependency(Side.Server)] private ISerializationManager _serialization = default!;
+
+    private ServerDbSqlite GetDb()
     {
-        var cfg = server.ResolveDependency<IConfigurationManager>();
-        var serialization = server.ResolveDependency<ISerializationManager>();
-        var opsLog = server.ResolveDependency<ILogManager>().GetSawmill("db.ops");
+        var opsLog = _log.GetSawmill("db.ops");
         var builder = new DbContextOptionsBuilder<SqliteServerDbContext>();
         var conn = new SqliteConnection("Data Source=:memory:");
         conn.Open();
         builder.UseSqlite(conn);
-        return new ServerDbSqlite(() => builder.Options, true, cfg, true, opsLog, serialization, false);
+        return new ServerDbSqlite(() => builder.Options, true, _cfg, true, opsLog, _serialization, false);
     }
 
     private static NetUserId NewUserId() => new(Guid.NewGuid());
@@ -34,7 +37,7 @@ public sealed class BankDbTests : GameTest
     [Test]
     public async Task TestBalancePerSlot()
     {
-        var db = GetDb(Pair.Server);
+        var db = GetDb();
         var user = NewUserId();
 
         Assert.That(await db.GetBankBalanceAsync(user, 0, Start), Is.Null, "no profile, no account");
@@ -55,7 +58,7 @@ public sealed class BankDbTests : GameTest
     [Test]
     public async Task TestProfileSaveKeepsBalance()
     {
-        var db = GetDb(Pair.Server);
+        var db = GetDb();
         var user = NewUserId();
         await db.InitPrefsAsync(user, new HumanoidCharacterProfile());
         await db.AddBankBalanceAsync(user, 0, 1000, Start);
@@ -68,7 +71,7 @@ public sealed class BankDbTests : GameTest
     [Test]
     public async Task TestDeleteSlotDeletesAccount()
     {
-        var db = GetDb(Pair.Server);
+        var db = GetDb();
         var user = NewUserId();
         await db.InitPrefsAsync(user, new HumanoidCharacterProfile());
         await db.SaveCharacterSlotAsync(user, new HumanoidCharacterProfile(), 1);
@@ -81,6 +84,7 @@ public sealed class BankDbTests : GameTest
         Assert.That(await db.GetBankBalanceAsync(user, 1, Start), Is.EqualTo(Start), "new character starts fresh");
     }
 
+    [TestOf(typeof(PaydaySystem))]
     [TestCase(6, 6, 1000)]
     [TestCase(4, 6, 1000)]
     [TestCase(3, 6, 500)]

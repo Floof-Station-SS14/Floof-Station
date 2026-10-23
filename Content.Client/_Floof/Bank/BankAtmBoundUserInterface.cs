@@ -12,12 +12,15 @@ public sealed class BankAtmBoundUserInterface(EntityUid owner, Enum uiKey) : Bou
         base.Open();
         _window = this.CreateWindow<BankAtmWindow>();
         _window.OnWithdraw += amount => SendMessage(new BankAtmWithdrawMessage(amount));
+        Update();
     }
 
-    protected override void UpdateState(BoundUserInterfaceState state)
+    /// <summary>
+    /// Shows the player's own balance, which only their client knows. The ATM never sends it, so nobody nearby sees it.
+    /// </summary>
+    public override void Update()
     {
-        base.UpdateState(state);
-        if (state is BankAtmState atm)
-            _window?.UpdateState(atm.Balance);
+        base.Update();
+        _window?.UpdateState(EntMan.System<BankAccountSystem>().GetLocalBalance());
     }
 }

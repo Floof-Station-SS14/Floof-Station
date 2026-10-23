@@ -4,13 +4,12 @@ using Robust.Shared.Network;
 namespace Content.Shared._Floof.Bank;
 
 /// <summary>
-/// Links a mob to its character's bank account and caches the balance for UIs. Only the owner gets the state.
+/// Links a character's mind to its bank account and caches the balance for UIs.
+/// Minds are only sent to their own player, so nobody else sees the balance.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class BankAccountComponent : Component
 {
-    public override bool SendOnlyToOwner => true;
-
     [DataField, AutoNetworkedField]
     public int Balance;
 

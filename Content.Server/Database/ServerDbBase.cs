@@ -236,7 +236,7 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
             return profile.BankAccount.Balance;
         }
-        // End Floof Section - Bank
+        // Floof Section End - Bank
 
         private static async Task SetSelectedCharacterSlotAsync(NetUserId userId, int newSlot, ServerDbContext db)
         {

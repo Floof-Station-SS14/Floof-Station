@@ -183,6 +183,7 @@ public sealed partial class LiveCharacterSystem : EntitySystem
         live.Slot = slot;
         _spawned.Add((user, slot));
         SendInRound(user);
+        RaiseTracked(body);
     }
 
     /// <summary>
@@ -215,11 +216,12 @@ public sealed partial class LiveCharacterSystem : EntitySystem
         }
 
         var mob = _spawning.SpawnPlayerMob(coords, null, profile, station);
-        if (tracked)
-            Track(mob, player.UserId, slot);
-
         if (_mind.TryGetMind(player, out var mindId, out var mind))
             _mind.TransferTo(mindId, mob, true, mind: mind);
+
+        // After the mind moved in, so the bank account can go on it.
+        if (tracked)
+            Track(mob, player.UserId, slot);
 
         return mob;
     }
@@ -323,6 +325,13 @@ public sealed partial class LiveCharacterSystem : EntitySystem
         live.Slot = original.Slot;
         RemComp<LiveCharacterComponent>(source);
         SendInRound(live.User);
+        RaiseTracked(uid);
+    }
+
+    private void RaiseTracked(EntityUid body)
+    {
+        var ev = new LiveCharacterTrackedEvent();
+        RaiseLocalEvent(body, ref ev);
     }
 
     /// <summary>

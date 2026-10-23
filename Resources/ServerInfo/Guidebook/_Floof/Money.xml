@@ -8,41 +8,39 @@
 
   ## Your Bank Account
 
-  Every character has [color=lightgreen]their own bank account[/color] that carries over from shift to shift. A new character starts with [color=lightgreen]$5000[/color].
+  Your character keeps their money between shifts. Whatever you have left at the end of a round is still there next time. New characters get $5000 to start with.
 
-  Each character slot has a separate account. Deleting a character deletes its account too.
+  Every character slot has its own account, so your other characters can't dip into it. If you delete a character, their account goes with them.
 
   ## Paydays
 
-  NanoTrasen pays the crew [color=lightgreen]every 30 minutes[/color] straight into their accounts. How much depends on your job, from $250 for passengers up to $1000 for the captain. Heads of staff earn the most, assistants and interns the least.
+  NT pays everyone at the same time, every 30 minutes. The amount depends on your job. A passenger gets $250, the captain gets $1000, and most jobs land somewhere in between.
 
-  Every 5 minutes NT checks whether you are actually working. You count as present when you are [color=lightgreen]in your body and alive or in crit[/color]. You count as missing when you are:
-  - dead
-  - ghosted, even if your body is still alive
-  - disconnected (SSD)
-  - not on the station yet, if you joined late
+  You don't get paid just for having joined the round, though. Every 5 minutes NT checks if you're actually around: in your own body and alive (crit still counts). Being dead, ghosted, SSD or not having arrived yet all count as missing, even if your body is perfectly fine.
 
-  Your pay depends on how many checks you missed since the last payday:
-  - [color=lightgreen]Full pay[/color] if you missed less than half of them.
-  - [color=yellow]Half pay[/color] if you missed half or more, but were present at least once.
-  - [color=palevioletred]Nothing[/color] if you were never present.
+  On payday it comes down to how many of those checks you were missing for:
+  - Less than half: [color=lightgreen]full pay[/color].
+  - Half or more: [color=yellow]half pay[/color].
+  - All of them: [color=palevioletred]nothing[/color].
 
-  ## Shift End Bonus
+  So popping out for a smoke break as a ghost is fine. Spending the whole half hour in the morgue isn't.
 
-  If your body reaches Central Command on the evacuation shuttle, you get a [color=lightgreen]shift end bonus of two paychecks[/color]. It follows the same full, half or nothing rule, counted over the whole shift.
+  ## Making It to CC
 
-  Dying on the way there does not cost you the bonus if you worked the rest of the shift. Staying behind on the station gets you nothing.
+  Get your body to Central Command on the evac shuttle and NT pays a bonus of two paychecks. The same rule applies, just counted over the whole shift instead of the last half hour.
+
+  It doesn't matter what state you arrive in. If you worked most of the shift and got killed on the shuttle, you still get the full bonus. Stay behind on the station and you get nothing.
 
   ## Your PDA
 
-  Your PDA shows your balance. Payments and the bonus also show up as a message on screen and in chat, but [color=lightgreen]only while you carry your own PDA[/color]. Lose it and you still get paid, you just won't be told.
+  Your PDA shows your balance. When you get paid, you'll also see a popup and a chat message, as long as you're carrying your own PDA. If you lose it you still get paid, you just won't hear about it.
 
-  A PDA always shows the balance of the person it was issued to. Whoever picks up your PDA can see how much money you have.
+  Keep in mind that a PDA always shows its owner's balance, no matter who's holding it. Anyone who picks up yours can see how much you've got.
 
   ## ATMs
 
-  ATMs let you [color=lightgreen]withdraw spesos as cash[/color] from your account. NT disabled the deposit slots, so once money is withdrawn it stays cash.
+  ATMs turn the money in your account into spesos you can hold. That only works one way, since NT welded the deposit slots shut. Once you take cash out, it stays cash.
 
-  Cash is a physical item like any other. It can be traded, lost or stolen, so only take out what you need.
+  Cash is just an item, so it can be handed over, dropped or pickpocketed. Only take out what you actually need.
 
 </Document>

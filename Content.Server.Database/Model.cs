@@ -94,7 +94,7 @@ namespace Content.Server.Database
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<BankAccount>()
                 .HasKey(b => b.ProfileId);
-            // End Floof Section - Bank
+            // Floof Section End - Bank
             // Floof Section - Persistence
             modelBuilder.Entity<Profile>()
                 .HasOne(p => p.LiveCharacter)
@@ -420,7 +420,7 @@ namespace Content.Server.Database
         public int Balance { get; set; }
         public Profile Profile { get; set; } = null!;
     }
-    // End Floof Section - Bank
+    // Floof Section End - Bank
     // Floof Section - Persistence
     public class LiveCharacter
     {

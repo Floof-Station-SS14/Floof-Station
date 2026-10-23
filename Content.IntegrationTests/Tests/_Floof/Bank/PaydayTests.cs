@@ -1,4 +1,5 @@
 using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.Server._Floof.Bank;
 using Content.Server.GameTicking;
 using Content.Shared._Floof.CCVars;
@@ -10,6 +11,7 @@ using Robust.Shared.Configuration;
 namespace Content.IntegrationTests.Tests._Floof.Bank;
 
 [TestFixture]
+[TestOf(typeof(PaydaySystem))]
 public sealed class PaydayTests : GameTest
 {
     public override PoolSettings PoolSettings => new()
@@ -20,46 +22,46 @@ public sealed class PaydayTests : GameTest
         InLobby = true,
     };
 
+    [SidedDependency(Side.Server)] private BankSystem _bank = default!;
+    [SidedDependency(Side.Server)] private IConfigurationManager _cfg = default!;
+    [SidedDependency(Side.Server)] private MobStateSystem _mobState = default!;
+    [SidedDependency(Side.Server)] private ServerGameTicker _ticker = default!;
+
     [Test]
+    [Description("Paydays pay only for time spent alive, and stop once the round has ended.")]
     public async Task TestPayday()
     {
-        var pair = Pair;
-        var server = pair.Server;
-        var ticker = server.System<ServerGameTicker>();
-        var bank = server.System<BankSystem>();
-        var mobState = server.System<MobStateSystem>();
-        var cfg = server.ResolveDependency<IConfigurationManager>();
-        var user = pair.Client.User!.Value;
-        var start = cfg.GetCVar(CCVars.BankStartingBalance);
+        var user = Client.User!.Value;
+        var start = _cfg.GetCVar(CCVars.BankStartingBalance);
 
-        await server.WaitPost(() =>
+        await OverrideCVar(Side.Server, CCVars.BankAliveCheckInterval, 1f);
+        await OverrideCVar(Side.Server, CCVars.BankChecksPerPayday, 2);
+        await Server.WaitPost(() =>
         {
-            cfg.SetCVar(CCVars.BankAliveCheckInterval, 1f);
-            cfg.SetCVar(CCVars.BankChecksPerPayday, 2);
-            ticker.ToggleReadyAll(true);
-            ticker.StartRound();
+            _ticker.ToggleReadyAll(true);
+            _ticker.StartRound();
         });
-        await pair.RunTicksSync(10);
-        Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound));
-        var player = pair.Player!.AttachedEntity!.Value;
+        await RunTicksSync(10);
+        Assert.That(_ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound));
+        var player = ServerSession!.AttachedEntity!.Value;
 
         // Alive for the whole shift: full pay.
-        await pair.RunSeconds(2.5f);
-        var balance = await bank.GetBalance(user, 0);
+        await RunSeconds(2.5f);
+        var balance = await _bank.GetBalance(user, 0);
         Assert.That(balance, Is.GreaterThan(start));
 
         // Dead for the whole shift: nothing.
-        await server.WaitPost(() => mobState.ChangeMobState(player, MobState.Dead));
-        await pair.RunSeconds(2f);
-        Assert.That(await bank.GetBalance(user, 0), Is.EqualTo(balance));
+        await Server.WaitPost(() => _mobState.ChangeMobState(player, MobState.Dead));
+        await RunSeconds(2f);
+        Assert.That(await _bank.GetBalance(user, 0), Is.EqualTo(balance));
 
         // Alive again, but the round has ended: no more paydays.
-        await server.WaitPost(() =>
+        await Server.WaitPost(() =>
         {
-            mobState.ChangeMobState(player, MobState.Alive);
-            ticker.EndRound();
+            _mobState.ChangeMobState(player, MobState.Alive);
+            _ticker.EndRound();
         });
-        await pair.RunSeconds(2.5f);
-        Assert.That(await bank.GetBalance(user, 0), Is.EqualTo(balance));
+        await RunSeconds(2.5f);
+        Assert.That(await _bank.GetBalance(user, 0), Is.EqualTo(balance));
     }
 }
