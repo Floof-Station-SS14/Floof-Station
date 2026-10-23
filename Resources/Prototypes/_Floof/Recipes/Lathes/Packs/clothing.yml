@@ -23,6 +23,19 @@
 #  - ClothingUncategorizedHarnessGray
 
 - type: latheRecipePack
+  id: WalletsFloofstation
+  recipes:
+  - ClothingWalletLeatherRed
+  - ClothingWalletLeatherBlue
+  - ClothingWalletLeatherGreen
+  - ClothingWalletLeatherMail
+  - ClothingWalletLeatherPirate
+  - ClothingWalletLeatherPrisoner
+  - ClothingWalletLeatherArcadia
+  - ClothingWalletLeatherPunk
+  - ClothingWalletLeatherLizard
+
+- type: latheRecipePack
   id: ArmWarmersRecipePack
   recipes:
   - CaptainArmWarmersRecipe
