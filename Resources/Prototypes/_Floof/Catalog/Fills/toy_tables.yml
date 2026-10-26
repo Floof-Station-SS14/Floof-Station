@@ -46,10 +46,16 @@
       children:
       - id: PlushieArachind
       - id: PlushieArachne
+      - id: PlushieChitinid
       - id: PlushieDiona
+      - id: PlushieFelinid
+      - id: PlushieFeroxi
+      - id: PlushieHarpy
       - id: PlushieHuman
       - id: PlushieIpc
       - id: PlushieKitsune
+      - id: PlushieOni
+      - id: PlushieRodentia
       - id: PlushieShadowkin
       - id: PlushieVox
       - id: PlushieVulp
