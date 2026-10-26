@@ -15,6 +15,7 @@ using Content.Shared.Humanoid.Markings;
 using Content.Shared.Preferences;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -36,6 +37,7 @@ public sealed partial class LiveCharacterSystem : EntitySystem
     [Dependency] private EmergencyShuttleSystem _emergencyShuttle = default!;
     [Dependency] private GameTicker _ticker = default!;
     [Dependency] private StationSpawningSystem _spawning = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
 
     /// <summary>
     ///     The only cloning that can take over a character: reviving a dead player.
@@ -254,6 +256,26 @@ public sealed partial class LiveCharacterSystem : EntitySystem
         }
 
         _spawned.Clear();
+    }
+
+    /// <summary>
+    ///     Saves a character leaving the round early through cryo, or discards its live version if the body is dead.
+    ///     The body stops being the character either way, so the slot can join again this round.
+    /// </summary>
+    public void LeaveRound(EntityUid body)
+    {
+        if (!TryComp<LiveCharacterComponent>(body, out var live))
+            return;
+
+        var user = live.User;
+        var slot = live.Slot;
+        _spawned.Remove((user, slot));
+        RemComp<LiveCharacterComponent>(body);
+
+        if (!_mobState.IsDead(body) && TryCreateRecord(body, out var record))
+            SaveCharacter(user, slot, record, _ticker.RoundId);
+        else
+            DiscardCharacter(user, slot);
     }
 
     /// <summary>

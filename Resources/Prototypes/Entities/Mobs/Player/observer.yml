@@ -120,6 +120,7 @@
   parent: MobObserverBase
   id: MobObserver
   components:
+  - type: GhostRespawn # Floof - Ghost respawn
   - type: Spectral
   - type: Tag
     tags:

@@ -1,6 +1,8 @@
 using System.Globalization;
 using Content.Server._DEN.Bed.Cryostorage.Components;
+using Content.Server._Floof.Persistence; // Floof - Persistence
 using Content.Server.Chat.Managers;
+using Content.Server.GameTicking; // Floof - Persistence
 using Content.Server.Ghost;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Systems;
@@ -50,6 +52,8 @@ public sealed partial class CryostorageSystem : SharedCryostorageSystem
     [Dependency] private StationRecordsSystem _stationRecords = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private ServerGameTicker _ticker = default!; // Floof - Persistence
+    [Dependency] private LiveCharacterSystem _liveCharacter = default!; // Floof - Persistence
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -209,10 +213,17 @@ public sealed partial class CryostorageSystem : SharedCryostorageSystem
 
         if (!CryoSleepRejoiningEnabled || !comp.AllowReEnteringBody)
         {
+            _liveCharacter.LeaveRound(ent); // Floof - Persistence
+
             if (userId != null && Mind.TryGetMind(userId.Value, out var mind) &&
                 HasComp<CryostorageContainedComponent>(mind.Value.Comp.CurrentEntity))
             {
-                _ghostSystem.OnGhostAttempt(mind.Value, false);
+                // Floof Section - Persistence
+                if (_playerManager.TryGetSessionById(userId.Value, out var session) && session.Status == SessionStatus.InGame)
+                    _ticker.Respawn(session);
+                else
+                    _ghostSystem.OnGhostAttempt(mind.Value, false);
+                // Floof Section End
             }
         }
 
@@ -309,6 +320,8 @@ public sealed partial class CryostorageSystem : SharedCryostorageSystem
             : "cryostorage-insert-message-permanent";
 
         var msg = Loc.GetString(locKey, ("time", comp.GracePeriod.TotalMinutes));
+        if (!CryoSleepRejoiningEnabled) // Floof - Persistence
+            msg = Loc.GetString("cryostorage-insert-message-floof", ("time", comp.GracePeriod.TotalSeconds));
         if (TryComp<ActorComponent>(args.Entity, out var actor))
             _chatManager.ChatMessageToOne(ChatChannel.Server, msg, msg, uid, false, actor.PlayerSession.Channel);
     }

@@ -15,4 +15,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<int> LiveCharacterHistoryDays =
         CVarDef.Create("persistence.history_days", 30, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Seconds after death until a ghost can respawn from the ghost menu.
+    /// </summary>
+    public static readonly CVarDef<float> GhostRespawnTime =
+        CVarDef.Create("persistence.ghost_respawn_time", 300f, CVar.SERVERONLY);
 }
