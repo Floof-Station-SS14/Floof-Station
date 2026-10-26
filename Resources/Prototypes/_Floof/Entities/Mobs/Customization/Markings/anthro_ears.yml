@@ -66,3 +66,21 @@
   - sprite: _Floof/Mobs/Customization/skyratears.rsi
     state: m_horns_virtuasaur
 
+- type: marking
+  id: EarsRaccoon
+  bodyPart: HeadTop
+  sprites:
+  - sprite: _Floof/Mobs/Customization/skyratears.rsi
+    state: ears_raccoon_primary
+  - sprite: _Floof/Mobs/Customization/skyratears.rsi
+    state: ears_raccoon_secondary
+
+- type: marking
+  id: EarsSquirrel
+  bodyPart: HeadTop
+  sprites:
+  - sprite: _Floof/Mobs/Customization/skyratears.rsi
+    state: ears_squirrel_primary
+  - sprite: _Floof/Mobs/Customization/skyratears.rsi
+    state: ears_squirrel_secondary
+

@@ -11,9 +11,12 @@
     maxItemSize: Small
     blacklist:
       components:
-      - Sharp
       - MindContainer
       - NukeDisk
+      # Floof Section - Sharp component removed upstream
+      tags:
+      - Knife
+      # Floof Section End
   - type: ContainerContainer
     containers:
       storagebase: !type:Container

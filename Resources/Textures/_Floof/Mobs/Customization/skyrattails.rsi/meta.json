@@ -6672,6 +6672,18 @@
     {
       "name": "m_tail_reptileslim_BEHIND",
       "directions": 4
+    },
+    {
+      "name": "tail_raccoon_primary",
+      "directions": 4
+    },
+    {
+      "name": "tail_raccoon_secondary",
+      "directions": 4
+    },
+    {
+      "name": "tail_squirrel",
+      "directions": 4
     }
   ]
 }

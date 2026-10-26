@@ -116,10 +116,7 @@
   - type: TypingIndicator
     proto: rodentia
   - type: Vocal
-    sounds:
-      Male: MaleRodentia
-      Female: FemaleRodentia
-      Unsexed: MaleRodentia
+    emoteSounds: MaleRodentia # Floof - Newer Vocal API, sexed sounds are on the species
   - type: Rummager
   - type: AlwaysTriggerMousetrap
   - type: PseudoItem
