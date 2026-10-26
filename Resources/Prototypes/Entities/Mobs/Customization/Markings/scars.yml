@@ -1,7 +1,7 @@
 - type: marking
   id: ScarEyeRight
   bodyPart: Head
-  groupWhitelist: [Human]
+  groupWhitelist: [Human, Rodentia] # DeltaV - Rodentia
   sprites:
   - sprite: Mobs/Customization/scars.rsi
     state: scar_eye_right
@@ -14,7 +14,7 @@
 - type: marking
   id: ScarEyeLeft
   bodyPart: Head
-  groupWhitelist: [Human]
+  groupWhitelist: [Human, Rodentia] # DeltaV - Rodentia
   sprites:
   - sprite: Mobs/Customization/scars.rsi
     state: scar_eye_left

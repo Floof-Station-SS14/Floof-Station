@@ -16,9 +16,12 @@
     <GuideEntityEmbed Entity="AppearanceReptilian" Caption="Reptilian"/>
   </Box>
   <Box>
+    <GuideEntityEmbed Entity="AppearanceRodentia" Caption="Rodentia"/>
     <GuideEntityEmbed Entity="AppearanceShadekin" Caption="Shadekin"/>
     <GuideEntityEmbed Entity="AppearanceSlimePerson" Caption="Slime Person"/>
     <GuideEntityEmbed Entity="AppearanceVox" Caption="Vox"/>
+  </Box>
+  <Box>
     <GuideEntityEmbed Entity="AppearanceVulpkanin" Caption="Vulpkanin"/>
   </Box>
 
