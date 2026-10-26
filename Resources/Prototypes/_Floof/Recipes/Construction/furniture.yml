@@ -18,3 +18,10 @@
   targetNode: sleepingbag
   category: construction-category-furniture
   objectType: Item
+
+- type: construction
+  parent: BaseBed
+  id: DoubleBed
+  graph: DoubleBed
+  targetNode: doublebed
+  canRotate: true
