@@ -1,21 +1,16 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 BeeRobynn <166929042+BeeRobynn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 BeeRobynn <robynthewarcrime@proton.me>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 smudge <138918973+Cerise-Cattowo@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
+using Content.Shared.Speech; // Floof - API
+using Content.Shared.Speech.EntitySystems; // Floof - API
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class CheeseAccentSystem : EntitySystem
+public sealed partial class CheeseAccentSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     public override void Initialize()
     {
@@ -23,11 +18,11 @@ public sealed class CheeseAccentSystem : EntitySystem
         SubscribeLocalEvent<CheeseAccentComponent, AccentGetEvent>(OnAccent);
     }
 
-    private void OnAccent(EntityUid uid, CheeseAccentComponent component, AccentGetEvent args)
+    private void OnAccent(EntityUid uid, CheeseAccentComponent component, ref AccentGetEvent args) // Floof - API
     {
         var message = args.Message;
 
-        message = _replacement.ApplyReplacements(message, "Cheese");
+        message = _replacement.ApplyReplacements(message, "cheese"); // Floof - Goob #3533 id fix
 
         // Sanitize capital again, in case we substituted a word that should be capitalized
         message = message[0].ToString().ToUpper() + message.Remove(0, 1);

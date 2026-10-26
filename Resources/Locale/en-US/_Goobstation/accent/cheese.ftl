@@ -48,3 +48,8 @@ accent-cheese-words-replace-16 = gouda-bye
 
 accent-cheese-words-17 = cya
 accent-cheese-words-replace-17 = gouda-bye
+
+# Floof Section - More cheese
+accent-cheese-words-18 = good
+accent-cheese-words-replace-18 = gouda
+# Floof Section End

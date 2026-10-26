@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2025 BeeRobynn <166929042+BeeRobynn@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BeeRobynn <robynthewarcrime@proton.me>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: accent
@@ -23,3 +19,6 @@
     accent-cheese-words-14: accent-cheese-words-replace-14
     accent-cheese-words-15: accent-cheese-words-replace-15
     accent-cheese-words-16: accent-cheese-words-replace-16
+    # Floof Section - More cheese
+    accent-cheese-words-18: accent-cheese-words-replace-18
+    # Floof Section End
