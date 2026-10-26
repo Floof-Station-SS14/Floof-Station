@@ -668,3 +668,72 @@ Entries:
   id: 85
   time: '2026-10-26T13:33:42.0000000+00:00'
   url: https://github.com/Floof-Station-SS14/Floof-Station/pull/309
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added the Yes ERP poster, replacing the No ERP poster on all maps!
+  id: 86
+  time: '2026-10-26T13:40:00.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/278
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Ported item offering, press O to hand items directly to other players.
+  id: 87
+  time: '2026-10-26T13:40:01.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/287
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added a species tab to the character editor with an overview of each species.
+  id: 88
+  time: '2026-10-26T13:40:02.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/288
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added persistent characters! Reach CentComm on the evac shuttle and your character carries over to the next round.
+    - type: Add
+      message: The lobby now shows your live character, and you can discard it to start fresh from your template.
+  id: 89
+  time: '2026-10-26T13:40:03.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/289
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added Green, Yellow and Red danger levels, which decide how many antags and threats show up in a round.
+    - type: Tweak
+      message: Antag numbers now scale with the player count.
+  id: 90
+  time: '2026-10-26T13:40:04.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/291
+- author: Pachat-Kas
+  changes:
+    - type: Tweak
+      message: Characters can now be made wider in the character editor.
+  id: 91
+  time: '2026-10-26T13:40:05.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/295
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Added a respawn button for ghosts, usable 5 minutes after death.
+    - type: Tweak
+      message: Cryo now takes 30 seconds, saves your character and sends you back to the lobby.
+  id: 92
+  time: '2026-10-26T13:40:06.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/305
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Ported Rodentia from DeltaV, along with the Cheesy puns trait. They can stash items in their cheeks!
+  id: 93
+  time: '2026-10-26T13:40:07.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/306
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Species plushies now show up in presents, toy spawners and the prize counter.
+  id: 94
+  time: '2026-10-26T13:40:08.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/307
