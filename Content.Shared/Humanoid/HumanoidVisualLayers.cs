@@ -44,7 +44,13 @@ namespace Content.Shared.Humanoid
         Penis,
         PenisBehind,
         Vagina,
-        VaginaBehind // This one is currently unused but adding it anyway for future support.
-        
+        VaginaBehind, // This one is currently unused but adding it anyway for future support.
+
+        // Floof Section - marking layering
+        TailBehind, // behind the body
+        TailBehindBackpack, // over outer clothing, under the backpack
+        TailOversuit, // over the backpack
+        // Floof Section End
+
     }
 }

@@ -4,12 +4,14 @@
   components:
   - type: Sprite
     layers:
-    # Genitals Behind - Floof
+    # Floof Section - behind layers
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ]
     - map: [ "enum.HumanoidVisualLayers.PenisBehind" ]
     - map: [ "enum.HumanoidVisualLayers.TesticlesBehind" ]
     - map: [ "enum.HumanoidVisualLayers.VaginaBehind" ]
     - map: [ "enum.HumanoidVisualLayers.BreastsBehind" ]
-                
+    # Floof Section End
+
     # Torso
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
 
@@ -60,7 +62,9 @@
     - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
+    - map: [ "enum.HumanoidVisualLayers.TailBehindBackpack" ] # Floof - marking layering
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ] # Floof - marking layering
     - map: [ "neck" ]
     - map: [ "suitstorage" ]
 

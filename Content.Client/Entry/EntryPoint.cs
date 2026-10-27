@@ -86,6 +86,9 @@ namespace Content.Client.Entry
         {
             ClientContentIoC.Register(Dependencies);
 
+            // Floof - power-of-two atlas, the 12288 default makes sprite layers jitter by a pixel
+            Dependencies.Resolve<IConfigurationManager>().OverrideDefault(CVars.ResRSIAtlasSize, 8192);
+
             foreach (var callback in TestingCallbacks)
             {
                 var cast = (ClientModuleTestingCallbacks) callback;
