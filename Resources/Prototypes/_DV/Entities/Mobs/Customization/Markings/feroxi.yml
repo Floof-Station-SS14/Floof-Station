@@ -340,7 +340,15 @@
   bodyPart: Tail
   sprites:
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
-    state: feroxi-tail-wagging
+    state: feroxi-tail-wagging_front3
+  - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
+    state: feroxi-tail-wagging_front3_behind
+    layer: TailBehindBackpack
+    colorFrom: feroxi-tail-wagging_front3
+  - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
+    state: feroxi-tail-wagging_behind3
+    layer: TailBehind
+    colorFrom: feroxi-tail-wagging_front3
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
     state: feroxi-tail-stripes-wagging
 
@@ -349,7 +357,15 @@
   bodyPart: Tail
   sprites:
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
-    state: feroxi-tail-wagging
+    state: feroxi-tail-wagging_front
+  - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
+    state: feroxi-tail-wagging_front_behind
+    layer: TailBehindBackpack
+    colorFrom: feroxi-tail-wagging_front
+  - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
+    state: feroxi-tail-wagging_behind
+    layer: TailBehind
+    colorFrom: feroxi-tail-wagging_front
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
     state: feroxi-tail-stripes-wagging
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
@@ -457,7 +473,15 @@
   bodyPart: Tail
   sprites:
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
-    state: feroxi-tail-wagging
+    state: feroxi-tail-wagging_front4
+  - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
+    state: feroxi-tail-wagging_front4_behind
+    layer: TailBehindBackpack
+    colorFrom: feroxi-tail-wagging_front4
+  - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
+    state: feroxi-tail-wagging_behind4
+    layer: TailBehind
+    colorFrom: feroxi-tail-wagging_front4
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
     state: feroxi-tail-stripes-wagging
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
@@ -472,7 +496,15 @@
   bodyPart: Tail
   sprites:
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
-    state: feroxi-tail-wagging
+    state: feroxi-tail-wagging_front2
+  - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
+    state: feroxi-tail-wagging_front2_behind
+    layer: TailBehindBackpack
+    colorFrom: feroxi-tail-wagging_front2
+  - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
+    state: feroxi-tail-wagging_behind2
+    layer: TailBehind
+    colorFrom: feroxi-tail-wagging_front2
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi
     state: feroxi-tail-top-tip-wagging
   - sprite: _DV/Mobs/Customization/Feroxi/tail_markings.rsi

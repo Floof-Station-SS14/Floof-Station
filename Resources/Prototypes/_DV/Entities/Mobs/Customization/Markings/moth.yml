@@ -10,6 +10,10 @@
   sprites:
   - sprite: _DV/Mobs/Customization/Moth/moth_wings.rsi
     state: selene
+  - sprite: _DV/Mobs/Customization/Moth/moth_wings.rsi
+    state: selene_behind
+    layer: TailBehind
+    colorFrom: selene
 
 - type: marking
   id: MothWingsSelene

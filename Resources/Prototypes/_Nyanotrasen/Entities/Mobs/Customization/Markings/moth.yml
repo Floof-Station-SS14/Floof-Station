@@ -296,6 +296,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: aspen
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: aspen_behind
+    layer: TailBehind
+    colorFrom: aspen
 
 - type: marking
   id: MothWingsClassicAtlas
@@ -309,6 +313,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: atlas
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: atlas_behind
+    layer: TailBehind
+    colorFrom: atlas
 
 - type: marking
   id: MothWingsClassicBrown
@@ -322,6 +330,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: brown
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: brown_behind
+    layer: TailBehind
+    colorFrom: brown
 
 - type: marking
   id: MothWingsClassicDeathshead
@@ -335,6 +347,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: deathshead
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: deathshead_behind
+    layer: TailBehind
+    colorFrom: deathshead
 
 - type: marking
   id: MothWingsClassicFeathery
@@ -348,6 +364,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: feathery
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: feathery_behind
+    layer: TailBehind
+    colorFrom: feathery
 
 - type: marking
   id: MothWingsClassicFirewatch
@@ -361,6 +381,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: firewatch
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: firewatch_behind
+    layer: TailBehind
+    colorFrom: firewatch
 
 - type: marking
   id: MothWingsClassicGothic
@@ -374,6 +398,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: gothic
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: gothic_behind
+    layer: TailBehind
+    colorFrom: gothic
 
 - type: marking
   id: MothWingsClassicJungle
@@ -387,6 +415,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: jungle
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: jungle_behind
+    layer: TailBehind
+    colorFrom: jungle
 
 - type: marking
   id: MothWingsClassicLovers
@@ -400,6 +432,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: lovers
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: lovers_behind
+    layer: TailBehind
+    colorFrom: lovers
 
 - type: marking
   id: MothWingsClassicLuna
@@ -413,6 +449,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: luna
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: luna_behind
+    layer: TailBehind
+    colorFrom: luna
 
 - type: marking
   id: MothWingsClassicMint
@@ -426,6 +466,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: mint
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: mint_behind
+    layer: TailBehind
+    colorFrom: mint
 
 - type: marking
   id: MothWingsClassicMoffra
@@ -439,6 +483,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: moffra
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: moffra_behind
+    layer: TailBehind
+    colorFrom: moffra
 
 - type: marking
   id: MothWingsClassicMonarch
@@ -452,6 +500,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: monarch
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: monarch_behind
+    layer: TailBehind
+    colorFrom: monarch
 
 - type: marking
   id: MothWingsClassicMoonfly
@@ -465,6 +517,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: moonfly
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: moonfly_behind
+    layer: TailBehind
+    colorFrom: moonfly
 
 - type: marking
   id: MothWingsClassicOakworm
@@ -478,6 +534,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: oakworm
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: oakworm_behind
+    layer: TailBehind
+    colorFrom: oakworm
 
 - type: marking
   id: MothWingsClassicPlain
@@ -491,6 +551,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: plain
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: plain_behind
+    layer: TailBehind
+    colorFrom: plain
 
 - type: marking
   id: MothWingsClassicPlasmafire
@@ -504,6 +568,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: plasmafire
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: plasmafire_behind
+    layer: TailBehind
+    colorFrom: plasmafire
 
 - type: marking
   id: MothWingsClassicPoison
@@ -517,6 +585,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: poison
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: poison_behind
+    layer: TailBehind
+    colorFrom: poison
 
 - type: marking
   id: MothWingsClassicRagged
@@ -530,6 +602,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: ragged
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: ragged_behind
+    layer: TailBehind
+    colorFrom: ragged
 
 - type: marking
   id: MothWingsClassicReddish
@@ -543,6 +619,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: reddish
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: reddish_behind
+    layer: TailBehind
+    colorFrom: reddish
 
 - type: marking
   id: MothWingsClassicRosy
@@ -556,6 +636,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: rosy
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: rosy_behind
+    layer: TailBehind
+    colorFrom: rosy
 
 - type: marking
   id: MothWingsClassicRoyal
@@ -569,6 +653,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: royal
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: royal_behind
+    layer: TailBehind
+    colorFrom: royal
 
 - type: marking
   id: MothWingsClassicSnow
@@ -582,6 +670,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: snow
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: snow_behind
+    layer: TailBehind
+    colorFrom: snow
 
 - type: marking
   id: MothWingsClassicWhitefly
@@ -595,6 +687,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: whitefly
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: whitefly_behind
+    layer: TailBehind
+    colorFrom: whitefly
 
 - type: marking
   id: MothWingsClassicWitchking
@@ -608,6 +704,10 @@
   sprites:
   - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
     state: witchking
+  - sprite: Nyanotrasen/Mobs/Customization/Moth/moth_wings.rsi
+    state: witchking_behind
+    layer: TailBehind
+    colorFrom: witchking
 
 - type: marking
   id: MothHeadClassicDeathshead

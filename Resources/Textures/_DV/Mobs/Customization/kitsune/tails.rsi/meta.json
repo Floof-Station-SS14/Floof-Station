@@ -12,11 +12,19 @@
             "directions": 4
         },
         {
+            "name": "kitsune_primary_behind",
+            "directions": 4
+        },
+        {
             "name": "kitsune_secondary",
             "directions": 4
         },
         {
             "name": "foxninetailstone1",
+            "directions": 4
+        },
+        {
+            "name": "foxninetailstone1_behind",
             "directions": 4
         },
         {
@@ -28,11 +36,19 @@
             "directions": 4
         },
         {
+            "name": "foxthreetailstone1_behind",
+            "directions": 4
+        },
+        {
             "name": "foxthreetailstone2",
             "directions": 4
         },
         {
             "name": "foxtwotailstone1",
+            "directions": 4
+        },
+        {
+            "name": "foxtwotailstone1_behind",
             "directions": 4
         },
         {

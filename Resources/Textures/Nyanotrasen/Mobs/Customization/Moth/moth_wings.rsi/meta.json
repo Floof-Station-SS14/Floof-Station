@@ -12,7 +12,15 @@
      "directions": 4
     },
     {
+     "name": "plain_behind",
+     "directions": 4
+    },
+    {
      "name": "atlas",
+     "directions": 4
+    },
+    {
+     "name": "atlas_behind",
      "directions": 4
     },
     {
@@ -20,7 +28,15 @@
      "directions": 4
     },
     {
+     "name": "luna_behind",
+     "directions": 4
+    },
+    {
      "name": "monarch",
+     "directions": 4
+    },
+    {
+     "name": "monarch_behind",
      "directions": 4
     },
     {
@@ -28,7 +44,15 @@
       "directions": 4
     },
     {
+      "name": "reddish_behind",
+      "directions": 4
+    },
+    {
       "name": "royal",
+      "directions": 4
+    },
+    {
+      "name": "royal_behind",
       "directions": 4
     },
     {
@@ -36,7 +60,15 @@
       "directions": 4
     },
     {
+      "name": "gothic_behind",
+      "directions": 4
+    },
+    {
       "name": "lovers",
+      "directions": 4
+    },
+    {
+      "name": "lovers_behind",
       "directions": 4
     },
     {
@@ -44,7 +76,15 @@
       "directions": 4
     },
     {
+      "name": "whitefly_behind",
+      "directions": 4
+    },
+    {
       "name": "firewatch",
+      "directions": 4
+    },
+    {
+      "name": "firewatch_behind",
       "directions": 4
     },
     {
@@ -52,7 +92,15 @@
       "directions": 4
     },
     {
+      "name": "deathshead_behind",
+      "directions": 4
+    },
+    {
       "name": "poison",
+      "directions": 4
+    },
+    {
+      "name": "poison_behind",
       "directions": 4
     },
     {
@@ -60,7 +108,15 @@
       "directions": 4
     },
     {
+      "name": "ragged_behind",
+      "directions": 4
+    },
+    {
       "name": "moonfly",
+      "directions": 4
+    },
+    {
+      "name": "moonfly_behind",
       "directions": 4
     },
     {
@@ -68,7 +124,15 @@
       "directions": 4
     },
     {
+      "name": "snow_behind",
+      "directions": 4
+    },
+    {
       "name": "oakworm",
+      "directions": 4
+    },
+    {
+      "name": "oakworm_behind",
       "directions": 4
     },
     {
@@ -76,7 +140,15 @@
       "directions": 4
     },
     {
+      "name": "witchking_behind",
+      "directions": 4
+    },
+    {
       "name": "jungle",
+      "directions": 4
+    },
+    {
+      "name": "jungle_behind",
       "directions": 4
     },
     {
@@ -84,7 +156,15 @@
       "directions": 4
     },
     {
+      "name": "rosy_behind",
+      "directions": 4
+    },
+    {
       "name": "feathery",
+      "directions": 4
+    },
+    {
+      "name": "feathery_behind",
       "directions": 4
     },
     {
@@ -92,7 +172,15 @@
       "directions": 4
     },
     {
+      "name": "brown_behind",
+      "directions": 4
+    },
+    {
       "name": "plasmafire",
+      "directions": 4
+    },
+    {
+      "name": "plasmafire_behind",
       "directions": 4
     },
     {
@@ -100,11 +188,23 @@
       "directions": 4
     },
     {
+      "name": "moffra_behind",
+      "directions": 4
+    },
+    {
       "name": "aspen",
       "directions": 4
     },
     {
+      "name": "aspen_behind",
+      "directions": 4
+    },
+    {
       "name": "mint",
+      "directions": 4
+    },
+    {
+      "name": "mint_behind",
       "directions": 4
     }
   ]
