@@ -165,17 +165,3 @@
     - sprite: DeltaV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: corgi_wag
 
-- type: marking
-  id: VulpTailDalmatian
-  bodyPart: Tail
-  sprites:
-    - sprite: DeltaV/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: dalmatian
-
-- type: marking
-  id: VulpTailDalmatianAnimated
-  bodyPart: Tail
-  sprites:
-    - sprite: DeltaV/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: dalmatian_wag
-

@@ -129,13 +129,6 @@
       state: bushfluff_wag
 
 - type: marking
-  id: VulpTailCoyoteWag
-  bodyPart: Tail
-  sprites:
-    - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: coyote_wag
-
-- type: marking
   id: VulpTailCorgiWag
   bodyPart: Tail
   sprites:
@@ -171,13 +164,6 @@
   sprites:
     - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
       state: otie
-
-- type: marking
-  id: VulpTailDalmatianWag
-  bodyPart: Tail
-  sprites:
-    - sprite: _DV/Mobs/Customization/Vulpkanin/tail_markings.rsi
-      state: dalmatian_wag
 
 - type: marking
   id: VulpBellyFullF

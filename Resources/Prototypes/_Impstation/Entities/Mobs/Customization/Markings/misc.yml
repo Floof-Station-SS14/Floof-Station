@@ -472,14 +472,6 @@
     state: voxchestplumage
 
 - type: marking
-  id: VoxFootSpines
-  bodyPart: Tail
-  forcedColoring: false
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxfootspines
-
-- type: marking
   id: VoxFootGradientLFoot
   bodyPart: LFoot
   forcedColoring: false
@@ -548,55 +540,12 @@
     state: voxheadgradient3
 
 - type: marking
-  id: VoxTailBell
-  bodyPart: Tail
-  forcedColoring: false
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxtailbell1
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxtailbell2
-
-- type: marking
-  id: VoxTailBack
-  bodyPart: Tail
-  forcedColoring: true
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxtailcolorable
-
-- type: marking
-  id: VoxTailLantern
-  bodyPart: Tail
-  forcedColoring: false
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxtaillantern
-    shader: unshaded
-
-- type: marking
   id: VoxTailSingleStripe
   bodyPart: Chest
   forcedColoring: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
     state: voxtailsinglestripe
-
-- type: marking
-  id: VoxTailSmallPlume
-  bodyPart: Tail
-  forcedColoring: false
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxtailsmallplume
-
-- type: marking
-  id: VoxTailSpines
-  bodyPart: Tail
-  forcedColoring: false
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxtailspines
 
 - type: marking
   id: VoxArmsStripesLHand
@@ -629,22 +578,6 @@
   sprites:
   - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
     state: voxlegsstripesr
-
-- type: marking
-  id: VoxChains
-  bodyPart: Tail
-  forcedColoring: false
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxchains
-
-- type: marking
-  id: VoxSunAndMoon
-  bodyPart: Tail
-  forcedColoring: false
-  sprites:
-  - sprite: _Impstation/Mobs/Customization/markingsbundle1.rsi
-    state: voxsunandmoon
 
 - type: marking
   id: VoxCheeks
