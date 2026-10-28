@@ -115,6 +115,10 @@
     {
       "name": "creepy",
       "directions": 4
+    },
+    {
+      "name": "creepy_behind",
+      "directions": 4
     }
   ]
 }

@@ -84,6 +84,10 @@
             "directions": 4
         },
         {
+            "name": "tail_avali_primary_behind",
+            "directions": 4
+        },
+        {
             "name": "tail_avali_secondary",
             "directions": 4
         },

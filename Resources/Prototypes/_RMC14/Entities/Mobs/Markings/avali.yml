@@ -293,9 +293,17 @@
   bodyPart: Tail
   sprites:
   - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi # DeltaV - Using Starlight Avali sprites
-    state: tail_avalibase
+    state: tail_avalibase_front3
+  - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi
+    state: tail_avalibase_behind3
+    layer: TailBehind
+    colorFrom: tail_avalibase_front3
   - sprite: _Starlight/Mobs/Customization/Avali/avali_trim_one.rsi # DeltaV - Using Starlight Avali sprites
     state: tail_avali_primary
+  - sprite: _Starlight/Mobs/Customization/Avali/avali_trim_one.rsi
+    state: tail_avali_primary_behind
+    layer: TailBehind
+    colorFrom: tail_avali_primary
   - sprite: _Starlight/Mobs/Customization/Avali/avali_trim_one.rsi # DeltaV - Using Starlight Avali sprites
     state: tail_avali_secondary
 
@@ -376,8 +384,16 @@
   sprites:
   - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi # DeltaV - Using Starlight Avali sprites
     state: tail_avalibase
+  - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi
+    state: tail_avalibase_behind4
+    layer: TailBehind
+    colorFrom: tail_avalibase
   - sprite: _Starlight/Mobs/Customization/Avali/avali_trim_two.rsi # DeltaV - Using Starlight Avali sprites
     state: tail_avali_primary
+  - sprite: _Starlight/Mobs/Customization/Avali/avali_trim_two.rsi
+    state: tail_avali_primary_behind
+    layer: TailBehind
+    colorFrom: tail_avali_primary
   - sprite: _Starlight/Mobs/Customization/Avali/avali_trim_two.rsi # DeltaV - Using Starlight Avali sprites
     state: tail_avali_secondary
 

@@ -20,6 +20,18 @@
             "directions": 4
         },
         {
+            "name": "tail_avalibase_behind4",
+            "directions": 4
+        },
+        {
+            "name": "tail_avalibase_front3",
+            "directions": 4
+        },
+        {
+            "name": "tail_avalibase_behind3",
+            "directions": 4
+        },
+        {
             "name": "tail_avalibase_front2",
             "directions": 4
         },
