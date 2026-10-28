@@ -72,7 +72,15 @@
   - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
     state: widow1
   - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
+    state: widow1_behind
+    layer: TailBehindBackpack
+    colorFrom: widow1
+  - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
     state: widow2
+  - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
+    state: widow2_behind
+    layer: TailBehindBackpack
+    colorFrom: widow2
 
 - type: marking
   id: ScarTalons

@@ -101,7 +101,15 @@
       "directions": 4
     },
     {
+      "name": "widow1_behind",
+      "directions": 4
+    },
+    {
       "name": "widow2",
+      "directions": 4
+    },
+    {
+      "name": "widow2_behind",
       "directions": 4
     },
     {
