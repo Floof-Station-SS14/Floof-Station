@@ -798,6 +798,10 @@
       "directions": 4
     },
     {
+      "name": "body_backspikes_behind",
+      "directions": 4
+    },
+    {
       "name": "body_fin",
       "directions": 4
     },

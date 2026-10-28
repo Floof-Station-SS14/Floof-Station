@@ -349,6 +349,10 @@
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: body_backspikes
+  - sprite: Mobs/Customization/reptilian_parts.rsi
+    state: body_backspikes_behind
+    layer: TailBehindBackpack
+    colorFrom: body_backspikes
 
 - type: marking
   id: LizardChestFin
