@@ -22,6 +22,10 @@
   - sprite: _DV/Mobs/Customization/Moth/moth_wings.rsi
     state: selene_primary
   - sprite: _DV/Mobs/Customization/Moth/moth_wings.rsi
+    state: selene_primary_behind
+    layer: TailBehind
+    colorFrom: selene_primary
+  - sprite: _DV/Mobs/Customization/Moth/moth_wings.rsi
     state: selene_secondary
   - sprite: _DV/Mobs/Customization/Moth/moth_wings.rsi
     state: selene_tertiary

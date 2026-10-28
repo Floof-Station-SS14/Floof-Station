@@ -20,6 +20,10 @@
             "directions": 4
         },
         {
+            "name": "selene_primary_behind",
+            "directions": 4
+        },
+        {
             "name": "selene_secondary",
             "directions": 4
         },
