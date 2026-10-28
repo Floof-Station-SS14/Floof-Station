@@ -121,6 +121,10 @@
     state: tail_smooth_primary
   - sprite: Mobs/Customization/reptilian_parts.rsi
     state: tail_smooth_secondary
+  - sprite: Mobs/Customization/reptilian_parts.rsi
+    state: tail_smooth_secondary_behind
+    layer: TailBehind
+    colorFrom: tail_smooth_secondary
 
 - type: marking
   id: LizardTailLarge

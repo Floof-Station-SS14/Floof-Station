@@ -33,7 +33,15 @@
       "directions": 4
     },
     {
+      "name": "abdomenbasic1_behind",
+      "directions": 4
+    },
+    {
       "name": "abdomenbasic2",
+      "directions": 4
+    },
+    {
+      "name": "abdomenbasic2_behind",
       "directions": 4
     },
     {

@@ -159,22 +159,6 @@
     state: horns_unicorn
 
 - type: marking
-  id: DemomTail1
-  bodyPart: Tail
-  groupWhitelist: [Human]
-  sprites:
-  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
-    state: demon_tail
-
-- type: marking
-  id: DemomTailLong
-  bodyPart: Tail
-  groupWhitelist: [Human]
-  sprites:
-  - sprite: _ADT/Mobs/Customization/Demon/custom.rsi
-    state: long
-
-- type: marking
   id: DemomTailUp
   bodyPart: Tail
   groupWhitelist: [Human]

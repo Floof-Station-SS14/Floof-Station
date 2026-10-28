@@ -46,7 +46,15 @@
   - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
     state: abdomenbasic1
   - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
+    state: abdomenbasic1_behind
+    layer: TailBehindBackpack
+    colorFrom: abdomenbasic1
+  - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
     state: abdomenbasic2
+  - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
+    state: abdomenbasic2_behind
+    layer: TailBehindBackpack
+    colorFrom: abdomenbasic2
 
 - type: marking
   id: CreepyArms

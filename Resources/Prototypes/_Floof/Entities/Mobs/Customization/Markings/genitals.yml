@@ -636,28 +636,6 @@
   - sprite: _Floof/Mobs/Customization/Genital/breasts.rsi
     state: breasts_udders_a_0_FRONT
 
-- type: marking
-  id: GenitalBreastsUddersB
-  bodyPart: Breasts
-  coloring:
-    default:
-      type: null
-      fallbackColor: '#FFFFFF'
-  sprites:
-  - sprite: _Floof/Mobs/Customization/Genital/breasts.rsi
-    state: breasts_udders_b_0_FRONT
-
-- type: marking
-  id: GenitalBreastsUddersC
-  bodyPart: Breasts
-  coloring:
-    default:
-      type: null
-      fallbackColor: '#FFFFFF'
-  sprites:
-  - sprite: _Floof/Mobs/Customization/Genital/breasts.rsi
-    state: breasts_udders_c_0_FRONT
-
 # Penis/Cock markings
 - type: marking
   id: Genital-Penis-Amputated

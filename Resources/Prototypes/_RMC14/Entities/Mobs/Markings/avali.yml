@@ -88,7 +88,11 @@
   forcedColoring: true
   sprites:
   - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi # DeltaV - Using Starlight Avali sprites
-    state: tail_avalibase
+    state: tail_avalibase_front
+  - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi
+    state: tail_avalibase_behind
+    layer: TailBehind
+    colorFrom: tail_avalibase_front
 
 - type: marking
   id: AvaliEarsStripeOne
@@ -180,9 +184,18 @@
   bodyPart: Tail
   sprites:
   - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi # DeltaV - Using Starlight Avali sprites
-    state: tail_avalibase
+    state: tail_avalibase_front2
+  - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi
+    state: tail_avalibase_behind2
+    layer: TailBehind
+    colorFrom: tail_avalibase_front2
+  - sprite: _Starlight/Mobs/Customization/Avali/avali_parts.rsi
+    state: tail_avalibase_behind2_behind
+    layer: TailBehind
+    colorFrom: tail_avalibase_behind2
   - sprite: _Starlight/Mobs/Customization/Avali/avali_stripes_one.rsi # DeltaV - Using Starlight Avali sprites
     state: tail_avali_primary
+    layer: TailBehind
   - sprite: _Starlight/Mobs/Customization/Avali/avali_stripes_one.rsi # DeltaV - Using Starlight Avali sprites
     state: tail_avali_secondary
 

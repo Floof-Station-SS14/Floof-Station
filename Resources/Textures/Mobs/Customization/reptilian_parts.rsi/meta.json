@@ -72,6 +72,10 @@
       "directions": 4
     },
     {
+      "name": "tail_smooth_secondary_behind",
+      "directions": 4
+    },
+    {
       "name": "tail_smooth",
       "directions": 4
     },
