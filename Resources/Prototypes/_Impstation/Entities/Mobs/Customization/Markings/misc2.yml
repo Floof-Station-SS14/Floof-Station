@@ -142,6 +142,10 @@
   - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
     state: tail_gecko1
   - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
+    state: tail_gecko1_behind
+    layer: TailBehind
+    colorFrom: tail_gecko1
+  - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
     state: tail_gecko2
 
 - type: marking
@@ -155,4 +159,8 @@
     state: tail_snizard2
   - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
     state: tail_snizard3
+  - sprite: _Impstation/Mobs/Customization/markingsbundle2.rsi
+    state: tail_snizard3_behind
+    layer: TailBehind
+    colorFrom: tail_snizard3
 

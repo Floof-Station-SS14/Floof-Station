@@ -64,6 +64,10 @@
             "directions": 4
         },
         {
+            "name": "sharktail_behind",
+            "directions": 4
+        },
+        {
             "name": "tasseltailtone1",
             "directions": 4
         },

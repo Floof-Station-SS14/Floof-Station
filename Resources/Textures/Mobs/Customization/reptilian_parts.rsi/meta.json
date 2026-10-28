@@ -84,7 +84,15 @@
       "directions": 4
     },
     {
+      "name": "tail_large_behind2",
+      "directions": 4
+    },
+    {
       "name": "tail_spikes",
+      "directions": 4
+    },
+    {
+      "name": "tail_spikes_behind2",
       "directions": 4
     },
     {
@@ -92,11 +100,23 @@
       "directions": 4
     },
     {
+      "name": "tail_dtiger_behind2",
+      "directions": 4
+    },
+    {
       "name": "tail_ltiger",
       "directions": 4
     },
     {
+      "name": "tail_ltiger_behind2",
+      "directions": 4
+    },
+    {
       "name": "tail_aquatic",
+      "directions": 4
+    },
+    {
+      "name": "tail_aquatic_behind2",
       "directions": 4
     },
     {

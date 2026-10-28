@@ -158,6 +158,10 @@
   sprites:
   - sprite: Mobs/Customization/kemonomimi-tails.rsi
     state: sharktail
+  - sprite: Mobs/Customization/kemonomimi-tails.rsi
+    state: sharktail_behind
+    layer: TailBehind
+    colorFrom: sharktail
 
 - type: marking
   id: TasselTail

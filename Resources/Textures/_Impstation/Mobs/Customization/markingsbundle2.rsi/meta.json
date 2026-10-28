@@ -81,6 +81,10 @@
       "directions": 4
     },
     {
+      "name": "tail_gecko1_behind",
+      "directions": 4
+    },
+    {
       "name": "tail_gecko2",
       "directions": 4
     },
@@ -94,6 +98,10 @@
     },
     {
       "name": "tail_snizard3",
+      "directions": 4
+    },
+    {
+      "name": "tail_snizard3_behind",
       "directions": 4
     },
     {
