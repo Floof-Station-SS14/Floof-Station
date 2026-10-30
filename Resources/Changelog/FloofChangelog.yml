@@ -774,3 +774,18 @@ Entries:
   id: 97
   time: '2026-10-30T02:17:06.0000000+00:00'
   url: https://github.com/Floof-Station-SS14/Floof-Station/pull/317
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: >-
+        Added consent toggles to the character editor, starting with
+        watersports.
+    - type: Tweak
+      message: >-
+        The in-round consent window now shows and edits your consent text and
+        toggles.
+    - type: Tweak
+      message: Everyone now has a bladder, no trait needed.
+  id: 98
+  time: '2026-10-30T03:49:44.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/318
