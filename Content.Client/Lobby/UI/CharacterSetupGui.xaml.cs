@@ -1,3 +1,4 @@
+using Content.Client._Floof.Bank; // Floof - Bank
 using Content.Client._Floof.Persistence; // Floof - Persistence
 using Content.Client.Info;
 using Content.Client.Info.PlaytimeStats;
@@ -97,14 +98,15 @@ namespace Content.Client.Lobby.UI
             foreach (var (slot, character) in _preferencesManager.Preferences!.Characters)
             {
                 numberOfFullSlots++;
-                // Floof Section - Persistence
+                // Floof Section - Persistence, Bank
                 var live = _entManager.System<LiveCharacterStatusSystem>().TryGetLive(slot, out var info);
                 var characterPickerButton = new CharacterPickerButton(_protomanager,
                     _playerManager,
                     characterButtonsGroup,
                     live ? info!.Record.ApplyTo(character) : character,
                     slot == selectedSlot,
-                    live);
+                    live,
+                    _entManager.System<BankBalanceStatusSystem>().GetBalance(slot));
                 // Floof Section End
 
                 if (slot >= maxCharactersSlots)

@@ -112,8 +112,11 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
 
     private void OnBalanceUpdated()
     {
-        if (_stateManager.CurrentState is LobbyState)
-            RefreshLobbyPreview();
+        if (_stateManager.CurrentState is not LobbyState)
+            return;
+
+        RefreshLobbyPreview();
+        _characterSetup?.ReloadCharacterPickers();
     }
     // Floof Section End
 

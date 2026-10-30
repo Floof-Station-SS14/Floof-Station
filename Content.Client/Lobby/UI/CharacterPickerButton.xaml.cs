@@ -32,7 +32,8 @@ public sealed partial class CharacterPickerButton : ContainerButton
         ButtonGroup group,
         HumanoidCharacterProfile profile,
         bool isSelected,
-        bool isLive = false) // Floof - Persistence
+        bool isLive = false, // Floof - Persistence
+        int? balance = null) // Floof - Bank
     {
         RobustXamlLoader.Load(this);
         AddStyleClass(StyleClassButton);
@@ -48,6 +49,9 @@ public sealed partial class CharacterPickerButton : ContainerButton
             var jobName = prototypeManager.Index(highPriorityJob).LocalizedName;
             description = $"{description}\n{jobName}";
         }
+
+        if (balance != null) // Floof - Bank
+            description = $"{description}\n{Loc.GetString("bank-lobby-balance", ("balance", balance.Value))}"; // Floof - Bank
 
         Pressed = isSelected;
         DeleteButton.Visible = !isSelected;
