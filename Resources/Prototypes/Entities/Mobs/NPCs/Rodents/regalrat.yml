@@ -4,6 +4,15 @@
   name: rat king
   description: He's da rat. He make da roolz.
   components:
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - GalacticCommon
+    - Mouse
+    understands:
+    - GalacticCommon
+    - Mouse
+  # Starlight-end
   - type: Sprite
     drawdepth: SmallMobs
     sprite: Mobs/Animals/Rodents/regalrat.rsi
@@ -96,6 +105,8 @@
       amount: 1
   - type: Tool
     qualities: [ Slicing ]
+  - type: LeashAnchor # Floof
+    kind: Intrinsic
   - type: MobPrice
     price: 2500 # rat wealth
   - type: NpcFactionMember
@@ -167,6 +178,14 @@
   name: rat servant
   description: He's da mini rat. He don't make da roolz.
   components:
+  # Starlight-start: Languages
+  - type: LanguageKnowledge
+    speaks:
+    - Mouse
+    understands:
+    - GalacticCommon
+    - Mouse
+  # Starlight-end
   - type: Sprite
     drawdepth: SmallMobs
     sprite: Mobs/Animals/Rodents/rat.rsi
