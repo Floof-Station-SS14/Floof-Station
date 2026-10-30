@@ -8,6 +8,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Events;
 using Content.Shared.Database;
 using Content.Shared.Effects;
+using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Movement.Components;
@@ -51,6 +52,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     [Dependency] private ItemToggleSystem _itemToggle = default!;
     [Dependency] protected SharedStunSystem StunSystem = default!;
     [Dependency] private MeleeBatteryHitsLeftSystem _meleeBattery = default!;
+    [Dependency] private DamageExamineSystem _damageExamine = default!;
     [Dependency] private MovementSpeedModifierSystem _movement = default!; // EE - Harpy flight
 
     [Dependency] private EntityQuery<StaminaComponent> _stamQuery = default!;
@@ -265,6 +267,20 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
+    private void OnDamageExamine(Entity<StaminaDamageOnCollideComponent> ent, ref DamageExamineEvent args)
+    {
+        if (HasComp<DamageOtherOnHitComponent>(ent))
+            return;
+
+        var attempt = new StaminaDamageOnHitAttemptEvent();
+        RaiseLocalEvent(ent.Owner, ref attempt);
+        if (attempt.Cancelled)
+            return;
+
+        _damageExamine.AddDamageExamine(args.Message, new DamageSpecifier(), Loc.GetString("damage-throw"), ent.Comp.Damage);
+    }
+
+    [SubscribeLocalEvent]
     private static void OnGetPowerCost(Entity<StaminaDamageOnHitRequiresChargeComponent> ent, ref ModifyHitPowerCostEvent args)
     {
         args.Cost += ent.Comp.RequiredCharge;
@@ -376,7 +392,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         if (component.AfterCritical && oldDamage > component.StaminaDamage && component.StaminaDamage <= 0f)
         {
             component.AfterCritical = false; // Since the recovery from the crit has been completed, we are no longer 'after crit'
-            _status.TryRemoveStatusEffect(uid, StaminaLow);
+            _status.TryRemoveStatusEffect(uid, StaminaLow);,
         }
 
         if (!component.Critical)
