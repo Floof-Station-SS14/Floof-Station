@@ -789,3 +789,10 @@ Entries:
   id: 98
   time: '2026-10-30T03:49:44.0000000+00:00'
   url: https://github.com/Floof-Station-SS14/Floof-Station/pull/318
+- author: Pachat-Kas
+  changes:
+    - type: Add
+      message: Gator Aid cans are now stocked in more drink vending machines.
+  id: 99
+  time: '2026-10-30T03:54:19.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/319
