@@ -1,7 +1,7 @@
 - type: entity
   parent: DrinkCanBaseFull
   id: DrinkGatorAidCan
-  name: Gator Aid can
+  name: gator aid can
   description: Is it a sports drink, or is it what a gator gives you? Electrolytes, either way.
   components:
   - type: Solution
