@@ -26,6 +26,7 @@
             </BoxContainer>
             <Label Name="LiveLabel" HorizontalAlignment="Center" Visible="False" StyleClasses="LabelSubText"/>
             <Button Name="LiveToggle" HorizontalAlignment="Center" Visible="False" ToggleMode="True" Text="{Loc 'live-character-show-template'}"/>
+            <Label Name="BalanceLabel" HorizontalAlignment="Center" Visible="False" StyleClasses="LabelSubText"/>
             <!-- Floof Section End -->
             <controls:VSpacer/>
             <Button Name="CharacterSetup" Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"

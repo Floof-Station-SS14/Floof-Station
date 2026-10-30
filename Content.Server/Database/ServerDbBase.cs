@@ -217,6 +217,17 @@ namespace Content.Server.Database
             return profile.BankAccount?.Balance ?? startingBalance;
         }
 
+        public async Task<Dictionary<int, int>> GetBankBalancesAsync(NetUserId userId, int startingBalance)
+        {
+            await using var db = await GetDb();
+            var profiles = await db.DbContext.Profile
+                .Include(p => p.BankAccount)
+                .Where(p => p.Preference.UserId == userId.UserId)
+                .ToListAsync();
+
+            return profiles.ToDictionary(p => p.Slot, p => p.BankAccount?.Balance ?? startingBalance);
+        }
+
         public async Task<int?> AddBankBalanceAsync(NetUserId userId, int slot, int amount, int startingBalance)
         {
             await using var db = await GetDb();

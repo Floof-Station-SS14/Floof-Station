@@ -7,8 +7,11 @@ using Content.Shared._Floof.Bank;
 using Content.Shared._Floof.CCVars;
 using Content.Shared.Database;
 using Content.Shared.Mind;
+using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Enums;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 
 namespace Content.Server._Floof.Bank;
 
@@ -20,6 +23,7 @@ public sealed partial class BankSystem : EntitySystem
 {
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IServerDbManager _db = default!;
     [Dependency] private SharedMindSystem _mind = default!;
 
@@ -34,6 +38,40 @@ public sealed partial class BankSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<LiveCharacterComponent, LiveCharacterTrackedEvent>(OnTracked);
+        SubscribeLocalEvent<BankAccountChangedEvent>(OnChanged);
+
+        _player.PlayerStatusChanged += OnPlayerStatusChanged;
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _player.PlayerStatusChanged -= OnPlayerStatusChanged;
+    }
+
+    private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs args)
+    {
+        if (args.NewStatus == SessionStatus.InGame)
+            SendBalances(args.Session);
+    }
+
+    /// <summary>
+    /// Sends the lobby the balances of all the player's slots, so it can show them without loading a character.
+    /// </summary>
+    private async void SendBalances(ICommonSession session)
+    {
+        var balances = await _db.GetBankBalancesAsync(session.UserId, _cfg.GetCVar(CCVars.BankStartingBalance));
+        if (session.Status == SessionStatus.Disconnected)
+            return;
+
+        RaiseNetworkEvent(new BankBalancesEvent(balances), session);
+    }
+
+    private void OnChanged(ref BankAccountChangedEvent ev)
+    {
+        if (_player.TryGetSessionById(ev.UserId, out var session))
+            RaiseNetworkEvent(new BankBalanceChangedEvent(ev.Slot, ev.Balance), session);
     }
 
     /// <summary>

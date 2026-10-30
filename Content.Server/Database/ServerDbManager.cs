@@ -67,6 +67,11 @@ namespace Content.Server.Database
         /// Returns the new balance, or null if the slot doesn't exist or the balance would go negative.
         /// </summary>
         Task<int?> AddBankBalanceAsync(NetUserId userId, int slot, int amount, int startingBalance);
+
+        /// <summary>
+        /// Balances of all of a player's character slots, keyed by slot.
+        /// </summary>
+        Task<Dictionary<int, int>> GetBankBalancesAsync(NetUserId userId, int startingBalance);
         // Floof Section End - Bank
         #endregion
 
@@ -568,6 +573,12 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.AddBankBalanceAsync(userId, slot, amount, startingBalance));
+        }
+
+        public Task<Dictionary<int, int>> GetBankBalancesAsync(NetUserId userId, int startingBalance)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetBankBalancesAsync(userId, startingBalance));
         }
         // Floof Section End - Bank
 

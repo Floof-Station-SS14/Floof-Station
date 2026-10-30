@@ -1,3 +1,4 @@
+using Content.Client._Floof.Bank; // Floof - Bank
 using Content.Client._Floof.Consent.Managers;
 using Content.Client._Floof.Persistence; // Floof - Persistence
 using Content.Shared._Floof.Consent;
@@ -22,7 +23,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby;
 
-public sealed partial class LobbyUIController : UIController, IOnStateEntered<LobbyState>, IOnStateExited<LobbyState>, IOnSystemChanged<LiveCharacterStatusSystem> // Floof - Persistence
+public sealed partial class LobbyUIController : UIController, IOnStateEntered<LobbyState>, IOnStateExited<LobbyState>, IOnSystemChanged<LiveCharacterStatusSystem>, IOnSystemChanged<BankBalanceStatusSystem> // Floof - Persistence, Bank
 {
     [Dependency] private IClientPreferencesManager _preferencesManager = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
@@ -36,6 +37,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     [Dependency] private MarkingManager _markings = default!;
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
     [UISystemDependency] private readonly LiveCharacterStatusSystem? _liveCharacter = default!; // Floof - Persistence
+    [UISystemDependency] private readonly BankBalanceStatusSystem? _bankBalance = default!; // Floof - Bank
 
     private CharacterSetupGui? _characterSetup;
     private HumanoidProfileEditor? _profileEditor;
@@ -72,7 +74,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
     }
 
-    // Floof Section - Persistence
+    // Floof Section - Persistence, Bank
     public void OnSystemLoaded(LiveCharacterStatusSystem system)
     {
         system.LiveUpdated += OnLiveUpdated;
@@ -96,6 +98,22 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         RefreshLobbyPreview();
         _characterSetup?.ReloadCharacterPickers();
         _profileEditor?.UpdateLiveCharacter();
+    }
+
+    public void OnSystemLoaded(BankBalanceStatusSystem system)
+    {
+        system.Updated += OnBalanceUpdated;
+    }
+
+    public void OnSystemUnloaded(BankBalanceStatusSystem system)
+    {
+        system.Updated -= OnBalanceUpdated;
+    }
+
+    private void OnBalanceUpdated()
+    {
+        if (_stateManager.CurrentState is LobbyState)
+            RefreshLobbyPreview();
     }
     // Floof Section End
 
@@ -213,7 +231,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             return;
         }
 
-        // Floof Section - Persistence
+        // Floof Section - Persistence, Bank
         var slot = _preferencesManager.Preferences!.SelectedCharacterIndex;
         if (_liveCharacter != null && _liveCharacter.TryGetLive(slot, out var info))
         {
@@ -229,6 +247,10 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             PreviewPanel.SetLiveText(null);
             PreviewPanel.LiveToggleButton.Pressed = false;
         }
+
+        PreviewPanel.SetBalanceText(_bankBalance?.GetBalance(slot) is { } balance
+            ? Loc.GetString("bank-lobby-balance", ("balance", balance))
+            : null);
         // Floof Section End
 
         PreviewPanel.ProfilePreviewSpriteView.LoadPreview(humanoid);

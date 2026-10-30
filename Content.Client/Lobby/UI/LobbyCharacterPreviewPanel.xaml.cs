@@ -54,5 +54,14 @@ public sealed partial class LobbyCharacterPreviewPanel : Control
         LiveLabel.Visible = text != null;
         LiveToggle.Visible = text != null;
     }
+
+    /// <summary>
+    ///     Shows the bank balance of the selected slot, or hides it if <paramref name="text"/> is null.
+    /// </summary>
+    public void SetBalanceText(string? text)
+    {
+        BalanceLabel.Text = text;
+        BalanceLabel.Visible = text != null;
+    }
     // Floof Section End
 }
