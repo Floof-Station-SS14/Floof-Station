@@ -1,3 +1,4 @@
+using System.Globalization; // Floof - Bank
 using System.Linq;
 using Content.Client.Humanoid;
 using Content.Shared.Clothing;
@@ -51,7 +52,7 @@ public sealed partial class CharacterPickerButton : ContainerButton
         }
 
         if (balance != null) // Floof - Bank
-            description = $"{description}\n{Loc.GetString("bank-lobby-balance", ("balance", balance.Value))}"; // Floof - Bank
+            description = $"{description}\n{Loc.GetString("bank-picker-balance", ("balance", balance.Value.ToString("N0", CultureInfo.InvariantCulture)))}"; // Floof - Bank
 
         Pressed = isSelected;
         DeleteButton.Visible = !isSelected;
