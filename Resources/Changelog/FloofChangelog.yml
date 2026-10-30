@@ -796,3 +796,12 @@ Entries:
   id: 99
   time: '2026-10-30T03:54:19.0000000+00:00'
   url: https://github.com/Floof-Station-SS14/Floof-Station/pull/319
+- author: Pachat-Kas
+  changes:
+    - type: Tweak
+      message: >-
+        Characters now start with a wallet. It can still be unselected in the
+        character editor.
+  id: 100
+  time: '2026-10-30T04:29:05.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/320
