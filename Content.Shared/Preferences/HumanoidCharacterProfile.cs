@@ -3,6 +3,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._Floof.Consent.Prototypes; // Floof - Consent toggles
 using Content.Shared._Floof.Sex; // Floof - Genitals
 using Content.Shared.CCVar;
 using Content.Shared.Chat.Prototypes;
@@ -61,6 +62,13 @@ namespace Content.Shared.Preferences
         /// </summary>
         [DataField]
         private HashSet<ProtoId<TraitPrototype>> _traitPreferences = new();
+
+        // Floof Section - Consent toggles
+        [DataField]
+        private HashSet<ProtoId<ConsentTogglePrototype>> _consentToggles = new();
+
+        public IReadOnlySet<ProtoId<ConsentTogglePrototype>> ConsentToggles => _consentToggles;
+        // Floof Section End - Consent toggles
 
         /// <summary>
         /// <see cref="_loadouts"/>
@@ -226,6 +234,7 @@ namespace Content.Shared.Preferences
                 new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
                 new Dictionary<string, RoleLoadout>(other.Loadouts))
         {
+            _consentToggles = new(other._consentToggles); // Floof - Consent toggles
         }
 
         /// <summary>
@@ -444,6 +453,30 @@ namespace Content.Shared.Preferences
         {
             return new(this) { ConsentText = consentText };
         }
+
+        // Floof Section - Consent toggles
+        public HumanoidCharacterProfile WithConsentToggle(ProtoId<ConsentTogglePrototype> toggle, bool enabled)
+        {
+            var toggles = new HashSet<ProtoId<ConsentTogglePrototype>>(_consentToggles);
+            if (enabled)
+                toggles.Add(toggle);
+            else
+                toggles.Remove(toggle);
+
+            return new(this) { _consentToggles = toggles };
+        }
+
+        public HumanoidCharacterProfile WithConsentToggles(IEnumerable<ProtoId<ConsentTogglePrototype>> toggles)
+        {
+            return new(this) { _consentToggles = new(toggles) };
+        }
+
+        public static string SanitizeConsentText(string text, int maxLength)
+        {
+            text = FormattedMessage.RemoveMarkupPermissive(text).Trim();
+            return text.Length > maxLength ? text[..maxLength] : text;
+        }
+        // Floof Section End - Consent toggles
 
         public HumanoidCharacterProfile WithAge(int age)
         {
@@ -687,6 +720,7 @@ namespace Content.Shared.Preferences
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
             if (ConsentText != other.ConsentText) return false; // Floof: Added consent.
+            if (!_consentToggles.SetEquals(other._consentToggles)) return false; // Floof - Consent toggles
             if (Genitals != other.Genitals) return false; // Floof - Genitals
             return Appearance.Equals(other.Appearance);
         }
@@ -774,10 +808,7 @@ namespace Content.Shared.Preferences
             }
 
             // Floof: Added consent
-            var maxConsentTextLength = configManager.GetCVar(CCVars.MaxConsentTextLength);
-            var consentText = ConsentText.Length > maxConsentTextLength
-                ? FormattedMessage.RemoveMarkupOrThrow(ConsentText)[..maxConsentTextLength]
-                : FormattedMessage.RemoveMarkupOrThrow(ConsentText);
+            var consentText = SanitizeConsentText(ConsentText, configManager.GetCVar(CCVars.MaxConsentTextLength));
 
             // begin Goobstation: port EE height/width sliders
             var height = Height;
@@ -862,6 +893,8 @@ namespace Content.Shared.Preferences
 
             _traitPreferences.Clear();
             _traitPreferences.UnionWith(GetValidTraits(traits, prototypeManager));
+
+            _consentToggles.RemoveWhere(t => !prototypeManager.HasIndex(t)); // Floof - Consent toggles
 
             // Checks prototypes exist for all loadouts and dump / set to default if not.
             var toRemove = new ValueList<string>();

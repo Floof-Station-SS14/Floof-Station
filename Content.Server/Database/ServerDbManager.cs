@@ -390,15 +390,6 @@ namespace Content.Server.Database
 
         #endregion
 
-        #region Consent
-        // Floof - Consent system
-
-        Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings);
-        Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId);
-
-        // End Floof - Consent system
-        #endregion
-
         // Floof Section - Persistence
         #region Live Characters
 
@@ -1157,20 +1148,6 @@ namespace Content.Server.Database
         {
             return RunDbCommand(() => _db.HasPendingModelChanges());
         }
-
-        // Floof - Consent system - Ported from https://github.com/Fansana/floofstation1/pull/4/
-        public Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SavePlayerConsentSettingsAsync(userId, consentSettings));
-        }
-
-        public Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetPlayerConsentSettingsAsync(userId));
-        }
-        // End Floof - Consent system
 
         // Floof Section - Persistence
         public Task<LiveCharacter?> GetLiveCharacterAsync(NetUserId userId, int slot)

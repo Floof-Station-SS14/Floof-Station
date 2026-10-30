@@ -108,6 +108,7 @@
       Stomach: OrganReptilianStomach
       Liver: OrganReptilianLiver
       Kidneys: OrganReptilianKidneys
+      Bladder: OrganBladder # Floof - Bladder
   - type: HumanoidProfile
     species: Reptilian
 

@@ -89,6 +89,7 @@
       Stomach: OrganHarpyStomach
       Liver: OrganHarpyLiver
       Kidneys: OrganHarpyKidneys
+      Bladder: OrganBladder # Floof - Bladder
   - type: HumanoidProfile
     species: Harpy
 

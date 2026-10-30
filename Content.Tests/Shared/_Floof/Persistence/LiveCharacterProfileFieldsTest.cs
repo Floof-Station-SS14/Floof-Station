@@ -45,6 +45,7 @@ public sealed class LiveCharacterProfileFieldsTest
         "_loadouts",
         "FlavorText",
         "ConsentText",
+        "_consentToggles",
         "SpawnPriority",
         "PreferenceUnavailable",
     ];

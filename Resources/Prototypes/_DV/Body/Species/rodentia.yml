@@ -68,6 +68,7 @@
       Stomach: OrganAnimalStomach
       Liver: OrganAnimalLiver
       Kidneys: OrganAnimalKidneys
+      Bladder: OrganBladder # Floof - Bladder
   - type: HumanoidProfile
     species: Rodentia
 

@@ -64,6 +64,7 @@
       Stomach: OrganArachnidStomach
       Liver: OrganArachnidLiver
       Kidneys: OrganArachnidKidneys
+      Bladder: OrganBladder # Floof - Bladder
   - type: HumanoidProfile
     species: Arachnid
 

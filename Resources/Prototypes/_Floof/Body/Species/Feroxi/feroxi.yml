@@ -110,6 +110,7 @@
       Stomach: OrganFeroxiStomach
       Liver: OrganFeroxiLiver
       Kidneys: OrganFeroxiKidneys
+      Bladder: OrganBladder # Floof - Bladder
   - type: HumanoidProfile
     species: Feroxi
 

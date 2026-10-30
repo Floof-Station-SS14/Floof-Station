@@ -1,13 +1,12 @@
 using Content.Client._Floof.Consent;
-using Robust.Client.UserInterface.Controls;
-using Robust.Shared.Utility;
+using Content.Shared._Floof.Consent.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.Lobby.UI;
 
 public sealed partial class HumanoidProfileEditor
 {
     private NewConsentText? _consentText;
-    private TextEdit? _consentTextEdit;
 
     /// <summary>
     /// Refreshes the Consent text editor status.
@@ -20,9 +19,9 @@ public sealed partial class HumanoidProfileEditor
         _consentText = new NewConsentText();
         TabContainer.AddChild(_consentText);
         TabContainer.SetTabTitle(TabContainer.ChildCount - 1, Loc.GetString("humanoid-profile-editor-consent-tab"));
-        _consentTextEdit = _consentText.CConsentTextInput;
 
         _consentText.OnConsentTextChanged += OnConsentTextChange;
+        _consentText.OnConsentToggleChanged += OnConsentToggle;
     }
 
     private void OnConsentTextChange(string content)
@@ -34,8 +33,17 @@ public sealed partial class HumanoidProfileEditor
         SetDirty();
     }
 
+    private void OnConsentToggle(ProtoId<ConsentTogglePrototype> toggle, bool enabled)
+    {
+        if (Profile is null)
+            return;
+
+        Profile = Profile.WithConsentToggle(toggle, enabled);
+        SetDirty();
+    }
+
     private void UpdateConsentTextEdit()
     {
-        _consentTextEdit?.TextRope = new Rope.Leaf(Profile?.ConsentText ?? "");
+        _consentText?.SetConsent(Profile?.ConsentText ?? "", Profile?.ConsentToggles ?? new HashSet<ProtoId<ConsentTogglePrototype>>());
     }
 }
