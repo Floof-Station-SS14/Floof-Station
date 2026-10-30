@@ -805,3 +805,28 @@ Entries:
   id: 100
   time: '2026-10-30T04:29:05.0000000+00:00'
   url: https://github.com/Floof-Station-SS14/Floof-Station/pull/320
+- author: DaCookieCakes
+  changes:
+    - type: Add
+      message: >-
+        Added DogBorgs, a new mechanical companion for work. And perhaps
+        MORE?!?1
+    - type: Add
+      message: Added a variants selector for the Borg menu.
+    - type: Add
+      message: Added a SecBorg lawset.
+    - type: Add
+      message: Added a dedicated DogBorg role spawner, which is currently unused.
+    - type: Tweak
+      message: >-
+        Job Spawners now have a 'ExtraJobs' field. Only used for Cyborgs right
+        now.
+    - type: Tweak
+      message: Borg selector will now only show its 'type'; cyborg or dogborg.
+    - type: Fix
+      message: Borg console sprite is no longer hardcoded.
+    - type: Fix
+      message: Fixed walking sprite toggle syncing via a new event.
+  id: 101
+  time: '2026-10-30T05:37:09.0000000+00:00'
+  url: https://github.com/Floof-Station-SS14/Floof-Station/pull/321
