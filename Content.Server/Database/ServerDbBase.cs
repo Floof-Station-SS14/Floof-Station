@@ -51,6 +51,7 @@ namespace Content.Server.Database
                 .Include(p => p.Profiles).ThenInclude(h => h.Antags)
                 .Include(p => p.Profiles).ThenInclude(h => h.Traits)
                 .Include(p => p.Profiles).ThenInclude(h => h.Genitals) // Floof - Genitals
+                .Include(p => p.Profiles).ThenInclude(h => h.ConsentToggles) // Floof - Consent toggles
                 .Include(p => p.Profiles)
                     .ThenInclude(h => h.Loadouts)
                     .ThenInclude(l => l.Groups)
@@ -110,6 +111,7 @@ namespace Content.Server.Database
                 .Include(p => p.Antags)
                 .Include(p => p.Traits)
                 .Include(p => p.Genitals) // Floof - Genitals
+                .Include(p => p.ConsentToggles) // Floof - Consent toggles
                 .Include(p => p.Loadouts)
                     .ThenInclude(l => l.Groups)
                     .ThenInclude(group => group.Loadouts)
@@ -322,6 +324,14 @@ namespace Content.Server.Database
                 humanoid.TraitPreferences
                         .Select(t => new Trait {TraitName = t})
             );
+
+            // Floof Section - Consent toggles
+            profile.ConsentToggles.Clear();
+            profile.ConsentToggles.AddRange(
+                humanoid.ConsentToggles
+                    .Select(t => new ConsentToggle {ToggleId = t})
+            );
+            // Floof Section End - Consent toggles
 
             profile.Loadouts.Clear();
 
@@ -1136,65 +1146,6 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             var entry = await db.DbContext.Blacklist.SingleAsync(w => w.UserId == player);
             db.DbContext.Blacklist.Remove(entry);
             await db.DbContext.SaveChangesAsync();
-        }
-
-        #endregion
-
-        #region Consent Settings
-
-        // Floof - Part of consent system, ported in large part from https://github.com/Fansana/floofstation1/pull/4/
-
-        private static async Task DeletePlayerConsentSettings(ServerDbContext db, NetUserId userId)
-        {
-            var consentSettings = await db.ConsentSettings
-                .Where(c => c.UserId == userId.UserId)
-                .SingleOrDefaultAsync();
-
-            if (consentSettings is null)
-                return;
-
-            db.ConsentSettings.Remove(consentSettings);
-        }
-
-        public async Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings? consentSettings)
-        {
-            await using var db = await GetDb();
-
-            if (consentSettings is null)
-            {
-                await DeletePlayerConsentSettings(db.DbContext, userId);
-                await db.DbContext.SaveChangesAsync();
-                return;
-            }
-
-            // Get current consent settings, so we know if freetext needs updating and which toggles to add or remove
-            var currentConsentSettings = await db.DbContext.ConsentSettings
-                .AsSplitQuery()
-                .SingleOrDefaultAsync(c => c.UserId == userId);
-
-            if (currentConsentSettings is null)
-            {
-                currentConsentSettings = new ConsentSettings { UserId = userId};
-
-                db.DbContext.ConsentSettings.Add(currentConsentSettings);
-            }
-
-            currentConsentSettings.ConsentFreetext = consentSettings.Freetext;
-
-            await db.DbContext.SaveChangesAsync();
-        }
-
-        public async Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
-        {
-            await using var db = await GetDb();
-
-            var consentSettings = await db.DbContext.ConsentSettings
-                .SingleOrDefaultAsync(c => c.UserId == userId);
-
-            if (consentSettings is null)
-                return new PlayerConsentSettings();
-
-            return new PlayerConsentSettings(consentSettings.ConsentFreetext);
         }
 
         #endregion

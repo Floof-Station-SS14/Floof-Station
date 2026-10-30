@@ -1,7 +1,4 @@
-﻿trait-name-PissProducer = Bladder
-trait-description-PissProducer = You have a bladder to relieve your natural needs.
-
-trait-name-EggLayer = Egg Layer
+﻿trait-name-EggLayer = Egg Layer
 trait-description-EggLayer = Your body through either mutation, oviposition, cybernetic or noospheric influence has the ability to lay eggs.
 
 trait-name-Succubus = Succubus

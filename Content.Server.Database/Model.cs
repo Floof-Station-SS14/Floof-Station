@@ -20,7 +20,6 @@ namespace Content.Server.Database
 
         public DbSet<Preference> Preference { get; set; } = null!;
         public DbSet<Profile> Profile { get; set; } = null!;
-        public DbSet<ConsentSettings> ConsentSettings { get; set; } = null!; // Floof - Consent System
         public DbSet<LiveCharacter> LiveCharacter { get; set; } = null!; // Floof - Persistence
         public DbSet<LiveCharacterHistory> LiveCharacterHistory { get; set; } = null!; // Floof - Persistence
         public DbSet<AssignedUserId> AssignedUserId { get; set; } = null!;
@@ -73,11 +72,6 @@ namespace Content.Server.Database
                 .HasIndex(p => new {HumanoidProfileId = p.ProfileId, p.TraitName})
                 .IsUnique();
 
-            // Floof - Code related to consent
-            modelBuilder.Entity<ConsentSettings>()
-                .HasIndex(c => c.UserId)
-                .IsUnique();
-            // End Floof - Consent System
             // Floof Section - Genitals
             modelBuilder.Entity<Profile>()
                 .HasOne(p => p.Genitals)
@@ -111,6 +105,11 @@ namespace Content.Server.Database
             modelBuilder.Entity<LiveCharacterHistory>()
                 .HasIndex(h => new { h.ProfileId, h.SavedAt });
             // End Floof Section - Persistence
+            // Floof Section - Consent toggles
+            modelBuilder.Entity<ConsentToggle>()
+                .HasIndex(c => new {c.ProfileId, c.ToggleId})
+                .IsUnique();
+            // Floof Section End - Consent toggles
             modelBuilder.Entity<ProfileRoleLoadout>()
                 .HasOne(e => e.Profile)
                 .WithMany(e => e.Loadouts)
@@ -395,6 +394,7 @@ namespace Content.Server.Database
         public List<Job> Jobs { get; } = new();
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
+        public List<ConsentToggle> ConsentToggles { get; } = new(); // Floof - Consent toggles
 
         public List<ProfileRoleLoadout> Loadouts { get; } = new();
 
@@ -459,15 +459,16 @@ namespace Content.Server.Database
         Discard = 3,
     }
     // End Floof Section - Persistence
-    // Floof - Consent System
-    public class ConsentSettings
+    // Floof Section - Consent toggles
+    public class ConsentToggle
     {
         public int Id { get; set; }
-        public Guid UserId { get; set; }
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
 
-        public string ConsentFreetext { get; set; } = null!;
+        public string ToggleId { get; set; } = null!;
     }
-    // End Floof - Consent System
+    // Floof Section End - Consent toggles
 
     public class Job
     {

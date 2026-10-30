@@ -83,6 +83,9 @@
     - !type:BodyOrganRequirement
       organCategory: Bladder
       targetSelf: true
+    - !type:ConsentRequirement
+      toggle: Watersports
+      targetSelf: true
     - !type:EntityWhitelistRequirement
       whitelist:
         components: [RefillableSolution]

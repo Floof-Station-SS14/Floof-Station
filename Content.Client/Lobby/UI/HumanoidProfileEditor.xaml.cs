@@ -24,7 +24,6 @@ using Direction = Robust.Shared.Maths.Direction;
 // Begin CD - Character Records
 using System.Globalization;
 using System.Linq;
-using Content.Client._Floof.Consent.Managers;
 using Content.Client._Floof.Consent.UI;
 using Content.Client.Lobby.UI.Roles;
 // End CD - Character Records
@@ -68,7 +67,6 @@ namespace Content.Client.Lobby.UI
         /// The work in progress profile being edited.
         /// </summary>
         public HumanoidCharacterProfile? Profile;
-        public string? ConsentText; // Nebulous: Current consent text
 
         private Direction _previewRotation = Direction.North;
 
@@ -101,8 +99,7 @@ namespace Content.Client.Lobby.UI
             IPrototypeManager prototypeManager,
             IResourceManager resManager,
             JobRequirementsManager requirements,
-            MarkingManager markings,
-            IClientConsentManager consentManager)
+            MarkingManager markings)
         {
             RobustXamlLoader.Load(this);
             _sawmill = logManager.GetSawmill("profile.editor");

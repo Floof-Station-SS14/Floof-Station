@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Afk;
 using Content.Server.Database;
+using Content.Shared._Floof.Consent.Prototypes; // Floof - Consent toggles
 using Content.Shared._Floof.Traits;
 using Content.Shared.Body;
 using Content.Shared.Chat.Prototypes;
@@ -214,7 +215,7 @@ namespace Content.Server.Preferences.Managers
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts
-            );
+            ).WithConsentToggles(profile.ConsentToggles.Select(t => new ProtoId<ConsentTogglePrototype>(t.ToggleId))); // Floof - Consent toggles
         }
 
         private async void HandleSelectCharacterMessage(MsgSelectCharacter message)
@@ -264,7 +265,7 @@ namespace Content.Server.Preferences.Managers
             }
         }
 
-        public async Task SetProfile(NetUserId userId, int slot, HumanoidCharacterProfile profile)
+        public async Task SetProfile(NetUserId userId, int slot, HumanoidCharacterProfile profile, bool select = true) // Floof - select
         {
             if (!_cachedPlayerPrefs.TryGetValue(userId, out var prefsData) || !prefsData.PrefsLoaded)
             {
@@ -285,11 +286,30 @@ namespace Content.Server.Preferences.Managers
                 [slot] = profile
             };
 
-            prefsData.Prefs = new PlayerPreferences(profiles, slot, curPrefs.AdminOOCColor, curPrefs.ConstructionFavorites);
+            prefsData.Prefs = new PlayerPreferences(profiles, select ? slot : curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.ConstructionFavorites); // Floof - select
 
             if (ShouldStorePrefs(session.Channel.AuthType))
                 await _db.SaveCharacterSlotAsync(userId, profile, slot);
         }
+
+        // Floof Section - Consent
+        /// <summary>
+        ///     Sends the cached preferences to the client again, after the server changed them in round.
+        /// </summary>
+        public void SendPreferences(ICommonSession session)
+        {
+            if (!_cachedPlayerPrefs.TryGetValue(session.UserId, out var prefsData) || prefsData.Prefs == null)
+                return;
+
+            var msg = new MsgPreferencesAndSettings();
+            msg.Preferences = prefsData.Prefs;
+            msg.Settings = new GameSettings
+            {
+                MaxCharacterSlots = MaxCharacterSlots
+            };
+            _netManager.ServerSendMessage(msg, session.Channel);
+        }
+        // Floof Section End - Consent
 
         public async Task SetConstructionFavorites(NetUserId userId, List<ProtoId<ConstructionPrototype>> favorites)
         {

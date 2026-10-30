@@ -88,6 +88,7 @@
       Stomach: OrganVulpkaninStomach
       Liver: OrganVulpkaninLiver
       Kidneys: OrganVulpkaninKidneys
+      Bladder: OrganBladder # Floof - Bladder
   - type: HumanoidProfile
     species: Vulpkanin
   - type: Inventory

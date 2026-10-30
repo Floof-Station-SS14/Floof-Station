@@ -94,6 +94,7 @@
       Stomach: OrganDwarfStomach
       Liver: OrganDwarfLiver
       Kidneys: OrganHumanKidneys
+      Bladder: OrganBladder # Floof - Bladder
   - type: Hands
     leftHandDisplacement:
       sizeMaps:

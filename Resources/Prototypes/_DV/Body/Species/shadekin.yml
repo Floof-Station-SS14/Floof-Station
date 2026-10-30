@@ -73,6 +73,7 @@
       Stomach: OrganShadekinStomach
       Liver: OrganShadekinLiver
       Kidneys: OrganShadekinKidneys
+      Bladder: OrganBladder # Floof - Bladder
   - type: HumanoidProfile
     species: Shadekin
   # - type: ScaleVisuals # Floof - HeightWidth
