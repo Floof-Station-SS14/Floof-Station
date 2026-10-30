@@ -76,3 +76,6 @@
 
 - type: Tag
   id: Sterilebag
+
+- type: Tag
+  id: BorgModuleSecurity # Cyborg module category for security dogborgs

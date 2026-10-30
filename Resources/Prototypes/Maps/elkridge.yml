@@ -67,3 +67,4 @@
             # Silicon (3)
             StationAi: [ 1, 1 ]
             Borg: [ 0, 2 ]
+            Dogborg: [ 0, 2 ] # Floofstation

@@ -422,6 +422,11 @@ namespace Content.IntegrationTests.Tests
 
                     jobs.ExceptWith(spawnPoints);
 
+                    // Floofstation - spawners can serve extra jobs
+                    jobs.ExceptWith(entManager.EntityQuery<SpawnPointComponent>()
+                        .Where(x => x.SpawnType == SpawnPointType.Job)
+                        .SelectMany(x => x.ExtraJobs));
+
                     spawnPoints = entManager.EntityQuery<ContainerSpawnPointComponent>()
                         .Where(x => x.SpawnType is SpawnPointType.Job or SpawnPointType.Unset && x.Job != null)
                         .Select(x => x.Job.Value);
