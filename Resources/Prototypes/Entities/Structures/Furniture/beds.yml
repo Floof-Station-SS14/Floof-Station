@@ -171,6 +171,11 @@
   name: psychologist bed
   description: An upholstered bed for the psychological care of patients.
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PsychBed.rsi # Floof - flooding
+      state: mask # Floof - flooding
+    surface: 0.48 # Floof - flooding
   - type: Sprite
     state: psychbed
   - type: HealOnBuckle

@@ -77,6 +77,10 @@
   id: SinkWide
   name: wide sink
   components:
+    - type: FloodMask # Floof - flooding
+      sprite: # Floof - flooding
+        sprite: _Floof/Flooding/Masks/SinkWide.rsi # Floof - flooding
+        state: mask # Floof - flooding
     - type: Sprite
       sprite: Structures/Furniture/sink.rsi
       layers:

@@ -1,0 +1,40 @@
+- type: biomeTemplate
+  id: OpenOcean
+  layers:
+  - !type:BiomeTileLayer
+    threshold: -1.0
+    tile: FloorOceanSurface
+
+- type: biomeTemplate
+  id: Seabed
+  layers:
+  - !type:BiomeTileLayer
+    threshold: -1.0
+    tile: FloorAsteroidSand
+
+- type: entity
+  parent: ComputerComms
+  id: ComputerCommsResurface
+  name: dive control computer
+  description: Makes station wide announcements via keyboard, and brings the station back to the surface.
+  components:
+  - type: ResurfaceConsole
+
+- type: tile
+  id: FloorOceanSurface
+  name: tiles-floor-ocean-surface
+  sprite: /Textures/_Floof/Tiles/ocean_surface.png
+  isSubfloor: true
+  swimDepth: 0.75
+  submergedReagent: Seawater
+  footstepSounds:
+    collection: FootstepWater
+    params:
+      volume: 8
+  barestepSounds:
+    collection: FootstepWater
+    params:
+      volume: 8
+  heatCapacity: 10000
+  weather: true
+  indestructible: true

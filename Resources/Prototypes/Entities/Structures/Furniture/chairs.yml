@@ -103,6 +103,10 @@
   id: Chair
   name: chair
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/Chair.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Sprite
     state: chair
   - type: Construction
@@ -131,6 +135,10 @@
   parent: Chair
   suffix: White
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/Chair.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Sprite
     state: chair-greyscale
 

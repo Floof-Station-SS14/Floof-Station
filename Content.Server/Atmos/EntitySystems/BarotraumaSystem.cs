@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
+using Content.Shared._Floof.Flooding; // Floof
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Damage.Components;
@@ -20,6 +21,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private AlertsSystem _alertsSystem = default!;
         [Dependency] private IAdminLogManager _adminLogger = default!;
         [Dependency] private InventorySystem _inventorySystem = default!;
+        [Dependency] private FloodWaterSystem _flood = default!; // Floof
 
         private const float UpdateTimer = 1f;
         private float _timer;
@@ -227,6 +229,8 @@ namespace Content.Server.Atmos.EntitySystems
                 {
                     pressure = MathF.Max(mixture.Pressure, 1f);
                 }
+
+                pressure += _flood.GetAmbientPressure(uid); // Floof - flooded tiles on a deep map
 
                 pressure = pressure switch
                 {

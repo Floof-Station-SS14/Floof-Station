@@ -1,4 +1,5 @@
 using Content.Shared.Atmos;
+using Content.Shared.Chemistry.Reagent; // Floof - Flooding
 using Content.Shared.Materials;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Shuttles.Systems;
@@ -138,6 +139,21 @@ public sealed partial class ContentTileDefinition : IPrototype, IInheritingProto
     /// </summary>
     [DataField]
     public Dictionary<ProtoId<MaterialPrototype>, int> MaterialComposition = new();
+
+    // Floof Section - Flooding
+    /// <summary>
+    /// Endless reservoir of <see cref="SubmergedReagent"/>, always at full flood depth.
+    /// The prototype ID must start with "Submerged" and the name with "submerged".
+    /// </summary>
+    [DataField] public bool Submerged { get; private set; }
+
+    [DataField] public ProtoId<ReagentPrototype> SubmergedReagent { get; private set; } = "Water";
+
+    /// <summary>
+    /// How deep a mob floats in <see cref="SubmergedReagent"/> out on this tile, with no puddle involved. 0 is dry land.
+    /// </summary>
+    [DataField] public float SwimDepth { get; private set; }
+    // Floof Section End
 
     public void AssignTileId(ushort id)
     {

@@ -130,6 +130,10 @@
   name: solar panel
   description: A few sheets of glass that generate electricity when hit by photons.
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/SolarPanel.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: PowerSupplier
     supplyRampTolerance: 500
     supplyRampRate: 500

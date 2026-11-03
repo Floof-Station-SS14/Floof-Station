@@ -50,3 +50,28 @@
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform
+
+# Floof Section - Flooding
+- type: entity
+  id: DivingNanotrasenStation
+  parent:
+    - BaseStation
+    - BaseStationNews
+    - BaseStationCargo
+    - BaseStationJobsSpawning
+    - BaseStationRecords
+    - BaseStationShuttles
+    - BaseStationCentcomm
+    - BaseStationAlertLevels
+    - BaseStationMagnet
+    - BaseStationExpeditions
+    - BaseStationSalvageJobs
+    - BaseStationSiliconLawCrewsimov
+    - BaseStationAllEventsEligible
+    - BaseStationNanotrasen
+    - BaseStationDeliveries
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Transform
+    - type: LateJoinCryopodOnly
+# Floof Section End

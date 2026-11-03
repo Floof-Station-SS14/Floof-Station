@@ -85,6 +85,10 @@
   parent: [ ClosetBase, StructureHealthContainerWeak ]
   id: ClosetSteelBase
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/ClosetBomb.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Construction
     graph: ClosetSteel
     node: done

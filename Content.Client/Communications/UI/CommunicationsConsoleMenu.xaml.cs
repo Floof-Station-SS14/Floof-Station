@@ -34,6 +34,72 @@ public sealed partial class CommunicationsConsoleMenu : FancyWindow
         ShuttleControls.OnShuttleRecalled += () => OnShuttleRecalled?.Invoke();
     }
 
+    // Floof Section - Flooding
+    private bool _resurface;
+
+    public void SetResurface()
+    {
+        _resurface = true;
+        Title = Loc.GetString("comms-console-resurface-title");
+        ShuttleControls.SetResurface();
+    }
+
+    protected override void FrameUpdate(Robust.Shared.Timing.FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+
+        if (!_resurface)
+            return;
+
+        var entities = IoCManager.Resolve<IEntityManager>();
+        var timing = IoCManager.Resolve<Robust.Shared.Timing.IGameTiming>();
+        var query = entities.EntityQueryEnumerator<Content.Shared._Floof.Flooding.FloodDepthComponent>();
+        Content.Shared._Floof.Flooding.FloodDepthComponent? depth;
+        do
+        {
+            if (!query.MoveNext(out depth))
+                return;
+        } while (depth.Seabed);
+
+        var current = depth.GetDepth(timing.CurTime);
+        ShuttleControls.SetDepth(current > 0f ? (int) MathF.Round(current * depth.Meters) : null);
+        UpdateDiveStatus(depth, current, timing.CurTime);
+    }
+
+    private void UpdateDiveStatus(Content.Shared._Floof.Flooding.FloodDepthComponent depth, float current, TimeSpan now)
+    {
+        // The round's countdown runs the way up, with the display left as it is.
+        if (ShuttleControls.CountdownStarted)
+        {
+            ShuttleControls.SetResurfaceCountdown();
+            return;
+        }
+
+        if (depth.Rate > 0f && current < 1f)
+        {
+            ShuttleControls.SetDiveStatus(Loc.GetString("comms-console-descent-status"),
+                TimeSpan.FromSeconds((1f - current) / depth.Rate));
+        }
+        else if (current >= 1f)
+        {
+            ShuttleControls.SetDiveStatus(Loc.GetString("comms-console-full-depth-status"), null);
+        }
+        else if (depth.Rate == 0f)
+        {
+            var entities = IoCManager.Resolve<IEntityManager>();
+            var delay = IoCManager.Resolve<Robust.Shared.Configuration.IConfigurationManager>()
+                .GetCVar(Content.Shared._Floof.CCVars.CCVars.FloodDiveDelay);
+            var start = entities.System<Content.Client.GameTicking.ClientGameTicker>().RoundStartTimeSpan;
+            ShuttleControls.SetDiveStatus(Loc.GetString("comms-console-dive-status"),
+                start + TimeSpan.FromSeconds(delay) - now);
+        }
+        else
+        {
+            ShuttleControls.SetDiveStatus(Loc.GetString("comms-console-surfaced-status"), null);
+        }
+    }
+    // Floof Section End
+
     /// <summary>
     /// Use the specified prototype ID as an example display in the
     /// UI subsection where users type broadcast messages

@@ -1,0 +1,30 @@
+- type: parallax
+  id: MantaOcean
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_Floof/Parallaxes/ocean.png"
+      slowness: 0.97
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_Floof/Parallaxes/ocean_caps.png"
+      slowness: 0.93
+      scale: "1, 1"
+  layersLQ:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_Floof/Parallaxes/ocean.png"
+      slowness: 0.97
+      scale: "1, 1"
+  layersLQUseHQ: false
+
+- type: parallax
+  id: MantaDeep
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_Floof/Parallaxes/ocean_floor.png"
+      slowness: 0
+      scale: "1, 1"
+      shader: ""

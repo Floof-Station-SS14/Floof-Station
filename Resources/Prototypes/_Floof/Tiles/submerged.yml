@@ -1,0 +1,5 @@
+- type: tile
+  id: SubmergedFloorAsteroidSand
+  parent: FloorAsteroidSand
+  name: tiles-submerged-sand
+  submerged: true

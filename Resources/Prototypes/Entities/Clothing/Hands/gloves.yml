@@ -189,6 +189,7 @@
   name: nitrile gloves
   description: High-quality nitrile gloves. Expensive medical PPE.
   components:
+  - type: FloodMask # Floof - flooding
   - type: Sprite
     sprite: Clothing/Hands/Gloves/nitrile.rsi
   - type: Clothing

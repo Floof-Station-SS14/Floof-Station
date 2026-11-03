@@ -82,6 +82,10 @@
   name: inflatable wall crate
   description: Three stacks of inflatable walls for when the stations metal walls don't want to hold atmosphere anymore.
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/CrateCandles.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: EntityTableContainerFill
     containers:
       entity_storage:

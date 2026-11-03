@@ -153,6 +153,10 @@
   name: recharger
   description: A modern recharging station that can fit both power cells and small electronic devices.
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/WeaponCapacitorRecharger.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Sprite
     sprite: Structures/Power/recharger.rsi
   - type: Machine

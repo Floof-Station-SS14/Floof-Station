@@ -1,0 +1,4 @@
+- files: ["ocean.png", "ocean_caps.png", "ocean_floor.png"]
+  license: "CC0-1.0"
+  copyright: "Procedurally generated for Floof Station"
+  source: "https://github.com/Floof-Station-SS14/Floof-Station"

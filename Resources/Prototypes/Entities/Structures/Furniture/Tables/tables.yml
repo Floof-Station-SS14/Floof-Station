@@ -155,6 +155,12 @@
   name: table
   description: A square piece of metal standing on four metal legs.
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/Table.rsi # Floof - flooding
+      state: state_0 # Floof - flooding
+    corners: state_ # Floof - flooding
+    surface: 0.26 # Floof - flooding
   - type: Sprite
     sprite: Structures/Furniture/Tables/generic.rsi
   - type: Icon
@@ -446,6 +452,12 @@
   name: wood table
   description: Do not apply fire to this. Rumour says it burns easily.
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/TableWood.rsi # Floof - flooding
+      state: state_0 # Floof - flooding
+    corners: state_ # Floof - flooding
+    surface: 0.26 # Floof - flooding
   - type: Sprite
     sprite: Structures/Furniture/Tables/wood.rsi
   - type: Icon

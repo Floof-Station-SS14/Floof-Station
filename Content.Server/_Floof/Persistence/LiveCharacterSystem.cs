@@ -35,6 +35,7 @@ public sealed partial class LiveCharacterSystem : EntitySystem
     [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
     [Dependency] private EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Dependency] private Content.Server._Floof.Flooding.StationDiveSystem _stationDive = default!;
     [Dependency] private GameTicker _ticker = default!;
     [Dependency] private StationSpawningSystem _spawning = default!;
     [Dependency] private MobStateSystem _mobState = default!;
@@ -286,6 +287,9 @@ public sealed partial class LiveCharacterSystem : EntitySystem
     {
         var xform = Transform(body);
         if (_emergencyShuttle.ShuttlesLeft && _emergencyShuttle.IsTargetEscaping(body))
+            return true;
+
+        if (_stationDive.IsSaved(body))
             return true;
 
         var query = EntityQueryEnumerator<StationCentcommComponent>();

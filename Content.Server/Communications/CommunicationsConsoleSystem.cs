@@ -23,6 +23,7 @@ namespace Content.Server.Communications
 {
     public sealed partial class CommunicationsConsoleSystem : EntitySystem
     {
+        [Dependency] private Content.Server._Floof.Flooding.StationDiveSystem _stationDive = default!; // Floof - Flooding
         [Dependency] private IAdminLogManager _adminLogger = default!;
         [Dependency] private IConfigurationManager _cfg = default!;
         [Dependency] private AccessReaderSystem _accessReaderSystem = default!;
@@ -165,6 +166,11 @@ namespace Content.Server.Communications
             // Ensure that we can communicate with the shuttle (either call or recall)
             if (!comp.CanShuttle)
                 return false;
+
+            // Floof Section - Flooding
+            if (_stationDive.Active)
+                return _stationDive.CanResurface;
+            // Floof Section End
 
             // Calling shuttle checks
             if (_roundEndSystem.ExpectedCountdownEnd is null)

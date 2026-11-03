@@ -418,6 +418,10 @@
   id: PillCanisterDexalin
   suffix: Dexalin 20u, 7
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-dexalin-20u
   - type: EntityTableContainerFill
@@ -450,6 +454,10 @@
   id: PillCanisterDylovene
   suffix: Dylovene 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-dylovene-20u
   - type: EntityTableContainerFill
@@ -482,6 +490,10 @@
   id: PillCanisterHyronalin
   suffix: Hyronalin 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-hyronalin-20u
   - type: EntityTableContainerFill
@@ -514,6 +526,10 @@
   id: PillCanisterPotassiumIodide
   suffix: Potassium iodide 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-potassium-iodide-20u
   - type: EntityTableContainerFill
@@ -564,6 +580,10 @@
   id: PillCanisterIron
   suffix: Iron 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-iron-20u
   - type: EntityTableContainerFill
@@ -578,6 +598,10 @@
   id: PillCanisterCopper
   suffix: Copper 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-copper-20u
   - type: EntityTableContainerFill
@@ -610,6 +634,10 @@
   id: PillCanisterKelotane
   suffix: Kelotane 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-kelotane-20u
   - type: EntityTableContainerFill
@@ -642,6 +670,10 @@
   id: PillCanisterDermaline
   suffix: Dermaline 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-dermaline-20u
   - type: EntityTableContainerFill
@@ -685,6 +717,10 @@
   id: PillCanisterTricordrazine
   suffix: Tricordrazine 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-tricordrazine-20u
   - type: EntityTableContainerFill
@@ -731,6 +767,10 @@
   id: PillCanisterBicaridine
   suffix: Bicaridine 20u, 5
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-bicaridine-20u
   - type: EntityTableContainerFill
@@ -763,6 +803,10 @@
   id: PillCanisterCharcoal
   suffix: Charcoal 20u, 3
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Label
     localizedLabel: pill-label-charcoal-20u
   - type: EntityTableContainerFill
@@ -813,6 +857,10 @@
   id: PillCanisterRandom
   suffix: Random
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:GroupSelector

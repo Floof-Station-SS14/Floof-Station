@@ -195,6 +195,20 @@ public sealed partial class TileAtmosphere : IGasMixtureHolder
     [ViewVariables]
     public bool NoGridTile;
 
+    // Floof Section - flooding
+    /// <summary>
+    /// Full of liquid, which gas can't get through.
+    /// </summary>
+    [ViewVariables]
+    public bool FloodFull;
+
+    /// <summary>
+    /// Open to the sea on a map under one, which gas can't get through.
+    /// </summary>
+    [ViewVariables]
+    public bool FloodExposed;
+    // Floof Section End
+
     /// <summary>
     /// If true, this tile is queued for processing in <see cref="GridAtmosphereComponent.PossiblyDisconnectedTiles"/>
     /// </summary>
@@ -237,6 +251,8 @@ public sealed partial class TileAtmosphere : IGasMixtureHolder
         GridIndices = other.GridIndices;
         Space = other.Space;
         NoGridTile = other.NoGridTile;
+        FloodFull = other.FloodFull; // Floof - flooding
+        FloodExposed = other.FloodExposed; // Floof - flooding
         MapAtmosphere = other.MapAtmosphere;
         Air = other.Air?.Clone();
         AirArchived = Air != null ? Air.Clone() : null;

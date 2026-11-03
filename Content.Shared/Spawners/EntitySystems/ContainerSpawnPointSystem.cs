@@ -23,7 +23,8 @@ public sealed partial class ContainerSpawnPointSystem : EntitySystem
 
         // If it's just a spawn pref check if it's for cryo (silly).
         if (args.HumanoidCharacterProfile?.SpawnPriority != SpawnPriorityPreference.Cryosleep &&
-            (!ProtoMan.Resolve(args.Job, out var jobProto) || jobProto.JobEntity == null))
+            (!ProtoMan.Resolve(args.Job, out var jobProto) || jobProto.JobEntity == null) &&
+            !(_gameTicker.RunLevel == GameRunLevel.InRound && HasComp<Content.Shared._Floof.Flooding.LateJoinCryopodOnlyComponent>(args.Station))) // Floof - Flooding
         {
             return;
         }

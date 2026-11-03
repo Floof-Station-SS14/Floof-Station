@@ -655,6 +655,10 @@
   parent: BaseStorageItem
   description: Holds up to 10 pills.
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/PillCanister.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Item
     size: Tiny
     sprite: Objects/Specific/Chemistry/pills_canister.rsi

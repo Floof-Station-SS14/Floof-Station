@@ -1,4 +1,5 @@
 using System.Threading;
+using Content.Server._Floof.Flooding; // Floof - Flooding
 using Content.Server.Administration.Logs;
 using Content.Shared.AlertLevel;
 using Content.Shared.CCVar;
@@ -58,6 +59,8 @@ namespace Content.Server.RoundEnd
         /// </summary>
         public bool CantRecall = false;
 
+        public RoundEndCountdownOverride? CountdownOverride; // Floof - Flooding
+
         public TimeSpan AutoCallStartTime;
         private bool _autoCalledBefore = false;
 
@@ -93,6 +96,7 @@ namespace Content.Server.RoundEnd
             ExpectedCountdownEnd = null;
             SetAutoCallTime();
             _autoCalledBefore = false;
+            CountdownOverride = null; // Floof - Flooding
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
         }
 
@@ -152,6 +156,8 @@ namespace Content.Server.RoundEnd
                 }
             }
 
+            duration = CountdownOverride?.Duration ?? duration; // Floof - Flooding
+
             RequestRoundEnd(duration, requester, machine, checkCooldown, text, name, cantRecall);
         }
 
@@ -200,6 +206,16 @@ namespace Content.Server.RoundEnd
                 units = "eta-units-minutes";
             }
 
+            // Floof Section - Flooding
+            if (CountdownOverride != null)
+            {
+                text = CountdownOverride.CallText ?? text;
+                name = CountdownOverride.Sender;
+            }
+
+            if (CountdownOverride is not { CallText: null })
+            {
+            // Floof Section End
             _chatSystem.DispatchGlobalAnnouncement(Loc.GetString(text,
                 ("time", time),
                 ("units", Loc.GetString(units))),
@@ -208,15 +224,17 @@ namespace Content.Server.RoundEnd
                 null,
                 Color.Gold);
 
-            _audio.PlayGlobal("/Audio/Announcements/shuttlecalled.ogg", Filter.Broadcast(), true);
+            _audio.PlayGlobal(CountdownOverride != null ? "/Audio/Announcements/announce.ogg" : "/Audio/Announcements/shuttlecalled.ogg", Filter.Broadcast(), true); // Floof - Flooding
+            } // Floof - Flooding
 
             LastCountdownStart = _gameTiming.CurTime;
             ExpectedCountdownEnd = _gameTiming.CurTime + countdownTime;
 
             // TODO full game saves
-            Timer.Spawn(countdownTime, _shuttle.DockEmergencyShuttle, _countdownTokenSource.Token);
+            Timer.Spawn(countdownTime, CountdownOverride?.Finished ?? _shuttle.DockEmergencyShuttle, _countdownTokenSource.Token); // Floof - Flooding
 
-            ActivateCooldown();
+            if (CountdownOverride == null) // Floof - Flooding
+                ActivateCooldown();
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
 
             var shuttle = _shuttle.GetShuttle();
@@ -255,10 +273,10 @@ namespace Content.Server.RoundEnd
             else
                 _adminLogger.Add(LogType.ShuttleRecalled, LogImpact.High, $"Shuttle recalled{what}");
 
-            _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("round-end-system-shuttle-recalled-announcement"),
-                Loc.GetString("round-end-system-shuttle-sender-announcement"), false, colorOverride: Color.Gold);
+            _chatSystem.DispatchGlobalAnnouncement(Loc.GetString(CountdownOverride?.RecallText ?? "round-end-system-shuttle-recalled-announcement"), // Floof - Flooding
+                Loc.GetString(CountdownOverride?.Sender ?? "round-end-system-shuttle-sender-announcement"), false, colorOverride: Color.Gold); // Floof - Flooding
 
-            _audio.PlayGlobal("/Audio/Announcements/shuttlerecalled.ogg", Filter.Broadcast(), true);
+            _audio.PlayGlobal(CountdownOverride != null ? "/Audio/Announcements/announce.ogg" : "/Audio/Announcements/shuttlerecalled.ogg", Filter.Broadcast(), true); // Floof - Flooding
 
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;

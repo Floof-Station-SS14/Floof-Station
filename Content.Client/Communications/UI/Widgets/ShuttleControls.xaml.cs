@@ -38,6 +38,43 @@ public sealed partial class ShuttleControls : Control
         SyncButtonState();
     }
 
+    // Floof Section - Flooding
+    public void SetResurface()
+    {
+        HeaderLabel.Text = Loc.GetString("comms-console-resurface-header");
+        StatusLabel.Text = Loc.GetString("comms-console-resurface-status");
+        EmergencyShuttleCallButton.Text = Loc.GetString("comms-console-resurface-button");
+        EmergencyShuttleRecallButton.Text = Loc.GetString("comms-console-resurface-abort-button");
+        DepthLabel.Visible = true;
+    }
+
+    public bool CountdownStarted => _countdownStarted;
+
+    private bool _diving;
+    private TimeSpan? _diveLeft;
+
+    /// <param name="left">Time shown on the display, or null if nothing is counting down.</param>
+    public void SetDiveStatus(string status, TimeSpan? left)
+    {
+        _diving = true;
+        _diveLeft = left;
+        StatusLabel.Text = status;
+    }
+
+    public void SetResurfaceCountdown()
+    {
+        _diving = false;
+        StatusLabel.Text = Loc.GetString("comms-console-resurface-status");
+    }
+
+    public void SetDepth(int? meters)
+    {
+        DepthLabel.Text = meters is { } value
+            ? Loc.GetString("comms-console-resurface-depth", ("meters", value))
+            : Loc.GetString("comms-console-resurface-depth-surface");
+    }
+    // Floof Section End
+
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
@@ -49,6 +86,21 @@ public sealed partial class ShuttleControls : Control
     /// </summary>
     private void UpdateCountdown()
     {
+        // Floof Section - Flooding
+        if (_diving)
+        {
+            if (_diveLeft is not { } left)
+            {
+                CountdownLabel.Text = "--:--";
+                return;
+            }
+
+            var seconds = (int) Math.Ceiling(Math.Max(left.TotalSeconds, 0));
+            CountdownLabel.Text = (seconds / 60).ToString("D2") + ":" + (seconds % 60).ToString("D2");
+            return;
+        }
+        // Floof Section End
+
         // Set the label on the LCD countdown
         var countdown = _countdownEnd == null ? 0.0f : (float)Math.Max(_countdownEnd.Value.Subtract(_timing.CurTime).TotalSeconds, 0);
 

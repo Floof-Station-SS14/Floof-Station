@@ -79,13 +79,12 @@ species-overview-feroxi-pro-bite = Bite for heavy Piercing damage
 species-overview-feroxi-pro-blood = Can smell bleeding people and nearby blood
 species-overview-feroxi-pro-blunt = Take 10% less Blunt damage
 species-overview-feroxi-pro-cold = Take 10% less Cold damage
-species-overview-feroxi-pro-breathe = Can breathe oxygen or water vapor
+species-overview-feroxi-pro-breathe = Can breathe oxygen, water vapor, water or saline
 species-overview-feroxi-con-diet = Can only eat meat
 species-overview-feroxi-con-poison = Are poisoned by chocolate, coffee, tea, onion and garlic
 species-overview-feroxi-con-slash = Take 10% more Slash damage
 species-overview-feroxi-con-thirst = Get thirsty twice as fast
 species-overview-feroxi-con-parched = Start suffocating when parched
-species-overview-feroxi-con-saline = Saline hydrates them much less
 
 ## Shadekin
 species-overview-shadekin-pro-nightvision = See in the dark without a light

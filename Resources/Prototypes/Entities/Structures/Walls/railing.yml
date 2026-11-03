@@ -44,6 +44,10 @@
   parent: BaseRailing
   id: Railing
   components:
+  - type: FloodMask # Floof - flooding
+    sprite: # Floof - flooding
+      sprite: _Floof/Flooding/Masks/Railing.rsi # Floof - flooding
+      state: mask # Floof - flooding
   - type: Sprite
     state: side
   - type: Icon

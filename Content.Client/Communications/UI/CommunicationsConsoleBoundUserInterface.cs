@@ -41,6 +41,11 @@ public sealed partial class CommunicationsConsoleBoundUserInterface(EntityUid ow
         _menu.OnShuttleCalled += CallShuttle;
         _menu.OnShuttleRecalled += RecallShuttle;
 
+        // Floof Section - Flooding
+        if (EntMan.HasComponent<Content.Shared._Floof.Flooding.ResurfaceConsoleComponent>(Owner))
+            _menu.SetResurface();
+        // Floof Section End
+
         if (EntMan.TryGetComponent<CommunicationsConsoleComponent>(Owner, out var console))
             _menu.SetBroadcastDisplayEntity(console.ScreenDisplayId);
         else
