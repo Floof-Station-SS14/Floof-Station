@@ -81,40 +81,41 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
 
         var query = EntityQueryEnumerator<ArrivalsShuttleComponent, ShuttleComponent, TransformComponent>();
         var curTime = Timing.CurTime;
-        while (query.MoveNext(out var uid, out var comp, out var shuttle, out var xform))
+        TryGetArrivals(out var arrivals);
+
+        if (TryComp(arrivals, out TransformComponent? arrivalsXform))
         {
-            if (comp.NextTransfer > curTime)
-                continue;
-
-            if (!TryGetArrivals(comp.Station, out var arrivals) ||
-                !TryComp(arrivals, out TransformComponent? arrivalsXform))
-                continue;
-
-            var tripTime = _shuttles.DefaultTravelTime + _shuttles.DefaultStartupTime;
-
-            // Go back to arrivals source
-            if (xform.MapUid != arrivalsXform.MapUid)
+            while (query.MoveNext(out var uid, out var comp, out var shuttle, out var xform))
             {
-                if (arrivals.IsValid())
-                    _shuttles.FTLToDock(uid, shuttle, arrivals);
+                if (comp.NextTransfer > curTime)
+                    continue;
 
-                comp.NextArrivalsTime = Timing.CurTime + TimeSpan.FromSeconds(tripTime);
+                var tripTime = _shuttles.DefaultTravelTime + _shuttles.DefaultStartupTime;
+
+                // Go back to arrivals source
+                if (xform.MapUid != arrivalsXform.MapUid)
+                {
+                    if (arrivals.IsValid())
+                        _shuttles.FTLToDock(uid, shuttle, arrivals);
+
+                    comp.NextArrivalsTime = Timing.CurTime + TimeSpan.FromSeconds(tripTime);
+                }
+                // Go to station
+                else
+                {
+                    var targetGrid = _station.GetLargestGrid(comp.Station);
+
+                    if (targetGrid != null)
+                        _shuttles.FTLToDock(uid, shuttle, targetGrid.Value);
+
+                    // The ArrivalsCooldown includes the trip there, so we only need to add the time taken for
+                    // the trip back.
+                    comp.NextArrivalsTime = Timing.CurTime + TimeSpan.FromSeconds(
+                        Cfg.GetCVar(CCVars.ArrivalsCooldown) + tripTime);
+                }
+
+                comp.NextTransfer += TimeSpan.FromSeconds(Cfg.GetCVar(CCVars.ArrivalsCooldown));
             }
-            // Go to station
-            else
-            {
-                var targetGrid = _station.GetLargestGrid(comp.Station);
-
-                if (targetGrid != null)
-                    _shuttles.FTLToDock(uid, shuttle, targetGrid.Value);
-
-                // The ArrivalsCooldown includes the trip there, so we only need to add the time taken for
-                // the trip back.
-                comp.NextArrivalsTime = Timing.CurTime + TimeSpan.FromSeconds(
-                    Cfg.GetCVar(CCVars.ArrivalsCooldown) + tripTime);
-            }
-
-            comp.NextTransfer += TimeSpan.FromSeconds(Cfg.GetCVar(CCVars.ArrivalsCooldown));
         }
     }
 
@@ -162,10 +163,10 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
         // Spawn arrivals on a dummy map then dock it to the source.
         var dummpMapEntity = _mapSystem.CreateMap(out var dummyMapId);
 
-        if (!TryGetArrivals(uid, out _))
-            LoadStationTerminal(uid, arrivalsMap);
+        if (!TryGetArrivals(out _))
+            LoadTerminal(uid, arrivalsMap);
 
-        if (TryGetArrivals(uid, out var arrivals) &&
+        if (TryGetArrivals(out var arrivals) &&
             _loader.TryLoadGrid(dummyMapId, component.ShuttlePath, out var shuttle))
         {
             component.Shuttle = shuttle.Value;
@@ -183,9 +184,10 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
     }
 
     /// <summary>
-    /// Loads a station's own arrivals map. Its <see cref="BecomesTerminalComponent"/> grid becomes the station's terminal.
+    /// Loads the round's arrivals map from the first station that needs one. Its <see cref="BecomesTerminalComponent"/>
+    /// grid becomes the terminal.
     /// </summary>
-    private void LoadStationTerminal(EntityUid station, ResPath path)
+    private void LoadTerminal(EntityUid station, ResPath path)
     {
         if (!_loader.TryLoadMap(path, out var map, out var grids))
         {
@@ -200,7 +202,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
             return;
         }
 
-        EnsureComp<ArrivalsSourceComponent>(terminal).Station = station;
+        EnsureComp<ArrivalsSourceComponent>(terminal);
         EnsureComp<ProtectedGridComponent>(terminal);
         EnsureComp<PreventPilotComponent>(terminal);
 
@@ -234,7 +236,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
     [SubscribeLocalEvent]
     private void OnArrivalsFTL(EntityUid shuttleUid, ArrivalsShuttleComponent component, ref FTLStartedEvent args)
     {
-        if (!TryGetArrivals(component.Station, out var arrivals))
+        if (!TryGetArrivals(out EntityUid arrivals))
             return;
 
         if (TryComp<DeviceNetworkComponent>(shuttleUid, out var netComp))
