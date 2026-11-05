@@ -22,7 +22,7 @@
   weather: true
   indestructible: true
 
-- type: shader
-  id: OceanFill
-  kind: source
-  path: "/Textures/_Floof/Shaders/ocean_fill.swsl"
+- type: animatedTile
+  id: FloorOceanSurface
+  sprite: /Textures/_Floof/Tiles/ocean_surface.rsi
+  state: water
