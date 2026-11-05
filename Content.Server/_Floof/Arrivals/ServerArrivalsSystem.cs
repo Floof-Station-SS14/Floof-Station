@@ -277,8 +277,10 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
         if (args.FromMapUid == arrivalsMapUid)
             return;
 
+        var returns = Cfg.GetCVar(CCVars.ArrivalsReturns);
+
         // Any mob then yeet them off the shuttle.
-        if (!Cfg.GetCVar(CCVars.ArrivalsReturns) && args.FromMapUid != null)
+        if (!returns && args.FromMapUid != null)
             DumpChildren(shuttleUid, ref args);
 
         var pendingQuery = AllEntityQuery<PendingClockInComponent, TransformComponent>();
@@ -291,6 +293,10 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
         {
             if (xform.GridUid == shuttleUid)
             {
+                // Riding back to the terminal, they keep their coupon.
+                if (returns)
+                    continue;
+
                 // Warp all players who are still on this shuttle to a spawn point. This doesn't let them return to
                 // arrivals. It also ensures noobs, slow players or AFK players safely leave the shuttle.
                 TryTeleportToMapSpawn(pUid, component.Station, xform);
