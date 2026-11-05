@@ -16,4 +16,12 @@ public sealed partial class StationArrivalsComponent : Component
     public EntityUid Shuttle;
 
     [DataField("shuttlePath")] public ResPath ShuttlePath = new("/Maps/Shuttles/arrivals.yml");
+
+    /// <summary>
+    /// A whole map loaded as this station's own arrivals terminal, components and all.
+    /// The grid with <c>BecomesTerminal</c> is the terminal.
+    /// Null means the station has no arrivals terminal or shuttle.
+    /// </summary>
+    [DataField]
+    public ResPath? ArrivalsMap;
 }

@@ -105,14 +105,27 @@ public abstract partial class ArrivalsSystem : EntitySystem
         EnsureComp<PreventPilotComponent>(uid);
     }
 
+    /// <summary>
+    /// Gets any arrivals terminal.
+    /// </summary>
     [PublicAPI]
     public bool TryGetArrivals(out EntityUid uid)
     {
         var arrivalsQuery = EntityQueryEnumerator<ArrivalsSourceComponent>();
+        return arrivalsQuery.MoveNext(out uid, out _);
+    }
 
-        while (arrivalsQuery.MoveNext(out uid, out _))
+    /// <summary>
+    /// Gets the terminal loaded from a station's <see cref="StationArrivalsComponent.ArrivalsMap"/>.
+    /// </summary>
+    [PublicAPI]
+    public bool TryGetArrivals(EntityUid station, out EntityUid uid)
+    {
+        var arrivalsQuery = EntityQueryEnumerator<ArrivalsSourceComponent>();
+        while (arrivalsQuery.MoveNext(out uid, out var source))
         {
-            return true;
+            if (source.Station == station)
+                return true;
         }
 
         return false;

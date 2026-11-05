@@ -9,4 +9,11 @@ namespace Content.Shared.Shuttles.Components;
 /// Added to a designated arrivals station for players to spawn at, if enabled.
 /// </summary>
 [RegisterComponent, Access(typeof(ArrivalsSystem))]
-public sealed partial class ArrivalsSourceComponent : Component;
+public sealed partial class ArrivalsSourceComponent : Component
+{
+    /// <summary>
+    /// The station this terminal serves, set when it was loaded from <see cref="StationArrivalsComponent.ArrivalsMap"/>.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? Station;
+}

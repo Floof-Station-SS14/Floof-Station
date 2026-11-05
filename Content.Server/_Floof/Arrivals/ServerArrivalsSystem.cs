@@ -3,6 +3,7 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Server._Floof.Arrivals;
 using Content.Server.Administration;
 using Content.Server.Chat.Managers;
 using Content.Shared.DeviceNetwork.Systems;
@@ -48,10 +49,8 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
     [Dependency] private IConsoleHost _console = default!;
     [Dependency] private ActorSystem _actor = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
-    [Dependency] private BiomeSystem _biomes = default!;
     [Dependency] private DeviceNetworkSystem _deviceNetworkSystem = default!;
     [Dependency] private MapLoaderSystem _loader = default!;
-    [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private ShuttleSystem _shuttles = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -65,13 +64,6 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
     ///     The first arrival is a little early, to save everyone 10s
     /// </summary>
     private const float RoundStartFTLDuration = 10f;
-
-    private readonly List<ProtoId<BiomeTemplatePrototype>> _arrivalsBiomeOptions = new()
-    {
-        "Grasslands",
-        "LowDesert",
-        "Snow",
-    };
 
     public override void Initialize()
     {
@@ -89,74 +81,45 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
 
         var query = EntityQueryEnumerator<ArrivalsShuttleComponent, ShuttleComponent, TransformComponent>();
         var curTime = Timing.CurTime;
-        TryGetArrivals(out var arrivals);
-
-        if (TryComp(arrivals, out TransformComponent? arrivalsXform))
+        while (query.MoveNext(out var uid, out var comp, out var shuttle, out var xform))
         {
-            while (query.MoveNext(out var uid, out var comp, out var shuttle, out var xform))
+            if (comp.NextTransfer > curTime)
+                continue;
+
+            if (!TryGetArrivals(comp.Station, out var arrivals) ||
+                !TryComp(arrivals, out TransformComponent? arrivalsXform))
+                continue;
+
+            var tripTime = _shuttles.DefaultTravelTime + _shuttles.DefaultStartupTime;
+
+            // Go back to arrivals source
+            if (xform.MapUid != arrivalsXform.MapUid)
             {
-                if (comp.NextTransfer > curTime)
-                    continue;
+                if (arrivals.IsValid())
+                    _shuttles.FTLToDock(uid, shuttle, arrivals);
 
-                var tripTime = _shuttles.DefaultTravelTime + _shuttles.DefaultStartupTime;
-
-                // Go back to arrivals source
-                if (xform.MapUid != arrivalsXform.MapUid)
-                {
-                    if (arrivals.IsValid())
-                        _shuttles.FTLToDock(uid, shuttle, arrivals);
-
-                    comp.NextArrivalsTime = Timing.CurTime + TimeSpan.FromSeconds(tripTime);
-                }
-                // Go to station
-                else
-                {
-                    var targetGrid = _station.GetLargestGrid(comp.Station);
-
-                    if (targetGrid != null)
-                        _shuttles.FTLToDock(uid, shuttle, targetGrid.Value);
-
-                    // The ArrivalsCooldown includes the trip there, so we only need to add the time taken for
-                    // the trip back.
-                    comp.NextArrivalsTime = Timing.CurTime + TimeSpan.FromSeconds(
-                        Cfg.GetCVar(CCVars.ArrivalsCooldown) + tripTime);
-                }
-
-                comp.NextTransfer += TimeSpan.FromSeconds(Cfg.GetCVar(CCVars.ArrivalsCooldown));
+                comp.NextArrivalsTime = Timing.CurTime + TimeSpan.FromSeconds(tripTime);
             }
+            // Go to station
+            else
+            {
+                var targetGrid = _station.GetLargestGrid(comp.Station);
+
+                if (targetGrid != null)
+                    _shuttles.FTLToDock(uid, shuttle, targetGrid.Value);
+
+                // The ArrivalsCooldown includes the trip there, so we only need to add the time taken for
+                // the trip back.
+                comp.NextArrivalsTime = Timing.CurTime + TimeSpan.FromSeconds(
+                    Cfg.GetCVar(CCVars.ArrivalsCooldown) + tripTime);
+            }
+
+            comp.NextTransfer += TimeSpan.FromSeconds(Cfg.GetCVar(CCVars.ArrivalsCooldown));
         }
     }
 
     private void SetupArrivalsStation()
     {
-        var path = new ResPath(Cfg.GetCVar(CCVars.ArrivalsMap));
-        _mapSystem.CreateMap(out var mapId, runMapInit: false);
-        var mapUid = _mapSystem.GetMap(mapId);
-
-        if (!_loader.TryLoadGrid(mapId, path, out var grid))
-            return;
-
-        _metaData.SetEntityName(mapUid, Loc.GetString("map-name-terminal"));
-
-        EnsureComp<ArrivalsSourceComponent>(grid.Value);
-        EnsureComp<ProtectedGridComponent>(grid.Value);
-        EnsureComp<PreventPilotComponent>(grid.Value);
-
-        // Setup planet arrivals if relevant
-        if (Cfg.GetCVar(CCVars.ArrivalsPlanet))
-        {
-            var template = Random.Pick(_arrivalsBiomeOptions);
-            _biomes.EnsurePlanet(mapUid, ProtoMan.Index(template));
-            var restricted = new RestrictedRangeComponent
-            {
-                Range = 32f
-            };
-            AddComp(mapUid, restricted);
-        }
-
-        _mapSystem.InitializeMap(mapId);
-
-        // Handle roundstart stations.
         var query = AllEntityQuery<StationArrivalsComponent>();
 
         while (query.MoveNext(out var uid, out var comp))
@@ -172,12 +135,6 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
         if (Enabled)
         {
             SetupArrivalsStation();
-            var query = AllEntityQuery<StationArrivalsComponent>();
-
-            while (query.MoveNext(out var sUid, out var comp))
-            {
-                SetupShuttle(sUid, comp);
-            }
         }
         else
         {
@@ -185,7 +142,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
 
             while (sourceQuery.MoveNext(out var uid, out _))
             {
-                QueueDel(uid);
+                QueueDel(Transform(uid).MapUid);
             }
 
             var shuttleQuery = AllEntityQuery<ArrivalsShuttleComponent>();
@@ -199,13 +156,16 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
 
     private void SetupShuttle(EntityUid uid, StationArrivalsComponent component)
     {
-        if (!Deleted(component.Shuttle))
+        if (!Deleted(component.Shuttle) || component.ArrivalsMap is not { } arrivalsMap)
             return;
 
         // Spawn arrivals on a dummy map then dock it to the source.
         var dummpMapEntity = _mapSystem.CreateMap(out var dummyMapId);
 
-        if (TryGetArrivals(out var arrivals) &&
+        if (!TryGetArrivals(uid, out _))
+            LoadStationTerminal(uid, arrivalsMap);
+
+        if (TryGetArrivals(uid, out var arrivals) &&
             _loader.TryLoadGrid(dummyMapId, component.ShuttlePath, out var shuttle))
         {
             component.Shuttle = shuttle.Value;
@@ -222,6 +182,32 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
         timer.Lifetime = 15f;
     }
 
+    /// <summary>
+    /// Loads a station's own arrivals map. Its <see cref="BecomesTerminalComponent"/> grid becomes the station's terminal.
+    /// </summary>
+    private void LoadStationTerminal(EntityUid station, ResPath path)
+    {
+        if (!_loader.TryLoadMap(path, out var map, out var grids))
+        {
+            Log.Error($"Failed to load arrivals map {path} for {ToPrettyString(station)}");
+            return;
+        }
+
+        if (grids.FirstOrNull(grid => HasComp<BecomesTerminalComponent>(grid)) is not { } terminal)
+        {
+            Log.Error($"Arrivals map {path} for {ToPrettyString(station)} has no grid with BecomesTerminal");
+            QueueDel(map);
+            return;
+        }
+
+        EnsureComp<ArrivalsSourceComponent>(terminal).Station = station;
+        EnsureComp<ProtectedGridComponent>(terminal);
+        EnsureComp<PreventPilotComponent>(terminal);
+
+        if (!_mapSystem.IsInitialized(map.Value.Owner))
+            _mapSystem.InitializeMap(map.Value.Owner);
+    }
+
     [SubscribeLocalEvent]
     private void OnRoundStarting(RoundStartingEvent ev)
     {
@@ -235,10 +221,10 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
     [SubscribeLocalEvent]
     private void OnStationPostInit(EntityUid uid, StationArrivalsComponent component, ref StationPostInitEvent args)
     {
-        if (!Enabled)
+        // Roundstart stations are set up on RoundStartingEvent, this is for latespawn stations.
+        if (!Enabled || Ticker.RunLevel != GameRunLevel.InRound)
             return;
 
-        // If it's a latespawn station then this will fail but that's okey
         SetupShuttle(uid, component);
     }
 
@@ -248,7 +234,7 @@ public sealed partial class ServerArrivalsSystem : ArrivalsSystem
     [SubscribeLocalEvent]
     private void OnArrivalsFTL(EntityUid shuttleUid, ArrivalsShuttleComponent component, ref FTLStartedEvent args)
     {
-        if (!TryGetArrivals(out EntityUid arrivals))
+        if (!TryGetArrivals(component.Station, out var arrivals))
             return;
 
         if (TryComp<DeviceNetworkComponent>(shuttleUid, out var netComp))
