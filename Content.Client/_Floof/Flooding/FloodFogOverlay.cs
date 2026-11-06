@@ -76,14 +76,14 @@ public sealed partial class FloodFogOverlay : Overlay
             _barriers.Clear();
             foreach (var (indices, tile) in tiles)
             {
-                if (tile.Shown <= 0f || !bounds.Contains(indices))
+                if (tile.Depth <= 0f || !bounds.Contains(indices))
                     continue;
 
                 var thickness = GetThickness(tile.Opacity);
                 if (thickness <= 0f)
                     continue;
 
-                var color = new Color(thickness, 0f, 0f, tile.Shown * _submerged.SubmergedView);
+                var color = new Color(thickness, 0f, 0f, tile.Depth * _submerged.SubmergedView);
                 DrawTile(handle, indices, color);
 
                 foreach (var dir in Directions)

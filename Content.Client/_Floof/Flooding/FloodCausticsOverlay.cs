@@ -69,11 +69,11 @@ public sealed partial class FloodCausticsOverlay : Overlay
 
             foreach (var (indices, tile) in tiles)
             {
-                if (tile.Shown <= 0f || !bounds.Contains(indices))
+                if (tile.Depth <= 0f || !bounds.Contains(indices))
                     continue;
 
                 var box = new Box2(indices, indices + Vector2i.One);
-                handle.DrawRect(box, Color.White.WithAlpha(tile.Shown * _submerged.SubmergedView));
+                handle.DrawRect(box, Color.White.WithAlpha(tile.Depth * _submerged.SubmergedView));
             }
         }
 

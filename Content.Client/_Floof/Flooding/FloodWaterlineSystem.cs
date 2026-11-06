@@ -17,7 +17,7 @@ public enum FloodBarrier : byte
 }
 
 /// <summary>
-///     Tracks how high the liquid on each wet tile has crept up the walls next to it.
+///     Tracks how deep the liquid on each wet tile is, for the overlays to draw.
 /// </summary>
 public sealed partial class FloodWaterlineSystem : EntitySystem
 {
@@ -25,11 +25,6 @@ public sealed partial class FloodWaterlineSystem : EntitySystem
     [Dependency] private TagSystem _tag = default!;
 
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
-
-    /// <summary>
-    ///     Depth (0-1, see <see cref="SetLevel"/>) gained or lost per second, so the waterline visibly creeps.
-    /// </summary>
-    private const float CreepSpeed = 0.08f;
 
     /// <summary>
     ///     Below this depth the liquid is a film that doesn't reach the wall. About 1 cm.
@@ -50,12 +45,10 @@ public sealed partial class FloodWaterlineSystem : EntitySystem
     public readonly Dictionary<EntityUid, Dictionary<Vector2i, WetTile>> Grids = new();
 
     private readonly Dictionary<EntityUid, (EntityUid Grid, Vector2i Tile)> _puddles = new();
-    private readonly List<Vector2i> _dried = new();
 
     public sealed class WetTile
     {
-        public float Target;
-        public float Shown;
+        public float Depth;
         public Color Color;
         public float Opacity;
 
@@ -121,50 +114,23 @@ public sealed partial class FloodWaterlineSystem : EntitySystem
         if (!Grids.TryGetValue(grid, out var tiles))
             Grids[grid] = tiles = new Dictionary<Vector2i, WetTile>();
 
-        if (!tiles.TryGetValue(indices, out var tile))
+        if (depth < MinDepth)
         {
-            // Only the level changing makes it creep. This could just be the first we're hearing of an old puddle.
-            tiles[indices] = tile = new WetTile { Shown = depth >= MinDepth ? depth : 0f };
+            tiles.Remove(indices);
+            return;
         }
 
-        tile.Target = depth >= MinDepth ? depth : 0f;
+        if (!tiles.TryGetValue(indices, out var tile))
+            tiles[indices] = tile = new WetTile();
+
+        tile.Depth = depth;
         tile.Color = color;
         tile.Opacity = opacity;
     }
 
     private void OnPuddleShutdown(Entity<PuddleComponent> entity, ref ComponentShutdown args)
     {
-        if (_puddles.Remove(entity, out var key) &&
-            Grids.TryGetValue(key.Grid, out var tiles) &&
-            tiles.TryGetValue(key.Tile, out var tile))
-        {
-            tile.Target = 0f;
-        }
-    }
-
-    public override void FrameUpdate(float frameTime)
-    {
-        base.FrameUpdate(frameTime);
-
-        var step = CreepSpeed * frameTime;
-        foreach (var (grid, tiles) in Grids)
-        {
-            foreach (var (indices, tile) in tiles)
-            {
-                tile.Shown = tile.Shown < tile.Target
-                    ? MathF.Min(tile.Shown + step, tile.Target)
-                    : MathF.Max(tile.Shown - step, tile.Target);
-
-                if (tile.Shown <= 0f && tile.Target <= 0f)
-                    _dried.Add(indices);
-            }
-
-            foreach (var indices in _dried)
-            {
-                tiles.Remove(indices);
-            }
-
-            _dried.Clear();
-        }
+        if (_puddles.Remove(entity, out var key) && Grids.TryGetValue(key.Grid, out var tiles))
+            tiles.Remove(key.Tile);
     }
 }

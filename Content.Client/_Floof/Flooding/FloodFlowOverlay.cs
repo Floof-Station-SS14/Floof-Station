@@ -73,7 +73,7 @@ public sealed partial class FloodFlowOverlay : Overlay
                 var across = new Vector2(-along.Y, along.X);
                 var center = indices + Vector2Helpers.Half;
                 var color = FloodWaterlineSystem.WaterlineColor(tile.Color);
-                var alpha = opacity * MathF.Min(strength / FloodFlowSystem.StrongCurrent, 1f) * MathF.Min(tile.Shown / 0.1f, 1f);
+                var alpha = opacity * MathF.Min(strength / FloodFlowSystem.StrongCurrent, 1f) * MathF.Min(tile.Depth / 0.1f, 1f);
 
                 for (var i = 0; i < StreaksPerTile; i++)
                 {

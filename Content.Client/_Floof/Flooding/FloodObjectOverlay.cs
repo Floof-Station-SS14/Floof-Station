@@ -138,12 +138,12 @@ public partial class FloodObjectOverlay : Overlay
                 _system.Grids.TryGetValue(gridUid, out var tiles) &&
                 _gridQuery.TryComp(gridUid, out var grid) &&
                 tiles.TryGetValue(_map.TileIndicesFor(gridUid, grid, xform.Coordinates), out var wet) &&
-                wet.Shown > 0f)
+                wet.Depth > 0f)
             {
-                if (wet.Shown < _swimming.DrownDepth && _level.RestsOnSurface(uid, xform))
+                if (wet.Depth < _swimming.DrownDepth && _level.RestsOnSurface(uid, xform))
                     surface = GetSurface(gridUid, grid, _map.TileIndicesFor(gridUid, grid, xform.Coordinates));
 
-                if (wet.Shown > surface)
+                if (wet.Depth > surface)
                     tile = wet;
             }
 
@@ -170,10 +170,10 @@ public partial class FloodObjectOverlay : Overlay
             }
 
             var waterColor = tile.Color;
-            var shown = tile.Shown - surface;
+            var shown = tile.Depth - surface;
 
             // Fully under there's no surface to see.
-            var covered = tile.Shown >= _swimming.DrownDepth;
+            var covered = tile.Depth >= _swimming.DrownDepth;
             var lineColor = covered ? waterColor : FloodWaterlineSystem.WaterlineColor(waterColor);
 
             _maskQuery.TryComp(uid, out var mask);

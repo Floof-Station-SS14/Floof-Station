@@ -107,7 +107,7 @@ public partial class FloodWallOverlay : Overlay
 
             foreach (var (indices, tile) in tiles)
             {
-                if (tile.Shown > 0f && bounds.Contains(indices))
+                if (tile.Depth > 0f && bounds.Contains(indices))
                     DrawBandsAround(handle, grid, indices, tile);
             }
         }
@@ -217,7 +217,7 @@ public partial class FloodWallOverlay : Overlay
     private static int ShownRows(FloodWaterlineSystem.WetTile tile, Vector2i dir)
     {
         var faceRows = FaceRows(dir);
-        return Math.Clamp((int) MathF.Round(tile.Shown * faceRows), 1, faceRows);
+        return Math.Clamp((int) MathF.Round(tile.Depth * faceRows), 1, faceRows);
     }
 
     private static Color RowColor(Color color, bool waterline)

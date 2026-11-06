@@ -143,7 +143,7 @@ public sealed partial class FloodFlowSystem : EntitySystem
         }
 
         tile.InRange += MeasureInterval;
-        if (tile.InRange < ArrivalTime || tile.Target < _minDepth)
+        if (tile.InRange < ArrivalTime || tile.Depth < _minDepth)
             return Vector2.Zero;
 
         var volume = _level.GetVolume(gridUid, grid, indices);

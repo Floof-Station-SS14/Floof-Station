@@ -64,11 +64,11 @@ public sealed partial class FloodDrySurfaceOverlay : Overlay
 
             foreach (var (indices, tile) in tiles)
             {
-                if (tile.Shown <= 0f || !bounds.Contains(indices))
+                if (tile.Depth <= 0f || !bounds.Contains(indices))
                     continue;
 
                 var box = new Box2(indices, indices + Vector2i.One);
-                handle.DrawRect(box, above.WithAlpha(above.A * (1f - tile.Shown)));
+                handle.DrawRect(box, above.WithAlpha(above.A * (1f - tile.Depth)));
             }
         }
 
